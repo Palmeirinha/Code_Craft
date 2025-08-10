@@ -1,0 +1,523 @@
+/* ===== CSS DE CRIAR MODERADOR - VERSÃO OTIMIZADA ===== */
+/* 
+  Este arquivo contém estilos para a página de criação de moderadores
+  Foi otimizado para reduzir redundância e melhorar manutenibilidade
+  Inclui formulário, informações e interface administrativa
+*/
+
+/* ===== VARIÁVEIS CSS (cores e valores reutilizáveis) ===== */
+/* 
+  As variáveis CSS centralizam cores e valores em um local
+  Facilitam manutenção e garantem consistência visual
+*/
+:root {
+  --primary-bg: #0f172a;        /* Fundo principal (azul escuro) */
+  --secondary-bg: #1e293b;      /* Fundo secundário (azul médio) */
+  --accent-purple: #8b5cf6;     /* Cor de destaque roxa */
+  --accent-blue: #3b82f6;       /* Cor de destaque azul */
+  --accent-yellow: #fbbf24;     /* Cor de destaque amarela */
+  --text-white: #ffffff;        /* Texto branco */
+  --text-muted: #94a3b8;        /* Texto secundário */
+  --text-placeholder: #9ca3af;  /* Texto de placeholder */
+  --border-color: rgba(139, 92, 246, 0.2); /* Borda com transparência */
+  --danger-color: #ef4444;      /* Cor de perigo/erro (vermelho) */
+  --success-color: #10b981;     /* Cor de sucesso (verde) */
+  --shadow-dark: rgba(0, 0, 0, 0.3); /* Sombra escura */
+  --shadow-purple: rgba(139, 92, 246, 0.3); /* Sombra roxa */
+}
+
+/* ===== LAYOUT PRINCIPAL ===== */
+/* 
+  Estrutura principal da página de criação de moderador
+  Define containers, background e espaçamentos básicos
+*/
+
+/* Página principal com gradiente de fundo */
+.criar-moderador-page {
+  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%); /* Gradiente azul escuro */
+  min-height: 100vh; /* Altura mínima de 100% da viewport */
+  padding: 2rem 0; /* Espaçamento vertical interno */
+}
+
+/* Container para centralizar e limitar largura */
+.criar-moderador-container {
+  max-width: 1200px; /* Largura máxima para telas grandes */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  padding: 0 2rem; /* Espaçamento horizontal interno */
+}
+
+/* ===== HEADER DA PÁGINA ===== */
+/* 
+  Cabeçalho com título, ícone e subtítulo
+  Define hierarquia visual e identidade da página
+*/
+
+/* Header centralizado da página */
+.criar-moderador-page-header {
+  text-align: center; /* Centraliza o conteúdo */
+  margin-bottom: 2rem; /* Espaçamento inferior */
+}
+
+/* Título principal com ícone */
+.criar-moderador-page-title {
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  gap: 1rem; /* Espaçamento entre ícone e texto */
+  margin-bottom: 0.5rem; /* Margem inferior */
+}
+
+/* Ícone do título com gradiente */
+.criar-moderador-page-title i {
+  font-size: 2.5rem; /* Tamanho grande do ícone */
+  color: var(--accent-purple); /* Cor roxa */
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%); /* Gradiente azul para roxo */
+  -webkit-background-clip: text; /* Clipping para webkit */
+  -webkit-text-fill-color: transparent; /* Texto transparente */
+  background-clip: text; /* Clipping para outros navegadores */
+}
+
+/* Título principal da página */
+.criar-moderador-page-title h1 {
+  font-size: 2.5rem; /* Tamanho grande para hierarquia */
+  font-weight: 700; /* Peso negrito */
+  color: var(--text-white); /* Cor branca para contraste */
+  margin: 0; /* Remove margens */
+}
+
+/* Subtítulo descritivo */
+.criar-moderador-page-subtitle {
+  font-size: 1.1rem; /* Tamanho médio */
+  color: var(--text-muted); /* Cor secundária */
+  margin: 0; /* Remove margens */
+  font-weight: 400; /* Peso normal */
+}
+
+/* ===== CARD PRINCIPAL ===== */
+/* 
+  Container principal com cabeçalho e corpo
+  Organiza o formulário e informações
+*/
+
+/* Card principal com fundo e bordas */
+.criar-moderador-card {
+  background: var(--secondary-bg); /* Fundo azul médio */
+  border-radius: 16px; /* Bordas arredondadas */
+  box-shadow: 0 8px 32px var(--shadow-dark); /* Sombra para profundidade */
+  border: 1px solid var(--border-color); /* Borda sutil */
+  margin-bottom: 2rem; /* Espaçamento inferior */
+  overflow: hidden; /* Esconde conteúdo que ultrapassa */
+}
+
+/* Cabeçalho do card com gradiente */
+.criar-moderador-card-header {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%); /* Gradiente azul para roxo */
+  padding: 1.5rem 2rem; /* Espaçamento interno */
+  border-bottom: 1px solid var(--border-color); /* Borda inferior */
+}
+
+/* Título do card com ícone */
+.criar-moderador-card-title {
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 0.75rem; /* Espaçamento entre ícone e texto */
+  font-size: 1.25rem; /* Tamanho médio */
+  font-weight: 600; /* Peso semi-negrito */
+  color: var(--text-white); /* Cor branca */
+  margin: 0; /* Remove margens */
+}
+
+/* Ícone do título do card */
+.criar-moderador-card-title i {
+  font-size: 1.25rem; /* Tamanho do ícone */
+  color: var(--accent-yellow); /* Cor amarela */
+}
+
+/* Corpo do card */
+.criar-moderador-card-body {
+  padding: 2rem; /* Espaçamento interno */
+}
+
+/* ===== FORMULÁRIO ===== */
+/* 
+  Formulário de criação de moderador
+  Inclui campos de entrada e validação visual
+*/
+
+/* Container do formulário */
+.criar-moderador-form {
+  max-width: 600px; /* Largura máxima para legibilidade */
+  margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+/* Grupo de campos do formulário */
+.criar-moderador-form-group {
+  margin-bottom: 1.5rem; /* Espaçamento inferior */
+}
+
+/* Label dos campos com ícone */
+.criar-moderador-form-label {
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 0.5rem; /* Espaçamento entre ícone e texto */
+  font-weight: 600; /* Peso semi-negrito */
+  color: var(--text-white); /* Cor branca */
+  margin-bottom: 0.5rem; /* Margem inferior */
+  font-size: 0.95rem; /* Tamanho da fonte */
+}
+
+/* Ícone do label */
+.criar-moderador-form-label i {
+  color: var(--accent-purple); /* Cor roxa */
+  font-size: 1rem; /* Tamanho do ícone */
+}
+
+/* ===== CAMPOS DE ENTRADA ===== */
+/* 
+  Estilos para campos de entrada do formulário
+  Inclui estados de foco e placeholder
+*/
+
+/* Campo de entrada com estilo base */
+.criar-moderador-form-control {
+  width: 100%; /* Ocupa toda a largura disponível */
+  padding: 0.875rem 1rem; /* Espaçamento interno */
+  border: 1px solid var(--border-color); /* Borda com transparência */
+  border-radius: 8px; /* Bordas arredondadas */
+  font-size: 1rem; /* Tamanho da fonte */
+  transition: all 0.3s ease; /* Transição suave */
+  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
+  color: var(--text-white); /* Cor do texto */
+  box-sizing: border-box; /* Inclui padding e border na largura */
+}
+
+/* Estado de foco dos campos */
+.criar-moderador-form-control:focus {
+  outline: none; /* Remove outline padrão */
+  border-color: var(--accent-purple); /* Borda roxa no foco */
+  background: rgba(15, 23, 42, 1); /* Fundo mais opaco no foco */
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1); /* Sombra roxa sutil */
+  transform: translateY(-1px); /* Move para cima */
+}
+
+/* Placeholder dos campos */
+.criar-moderador-form-control::placeholder {
+  color: var(--text-placeholder); /* Cor cinza para placeholder */
+  font-weight: 400; /* Peso normal */
+}
+
+/* Texto de ajuda abaixo dos campos */
+.criar-moderador-form-text {
+  display: block; /* Comportamento de bloco */
+  margin-top: 0.5rem; /* Margem superior */
+  font-size: 0.875rem; /* Tamanho pequeno */
+  color: var(--text-muted); /* Cor secundária */
+  font-weight: 400; /* Peso normal */
+}
+
+/* ===== BADGE DE FUNÇÃO ===== */
+/* 
+  Indicador visual da função do usuário
+  Mostra que será criado um moderador
+*/
+
+/* Badge de função com gradiente */
+.criar-moderador-role-badge {
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  gap: 0.5rem; /* Espaçamento entre ícone e texto */
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%); /* Gradiente azul para roxo */
+  color: var(--text-white); /* Texto branco */
+  padding: 0.75rem 1.5rem; /* Espaçamento interno */
+  border-radius: 25px; /* Bordas muito arredondadas */
+  font-weight: 600; /* Peso semi-negrito */
+  font-size: 0.9rem; /* Tamanho da fonte */
+  box-shadow: 0 4px 12px var(--shadow-purple); /* Sombra roxa */
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Borda branca transparente */
+  margin: 2rem auto; /* Margem vertical e centralização horizontal */
+  max-width: 200px; /* Largura máxima */
+}
+
+/* Ícone do badge */
+.criar-moderador-role-badge i {
+  font-size: 1rem; /* Tamanho do ícone */
+  color: var(--accent-yellow); /* Cor amarela */
+}
+
+/* ===== BOTÕES ===== */
+/* 
+  Botões de ação do formulário
+  Inclui estados de hover e disabled
+*/
+
+/* Botão base com estilo comum */
+.criar-moderador-btn {
+  width: 100%; /* Ocupa toda a largura */
+  padding: 1rem 2rem; /* Espaçamento interno */
+  border: none; /* Remove borda */
+  border-radius: 8px; /* Bordas arredondadas */
+  font-size: 1rem; /* Tamanho da fonte */
+  font-weight: 600; /* Peso semi-negrito */
+  cursor: pointer; /* Cursor de mão */
+  transition: all 0.3s ease; /* Transição suave */
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  gap: 0.5rem; /* Espaçamento entre ícone e texto */
+  position: relative; /* Posicionamento relativo */
+  overflow: hidden; /* Esconde conteúdo que ultrapassa */
+  margin-top: 1rem; /* Margem superior */
+}
+
+/* Botão primário com gradiente */
+.criar-moderador-btn-primary {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%); /* Gradiente azul para roxo */
+  color: var(--text-white); /* Texto branco */
+  box-shadow: 0 4px 12px var(--shadow-purple); /* Sombra roxa */
+}
+
+/* Efeito hover do botão */
+.criar-moderador-btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px); /* Move para cima */
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4); /* Sombra mais intensa */
+}
+
+/* Estado desabilitado do botão */
+.criar-moderador-btn:disabled {
+  opacity: 0.7; /* Reduz opacidade */
+  cursor: not-allowed; /* Cursor de proibido */
+  transform: none; /* Remove transformação */
+}
+
+/* ===== SPINNER DE CARREGAMENTO ===== */
+/* 
+  Indicador visual de carregamento
+  Usado durante o envio do formulário
+*/
+
+/* Container do spinner */
+.criar-moderador-spinner {
+  display: inline-block; /* Comportamento inline */
+  animation: criar-moderador-spin 1s linear infinite; /* Animação de rotação */
+}
+
+/* Ícone do spinner */
+.criar-moderador-spinner i {
+  font-size: 1rem; /* Tamanho do ícone */
+}
+
+/* Animação de rotação */
+@keyframes criar-moderador-spin {
+  from { transform: rotate(0deg); } /* Início: 0 graus */
+  to { transform: rotate(360deg); } /* Fim: 360 graus (volta completa) */
+}
+
+/* ===== ALERTAS ===== */
+/* 
+  Mensagens de feedback para o usuário
+  Inclui alertas de sucesso e erro
+*/
+
+/* Estilo base para todos os alertas */
+.criar-moderador-alert {
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 0.5rem; /* Espaçamento entre ícone e texto */
+  padding: 1rem; /* Espaçamento interno */
+  border-radius: 10px; /* Bordas arredondadas */
+  margin-top: 1rem; /* Margem superior */
+  font-weight: 500; /* Peso médio */
+  font-size: 0.9rem; /* Tamanho da fonte */
+}
+
+/* Alerta de erro/danger */
+.criar-moderador-alert-danger {
+  background: rgba(239, 68, 68, 0.1); /* Fundo vermelho transparente */
+  color: #fca5a5; /* Texto vermelho claro */
+  border: 1px solid rgba(239, 68, 68, 0.3); /* Borda vermelha */
+}
+
+/* Alerta de sucesso */
+.criar-moderador-alert-success {
+  background: rgba(16, 185, 129, 0.1); /* Fundo verde transparente */
+  color: #6ee7b7; /* Texto verde claro */
+  border: 1px solid rgba(16, 185, 129, 0.3); /* Borda verde */
+}
+
+/* Ícone dos alertas */
+.criar-moderador-alert i {
+  font-size: 1rem; /* Tamanho do ícone */
+}
+
+/* ===== SEÇÃO DE INFORMAÇÕES ===== */
+/* 
+  Área com informações sobre a função de moderador
+  Inclui cards explicativos e ícones
+*/
+
+/* Container da seção de informações */
+.criar-moderador-info-section {
+  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
+  border-radius: 16px; /* Bordas arredondadas */
+  box-shadow: 0 8px 32px var(--shadow-dark); /* Sombra */
+  border: 1px solid var(--border-color); /* Borda sutil */
+  padding: 2rem; /* Espaçamento interno */
+}
+
+/* Título da seção com ícone */
+.criar-moderador-info-title {
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 0.75rem; /* Espaçamento entre ícone e texto */
+  font-size: 1.5rem; /* Tamanho médio */
+  font-weight: 700; /* Peso negrito */
+  color: var(--text-white); /* Cor branca */
+  margin: 0 0 2rem 0; /* Margem inferior */
+  text-align: center; /* Centraliza texto */
+  justify-content: center; /* Centraliza horizontalmente */
+}
+
+/* Ícone do título */
+.criar-moderador-info-title i {
+  color: var(--accent-purple); /* Cor roxa */
+  font-size: 1.5rem; /* Tamanho do ícone */
+}
+
+/* Grid responsivo para os cards de informação */
+.criar-moderador-info-grid {
+  display: grid; /* Layout em grid */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Colunas adaptativas */
+  gap: 1.5rem; /* Espaçamento entre cards */
+}
+
+/* ===== CARDS DE INFORMAÇÃO ===== */
+/* 
+  Cards individuais com informações sobre a função
+  Inclui ícones, títulos e descrições
+*/
+
+/* Card individual de informação */
+.criar-moderador-info-card {
+  background: rgba(30, 41, 59, 0.8); /* Fundo semi-transparente */
+  padding: 1.5rem; /* Espaçamento interno */
+  border-radius: 12px; /* Bordas arredondadas */
+  border: 1px solid var(--border-color); /* Borda sutil */
+  transition: all 0.3s ease; /* Transição suave */
+  text-align: center; /* Centraliza texto */
+}
+
+/* Efeito hover nos cards */
+.criar-moderador-info-card:hover {
+  transform: translateY(-2px); /* Move para cima */
+  box-shadow: 0 8px 20px var(--shadow-dark); /* Sombra mais intensa */
+  border-color: var(--accent-purple); /* Borda roxa */
+}
+
+/* Ícone do card com gradiente */
+.criar-moderador-info-icon {
+  width: 60px; /* Largura fixa */
+  height: 60px; /* Altura fixa */
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%); /* Gradiente azul para roxo */
+  border-radius: 12px; /* Bordas arredondadas */
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  margin: 0 auto 1rem auto; /* Centraliza e adiciona margem inferior */
+  color: var(--text-white); /* Cor branca */
+  font-size: 1.5rem; /* Tamanho do ícone */
+}
+
+/* Título do card */
+.criar-moderador-info-card-title {
+  font-size: 1.1rem; /* Tamanho da fonte */
+  font-weight: 600; /* Peso semi-negrito */
+  color: var(--text-white); /* Cor branca */
+  margin: 0 0 0.5rem 0; /* Margem inferior */
+}
+
+/* Texto descritivo do card */
+.criar-moderador-info-card-text {
+  color: var(--text-muted); /* Cor secundária */
+  font-size: 0.9rem; /* Tamanho pequeno */
+  line-height: 1.5; /* Altura da linha */
+  margin: 0; /* Remove margens */
+}
+
+/* ===== RESPONSIVIDADE ===== */
+/* 
+  Media queries para diferentes tamanhos de tela
+  Garante boa experiência em dispositivos móveis
+*/
+
+/* Tablets e dispositivos médios */
+@media (max-width: 1024px) {
+  /* Título menor em telas médias */
+  .criar-moderador-page-title h1 {
+    font-size: 2rem; /* Tamanho reduzido */
+  }
+  
+  /* Subtítulo menor */
+  .criar-moderador-page-subtitle {
+    font-size: 1rem; /* Tamanho reduzido */
+  }
+  
+  /* Menos padding no corpo do card */
+  .criar-moderador-card-body {
+    padding: 1.5rem; /* Padding reduzido */
+  }
+  
+  /* Grid com colunas menores */
+  .criar-moderador-info-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colunas menores */
+  }
+}
+
+/* Dispositivos móveis */
+@media (max-width: 768px) {
+  /* Menos padding na página */
+  .criar-moderador-page {
+    padding: 1rem 0; /* Padding reduzido */
+  }
+  
+  /* Menos padding no container */
+  .criar-moderador-container {
+    padding: 0 1rem; /* Padding reduzido */
+  }
+  
+  /* Título em coluna em telas pequenas */
+  .criar-moderador-page-title {
+    flex-direction: column; /* Direção vertical */
+    gap: 0.5rem; /* Menos espaçamento */
+  }
+  
+  /* Título menor */
+  .criar-moderador-page-title h1 {
+    font-size: 1.75rem; /* Tamanho reduzido */
+  }
+  
+  /* Menos padding no cabeçalho do card */
+  .criar-moderador-card-header {
+    padding: 1rem 1.5rem; /* Padding reduzido */
+  }
+  
+  /* Menos padding no corpo do card */
+  .criar-moderador-card-body {
+    padding: 1rem 1.5rem; /* Padding reduzido */
+  }
+  
+  /* Menos padding na seção de informações */
+  .criar-moderador-info-section {
+    padding: 1.5rem; /* Padding reduzido */
+  }
+  
+  /* Grid em coluna única */
+  .criar-moderador-info-grid {
+    grid-template-columns: 1fr; /* Uma coluna */
+  }
+  
+  /* Botão com menos padding */
+  .criar-moderador-btn {
+    padding: 0.875rem 1.5rem; /* Padding reduzido */
+  }
+}

@@ -1,0 +1,940 @@
+/* ===== CARRINHO STYLES - MINIMAL - CÓDIGO COMENTADO PARA ESTUDO ===== */
+
+/* ===== VARIÁVEIS CSS ===== */
+:root {
+  --carrinho-border: 1px solid rgba(139, 92, 246, 0.2); /* Borda roxa sutil para elementos do carrinho */
+  --carrinho-z-overlay: 10000; /* Z-index para overlay (fundo escuro) */
+  --carrinho-z-sidebar: 10001; /* Z-index para sidebar (acima do overlay) */
+}
+
+/* ===== LAYOUT PRINCIPAL ===== */
+/* Seção principal do carrinho que ocupa toda a altura da tela */
+.carrinho-section {
+  background: var(--gradient-dark); /* Fundo com gradiente escuro */
+  min-height: 100vh; /* Altura mínima de 100% da viewport */
+  padding: 2rem 0; /* Espaçamento interno vertical */
+}
+
+/* Container que limita a largura máxima do conteúdo */
+.carrinho-container {
+  max-width: 1200px; /* Largura máxima para manter boa usabilidade */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  padding: 0 1rem; /* Espaçamento interno horizontal */
+}
+
+/* Wrapper principal com estilo de card */
+.carrinho-wrapper {
+  background: var(--cor-card); /* Cor de fundo do card */
+  border-radius: var(--radius-lg); /* Bordas arredondadas grandes */
+  padding: 2rem; /* Espaçamento interno */
+  box-shadow: var(--shadow-dark); /* Sombra escura para profundidade */
+  border: var(--carrinho-border); /* Borda roxa sutil */
+}
+
+/* Cabeçalho centralizado do carrinho */
+.carrinho-header {
+  text-align: center; /* Centraliza todo o conteúdo */
+  margin-bottom: 2rem; /* Espaçamento inferior */
+}
+
+/* Título principal do carrinho */
+.carrinho-title {
+  font-size: 2.5rem; /* Tamanho grande para destaque */
+  font-weight: 700; /* Peso da fonte (negrito) */
+  color: var(--cor-branca); /* Cor branca */
+  margin: 0 0 0.5rem; /* Margem inferior */
+}
+
+/* Subtítulo explicativo */
+.carrinho-subtitle {
+  font-size: 1.125rem; /* Tamanho da fonte */
+  color: var(--cor-cinza); /* Cor cinza */
+  margin: 0; /* Sem margens */
+}
+
+/* ===== SIDEBAR (CARRINHO FLUTUANTE) ===== */
+/* Overlay escuro que aparece atrás do carrinho */
+.carrinho-overlay {
+  position: fixed; /* Posicionamento fixo na tela */
+  inset: 0; /* Shorthand para top: 0, right: 0, bottom: 0, left: 0 */
+  background: rgba(0, 0, 0, 0.5); /* Fundo preto semi-transparente */
+  z-index: var(--carrinho-z-overlay); /* Z-index para ficar acima de outros elementos */
+  opacity: 0; /* Inicialmente invisível */
+  visibility: hidden; /* Inicialmente escondido */
+  transition: all 0.2s ease; /* Transição suave para todas as propriedades */
+}
+
+/* Estado ativo do overlay */
+.carrinho-overlay.active {
+  opacity: 1; /* Totalmente visível */
+  visibility: visible; /* Visível */
+}
+
+/* Sidebar lateral do carrinho */
+.carrinho-sidebar {
+  position: fixed; /* Posicionamento fixo na tela */
+  top: 0; /* Posiciona no topo */
+  right: -400px; /* Começa fora da área visível (à direita) */
+  width: 400px; /* Largura fixa */
+  height: 100vh; /* Altura de 100% da viewport */
+  background: var(--cor-card); /* Cor de fundo */
+  box-shadow: var(--shadow-dark); /* Sombra para profundidade */
+  z-index: var(--carrinho-z-sidebar); /* Z-index para ficar acima do overlay */
+  transition: right 0.2s ease; /* Transição suave da posição */
+  display: flex; /* Layout flexbox */
+  flex-direction: column; /* Organiza elementos verticalmente */
+  border-left: var(--carrinho-border); /* Borda esquerda roxa */
+}
+
+/* Estado aberto do sidebar */
+.carrinho-sidebar-open {
+  right: 0; /* Move para a área visível */
+}
+
+/* Cabeçalho do sidebar com gradiente */
+.carrinho-sidebar .carrinho-header {
+  background: var(--gradient-dark); /* Fundo com gradiente escuro */
+  padding: 1.5rem; /* Padding interno */
+  margin: 0; /* Sem margens */
+  text-align: left; /* Alinha texto à esquerda */
+  border-bottom: var(--carrinho-border); /* Linha separadora inferior */
+}
+
+/* Container do cabeçalho com flexbox */
+.carrinho-header-content {
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: space-between; /* Distribui espaço entre elementos */
+}
+
+/* Lado esquerdo do cabeçalho (ícone e título) */
+.carrinho-header-left {
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 1rem; /* Espaçamento entre elementos */
+}
+
+/* Wrapper do ícone do carrinho */
+.carrinho-icon-wrapper {
+  width: 48px; /* Largura fixa */
+  height: 48px; /* Altura fixa */
+  background: rgba(139, 92, 246, 0.2); /* Fundo roxo transparente */
+  border-radius: var(--radius); /* Bordas arredondadas */
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  color: var(--cor-branca); /* Cor branca */
+  font-size: 1.25rem; /* Tamanho do ícone */
+  border: 1px solid rgba(139, 92, 246, 0.3); /* Borda roxa */
+}
+
+/* Título do sidebar */
+.carrinho-sidebar .carrinho-title {
+  font-size: 1.25rem; /* Tamanho da fonte */
+  margin: 0; /* Sem margens */
+  color: var(--cor-branca); /* Cor branca */
+}
+
+/* Contador de itens no carrinho */
+.carrinho-item-count {
+  font-size: 0.875rem; /* Tamanho da fonte */
+  color: var(--cor-cinza); /* Cor cinza */
+  margin: 0; /* Sem margens */
+}
+
+/* Botão para fechar o carrinho */
+.carrinho-btn-close {
+  background: transparent; /* Sem fundo */
+  border: none; /* Sem borda */
+  color: var(--cor-branca); /* Cor branca */
+  font-size: 1.125rem; /* Tamanho da fonte */
+  cursor: pointer; /* Cursor de ponteiro */
+  padding: 0.5rem; /* Padding interno */
+  border-radius: 8px; /* Bordas arredondadas */
+}
+
+/* Conteúdo principal do sidebar */
+.carrinho-content {
+  flex: 1; /* Ocupa todo o espaço disponível */
+  overflow-y: auto; /* Scroll vertical se necessário */
+  padding: 1.5rem; /* Padding interno */
+  background: var(--cor-card); /* Cor de fundo */
+  scrollbar-width: none; /* Remove scrollbar no Firefox */
+  -ms-overflow-style: none; /* Remove scrollbar no IE/Edge */
+}
+
+/* Remove scrollbar no WebKit (Chrome, Safari) */
+.carrinho-content::-webkit-scrollbar {
+  display: none; /* Esconde a scrollbar */
+}
+
+/* ===== ESTADOS (LOADING E VAZIO) ===== */
+/* Estilos para estados de carregamento e carrinho vazio */
+.carrinho-loading,
+.carrinho-vazio,
+.carrinho-empty {
+  text-align: center; /* Centraliza o conteúdo */
+  padding: 3rem 1.5rem; /* Padding interno */
+}
+
+/* Spinner de carregamento */
+.carrinho-spinner {
+  width: 40px; /* Largura fixa */
+  height: 40px; /* Altura fixa */
+  border: 4px solid rgba(139, 92, 246, 0.2); /* Borda roxa transparente */
+  border-top: 4px solid var(--cor-roxo-escuro); /* Borda superior roxa escura */
+  border-radius: 50%; /* Forma circular */
+  animation: carrinho-spin 1s linear infinite; /* Animação de rotação */
+  margin: 0 auto 1rem; /* Centraliza e adiciona margem inferior */
+}
+
+/* Texto de carregamento */
+.carrinho-loading-text {
+  color: var(--cor-cinza); /* Cor cinza */
+  font-size: 0.875rem; /* Tamanho da fonte */
+}
+
+/* Ícone de carrinho vazio */
+.carrinho-empty-icon {
+  font-size: 3rem; /* Tamanho grande do ícone */
+  color: var(--cor-cinza-escuro); /* Cor cinza escura */
+  margin-bottom: 1.5rem; /* Margem inferior */
+}
+
+/* Título de carrinho vazio */
+.carrinho-empty-title {
+  font-size: 1.125rem; /* Tamanho da fonte */
+  color: var(--cor-branca); /* Cor branca */
+  margin-bottom: 1rem; /* Margem inferior */
+}
+
+/* Texto explicativo de carrinho vazio */
+.carrinho-empty-text {
+  color: var(--cor-cinza); /* Cor cinza */
+  margin-bottom: 1.5rem; /* Margem inferior */
+}
+
+/* Animação de rotação do spinner */
+@keyframes carrinho-spin {
+  to { transform: rotate(360deg); } /* Rotaciona 360 graus */
+}
+
+/* ===== BOTÕES ===== */
+/* Botões principais (vazios, finalizar, primários) */
+.carrinho-btn-vazios,
+.carrinho-empty-btn,
+.carrinho-btn-finalizar,
+.carrinho-btn-primary {
+  padding: 1rem 2rem; /* Padding interno */
+  border-radius: var(--radius); /* Bordas arredondadas */
+  font-weight: 600; /* Peso da fonte */
+  cursor: pointer; /* Cursor de ponteiro */
+  display: inline-flex; /* Layout flexbox inline */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  gap: 0.5rem; /* Espaçamento entre elementos */
+  text-decoration: none; /* Remove sublinhado */
+  border: none; /* Sem borda */
+  background: var(--gradient-primary); /* Fundo com gradiente primário */
+  color: var(--cor-branca); /* Cor branca */
+  box-shadow: var(--shadow-blue); /* Sombra azul */
+}
+
+/* Estado hover dos botões principais */
+.carrinho-btn-vazios:hover,
+.carrinho-empty-btn:hover,
+.carrinho-btn-finalizar:hover:not(:disabled),
+.carrinho-btn-primary:hover {
+  transform: translateY(-2px); /* Move para cima */
+}
+
+/* Botão para esvaziar carrinho */
+.carrinho-btn-esvaziar {
+  padding: 1rem 2rem; /* Padding interno */
+  border-radius: var(--radius); /* Bordas arredondadas */
+  font-weight: 600; /* Peso da fonte */
+  cursor: pointer; /* Cursor de ponteiro */
+  display: inline-flex; /* Layout flexbox inline */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  gap: 0.5rem; /* Espaçamento entre elementos */
+  background: transparent; /* Fundo transparente */
+  color: var(--cor-vermelho); /* Cor vermelha */
+  border: 2px solid var(--cor-vermelho); /* Borda vermelha */
+}
+
+/* Estado hover do botão esvaziar */
+.carrinho-btn-esvaziar:hover:not(:disabled) {
+  background: var(--cor-vermelho); /* Fundo vermelho */
+  color: var(--cor-branca); /* Cor branca */
+}
+
+/* Botão secundário */
+.carrinho-btn-secondary {
+  padding: 1rem 2rem; /* Padding interno */
+  border-radius: var(--radius); /* Bordas arredondadas */
+  font-weight: 600; /* Peso da fonte */
+  cursor: pointer; /* Cursor de ponteiro */
+  display: inline-flex; /* Layout flexbox inline */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  gap: 0.5rem; /* Espaçamento entre elementos */
+  background: transparent; /* Fundo transparente */
+  color: var(--cor-cinza); /* Cor cinza */
+  border: var(--carrinho-border); /* Borda roxa sutil */
+}
+
+/* Estado hover do botão secundário */
+.carrinho-btn-secondary:hover {
+  background: rgba(139, 92, 246, 0.1); /* Fundo roxo transparente */
+  color: var(--cor-branca); /* Cor branca */
+}
+
+/* Estados desabilitados dos botões */
+.carrinho-btn-finalizar:disabled,
+.carrinho-btn-esvaziar:disabled {
+  opacity: 0.5; /* Transparência */
+  cursor: not-allowed; /* Cursor de proibido */
+}
+
+/* ===== LISTA DE PRODUTOS ===== */
+/* Container principal da lista de produtos */
+.carrinho-produtos {
+  display: flex; /* Layout flexbox */
+  flex-direction: column; /* Organiza elementos verticalmente */
+  height: 100%; /* Ocupa toda a altura disponível */
+}
+
+/* Lista scrollável de produtos */
+.carrinho-produtos-lista {
+  flex: 1; /* Ocupa todo o espaço disponível */
+  overflow-y: auto; /* Scroll vertical se necessário */
+}
+
+/* Item individual do produto */
+.produto-item {
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 1rem; /* Espaçamento entre elementos */
+  padding: 1rem; /* Padding interno */
+  border-bottom: var(--carrinho-border); /* Linha separadora inferior */
+  background: rgba(30, 41, 59, 0.8); /* Fundo semi-transparente */
+  border-radius: var(--radius); /* Bordas arredondadas */
+  margin-bottom: 0.5rem; /* Margem inferior */
+}
+
+/* Container da imagem do produto */
+.produto-imagem {
+  width: 80px; /* Largura fixa */
+  height: 80px; /* Altura fixa */
+  border-radius: 8px; /* Bordas arredondadas */
+  overflow: hidden; /* Esconde conteúdo que ultrapassa */
+  flex-shrink: 0; /* Não diminui de tamanho */
+  background: rgba(15, 23, 42, 0.8); /* Fundo escuro semi-transparente */
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+}
+
+/* Imagem do produto */
+.produto-img {
+  width: 100%; /* Ocupa toda a largura disponível */
+  height: 100%; /* Ocupa toda a altura disponível */
+  object-fit: contain; /* Mantém proporção da imagem */
+  border-radius: 8px; /* Bordas arredondadas */
+  max-width: 100%; /* Largura máxima */
+  max-height: 100%; /* Altura máxima */
+  padding: 0.5rem; /* Padding interno */
+}
+
+/* Placeholder quando não há imagem */
+.produto-img-placeholder {
+  width: 80px; /* Largura fixa */
+  height: 80px; /* Altura fixa */
+  background: var(--gradient-primary); /* Fundo com gradiente primário */
+  border-radius: var(--radius); /* Bordas arredondadas */
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  color: var(--cor-branca); /* Cor branca */
+  font-size: 1.5rem; /* Tamanho do ícone */
+  box-shadow: var(--shadow-blue); /* Sombra azul */
+}
+
+/* Informações do produto */
+.produto-info {
+  flex: 1; /* Ocupa todo o espaço disponível */
+  min-width: 0; /* Permite que o texto quebre */
+}
+
+/* Nome do produto */
+.produto-name {
+  font-size: 1rem; /* Tamanho da fonte */
+  font-weight: 600; /* Peso da fonte */
+  color: var(--cor-branca); /* Cor branca */
+  margin: 0 0 0.25rem; /* Margem inferior */
+}
+
+/* Categoria do produto */
+.produto-categoria {
+  font-size: 0.75rem; /* Tamanho da fonte */
+  color: var(--cor-cinza); /* Cor cinza */
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 0.25rem; /* Espaçamento entre elementos */
+}
+
+/* Preço do produto */
+.carrinho-price-value {
+  font-size: 1rem; /* Tamanho da fonte */
+  font-weight: 700; /* Peso da fonte */
+  color: var(--cor-azul-claro); /* Cor azul clara */
+  margin-top: 0.25rem; /* Margem superior */
+}
+
+/* Botão para remover produto */
+.carrinho-btn-remove {
+  background: transparent; /* Fundo transparente */
+  border: none; /* Sem borda */
+  color: var(--cor-vermelho); /* Cor vermelha */
+  cursor: pointer; /* Cursor de ponteiro */
+  padding: 0.5rem; /* Padding interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  flex-shrink: 0; /* Não diminui de tamanho */
+}
+
+/* Estado hover do botão remover */
+.carrinho-btn-remove:hover {
+  background: rgba(239, 68, 68, 0.1); /* Fundo vermelho transparente */
+}
+
+/* Estado desabilitado do botão remover */
+.carrinho-btn-remove:disabled {
+  opacity: 0.5; /* Transparência */
+  cursor: not-allowed; /* Cursor de proibido */
+}
+
+/* ===== RODAPÉ DO SIDEBAR ===== */
+/* Rodapé fixo do sidebar */
+.carrinho-footer {
+  border-top: var(--carrinho-border); /* Linha separadora superior */
+  padding-top: 1.5rem; /* Padding superior */
+  margin-top: auto; /* Empurra para baixo */
+  background: var(--cor-card); /* Cor de fundo */
+}
+
+/* Container do total */
+.carrinho-total-container {
+  display: flex; /* Layout flexbox */
+  justify-content: space-between; /* Distribui espaço entre elementos */
+  align-items: center; /* Centraliza verticalmente */
+  padding: 1rem; /* Padding interno */
+  background: rgba(15, 23, 42, 0.8); /* Fundo escuro semi-transparente */
+  border-radius: var(--radius); /* Bordas arredondadas */
+  border: var(--carrinho-border); /* Borda roxa sutil */
+  margin-bottom: 1.5rem; /* Margem inferior */
+}
+
+/* Label do total */
+.carrinho-total-label {
+  font-size: 1rem; /* Tamanho da fonte */
+  color: var(--cor-branca); /* Cor branca */
+  font-weight: 500; /* Peso da fonte */
+}
+
+/* Valor do total */
+.carrinho-total-value {
+  font-size: 1.125rem; /* Tamanho da fonte */
+  font-weight: 700; /* Peso da fonte */
+  color: var(--cor-azul-claro); /* Cor azul clara */
+}
+
+/* Container das ações */
+.carrinho-acoes {
+  display: flex; /* Layout flexbox */
+  flex-direction: column; /* Organiza elementos verticalmente */
+  gap: 0.5rem; /* Espaçamento entre elementos */
+}
+
+/* ===== TOAST (NOTIFICAÇÕES) ===== */
+/* Toast global para notificações */
+.toast-global {
+  position: fixed; /* Posicionamento fixo na tela */
+  top: 1.5rem; /* Distância do topo */
+  right: 1.5rem; /* Distância da direita */
+  z-index: var(--carrinho-z-overlay); /* Z-index para ficar acima de outros elementos */
+  max-width: 400px; /* Largura máxima */
+  border-radius: var(--radius); /* Bordas arredondadas */
+  box-shadow: var(--shadow-dark); /* Sombra escura */
+}
+
+/* Toast de sucesso */
+.toast-success {
+  background: var(--cor-verde); /* Fundo verde */
+  color: var(--cor-branca); /* Cor branca */
+}
+
+/* Conteúdo do toast */
+.toast-content {
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 0.5rem; /* Espaçamento entre elementos */
+  padding: 1rem; /* Padding interno */
+}
+
+/* Ícone do toast */
+.toast-icon {
+  font-size: 1.125rem; /* Tamanho do ícone */
+  flex-shrink: 0; /* Não diminui de tamanho */
+}
+
+/* Mensagem do toast */
+.toast-message {
+  flex: 1; /* Ocupa todo o espaço disponível */
+  font-size: 0.875rem; /* Tamanho da fonte */
+}
+
+/* Botão para fechar toast */
+.toast-close {
+  background: transparent; /* Fundo transparente */
+  border: none; /* Sem borda */
+  color: var(--cor-branca); /* Cor branca */
+  cursor: pointer; /* Cursor de ponteiro */
+  padding: 0.25rem; /* Padding interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  flex-shrink: 0; /* Não diminui de tamanho */
+}
+
+/* ===== ITENS DA PÁGINA PRINCIPAL ===== */
+/* Container dos itens na página principal */
+.carrinho-items-container {
+  margin-bottom: 2rem; /* Margem inferior */
+}
+
+/* Item individual na página principal */
+.carrinho-item {
+  background: var(--cor-card); /* Cor de fundo */
+  border-radius: var(--radius-lg); /* Bordas arredondadas grandes */
+  padding: 1.5rem; /* Padding interno */
+  margin-bottom: 1rem; /* Margem inferior */
+  border: var(--carrinho-border); /* Borda roxa sutil */
+}
+
+/* Cabeçalho do item */
+.carrinho-item-header {
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: space-between; /* Distribui espaço entre elementos */
+  margin-bottom: 1rem; /* Margem inferior */
+}
+
+/* Título do item */
+.carrinho-item-title {
+  font-size: 1.125rem; /* Tamanho da fonte */
+  font-weight: 600; /* Peso da fonte */
+  color: var(--cor-branca); /* Cor branca */
+  margin: 0; /* Sem margens */
+}
+
+/* Preço do item */
+.carrinho-item-price {
+  font-size: 1rem; /* Tamanho da fonte */
+  font-weight: 700; /* Peso da fonte */
+  color: var(--cor-azul-claro); /* Cor azul clara */
+}
+
+/* Detalhes do item */
+.carrinho-item-details {
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 1rem; /* Espaçamento entre elementos */
+  margin-bottom: 1rem; /* Margem inferior */
+}
+
+/* Imagem do item */
+.carrinho-item-image {
+  width: 80px; /* Largura fixa */
+  height: 80px; /* Altura fixa */
+  border-radius: var(--radius); /* Bordas arredondadas */
+  object-fit: cover; /* Cobre todo o espaço disponível */
+  border: var(--carrinho-border); /* Borda roxa sutil */
+}
+
+/* Informações do item */
+.carrinho-item-info {
+  flex: 1; /* Ocupa todo o espaço disponível */
+}
+
+/* Descrição do item */
+.carrinho-item-description {
+  color: var(--cor-cinza); /* Cor cinza */
+  font-size: 0.875rem; /* Tamanho da fonte */
+  margin-bottom: 0.5rem; /* Margem inferior */
+}
+
+/* Categoria do item */
+.carrinho-item-category {
+  color: var(--cor-cinza-escuro); /* Cor cinza escura */
+  font-size: 0.75rem; /* Tamanho da fonte */
+  text-transform: uppercase; /* Texto em maiúsculas */
+  letter-spacing: 0.5px; /* Espaçamento entre letras */
+}
+
+/* ===== CONTROLES DE QUANTIDADE ===== */
+/* Container dos controles de quantidade */
+.carrinho-quantity-controls {
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 0.5rem; /* Espaçamento entre elementos */
+}
+
+/* Botão de quantidade */
+.carrinho-quantity-btn {
+  background: rgba(30, 41, 59, 0.8); /* Fundo escuro semi-transparente */
+  border: var(--carrinho-border); /* Borda roxa sutil */
+  color: var(--cor-branca); /* Cor branca */
+  width: 32px; /* Largura fixa */
+  height: 32px; /* Altura fixa */
+  border-radius: 8px; /* Bordas arredondadas */
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  cursor: pointer; /* Cursor de ponteiro */
+}
+
+/* Estado hover do botão de quantidade */
+.carrinho-quantity-btn:hover {
+  background: var(--cor-roxo-escuro); /* Fundo roxo escuro */
+  border-color: var(--cor-roxo-escuro); /* Borda roxa escura */
+  color: var(--cor-branca); /* Cor branca */
+}
+
+/* Input de quantidade */
+.carrinho-quantity-input {
+  width: 60px; /* Largura fixa */
+  text-align: center; /* Centraliza o texto */
+  background: rgba(30, 41, 59, 0.8); /* Fundo escuro semi-transparente */
+  border: var(--carrinho-border); /* Borda roxa sutil */
+  color: var(--cor-branca); /* Cor branca */
+  padding: 0.5rem; /* Padding interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  font-size: 0.875rem; /* Tamanho da fonte */
+}
+
+/* Estado de foco do input de quantidade */
+.carrinho-quantity-input:focus {
+  outline: none; /* Remove contorno padrão */
+  border-color: var(--cor-roxo-escuro); /* Borda roxa escura */
+}
+
+/* Ações do item */
+.carrinho-item-actions {
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: space-between; /* Distribui espaço entre elementos */
+}
+
+/* Botão para remover item */
+.carrinho-remove-btn {
+  background: var(--cor-vermelho); /* Fundo vermelho */
+  color: var(--cor-branca); /* Cor branca */
+  border: none; /* Sem borda */
+  padding: 0.5rem 1rem; /* Padding interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  font-size: 0.875rem; /* Tamanho da fonte */
+  cursor: pointer; /* Cursor de ponteiro */
+}
+
+/* Estado hover do botão remover */
+.carrinho-remove-btn:hover {
+  background: #dc2626; /* Fundo vermelho mais escuro */
+}
+
+/* ===== RESUMO DO CARRINHO ===== */
+/* Container do resumo */
+.carrinho-summary {
+  background: var(--cor-card); /* Cor de fundo */
+  border-radius: var(--radius-lg); /* Bordas arredondadas grandes */
+  padding: 2rem; /* Padding interno */
+  border: var(--carrinho-border); /* Borda roxa sutil */
+}
+
+/* Título do resumo */
+.carrinho-summary-title {
+  font-size: 1.25rem; /* Tamanho da fonte */
+  font-weight: 600; /* Peso da fonte */
+  color: var(--cor-branca); /* Cor branca */
+  margin: 0 0 1.5rem; /* Margem inferior */
+  text-align: center; /* Centraliza o texto */
+}
+
+/* Item individual do resumo */
+.carrinho-summary-item {
+  display: flex; /* Layout flexbox */
+  justify-content: space-between; /* Distribui espaço entre elementos */
+  margin-bottom: 1rem; /* Margem inferior */
+  padding-bottom: 0.5rem; /* Padding inferior */
+  border-bottom: var(--carrinho-border); /* Linha separadora inferior */
+}
+
+/* Label do item do resumo */
+.carrinho-summary-label {
+  color: var(--cor-cinza); /* Cor cinza */
+  font-size: 0.875rem; /* Tamanho da fonte */
+}
+
+/* Valor do item do resumo */
+.carrinho-summary-value {
+  color: var(--cor-branca); /* Cor branca */
+  font-weight: 600; /* Peso da fonte */
+}
+
+/* Total do resumo */
+.carrinho-summary-total {
+  display: flex; /* Layout flexbox */
+  justify-content: space-between; /* Distribui espaço entre elementos */
+  margin-top: 1.5rem; /* Margem superior */
+  padding-top: 1rem; /* Padding superior */
+  border-top: 2px solid var(--cor-roxo-escuro); /* Linha separadora superior mais grossa */
+}
+
+/* Label do total */
+.carrinho-summary-total-label {
+  color: var(--cor-branca); /* Cor branca */
+  font-size: 1.125rem; /* Tamanho da fonte */
+  font-weight: 700; /* Peso da fonte */
+}
+
+/* Valor do total */
+.carrinho-summary-total-value {
+  color: var(--cor-azul-claro); /* Cor azul clara */
+  font-size: 1.125rem; /* Peso da fonte */
+  font-weight: 700; /* Peso da fonte */
+}
+
+/* Container das ações */
+.carrinho-actions {
+  display: flex; /* Layout flexbox */
+  gap: 1rem; /* Espaçamento entre elementos */
+  margin-top: 2rem; /* Margem superior */
+}
+
+/* Botão genérico do carrinho */
+.carrinho-btn {
+  flex: 1; /* Ocupa espaço igual */
+  padding: 1rem 2rem; /* Padding interno */
+  border-radius: var(--radius); /* Bordas arredondadas */
+  font-weight: 600; /* Peso da fonte */
+  font-size: 1rem; /* Tamanho da fonte */
+  cursor: pointer; /* Cursor de ponteiro */
+  text-align: center; /* Centraliza o texto */
+  text-decoration: none; /* Remove sublinhado */
+  display: inline-flex; /* Layout flexbox inline */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  gap: 0.5rem; /* Espaçamento entre elementos */
+}
+
+/* ===== MODAL DE CONFIRMAÇÃO ===== */
+/* Overlay do modal de confirmação */
+.carrinho-confirm-modal-overlay {
+  position: fixed; /* Posicionamento fixo na tela */
+  inset: 0; /* Shorthand para top: 0, right: 0, bottom: 0, left: 0 */
+  background: rgba(0, 0, 0, 0.8); /* Fundo preto mais escuro */
+  z-index: var(--carrinho-z-overlay); /* Z-index para ficar acima de outros elementos */
+  display: flex; /* Layout flexbox para centralizar */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  padding: 2rem; /* Padding para evitar que o modal toque as bordas */
+}
+
+/* Modal de confirmação */
+.carrinho-confirm-modal {
+  background: var(--gradient-dark); /* Fundo com gradiente escuro */
+  border-radius: var(--radius-lg); /* Bordas arredondadas grandes */
+  max-width: 400px; /* Largura máxima */
+  width: 100%; /* Ocupa toda a largura disponível */
+  border: var(--carrinho-border); /* Borda roxa sutil */
+  box-shadow: var(--shadow-dark); /* Sombra escura */
+  overflow: hidden; /* Esconde conteúdo que ultrapassa */
+}
+
+/* Conteúdo do modal */
+.carrinho-confirm-content {
+  padding: 2rem; /* Padding interno */
+}
+
+/* Cabeçalho do modal */
+.carrinho-confirm-header {
+  text-align: center; /* Centraliza o conteúdo */
+  margin-bottom: 1.5rem; /* Margem inferior */
+  display: flex; /* Layout flexbox */
+  flex-direction: column; /* Organiza elementos verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  gap: 1rem; /* Espaçamento entre elementos */
+}
+
+/* Ícone do cabeçalho */
+.carrinho-confirm-header i {
+  font-size: 3rem; /* Tamanho grande do ícone */
+  color: #f59e0b; /* Cor amarela */
+}
+
+/* Título do cabeçalho */
+.carrinho-confirm-header h3 {
+  font-size: 1.5rem; /* Tamanho da fonte */
+  font-weight: 700; /* Peso da fonte */
+  color: var(--cor-branca); /* Cor branca */
+  margin: 0; /* Sem margens */
+}
+
+/* Corpo do modal */
+.carrinho-confirm-body {
+  text-align: center; /* Centraliza o texto */
+  margin-bottom: 2rem; /* Margem inferior */
+}
+
+/* Parágrafo do corpo */
+.carrinho-confirm-body p {
+  color: #e2e8f0; /* Cor cinza clara */
+  font-size: 1rem; /* Tamanho da fonte */
+  line-height: 1.6; /* Altura da linha */
+  margin: 0 0 0.5rem; /* Margem inferior */
+}
+
+/* Aviso de confirmação */
+.carrinho-confirm-warning {
+  color: #f59e0b !important; /* Cor amarela (importante para sobrescrever) */
+  font-weight: 600; /* Peso da fonte */
+  font-size: 0.9rem !important; /* Tamanho da fonte (importante para sobrescrever) */
+}
+
+/* Ações do modal */
+.carrinho-confirm-actions {
+  display: flex; /* Layout flexbox */
+  gap: 1rem; /* Espaçamento entre elementos */
+  justify-content: center; /* Centraliza horizontalmente */
+}
+
+/* Botões de confirmação */
+.carrinho-confirm-btn-cancel,
+.carrinho-confirm-btn-confirm {
+  padding: 0.75rem 1.5rem; /* Padding interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  font-weight: 600; /* Peso da fonte */
+  font-size: 0.9rem; /* Tamanho da fonte */
+  cursor: pointer; /* Cursor de ponteiro */
+  border: none; /* Sem borda */
+  min-width: 100px; /* Largura mínima */
+  min-height: 44px; /* Altura mínima para acessibilidade */
+  display: flex; /* Layout flexbox */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  gap: 0.5rem; /* Espaçamento entre elementos */
+}
+
+/* Botão de cancelar */
+.carrinho-confirm-btn-cancel {
+  background: rgba(100, 116, 139, 0.2); /* Fundo cinza transparente */
+  color: var(--cor-cinza); /* Cor cinza */
+  border: 1px solid rgba(100, 116, 139, 0.3); /* Borda cinza */
+}
+
+/* Estado hover do botão cancelar */
+.carrinho-confirm-btn-cancel:hover {
+  background: rgba(100, 116, 139, 0.3); /* Fundo cinza mais opaco */
+  color: var(--cor-branca); /* Cor branca */
+}
+
+/* Botão de confirmar */
+.carrinho-confirm-btn-confirm {
+  background: var(--gradient-danger); /* Fundo com gradiente de perigo */
+  color: var(--cor-branca); /* Cor branca */
+  box-shadow: var(--shadow-red); /* Sombra vermelha */
+}
+
+/* Estado hover do botão confirmar */
+.carrinho-confirm-btn-confirm:hover:not(:disabled) {
+  transform: translateY(-1px); /* Move para cima */
+}
+
+/* Estado desabilitado do botão confirmar */
+.carrinho-confirm-btn-confirm:disabled {
+  opacity: 0.6; /* Transparência */
+  cursor: not-allowed; /* Cursor de proibido */
+}
+
+/* ===== RESPONSIVIDADE ===== */
+/* Media query para tablets e dispositivos médios */
+@media (max-width: 768px) {
+  .carrinho-sidebar {
+    width: 100%; /* Ocupa toda a largura da tela */
+    right: -100%; /* Começa fora da área visível */
+  }
+  
+  .carrinho-container { padding: 0 0.5rem; } /* Reduz padding horizontal */
+  .carrinho-wrapper { padding: 1.5rem; } /* Reduz padding */
+  .carrinho-title { font-size: 2rem; } /* Reduz tamanho do título */
+  
+  .carrinho-item-header {
+    flex-direction: column; /* Organiza elementos verticalmente */
+    align-items: flex-start; /* Alinha à esquerda */
+    gap: 0.5rem; /* Espaçamento entre elementos */
+  }
+  
+  .carrinho-item-details {
+    flex-direction: column; /* Organiza elementos verticalmente */
+    align-items: flex-start; /* Alinha à esquerda */
+  }
+  
+  .carrinho-item-image { width: 60px; height: 60px; } /* Reduz tamanho da imagem */
+  .carrinho-actions { flex-direction: column; } /* Organiza ações verticalmente */
+  .toast-global { right: 0.5rem; left: 0.5rem; max-width: none; } /* Ajusta toast */
+}
+
+/* Media query para dispositivos móveis pequenos */
+@media (max-width: 480px) {
+  .carrinho-wrapper { padding: 1rem; } /* Reduz padding */
+  .carrinho-title { font-size: 1.25rem; } /* Reduz tamanho do título */
+  .carrinho-item { padding: 1rem; } /* Reduz padding do item */
+  .carrinho-summary { padding: 1.5rem; } /* Reduz padding do resumo */
+  .carrinho-sidebar .carrinho-header { padding: 1rem; } /* Reduz padding do cabeçalho */
+  .carrinho-content { padding: 1rem; } /* Reduz padding do conteúdo */
+  
+  .carrinho-sidebar { width: 100%; right: -100%; } /* Ocupa toda a largura */
+  .carrinho-sidebar-open { right: 0; } /* Abre completamente */
+  
+  .carrinho-confirm-modal-overlay { padding: 1rem; } /* Reduz padding do overlay */
+  .carrinho-confirm-content { padding: 1.5rem; } /* Reduz padding do conteúdo */
+  .carrinho-confirm-header h3 { font-size: 1.25rem; } /* Reduz tamanho do título */
+  .carrinho-confirm-header i { font-size: 2.5rem; } /* Reduz tamanho do ícone */
+  .carrinho-confirm-actions { flex-direction: column; } /* Organiza ações verticalmente */
+  .carrinho-confirm-btn-cancel,
+  .carrinho-confirm-btn-confirm { width: 100%; } /* Botões ocupam toda a largura */
+}
+
+/* Media query para dispositivos muito pequenos */
+@media (max-width: 360px) {
+  .carrinho-sidebar { width: 100%; right: -100%; } /* Ocupa toda a largura */
+  .carrinho-sidebar-open { right: 0; } /* Abre completamente */
+  .carrinho-sidebar .carrinho-header { padding: 0.75rem; } /* Reduz padding do cabeçalho */
+  .carrinho-content { padding: 0.75rem; } /* Reduz padding do conteúdo */
+  .carrinho-header-content { gap: 0.5rem; } /* Reduz espaçamento */
+  .carrinho-title { font-size: 1.1rem; } /* Reduz tamanho do título */
+  .carrinho-item-count { font-size: 0.8rem; } /* Reduz tamanho do contador */
+}
+
+/* ===== ACESSIBILIDADE ===== */
+/* Estilos de foco para navegação por teclado */
+.carrinho-btn:focus,
+.carrinho-quantity-btn:focus,
+.carrinho-btn-remove:focus {
+  outline: 2px solid var(--cor-roxo-escuro); /* Contorno roxo escuro */
+  outline-offset: 2px; /* Distância do contorno */
+}
+
+/* Estilo de foco para inputs */
+.carrinho-quantity-input:focus {
+  outline: 2px solid var(--cor-roxo-escuro); /* Contorno roxo escuro */
+  outline-offset: 2px; /* Distância do contorno */
+}

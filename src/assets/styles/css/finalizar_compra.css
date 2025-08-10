@@ -1,0 +1,2144 @@
+/* ===== FINALIZAR COMPRA PAGE STYLES ===== */
+
+:root {
+  /* === CORES BASE === */
+  --finalizar-compra-primary: #8b5cf6;
+  --finalizar-compra-primary-hover: #7c3aed;
+  --finalizar-compra-secondary: #94a3b8;
+  --finalizar-compra-success: #10b981;
+  --finalizar-compra-danger: #ef4444;
+  --finalizar-compra-warning: #f59e0b;
+  --finalizar-compra-light: #f1f5f9;
+  --finalizar-compra-dark: #0f172a;
+  --finalizar-compra-border: rgba(139, 92, 246, 0.2);
+  --finalizar-compra-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --finalizar-compra-radius: 12px;
+  --finalizar-compra-transition: all 0.2s ease;
+  
+  /* === GRADIENTES === */
+  --finalizar-compra-gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  --finalizar-compra-gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --finalizar-compra-gradient-warning: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  --finalizar-compra-gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --finalizar-compra-gradient-card: rgba(30, 41, 59, 0.8);
+}
+
+/* ===== HEADER DA PÁGINA ===== */
+.finalizar-compra-page-header {
+  background: var(--finalizar-compra-gradient-dark);
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--finalizar-compra-border);
+}
+
+.finalizar-compra-header-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.finalizar-compra-header-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.finalizar-compra-header-text h1 {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.finalizar-compra-header-text p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.finalizar-compra-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--finalizar-compra-gradient-card);
+  border-radius: var(--finalizar-compra-radius);
+  border: 1px solid var(--finalizar-compra-border);
+  box-shadow: var(--finalizar-compra-shadow);
+  margin-top: 2rem;
+}
+
+.finalizar-compra-content {
+  display: grid;
+  gap: 2rem;
+}
+
+
+
+/* ===== MENSAGEM DE AUTENTICAÇÃO ===== */
+.finalizar-compra-auth-required-message {
+  background: var(--finalizar-compra-gradient-warning);
+  border-radius: var(--finalizar-compra-radius);
+  padding: 3rem;
+  text-align: center;
+  box-shadow: var(--finalizar-compra-shadow);
+  color: white;
+}
+
+.finalizar-compra-auth-required-content {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.finalizar-compra-auth-required-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: white;
+  font-size: 2rem;
+}
+
+.finalizar-compra-auth-required-title {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.finalizar-compra-auth-required-text {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+}
+
+.finalizar-compra-auth-required-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 0.75rem 2rem;
+  border-radius: var(--finalizar-compra-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--finalizar-compra-transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.finalizar-compra-auth-required-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.finalizar-compra-auth-required-btn i {
+  font-size: 1.1rem;
+}
+
+/* ===== RESUMO DO PEDIDO ===== */
+.finalizar-compra-resumo-wrapper {
+  background: var(--finalizar-compra-gradient-card);
+  border-radius: var(--finalizar-compra-radius);
+  box-shadow: var(--finalizar-compra-shadow);
+  overflow: hidden;
+  color: white;
+  border: 1px solid var(--finalizar-compra-border);
+}
+
+.finalizar-compra-resumo-card {
+  padding: 2rem;
+}
+
+.finalizar-compra-resumo-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.finalizar-compra-resumo-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.finalizar-compra-resumo-title {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
+}
+
+.finalizar-compra-resumo-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.finalizar-compra-resumo-produtos {
+  margin-bottom: 2rem;
+}
+
+.finalizar-compra-produto-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.finalizar-compra-produto-item:last-child {
+  border-bottom: none;
+}
+
+.finalizar-compra-produto-imagem {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--finalizar-compra-radius);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.finalizar-compra-produto-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.finalizar-compra-produto-icon {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+}
+
+.finalizar-compra-produto-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.finalizar-compra-produto-nome {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.4;
+}
+
+.finalizar-compra-produto-categoria {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+.finalizar-compra-produto-preco {
+  color: #fbbf24;
+  font-size: 1.1rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.finalizar-compra-resumo-totais {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--finalizar-compra-radius);
+  padding: 1.5rem;
+}
+
+.finalizar-compra-total-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  color: white;
+}
+
+.finalizar-compra-total-item.desconto {
+  color: #34d399;
+}
+
+.finalizar-compra-total-item.total-final {
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fbbf24;
+}
+
+/* ===== FORMULÁRIO ===== */
+.finalizar-compra-formulario-wrapper {
+  background: var(--finalizar-compra-gradient-card);
+  border-radius: var(--finalizar-compra-radius);
+  box-shadow: var(--finalizar-compra-shadow);
+  overflow: hidden;
+  color: white;
+  border: 1px solid var(--finalizar-compra-border);
+}
+
+.finalizar-compra-formulario-container {
+  padding: 2rem;
+}
+
+.finalizar-compra-form-section {
+  margin-bottom: 2rem;
+}
+
+.finalizar-compra-form-section:last-child {
+  margin-bottom: 0;
+}
+
+.finalizar-compra-section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.finalizar-compra-section-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--finalizar-compra-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+}
+
+.finalizar-compra-section-header h4 {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.finalizar-compra-section-content {
+  padding-left: 3rem;
+}
+
+/* ===== ENDEREÇO ===== */
+.finalizar-compra-endereco-selecionado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: var(--finalizar-compra-radius);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.finalizar-compra-endereco-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #34d399;
+}
+
+.finalizar-compra-endereco-info i {
+  font-size: 1.25rem;
+}
+
+.finalizar-compra-endereco-texto strong {
+  color: white;
+}
+
+.finalizar-compra-btn-trocar {
+  background: var(--finalizar-compra-gradient-primary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--finalizar-compra-radius);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--finalizar-compra-transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+.finalizar-compra-btn-trocar:hover {
+  background: var(--finalizar-compra-dark);
+}
+
+.finalizar-compra-endereco-vazio {
+  text-align: center;
+  padding: 2rem;
+}
+
+.finalizar-compra-endereco-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+.finalizar-compra-endereco-placeholder i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.finalizar-compra-endereco-placeholder p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.finalizar-compra-btn-selecionar {
+  background: var(--finalizar-compra-gradient-primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: var(--finalizar-compra-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--finalizar-compra-transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
+}
+
+.finalizar-compra-btn-selecionar:hover {
+  background: var(--finalizar-compra-primary-hover);
+}
+
+/* ===== CUPOM ===== */
+.finalizar-compra-cupom-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--finalizar-compra-radius);
+  padding: 1.5rem;
+}
+
+/* ===== REGRAS ESPECÍFICAS PARA INPUT DO CUPOM ===== */
+.finalizar-compra-cupom-input-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: stretch;
+  flex-wrap: wrap; /* Permite quebra de linha se necessário */
+}
+
+.finalizar-compra-cupom-input {
+  flex: 1;
+  min-width: 0; /* Permite que o input encolha adequadamente */
+  max-width: 300px; /* Limita a largura máxima em telas grandes */
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--finalizar-compra-radius);
+  font-size: 1rem;
+  transition: var(--finalizar-compra-transition);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  box-sizing: border-box;
+  min-height: 48px; /* Altura mínima para melhor usabilidade */
+}
+
+.finalizar-compra-cupom-input:focus {
+  outline: none;
+  border-color: var(--finalizar-compra-primary);
+  box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.2);
+}
+
+.finalizar-compra-cupom-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.finalizar-compra-btn-aplicar-cupom {
+  background: var(--finalizar-compra-gradient-primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--finalizar-compra-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--finalizar-compra-transition);
+  flex-shrink: 0; /* Impede que o botão encolha */
+  min-width: 120px; /* Largura mínima para manter proporção */
+  min-height: 48px; /* Altura mínima para melhor usabilidade */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.finalizar-compra-btn-aplicar-cupom:hover:not(:disabled) {
+  background: var(--finalizar-compra-primary-hover);
+}
+
+.finalizar-compra-btn-aplicar-cupom:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.finalizar-compra-cupom-erro {
+  color: var(--finalizar-compra-danger);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.finalizar-compra-cupom-sucesso {
+  color: var(--finalizar-compra-success);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+/* ===== PAGAMENTO ===== */
+.finalizar-compra-pagamento-opcoes {
+  display: grid;
+  gap: 1rem;
+}
+
+.finalizar-compra-pagamento-opcao {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--finalizar-compra-radius);
+  cursor: pointer;
+  transition: var(--finalizar-compra-transition);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.finalizar-compra-pagamento-opcao:hover {
+  border-color: var(--finalizar-compra-primary);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.finalizar-compra-pagamento-opcao.selected {
+  border-color: var(--finalizar-compra-primary);
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.finalizar-compra-opcao-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--finalizar-compra-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.finalizar-compra-opcao-info {
+  flex: 1;
+}
+
+.finalizar-compra-opcao-info h6 {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.finalizar-compra-opcao-info p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.finalizar-compra-opcao-radio {
+  flex-shrink: 0;
+}
+
+.finalizar-compra-opcao-radio input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--finalizar-compra-primary);
+}
+
+/* ===== AÇÕES ===== */
+.finalizar-compra-actions {
+  text-align: center;
+  padding: 2rem;
+}
+
+.finalizar-compra-btn-finalizar {
+  background: var(--finalizar-compra-gradient-primary);
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  border-radius: var(--finalizar-compra-radius);
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--finalizar-compra-transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+}
+
+.finalizar-compra-btn-finalizar:hover:not(:disabled) {
+  background: var(--finalizar-compra-primary-hover);
+  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.4);
+}
+
+.finalizar-compra-btn-finalizar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.finalizar-compra-feedback-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: var(--finalizar-compra-radius);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+}
+
+.finalizar-compra-feedback-message.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--finalizar-compra-success);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.finalizar-compra-feedback-message.danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--finalizar-compra-danger);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* ===== MODAL DE ENDEREÇO ===== */
+.finalizar-compra-address-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.finalizar-compra-address-modal-container {
+  background: var(--finalizar-compra-gradient-card);
+  border-radius: var(--finalizar-compra-radius);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  border: 1px solid var(--finalizar-compra-border);
+}
+
+.finalizar-compra-address-modal-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.finalizar-compra-address-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.finalizar-compra-address-modal-title {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.finalizar-compra-address-modal-title i {
+  color: var(--finalizar-compra-primary);
+}
+
+.finalizar-compra-address-modal-close {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: var(--finalizar-compra-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.finalizar-compra-address-modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.finalizar-compra-address-modal-body {
+  flex: 1;
+  padding: 1.5rem 2rem 1.5rem 2rem;
+  overflow-y: auto;
+  padding-right: 1.5rem;
+  max-height: calc(90vh - 220px);
+  scrollbar-width: thin;
+  scrollbar-color: var(--finalizar-compra-primary) rgba(255, 255, 255, 0.1);
+}
+
+/* ===== BARRA DE ROLAGEM DO MODAL ===== */
+.finalizar-compra-address-modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.finalizar-compra-address-modal-body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.finalizar-compra-address-modal-body::-webkit-scrollbar-thumb {
+  background: var(--finalizar-compra-primary);
+  border-radius: 4px;
+  transition: var(--finalizar-compra-transition);
+}
+
+.finalizar-compra-address-modal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--finalizar-compra-primary-hover);
+}
+
+.finalizar-compra-address-loading {
+  text-align: center;
+  padding: 2rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.finalizar-compra-address-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--finalizar-compra-border);
+  border-top: 3px solid var(--finalizar-compra-primary);
+  border-radius: 50%;
+  animation: finalizar-compra-spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+.finalizar-compra-address-spinner-small {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--finalizar-compra-border);
+  border-top: 2px solid var(--finalizar-compra-primary);
+  border-radius: 50%;
+  animation: finalizar-compra-spin 1s linear infinite;
+}
+
+@keyframes finalizar-compra-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.finalizar-compra-address-alert {
+  padding: 1rem;
+  border-radius: var(--finalizar-compra-radius);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.finalizar-compra-address-alert-info {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.finalizar-compra-address-alert-danger {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.finalizar-compra-address-list {
+  margin-bottom: 2rem;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--finalizar-compra-primary) rgba(255, 255, 255, 0.1);
+}
+
+/* ===== BARRA DE ROLAGEM PERSONALIZADA ===== */
+.finalizar-compra-address-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.finalizar-compra-address-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.finalizar-compra-address-list::-webkit-scrollbar-thumb {
+  background: var(--finalizar-compra-primary);
+  border-radius: 4px;
+  transition: var(--finalizar-compra-transition);
+}
+
+.finalizar-compra-address-list::-webkit-scrollbar-thumb:hover {
+  background: var(--finalizar-compra-primary-hover);
+}
+
+.finalizar-compra-address-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--finalizar-compra-radius);
+  margin-bottom: 0.75rem;
+  transition: var(--finalizar-compra-transition);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.finalizar-compra-address-item:hover {
+  border-color: var(--finalizar-compra-primary);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: var(--finalizar-compra-shadow);
+}
+
+.finalizar-compra-address-item.active {
+  border-color: var(--finalizar-compra-primary);
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.finalizar-compra-address-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+.finalizar-compra-address-radio {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--finalizar-compra-primary);
+}
+
+.finalizar-compra-address-text {
+  color: white;
+  font-weight: 500;
+}
+
+.finalizar-compra-address-remove-btn {
+  background: var(--finalizar-compra-danger);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: var(--finalizar-compra-radius);
+  cursor: pointer;
+  transition: var(--finalizar-compra-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.finalizar-compra-address-remove-btn:hover:not(:disabled) {
+  background: #dc2626;
+  transform: scale(1.05);
+}
+
+.finalizar-compra-address-remove-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.finalizar-compra-address-remove-btn i {
+  font-size: 1rem;
+}
+
+.finalizar-compra-address-form {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--finalizar-compra-radius);
+  padding: 1.5rem;
+}
+
+.finalizar-compra-address-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.finalizar-compra-address-form-title {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+.finalizar-compra-address-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.finalizar-compra-address-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--finalizar-compra-radius);
+  font-size: 1rem;
+  transition: var(--finalizar-compra-transition);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  min-height: 48px;
+  box-sizing: border-box;
+}
+
+.finalizar-compra-address-input:focus {
+  outline: none;
+  border-color: var(--finalizar-compra-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.finalizar-compra-address-input:hover {
+  border-color: var(--finalizar-compra-primary);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.finalizar-compra-address-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.finalizar-compra-address-form-actions {
+  text-align: center;
+}
+
+.finalizar-compra-address-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--finalizar-compra-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--finalizar-compra-transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.finalizar-compra-address-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.finalizar-compra-address-btn-outline {
+  background: var(--finalizar-compra-primary);
+  color: white;
+}
+
+.finalizar-compra-address-btn-outline:hover:not(:disabled) {
+  background: var(--finalizar-compra-primary-hover);
+}
+
+.finalizar-compra-address-btn-secondary {
+  background: var(--finalizar-compra-secondary);
+  color: white;
+}
+
+.finalizar-compra-address-btn-secondary:hover:not(:disabled) {
+  background: var(--finalizar-compra-dark);
+}
+
+.finalizar-compra-address-btn-primary {
+  background: var(--finalizar-compra-success);
+  color: white;
+}
+
+.finalizar-compra-address-btn-primary:hover:not(:disabled) {
+  background: #059669;
+}
+
+.finalizar-compra-address-modal-footer {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== BOTÃO SELECIONAR ENDEREÇO ===== */
+.finalizar-compra-address-select-btn {
+  background: var(--finalizar-compra-gradient-primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--finalizar-compra-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--finalizar-compra-transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
+}
+
+.finalizar-compra-address-select-btn:hover:not(:disabled) {
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+}
+
+.finalizar-compra-address-select-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.finalizar-compra-address-select-btn i {
+  font-size: 1.1rem;
+}
+
+/* ===== TOAST ===== */
+.finalizar-compra-address-toast {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: var(--finalizar-compra-gradient-primary);
+  border-radius: var(--finalizar-compra-radius);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  max-width: 400px;
+
+  color: white;
+}
+
+.finalizar-compra-address-toast-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+}
+
+.finalizar-compra-address-toast-body {
+  flex: 1;
+  color: white;
+  font-weight: 500;
+}
+
+.finalizar-compra-address-toast-body i {
+  color: #fbbf24;
+  margin-right: 0.5rem;
+}
+
+.finalizar-compra-address-toast-close {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition: var(--finalizar-compra-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.finalizar-compra-address-toast-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* ===== MODAL DE CONFIRMAÇÃO ===== */
+.finalizar-compra-confirm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.finalizar-compra-confirm-modal {
+  background: var(--finalizar-compra-gradient-dark);
+  border-radius: var(--finalizar-compra-radius);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
+  animation: scaleIn 0.2s ease;
+  color: white;
+}
+
+.finalizar-compra-confirm-content {
+  padding: 2rem;
+}
+
+.finalizar-compra-confirm-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.finalizar-compra-confirm-header i {
+  color: var(--finalizar-compra-warning);
+  font-size: 2rem;
+}
+
+.finalizar-compra-confirm-header h3 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.finalizar-compra-confirm-body {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.finalizar-compra-confirm-body p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+}
+
+.finalizar-compra-confirm-warning {
+  color: #fbbf24;
+  font-weight: 600;
+  background: rgba(251, 191, 36, 0.2);
+  padding: 0.75rem;
+  border-radius: var(--finalizar-compra-radius);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.finalizar-compra-confirm-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.finalizar-compra-confirm-btn-cancel,
+.finalizar-compra-confirm-btn-confirm {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--finalizar-compra-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--finalizar-compra-transition);
+  min-width: 120px;
+}
+
+.finalizar-compra-confirm-btn-cancel {
+  background: var(--finalizar-compra-secondary);
+  color: white;
+}
+
+.finalizar-compra-confirm-btn-cancel:hover {
+  background: var(--finalizar-compra-dark);
+}
+
+.finalizar-compra-confirm-btn-confirm {
+  background: var(--finalizar-compra-danger);
+  color: white;
+}
+
+.finalizar-compra-confirm-btn-confirm:hover:not(:disabled) {
+  background: #dc2626;
+}
+
+.finalizar-compra-confirm-btn-confirm:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 1200px) {
+  .finalizar-compra-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .finalizar-compra-header-content {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .finalizar-compra-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .finalizar-compra-address-form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .finalizar-compra-address-form-group:nth-child(5),
+  .finalizar-compra-address-form-group:nth-child(6) {
+    grid-column: span 2;
+  }
+  
+  .finalizar-compra-cupom-input-group {
+    flex-direction: row; /* Mantém lado a lado em telas médias */
+    gap: 1rem;
+  }
+  
+  .finalizar-compra-cupom-input {
+    max-width: 250px; /* Reduz um pouco a largura máxima */
+  }
+  
+  .finalizar-compra-btn-aplicar-cupom {
+    min-width: 110px; /* Ajusta a largura mínima */
+  }
+}
+
+@media (max-width: 768px) {
+  .finalizar-compra-page-header {
+    padding: 1.5rem 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .finalizar-compra-header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .finalizar-compra-header-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
+  
+  .finalizar-compra-header-text h1 {
+    font-size: 2rem;
+  }
+  
+  .finalizar-compra-header-text p {
+    font-size: 1rem;
+  }
+  
+  .finalizar-compra-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .finalizar-compra-auth-required-message {
+    padding: 2rem 1.5rem;
+  }
+  
+  .finalizar-compra-auth-required-content {
+    max-width: none;
+  }
+  
+  .finalizar-compra-auth-required-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  
+  .finalizar-compra-auth-required-title {
+    font-size: 1.25rem;
+  }
+  
+  .finalizar-compra-auth-required-text {
+    font-size: 1rem;
+  }
+  
+  .finalizar-compra-auth-required-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .finalizar-compra-resumo-card {
+    padding: 1.5rem;
+  }
+  
+  .finalizar-compra-resumo-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .finalizar-compra-produto-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .finalizar-compra-produto-imagem {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .finalizar-compra-formulario-container {
+    padding: 1.5rem;
+  }
+  
+  .finalizar-compra-section-content {
+    padding-left: 0;
+  }
+  
+  .finalizar-compra-endereco-selecionado {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .finalizar-compra-btn-trocar {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .finalizar-compra-pagamento-opcao {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .finalizar-compra-actions {
+    padding: 1.5rem;
+  }
+  
+  .finalizar-compra-btn-finalizar {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .finalizar-compra-address-modal-container {
+    margin: 1rem;
+    max-height: calc(100vh - 2rem);
+  }
+  
+  .finalizar-compra-address-modal-header,
+  .finalizar-compra-address-modal-footer {
+    padding: 1rem 1.5rem;
+  }
+  
+  .finalizar-compra-address-modal-body {
+    padding: 1rem 1.5rem;
+  }
+  
+  .finalizar-compra-address-form-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .finalizar-compra-address-form-group:nth-child(5),
+  .finalizar-compra-address-form-group:nth-child(6) {
+    grid-column: span 1;
+  }
+  
+  .finalizar-compra-address-input {
+    font-size: 16px; /* Evita zoom no iOS */
+  }
+  
+  .finalizar-compra-address-form-title {
+    font-size: 1rem;
+  }
+  
+  .finalizar-compra-address-modal-footer {
+    flex-direction: column;
+  }
+  
+  .finalizar-compra-address-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .finalizar-compra-address-toast {
+    right: 1rem;
+    left: 1rem;
+    max-width: none;
+  }
+  
+  .finalizar-compra-address-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .finalizar-compra-address-label {
+    width: 100%;
+  }
+  
+  .finalizar-compra-address-remove-btn {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .finalizar-compra-page-header {
+    padding: 1rem 0;
+  }
+  
+  .finalizar-compra-header-content {
+    padding: 0 0.75rem;
+  }
+  
+  .finalizar-compra-header-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+  
+  .finalizar-compra-header-text h1 {
+    font-size: 1.75rem;
+  }
+  
+  .finalizar-compra-header-text p {
+    font-size: 0.9rem;
+  }
+  
+  .finalizar-compra-container {
+    margin: 0.75rem;
+    padding: 1rem;
+  }
+  
+  .finalizar-compra-auth-required-message {
+    padding: 1.5rem 1rem;
+  }
+  
+  .finalizar-compra-auth-required-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
+  
+  .finalizar-compra-auth-required-title {
+    font-size: 1.1rem;
+  }
+  
+  .finalizar-compra-auth-required-text {
+    font-size: 0.9rem;
+  }
+  
+  .finalizar-compra-resumo-card {
+    padding: 1rem;
+  }
+  
+  .finalizar-compra-resumo-title {
+    font-size: 1.25rem;
+  }
+  
+  .finalizar-compra-produto-imagem {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .finalizar-compra-produto-nome {
+    font-size: 0.9rem;
+  }
+  
+  .finalizar-compra-produto-categoria {
+    font-size: 0.8rem;
+  }
+  
+  .finalizar-compra-produto-preco {
+    font-size: 1rem;
+  }
+  
+  .finalizar-compra-formulario-container {
+    padding: 1rem;
+  }
+  
+  .finalizar-compra-section-header h4 {
+    font-size: 1.1rem;
+  }
+  
+  .finalizar-compra-cupom-container {
+    padding: 1rem;
+  }
+  
+  .finalizar-compra-cupom-input-group {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+  
+  .finalizar-compra-cupom-input {
+    width: 100%;
+    max-width: none;
+    font-size: 16px;
+    padding: 0.75rem 1rem;
+    min-height: 48px;
+    box-sizing: border-box;
+  }
+  
+  .finalizar-compra-btn-aplicar-cupom {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    min-height: 48px;
+    box-sizing: border-box;
+  }
+  
+  .finalizar-compra-pagamento-opcao {
+    padding: 0.75rem;
+  }
+  
+  .finalizar-compra-opcao-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .finalizar-compra-opcao-info h6 {
+    font-size: 1rem;
+  }
+  
+  .finalizar-compra-opcao-info p {
+    font-size: 0.8rem;
+  }
+  
+  .finalizar-compra-actions {
+    padding: 1rem;
+  }
+  
+  .finalizar-compra-btn-finalizar {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .finalizar-compra-address-modal-overlay {
+    padding: 0.5rem;
+  }
+  
+  .finalizar-compra-address-modal-container {
+    margin: 0.5rem;
+    max-height: calc(100vh - 1rem);
+  }
+  
+  .finalizar-compra-address-modal-title {
+    font-size: 1.1rem;
+  }
+  
+  .finalizar-compra-address-form-title {
+    font-size: 0.9rem;
+  }
+  
+  .finalizar-compra-address-input {
+    padding: 0.5rem 0.75rem;
+    font-size: 16px;
+    min-height: 44px;
+  }
+  
+  .finalizar-compra-address-modal-body {
+    padding: 1rem;
+  }
+  
+  .finalizar-compra-address-form-grid {
+    gap: 0.75rem;
+  }
+  
+  .finalizar-compra-address-form-group:nth-child(5),
+  .finalizar-compra-address-form-group:nth-child(6) {
+    grid-column: span 1;
+  }
+  
+  /* Campos específicos que podem ser organizados em 2 colunas */
+  .finalizar-compra-address-form-group:nth-child(1),
+  .finalizar-compra-address-form-group:nth-child(2) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  
+  .finalizar-compra-address-form-group:nth-child(3),
+  .finalizar-compra-address-form-group:nth-child(4) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  
+  .finalizar-compra-address-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .finalizar-compra-address-modal-footer {
+    padding: 1rem;
+  }
+  
+  .finalizar-compra-address-select-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .finalizar-compra-address-toast {
+    top: 1rem;
+    right: 0.75rem;
+    left: 0.75rem;
+    max-width: none;
+  }
+  
+  .finalizar-compra-address-toast-content {
+    padding: 0.75rem 1rem;
+  }
+  
+  .finalizar-compra-confirm-modal-overlay {
+    padding: 0.5rem;
+  }
+  
+  .finalizar-compra-confirm-content {
+    padding: 1.5rem;
+  }
+  
+  .finalizar-compra-confirm-header h3 {
+    font-size: 1.25rem;
+  }
+  
+  .finalizar-compra-confirm-header i {
+    font-size: 1.75rem;
+  }
+  
+  .finalizar-compra-confirm-body p {
+    font-size: 0.9rem;
+  }
+  
+  .finalizar-compra-confirm-warning {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .finalizar-compra-confirm-btn-cancel,
+  .finalizar-compra-confirm-btn-confirm {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .finalizar-compra-container {
+    margin: 0.5rem;
+    padding: 0.75rem;
+  }
+  
+  .finalizar-compra-header-content {
+    padding: 0 0.5rem;
+  }
+  
+  .finalizar-compra-header-text h1 {
+    font-size: 1.5rem;
+  }
+  
+  .finalizar-compra-header-text p {
+    font-size: 0.85rem;
+  }
+  
+  .finalizar-compra-resumo-card {
+    padding: 0.75rem;
+  }
+  
+  .finalizar-compra-formulario-container {
+    padding: 0.75rem;
+  }
+  
+  .finalizar-compra-address-modal-container {
+    margin: 0.25rem;
+  }
+  
+  .finalizar-compra-address-modal-body {
+    padding: 0.75rem;
+  }
+  
+  .finalizar-compra-address-form {
+    padding: 1rem;
+  }
+}
+
+/* ===== MELHORIAS DE RESPONSIVIDADE ADICIONAIS ===== */
+@media (max-width: 640px) {
+  .finalizar-compra-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .finalizar-compra-resumo-produtos {
+    gap: 1rem;
+  }
+  
+  .finalizar-compra-produto-item {
+    padding: 1rem;
+  }
+  
+  .finalizar-compra-resumo-totais {
+    gap: 0.75rem;
+  }
+  
+  .finalizar-compra-total-item {
+    padding: 0.75rem 1rem;
+  }
+  
+  .finalizar-compra-total-item.total-final {
+    font-size: 1.1rem;
+  }
+  
+  .finalizar-compra-cupom-input-group {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+  
+  .finalizar-compra-cupom-input {
+    width: 100%;
+    max-width: none;
+    min-height: 48px; /* Altura mínima para melhor usabilidade */
+    font-size: 16px; /* Evita zoom em iOS */
+    padding: 0.75rem 1rem;
+    box-sizing: border-box;
+  }
+  
+  .finalizar-compra-btn-aplicar-cupom {
+    width: 100%;
+    justify-content: center;
+    min-width: auto;
+    min-height: 48px; /* Mantém consistência com o input */
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    box-sizing: border-box;
+  }
+  
+  .finalizar-compra-pagamento-opcoes {
+    gap: 0.75rem;
+  }
+  
+  .finalizar-compra-pagamento-opcao {
+    padding: 0.75rem;
+  }
+  
+  .finalizar-compra-opcao-radio input[type="radio"] {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 375px) {
+  .finalizar-compra-page-header {
+    padding: 0.75rem 0;
+  }
+  
+  .finalizar-compra-header-content {
+    padding: 0 0.5rem;
+  }
+  
+  .finalizar-compra-header-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .finalizar-compra-header-text h1 {
+    font-size: 1.4rem;
+  }
+  
+  .finalizar-compra-header-text p {
+    font-size: 0.8rem;
+  }
+  
+  .finalizar-compra-container {
+    margin: 0.5rem;
+    padding: 0.75rem;
+  }
+  
+  .finalizar-compra-resumo-card {
+    padding: 0.75rem;
+  }
+  
+  .finalizar-compra-resumo-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .finalizar-compra-resumo-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .finalizar-compra-resumo-title {
+    font-size: 1.25rem;
+  }
+  
+  .finalizar-compra-resumo-count {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .finalizar-compra-produto-imagem {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .finalizar-compra-produto-nome {
+    font-size: 0.85rem;
+  }
+  
+  .finalizar-compra-produto-categoria {
+    font-size: 0.75rem;
+  }
+  
+  .finalizar-compra-produto-preco {
+    font-size: 0.9rem;
+  }
+  
+  .finalizar-compra-formulario-container {
+    padding: 0.75rem;
+  }
+  
+  .finalizar-compra-section-header {
+    margin-bottom: 1rem;
+  }
+  
+  .finalizar-compra-section-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+  
+  .finalizar-compra-section-header h4 {
+    font-size: 1rem;
+  }
+  
+  .finalizar-compra-cupom-container {
+    padding: 0.75rem;
+  }
+  
+  .finalizar-compra-cupom-input-group {
+    gap: 0.5rem;
+  }
+  
+  .finalizar-compra-cupom-input {
+    padding: 0.5rem 0.75rem;
+    font-size: 16px; /* Evita zoom em iOS */
+    min-height: 44px; /* Melhora a usabilidade em dispositivos touch */
+    box-sizing: border-box;
+  }
+  
+  .finalizar-compra-btn-aplicar-cupom {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    min-height: 44px; /* Mantém consistência com o input */
+    box-sizing: border-box;
+  }
+  
+  .finalizar-compra-pagamento-opcao {
+    padding: 0.5rem;
+  }
+  
+  .finalizar-compra-opcao-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+  
+  .finalizar-compra-opcao-info h6 {
+    font-size: 0.9rem;
+  }
+  
+  .finalizar-compra-opcao-info p {
+    font-size: 0.75rem;
+  }
+  
+  .finalizar-compra-actions {
+    padding: 0.75rem;
+  }
+  
+  .finalizar-compra-btn-finalizar {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .finalizar-compra-address-modal-container {
+    margin: 0.25rem;
+    max-height: calc(100vh - 0.5rem);
+  }
+  
+  .finalizar-compra-address-modal-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .finalizar-compra-address-modal-title {
+    font-size: 1rem;
+  }
+  
+  .finalizar-compra-address-modal-body {
+    padding: 0.75rem 1rem;
+  }
+  
+  .finalizar-compra-address-form {
+    padding: 0.75rem;
+  }
+  
+  .finalizar-compra-address-form-title {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  
+  .finalizar-compra-address-input {
+    padding: 0.5rem 0.75rem;
+    font-size: 16px;
+    min-height: 42px;
+  }
+  
+  .finalizar-compra-address-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+  
+  .finalizar-compra-address-modal-footer {
+    padding: 0.75rem 1rem;
+  }
+  
+  .finalizar-compra-address-select-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+  
+  .finalizar-compra-address-toast {
+    top: 0.75rem;
+    right: 0.5rem;
+    left: 0.5rem;
+  }
+  
+  .finalizar-compra-address-toast-content {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .finalizar-compra-confirm-content {
+    padding: 1.25rem;
+  }
+  
+  .finalizar-compra-confirm-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .finalizar-compra-confirm-header i {
+    font-size: 1.5rem;
+  }
+  
+  .finalizar-compra-confirm-body p {
+    font-size: 0.9rem;
+  }
+  
+  .finalizar-compra-confirm-warning {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .finalizar-compra-confirm-btn-cancel,
+  .finalizar-compra-confirm-btn-confirm {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ===== ORIENTAÇÃO LANDSCAPE EM DISPOSITIVOS MÓVEIS ===== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .finalizar-compra-page-header {
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+  }
+  
+  .finalizar-compra-header-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+  
+  .finalizar-compra-header-text h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .finalizar-compra-header-text p {
+    font-size: 0.9rem;
+  }
+  
+  .finalizar-compra-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  
+  .finalizar-compra-content {
+    gap: 1rem;
+  }
+  
+  .finalizar-compra-resumo-card {
+    padding: 1rem;
+  }
+  
+  .finalizar-compra-resumo-header {
+    margin-bottom: 1rem;
+  }
+  
+  .finalizar-compra-formulario-container {
+    padding: 1rem;
+  }
+  
+  .finalizar-compra-actions {
+    padding: 1rem;
+  }
+  
+  .finalizar-compra-address-modal-container {
+    max-height: 80vh;
+  }
+  
+  .finalizar-compra-address-modal-body {
+    max-height: calc(80vh - 180px);
+  }
+}
+
+/* ===== MELHORIAS ESPECÍFICAS PARA GRID DE ENDEREÇOS ===== */
+@media (max-width: 480px) {
+  .finalizar-compra-address-form-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .finalizar-compra-address-form-group:nth-child(5),
+  .finalizar-compra-address-form-group:nth-child(6) {
+    grid-column: span 1;
+  }
+  
+  /* Campos específicos que podem ser organizados em 2 colunas */
+  .finalizar-compra-address-form-group:nth-child(1),
+  .finalizar-compra-address-form-group:nth-child(2) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  
+  .finalizar-compra-address-form-group:nth-child(3),
+  .finalizar-compra-address-form-group:nth-child(4) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .finalizar-compra-address-form-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .finalizar-compra-address-form-group:nth-child(1),
+  .finalizar-compra-address-form-group:nth-child(2),
+  .finalizar-compra-address-form-group:nth-child(3),
+  .finalizar-compra-address-form-group:nth-child(4) {
+    display: block;
+  }
+  
+  .finalizar-compra-address-input {
+    min-height: 40px;
+    padding: 0.5rem 0.75rem;
+    font-size: 16px;
+  }
+}
+
+/* ===== MEDIA QUERIES ===== */
+
+/* Telas muito grandes */
+@media (min-width: 1400px) {
+  .finalizar-compra-cupom-input-group {
+    max-width: 600px; /* Limita a largura máxima do grupo */
+    margin: 0 auto 1rem auto; /* Centraliza o grupo */
+  }
+  
+  .finalizar-compra-cupom-input {
+    max-width: 350px; /* Aumenta um pouco a largura máxima em telas muito grandes */
+  }
+}
+
+/* Telas muito pequenas */
+@media (max-width: 320px) {
+  .finalizar-compra-cupom-container {
+    padding: 0.5rem;
+  }
+  
+  .finalizar-compra-cupom-input-group {
+    gap: 0.5rem;
+  }
+  
+  .finalizar-compra-cupom-input {
+    padding: 0.5rem 0.75rem;
+    font-size: 16px;
+    min-height: 42px;
+    box-sizing: border-box;
+  }
+  
+  .finalizar-compra-btn-aplicar-cupom {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    min-height: 42px;
+    box-sizing: border-box;
+  }
+}
+
+

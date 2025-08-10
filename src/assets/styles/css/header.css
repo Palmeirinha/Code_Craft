@@ -1,0 +1,844 @@
+/* ===== HEADER ===== */
+
+.header {
+  background: #1e293b;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  backdrop-filter: none;
+  filter: none;
+  isolation: isolate;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1e293b;
+  z-index: -1;
+}
+
+.header-nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  gap: 1.5rem;
+  backdrop-filter: none;
+  filter: none;
+}
+
+/* Logo */
+.header-logo {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.header-logo:hover {
+  transform: scale(1.02);
+}
+
+.header-logo-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  min-width: 160px;
+  flex-shrink: 0;
+}
+
+.header-logo-content i {
+  color: #8b5cf6;
+  font-size: 1.8rem;
+}
+
+.header-logo-content img {
+  height: 40px;
+  width: auto;
+}
+
+/* Navegação */
+.header-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.header-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #94a3b8;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.75rem 0.875rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.header-nav-link:hover {
+  color: #ffffff;
+  background: rgba(139, 92, 246, 0.1);
+  text-decoration: none;
+}
+
+.header-nav-link.router-link-active {
+  color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.15);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.header-nav-link i {
+  font-size: 1.1rem;
+}
+
+/* Header Actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+  margin-left: auto;
+  /* Garantir que os botões tenham espaçamento adequado */
+  padding: 0.25rem 0;
+}
+
+/* Containers dos dropdowns */
+.header-nav-menu,
+.header-user-menu {
+  position: relative;
+  backdrop-filter: none;
+  filter: none;
+}
+
+/* Botões comuns */
+.header-cart-btn,
+.header-login-btn,
+.header-nav-menu-toggle,
+.header-user-menu-toggle {
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  backdrop-filter: none;
+  filter: none;
+  /* Garantir área clicável mínima */
+  min-width: 48px;
+  min-height: 48px;
+  /* Melhorar acessibilidade */
+  position: relative;
+  overflow: visible;
+  /* Garantir que a área clicável seja completa */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Carrinho */
+.header-cart-btn {
+  position: relative;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #8b5cf6;
+  padding: 0.75rem;
+  min-width: 48px;
+  min-height: 48px;
+  /* Garantir área clicável completa */
+  width: 48px;
+  height: 48px;
+  box-sizing: border-box;
+  /* Melhorar acessibilidade */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header-cart-btn:hover {
+  color: #ffffff;
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.5);
+}
+
+.header-cart-btn.has-items {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.4);
+  color: #ffffff;
+}
+
+.header-cart-btn i {
+  font-size: 1.3rem;
+}
+
+.header-cart-badge {
+  position: absolute;
+  top: -0.15rem;
+  right: -0.15rem;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 0.1rem 0.3rem;
+  border-radius: 8px;
+  min-width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #1e293b;
+}
+
+/* Botão de Login */
+.header-login-btn {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  min-width: 140px;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.header-login-btn:hover {
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.header-login-btn i {
+  font-size: 1.1rem;
+}
+
+/* Menu de Navegação */
+.header-nav-menu-toggle {
+  background: transparent;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  min-width: 140px;
+  /* Garantir área clicável adequada */
+  box-sizing: border-box;
+  /* Melhorar acessibilidade */
+  user-select: none;
+  -webkit-user-select: none;
+  /* Garantir área clicável adequada */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header-nav-menu-toggle:hover {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.5);
+  text-decoration: none;
+}
+
+.header-nav-menu-toggle i {
+  font-size: 1.2rem;
+  color: #8b5cf6;
+}
+
+/* User Menu */
+.header-user-menu-toggle {
+  background: transparent;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  min-width: 220px;
+  max-width: 280px;
+  /* Garantir área clicável adequada */
+  box-sizing: border-box;
+  /* Melhorar acessibilidade */
+  user-select: none;
+  -webkit-user-select: none;
+  /* Garantir área clicável adequada */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header-user-menu-toggle:hover {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.5);
+  text-decoration: none;
+}
+
+.header-user-menu-toggle i {
+  font-size: 1.2rem;
+  color: #8b5cf6;
+}
+
+.header-user-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.header-user-text {
+  display: inline;
+}
+
+/* Badges de Role */
+.header-badge {
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.header-badge-admin {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.header-badge-moderator {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.header-badge-client {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+/* Dropdowns comuns */
+.header-nav-menu-list,
+.header-user-menu-list {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #1e293b;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1001;
+  list-style: none;
+  margin: 0;
+  max-width: calc(100vw - 2rem);
+  overflow: hidden;
+  backdrop-filter: none;
+  filter: none;
+  /* Melhorar responsividade */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.header-nav-menu-list {
+  min-width: 200px;
+  max-width: min(200px, calc(100vw - 2rem));
+}
+
+.header-user-menu-list {
+  min-width: 250px;
+  max-width: min(250px, calc(100vw - 2rem));
+}
+
+/* Estado aberto dos dropdowns */
+.header-nav-menu-open .header-nav-menu-list,
+.header-user-menu-open .header-user-menu-list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Melhorar posicionamento em telas pequenas */
+@media (max-width: 768px) {
+  .header-nav-menu-list,
+  .header-user-menu-list {
+    /* Posicionamento mais à direita, alinhado com o ícone */
+    right: 0;
+    left: auto;
+    transform: translateY(-10px);
+    max-width: calc(100vw - 2rem);
+    min-width: 200px;
+    /* Garantir que não saia da tela */
+    position: fixed;
+    top: auto;
+    bottom: auto;
+    margin-top: 0.5rem;
+    /* Melhorar visibilidade */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+  
+  .header-nav-menu-open .header-nav-menu-list,
+  .header-user-menu-open .header-user-menu-list {
+    transform: translateY(0);
+  }
+  
+  /* Ajustar posicionamento quando próximo às bordas */
+  .header-nav-menu-list {
+    right: 0;
+    transform: translateY(-10px);
+  }
+  
+  .header-user-menu-list {
+    right: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .header-nav-menu-list,
+  .header-user-menu-list {
+    /* Ajustar para telas pequenas - manter à direita */
+    right: 0;
+    left: auto;
+    transform: translateY(-10px);
+    max-width: calc(100vw - 1.5rem);
+    min-width: 180px;
+    /* Melhorar espaçamento */
+    padding: 0.75rem;
+  }
+  
+  .header-nav-menu-open .header-nav-menu-list,
+  .header-user-menu-open .header-user-menu-list {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 360px) {
+  .header-nav-menu-list,
+  .header-user-menu-list {
+    /* Ajustar para telas muito pequenas - manter à direita */
+    right: 0;
+    left: auto;
+    transform: translateY(-10px);
+    max-width: calc(100vw - 1rem);
+    min-width: 160px;
+    /* Reduzir padding para economizar espaço */
+    padding: 0.5rem;
+  }
+  
+  .header-nav-menu-open .header-nav-menu-list,
+  .header-user-menu-open .header-user-menu-list {
+    transform: translateY(0);
+  }
+}
+
+/* Itens de menu comuns */
+.header-nav-menu-item,
+.header-user-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #94a3b8;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  width: 100%;
+  text-align: left;
+  /* Melhorar responsividade */
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.header-nav-menu-item {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.header-nav-menu-item:hover,
+.header-user-menu-item:hover {
+  color: #ffffff;
+  background: rgba(139, 92, 246, 0.1);
+  text-decoration: none;
+}
+
+.header-nav-menu-item i,
+.header-user-menu-item i {
+  font-size: 1rem;
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0; /* Evitar que o ícone encolha */
+}
+
+/* Divisores */
+.header-nav-menu-divider,
+.header-user-menu-divider {
+  border: none;
+  height: 1px;
+  background: rgba(139, 92, 246, 0.2);
+  margin: 0.5rem 0;
+}
+
+/* Botão de login no dropdown */
+.header-nav-login-btn {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.header-nav-login-btn:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .header-nav {
+    gap: 1.25rem;
+  }
+  
+  .header-nav-links {
+    gap: 1.25rem;
+  }
+  
+  .header-nav-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .header-actions {
+    gap: 0.875rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .header-nav {
+    gap: 1rem;
+  }
+  
+  .header-nav-links {
+    gap: 1rem;
+  }
+  
+  .header-actions {
+    gap: 0.75rem;
+  }
+  
+  /* Reduzir tamanho do nome do usuário */
+  .header-user-text {
+    font-size: 0.85rem;
+  }
+  
+  .header-badge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-nav {
+    padding: 0 1rem;
+    height: 60px;
+    gap: 1rem;
+  }
+  
+  .header-nav-links {
+    display: none;
+  }
+  
+  .header-user-menu-toggle,
+  .header-nav-menu-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+  
+  .header-user-text {
+    display: none;
+  }
+  
+  .header-badge {
+    display: none;
+  }
+  
+  .header-nav-menu-toggle span {
+    display: none;
+  }
+  
+  .header-logo-content {
+    font-size: 1.2rem;
+    min-width: 140px;
+  }
+  
+  .header-logo-content img {
+    height: 32px;
+  }
+  
+  /* Ajustar posicionamento dos dropdowns em mobile */
+  .header-nav-menu-list,
+  .header-user-menu-list {
+    right: 0;
+    max-width: calc(100vw - 2rem);
+    min-width: 200px;
+  }
+  
+  /* Ajustar botão do carrinho */
+  .header-cart-btn {
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+  
+  /* Ajustar botão do usuário quando apenas ícone visível */
+  .header-user-menu-toggle {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-nav {
+    padding: 0 0.75rem;
+    gap: 0.75rem;
+    height: 55px;
+  }
+  
+  .header-logo-content {
+    font-size: 1rem;
+    min-width: 120px;
+  }
+  
+  .header-logo-content img {
+    height: 28px;
+  }
+  
+  .header-cart-btn {
+    padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
+    box-sizing: border-box;
+  }
+  
+  .header-cart-btn i {
+    font-size: 1rem;
+  }
+  
+  .header-cart-badge {
+    font-size: 0.7rem;
+    min-width: 16px;
+    height: 16px;
+  }
+  
+  .header-user-menu-toggle,
+  .header-nav-menu-toggle {
+    padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
+    box-sizing: border-box;
+  }
+  
+  .header-user-menu-toggle i,
+  .header-nav-menu-toggle i {
+    font-size: 1.2rem;
+  }
+  
+  /* Ajustar posicionamento dos dropdowns em telas muito pequenas */
+  .header-nav-menu-list,
+  .header-user-menu-list {
+    right: 0;
+    max-width: calc(100vw - 1.5rem);
+    min-width: 180px;
+  }
+  
+  /* Ocultar nome e função do usuário */
+  .header-user-text,
+  .header-badge {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-nav {
+    padding: 0 0.5rem;
+    gap: 0.5rem;
+    height: 50px;
+  }
+  
+  .header-cart-btn,
+  .header-user-menu-toggle,
+  .header-nav-menu-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+  
+  .header-logo-content {
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+  
+  .header-logo-content img {
+    height: 24px;
+  }
+  
+  .header-cart-badge {
+    font-size: 0.45rem;
+    padding: 0.05rem 0.2rem;
+    min-width: 10px;
+    height: 10px;
+    top: -0.05rem;
+    right: -0.05rem;
+  }
+  
+  /* Ajustar dropdowns para telas muito pequenas */
+  .header-nav-menu-list,
+  .header-user-menu-list {
+    right: 0;
+    max-width: calc(100vw - 1rem);
+    min-width: 160px;
+  }
+  
+  /* Ocultar nome e função do usuário */
+  .header-user-text,
+  .header-badge {
+    display: none;
+  }
+}
+
+/* ===== MELHORIAS DE ACESSIBILIDADE ===== */
+
+/* Garantir que todos os botões tenham áreas clicáveis adequadas */
+.header-cart-btn,
+.header-nav-menu-toggle,
+.header-user-menu-toggle {
+  /* Melhorar área clicável em dispositivos móveis */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  /* Garantir que o padding não interfira na área clicável */
+  box-sizing: border-box;
+  /* Melhorar feedback visual */
+  transition: all 0.2s ease;
+}
+
+/* Garantir área clicável mínima em dispositivos móveis */
+@media (max-width: 768px) {
+  .header-cart-btn,
+  .header-nav-menu-toggle,
+  .header-user-menu-toggle {
+    /* Área clicável mínima recomendada pela Apple/Google */
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* ===== MELHORIAS DE RESPONSIVIDADE DOS DROPDOWNS ===== */
+
+/* Garantir que os dropdowns não saiam da tela */
+@media (max-width: 768px) {
+  .header-nav-menu,
+  .header-user-menu {
+    /* Garantir que o container do dropdown seja responsivo */
+    position: relative;
+  }
+  
+  .header-nav-menu-list,
+  .header-user-menu-list {
+    /* Garantir que o dropdown se adapte ao espaço disponível */
+    width: auto;
+    max-width: calc(100vw - 2rem);
+    /* Posicionar à direita, alinhado com o ícone */
+    right: 0;
+    left: auto;
+    transform: translateY(-10px);
+  }
+  
+  .header-nav-menu-open .header-nav-menu-list,
+  .header-user-menu-open .header-user-menu-list {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .header-nav-menu-list,
+  .header-user-menu-list {
+    /* Ajustar para telas pequenas - manter à direita */
+    right: 0;
+    left: auto;
+    max-width: calc(100vw - 1.5rem);
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-nav-menu-list,
+  .header-user-menu-list {
+    /* Ajustar para telas muito pequenas - manter à direita */
+    right: 0;
+    left: auto;
+    max-width: calc(100vw - 1rem);
+    min-width: 160px;
+  }
+}
+
+/* Ajustar itens do menu em telas pequenas */
+@media (max-width: 480px) {
+  .header-nav-menu-item,
+  .header-user-menu-item {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.85rem;
+    gap: 0.625rem;
+  }
+  
+  .header-nav-menu-item i,
+  .header-user-menu-item i {
+    font-size: 0.9rem;
+    width: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-nav-menu-item,
+  .header-user-menu-item {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    gap: 0.5rem;
+  }
+  
+  .header-nav-menu-item i,
+  .header-user-menu-item i {
+    font-size: 0.85rem;
+    width: 12px;
+  }
+}
