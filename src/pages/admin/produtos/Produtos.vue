@@ -1,22 +1,20 @@
 <template>
-  <!-- Seção principal de gestão de produtos -->
   <section class="produto-section">
     <div class="produto-container">
       <div class="produto-wrapper">
-        <!-- Header da seção - Título e descrição -->
+        <!-- Header da seção -->
         <div class="produto-header">
           <h1 class="produto-title">Gerenciar Produtos</h1>
           <p class="produto-subtitle">Crie e gerencie os produtos dos cursos</p>
         </div>
 
-        <!-- Formulário de Criação - Formulário para criar novos produtos -->
+        <!-- Formulário de criação -->
         <div class="produto-form-container">
           <h3 class="produto-form-title">
             <i class="bi bi-box-seam"></i>Novo Produto
           </h3>
           <form @submit.prevent="onCriarProduto" class="produto-form">
             <div class="produto-form-grid">
-              <!-- Campo Nome do Produto -->
               <div class="produto-form-group">
                 <label class="produto-form-label">Nome do Produto</label>
                 <input 
@@ -27,7 +25,6 @@
                   required 
                 />
               </div>
-              <!-- Campo Categoria - Select com categorias disponíveis -->
               <div class="produto-form-group">
                 <label class="produto-form-label">Categoria</label>
                 <select v-model="novoProduto.category_id" class="produto-form-select" required>
@@ -35,7 +32,6 @@
                   <option v-for="cat in categorias" :key="cat.id" :value="cat.id">{{ cat.name }}</option>
                 </select>
               </div>
-              <!-- Campo Preço - Input numérico para preço -->
               <div class="produto-form-group">
                 <label class="produto-form-label">Preço</label>
                 <input 
@@ -48,7 +44,6 @@
                   required 
                 />
               </div>
-              <!-- Campo Estoque - Input numérico para quantidade em estoque -->
               <div class="produto-form-group">
                 <label class="produto-form-label">Estoque</label>
                 <input 
@@ -60,7 +55,6 @@
                   required 
                 />
               </div>
-              <!-- Campo Descrição - Textarea para descrição completa -->
               <div class="produto-form-group produto-form-group-full">
                 <label class="produto-form-label">Descrição</label>
                 <textarea 
@@ -70,7 +64,6 @@
                   rows="3"
                 ></textarea>
               </div>
-              <!-- Campo Imagem - Upload de arquivo de imagem -->
               <div class="produto-form-group produto-form-group-full">
                 <label class="produto-form-label">Imagem do Produto</label>
                 <input 
@@ -83,7 +76,6 @@
                 <small class="produto-form-help">Formatos aceitos: JPG, PNG. Tamanho máximo: 5MB</small>
               </div>
             </div>
-            <!-- Botões de ação do formulário -->
             <div class="produto-form-actions">
               <button 
                 class="produto-btn produto-btn-outline" 
@@ -106,7 +98,7 @@
           </form>
         </div>
 
-        <!-- Lista de Produtos - Tabela com produtos cadastrados -->
+        <!-- Lista de produtos -->
         <div class="produto-list-container">
           <div class="produto-list-header">
             <h3 class="produto-list-title">Produtos Cadastrados</h3>
@@ -116,7 +108,7 @@
             </span>
           </div>
 
-          <!-- Busca - Campo de busca por nome ou descrição -->
+          <!-- Busca -->
           <div class="produto-search-container">
             <div class="produto-search-group">
               <span class="produto-search-icon">
@@ -131,13 +123,13 @@
             </div>
           </div>
 
-          <!-- Loading State - Estado de carregamento da lista -->
+          <!-- Loading -->
           <div v-if="carregandoLista" class="produto-loading">
             <div class="produto-spinner"></div>
             <p class="produto-loading-text">Carregando produtos...</p>
           </div>
 
-          <!-- Error State - Estado de erro na lista -->
+          <!-- Erro -->
           <div v-else-if="erroLista" class="produto-error">
             <i class="bi bi-exclamation-triangle"></i>
             <p class="produto-error-text">{{ erroLista }}</p>
@@ -146,14 +138,14 @@
             </button>
           </div>
 
-          <!-- Empty State - Estado quando não há produtos -->
+          <!-- Estado vazio -->
           <div v-else-if="produtosFiltrados.length === 0" class="produto-empty">
             <i class="bi bi-archive"></i>
             <h3 class="produto-empty-title">Nenhum produto encontrado</h3>
             <p class="produto-empty-text">{{ busca ? 'Nenhum produto corresponde à sua busca.' : 'Crie seu primeiro produto para começar a vender cursos.' }}</p>
           </div>
 
-          <!-- Produtos Table - Tabela principal dos produtos -->
+          <!-- Tabela de produtos -->
           <div v-else class="produto-table-container">
             <div class="produto-table-responsive">
               <table class="produto-table">
@@ -168,9 +160,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- Loop através dos produtos paginados -->
                   <tr v-for="prod in produtosPaginados" :key="prod.id" class="produto-table-row">
-                    <!-- Coluna Imagem - Exibe imagem ou placeholder -->
                     <td class="produto-td-image">
                       <div class="produto-image-cell">
                         <img 
@@ -184,18 +174,15 @@
                         </div>
                       </div>
                     </td>
-                    <!-- Coluna Nome - Nome e descrição do produto -->
                     <td class="produto-td-name">
                       <div class="produto-info">
                         <span class="produto-name">{{ prod.name }}</span>
                         <span v-if="prod.description" class="produto-description">{{ prod.description }}</span>
                       </div>
                     </td>
-                    <!-- Coluna Categoria - Badge da categoria -->
                     <td class="produto-td-category">
                       <span class="produto-categoria-badge">{{ prod.category?.name || '-' }}</span>
                     </td>
-                    <!-- Coluna Preço - Valor e badge de desconto se aplicável -->
                     <td class="produto-td-price">
                       <div class="produto-price-info">
                         <span class="produto-price-value">R$ {{ prod.price }}</span>
@@ -204,13 +191,11 @@
                         </span>
                       </div>
                     </td>
-                    <!-- Coluna Estoque - Badge colorido baseado na quantidade -->
                     <td class="produto-td-stock">
                       <span class="produto-stock-badge" :class="produtoStockClass(prod.stock)">
                         {{ prod.stock }}
                       </span>
                     </td>
-                    <!-- Coluna Ações - Botões de editar e remover -->
                     <td class="produto-td-actions">
                       <div class="produto-actions">
                         <button 
@@ -222,7 +207,7 @@
                         </button>
                         <button 
                           class="produto-btn produto-btn-danger produto-btn-sm" 
-                          @click="confirmarRemover(prod.id)" 
+                          @click="remover(prod.id)" 
                           :disabled="carregandoRemover === prod.id"
                           title="Remover produto"
                         >
@@ -236,7 +221,7 @@
               </table>
             </div>
 
-            <!-- Paginação - Navegação entre páginas -->
+            <!-- Paginação -->
             <div v-if="totalPaginas > 1" class="produto-pagination">
               <button 
                 class="produto-btn produto-btn-outline produto-btn-sm" 
@@ -259,7 +244,7 @@
       </div>
     </div>
 
-    <!-- Modal de Edição - Modal para editar produtos existentes -->
+    <!-- Modal de edição -->
     <template v-if="mostrarModalEditar">
       <div class="produto-modal-backdrop" @click="fecharModalEditar"></div>
       <div class="produto-modal">
@@ -275,7 +260,6 @@
             </div>
             <form @submit.prevent="onEditarProduto">
               <div class="produto-modal-body">
-                <!-- Campo Nome no modal de edição -->
                 <div class="produto-modal-form-group">
                   <label class="produto-modal-label">Nome</label>
                   <input 
@@ -285,14 +269,12 @@
                     required 
                   />
                 </div>
-                <!-- Campo Categoria no modal de edição -->
                 <div class="produto-modal-form-group">
                   <label class="produto-modal-label">Categoria</label>
                   <select v-model="produtoEditar.category_id" class="produto-modal-select" required>
                     <option v-for="cat in categorias" :key="cat.id" :value="cat.id">{{ cat.name }}</option>
                   </select>
                 </div>
-                <!-- Campo Preço no modal de edição -->
                 <div class="produto-modal-form-group">
                   <label class="produto-modal-label">Preço</label>
                   <input 
@@ -303,7 +285,6 @@
                     required 
                   />
                 </div>
-                <!-- Campo Estoque no modal de edição -->
                 <div class="produto-modal-form-group">
                   <label class="produto-modal-label">Estoque</label>
                   <input 
@@ -313,7 +294,6 @@
                     required 
                   />
                 </div>
-                <!-- Campo Descrição no modal de edição -->
                 <div class="produto-modal-form-group">
                   <label class="produto-modal-label">Descrição</label>
                   <textarea 
@@ -322,7 +302,6 @@
                     rows="3"
                   ></textarea>
                 </div>
-                <!-- Campo Nova Imagem no modal de edição (opcional) -->
                 <div class="produto-modal-form-group">
                   <label class="produto-modal-label">Nova Imagem (opcional)</label>
                   <input 
@@ -333,7 +312,6 @@
                   />
                 </div>
               </div>
-              <!-- Botões de ação do modal de edição -->
               <div class="produto-modal-footer">
                 <button type="button" class="produto-btn produto-btn-secondary" @click="fecharModalEditar">
                   <i class="bi bi-x-circle"></i>Cancelar
@@ -350,66 +328,6 @@
       </div>
     </template>
   </section>
-
-  <!-- Modal de Confirmação de Remoção - Confirma exclusão de produto -->
-  <Teleport to="body">
-    <div v-if="mostrarConfirmacaoRemover" class="produto-confirm-modal-overlay" @click="mostrarConfirmacaoRemover = false">
-      <div class="produto-confirm-modal" @click.stop>
-        <div class="produto-confirm-content">
-          <div class="produto-confirm-header">
-            <i class="bi bi-exclamation-triangle"></i>
-            <h3>Confirmar Remoção</h3>
-          </div>
-          <div class="produto-confirm-body">
-            <p>Tem certeza que deseja remover este produto?</p>
-            <p class="produto-confirm-warning">⚠️ Atenção: Produtos que estão sendo usados em pedidos não podem ser excluídos.</p>
-            <p class="produto-confirm-info">Se o produto estiver sendo usado em pedidos, você pode:</p>
-            <ul class="produto-confirm-list">
-              <li>Definir o estoque como 0 para "desativar" o produto</li>
-              <li>Ou cancelar esta operação</li>
-            </ul>
-          </div>
-          <div class="produto-confirm-actions">
-            <button class="produto-confirm-btn-cancel" @click="mostrarConfirmacaoRemover = false">
-              Cancelar
-            </button>
-            <button class="produto-confirm-btn-confirm" @click="remover(produtoParaRemover)" :disabled="carregandoRemover">
-              <span v-if="carregandoRemover" class="produto-spinner"></span>
-              <span v-else>Confirmar</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </Teleport>
-
-  <!-- Modal de Confirmação de Desativação - Oferece alternativa quando produto não pode ser excluído -->
-  <Teleport to="body">
-    <div v-if="mostrarConfirmacaoDesativar" class="produto-confirm-modal-overlay" @click="mostrarConfirmacaoDesativar = false">
-      <div class="produto-confirm-modal" @click.stop>
-        <div class="produto-confirm-content">
-          <div class="produto-confirm-header">
-            <i class="bi bi-exclamation-triangle"></i>
-            <h3>Desativar Produto</h3>
-          </div>
-          <div class="produto-confirm-body">
-            <p>Este produto não pode ser excluído porque está sendo usado em pedidos.</p>
-            <p class="produto-confirm-warning">Deseja definir o estoque como 0 para desativar o produto?</p>
-            <p class="produto-confirm-info">Isso permitirá que o produto permaneça no sistema mas não estará disponível para compra.</p>
-          </div>
-          <div class="produto-confirm-actions">
-            <button class="produto-confirm-btn-cancel" @click="mostrarConfirmacaoDesativar = false">
-              Cancelar
-            </button>
-            <button class="produto-confirm-btn-confirm" @click="desativarProduto(produtoParaDesativar)" :disabled="carregandoRemover">
-              <span v-if="carregandoRemover" class="produto-spinner"></span>
-              <span v-else>Desativar</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </Teleport>
 </template>
 
 <script setup>
@@ -668,18 +586,6 @@ async function onCriarProduto() {
   }
 }
 
-// Função para abrir modal de confirmação de remoção
-function confirmarRemover(id) {
-  produtoParaRemover.value = id
-  mostrarConfirmacaoRemover.value = true
-}
-
-// Função para abrir modal de confirmação de desativação
-function confirmarDesativar(id) {
-  produtoParaDesativar.value = id
-  mostrarConfirmacaoDesativar.value = true
-}
-
 // Função para remover produto via API
 async function remover(id) {
   // Verificar se há token de autenticação
@@ -696,37 +602,9 @@ async function remover(id) {
     showToastGlobal && showToastGlobal('Produto removido com sucesso!', 'success')
   } catch (e) {
     const erro = typeof e === 'string' ? e : 'Erro ao remover produto.'
-    
-    // Se for erro de constraint, oferecer alternativa
-    if (erro.includes('pedidos') || erro.includes('order_items')) {
-      const produto = produtos.value.find(p => p.id === id)
-      if (produto) {
-        confirmarDesativar(id)
-        showToastGlobal && showToastGlobal(erro, 'warning')
-      } else {
-        showToastGlobal && showToastGlobal(erro, 'warning')
-      }
-    } else {
-      showToastGlobal && showToastGlobal(erro, 'danger')
-    }
+    showToastGlobal && showToastGlobal(erro, 'danger')
   } finally {
     carregandoRemover.value = null
-    mostrarConfirmacaoRemover.value = false
-  }
-}
-
-// Função para desativar produto definindo estoque como 0
-async function desativarProduto(id) {
-  carregandoRemover.value = id
-  try {
-    await atualizarEstoqueProduto(id, 0)
-    await carregarProdutos()
-    showToastGlobal && showToastGlobal('Produto desativado com sucesso! (estoque definido como 0)', 'success')
-  } catch (estoqueError) {
-    showToastGlobal && showToastGlobal('Erro ao desativar produto: ' + estoqueError.message, 'danger')
-  } finally {
-    carregandoRemover.value = null
-    mostrarConfirmacaoDesativar.value = false
   }
 }
 
@@ -743,12 +621,6 @@ const produtoEditar = ref({
 const carregandoEditar = ref(false)                         // Estado de carregamento da edição
 let imagemEditar = null                                     // Nova imagem selecionada para edição
 let estoqueOriginalEditar = null                            // Estoque original para comparação
-
-// Estados para modais de confirmação
-const mostrarConfirmacaoRemover = ref(false)                // Controla exibição do modal de confirmação de remoção
-const produtoParaRemover = ref(null)                        // ID do produto a ser removido
-const mostrarConfirmacaoDesativar = ref(false)              // Controla exibição do modal de confirmação de desativação
-const produtoParaDesativar = ref(null)                      // ID do produto a ser desativado
 
 // Função para abrir modal de edição
 function abrirModalEditar(prod) {

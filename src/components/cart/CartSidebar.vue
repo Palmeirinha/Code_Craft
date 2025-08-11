@@ -15,17 +15,14 @@
     <div class="carrinho-header">
       <div class="carrinho-header-content">
         <div class="carrinho-header-left">
-          <!-- Ícone do carrinho -->
           <div class="carrinho-icon-wrapper">
             <i class="bi bi-cart3"></i>
           </div>
           <div>
             <h3 class="carrinho-title">Carrinho</h3>
-            <!-- Contador de itens com pluralização -->
             <p class="carrinho-item-count">{{ produtos.length }} item{{ produtos.length !== 1 ? 's' : '' }}</p>
           </div>
         </div>
-        <!-- Botão de fechar -->
         <button 
           class="carrinho-btn-close" 
           @click="fechar"
@@ -38,7 +35,7 @@
 
     <!-- Conteúdo da sidebar -->
     <div class="carrinho-content">
-      <!-- Estado de carregamento -->
+      <!-- Loading -->
       <div v-if="carregando" class="carrinho-loading">
         <div class="carrinho-spinner"></div>
         <p class="carrinho-loading-text">Carregando carrinho...</p>
@@ -49,23 +46,20 @@
         <i class="bi bi-cart carrinho-empty-icon"></i>
         <h5 class="carrinho-empty-title">Seu carrinho está vazio</h5>
         <p class="carrinho-empty-text">Adicione alguns cursos para começar!</p>
-        <!-- Botão para ir para cursos -->
         <button class="carrinho-btn-vazios" @click="irParaCursos">
           <i class="bi bi-journal-code"></i>
           Ver Cursos
         </button>
       </div>
 
-      <!-- Lista de produtos quando há itens -->
+      <!-- Lista de produtos -->
       <div v-else class="carrinho-produtos">
         <div class="carrinho-produtos-lista">
-          <!-- Loop pelos produtos do carrinho -->
           <div 
             v-for="produto in produtos" 
             :key="produto.id" 
             class="produto-item"
           >
-            <!-- Imagem do produto -->
             <div class="produto-imagem">
               <img 
                 v-if="produto.image_path" 
@@ -74,28 +68,23 @@
                 @error="handleImageError"
                 class="produto-img"
               />
-              <!-- Placeholder quando não há imagem -->
               <div v-else class="produto-img-placeholder">
                 <i class="bi bi-journal-code"></i>
               </div>
             </div>
             
-            <!-- Informações do produto -->
             <div class="produto-info">
               <div class="produto-header">
                 <h6 class="produto-name">{{ produto.name }}</h6>
-                <!-- Categoria do produto -->
                 <span class="produto-categoria">
                   <i class="bi bi-tag-fill me-1"></i>
                   {{ produto.category }}
                 </span>
               </div>
-              <!-- Preço do produto -->
               <div class="produto-price">
                 <span class="carrinho-price-value">R$ {{ produto.price }}</span>
               </div>
             </div>
-            <!-- Botão para remover produto -->
             <button 
               class="carrinho-btn-remove" 
               @click="remover(produto.id)" 

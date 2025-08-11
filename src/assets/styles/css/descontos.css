@@ -1,638 +1,638 @@
-/* ===== DESCONTOS - CSS SIMPLIFICADO E COMENTADO ===== */
 
-/* ===== CONTAINER PRINCIPAL ===== */
-/* Define o container principal da página de descontos */
+
+
+
 .desconto-section {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* Gradiente escuro para fundo */
-  min-height: 100vh; /* Altura mínima de 100% da viewport */
-  padding: 2rem 0; /* Espaçamento vertical */
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
+  min-height: 100vh; 
+  padding: 2rem 0; 
 }
 
 .desconto-container {
-  max-width: 1200px; /* Largura máxima para centralizar conteúdo */
-  margin: 0 auto; /* Centraliza horizontalmente */
-  padding: 0 2rem; /* Espaçamento horizontal */
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 2rem; 
 }
 
 .desconto-wrapper {
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
-  border-radius: 16px; /* Bordas arredondadas */
-  padding: 2rem; /* Espaçamento interno */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda roxa sutil */
+  background: rgba(15, 23, 42, 0.8); 
+  border-radius: 16px; 
+  padding: 2rem; 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
 }
 
-/* ===== CABEÇALHO DA PÁGINA ===== */
+
 .desconto-header {
-  text-align: center; /* Centraliza o texto */
-  margin-bottom: 2rem; /* Espaçamento inferior */
+  text-align: center; 
+  margin-bottom: 2rem; 
 }
 
 .desconto-title {
-  font-size: 2.5rem; /* Tamanho grande para título principal */
-  font-weight: 700; /* Peso da fonte */
-  color: #ffffff; /* Texto branco */
-  margin: 0 0 0.5rem; /* Margem inferior */
+  font-size: 2.5rem; 
+  font-weight: 700; 
+  color: #ffffff; 
+  margin: 0 0 0.5rem; 
 }
 
 .desconto-subtitle {
-  font-size: 1.1rem; /* Tamanho médio para subtítulo */
-  color: #94a3b8; /* Cor cinza clara */
-  margin: 0; /* Remove margens */
+  font-size: 1.1rem; 
+  color: #94a3b8; 
+  margin: 0; 
 }
 
-/* ===== FORMULÁRIO DE DESCONTO ===== */
+
 .desconto-form-container {
-  background: rgba(30, 41, 59, 0.8); /* Fundo do formulário */
-  border-radius: 12px; /* Bordas arredondadas */
-  padding: 2rem; /* Espaçamento interno */
-  margin-bottom: 2rem; /* Espaçamento inferior */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda roxa */
+  background: rgba(30, 41, 59, 0.8); 
+  border-radius: 12px; 
+  padding: 2rem; 
+  margin-bottom: 2rem; 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
 }
 
 .desconto-form-title {
-  font-size: 1.5rem; /* Tamanho médio */
-  font-weight: 600; /* Peso da fonte */
-  color: #ffffff; /* Texto branco */
-  margin: 0 0 1.5rem; /* Margem inferior */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Alinha itens verticalmente */
-  gap: 0.75rem; /* Espaçamento entre elementos */
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  color: #ffffff; 
+  margin: 0 0 1.5rem; 
+  display: flex; 
+  align-items: center; 
+  gap: 0.75rem; 
 }
 
 .desconto-form-title i {
-  color: #8b5cf6; /* Cor roxa para ícone */
+  color: #8b5cf6; 
 }
 
-/* Grid responsivo para campos do formulário */
+
 .desconto-form-grid {
-  display: grid; /* Layout em grid */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colunas responsivas */
-  gap: 1.5rem; /* Espaçamento entre campos */
-  margin-bottom: 1.5rem; /* Espaçamento inferior */
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 1.5rem; 
+  margin-bottom: 1.5rem; 
 }
 
-/* Campo que ocupa toda a largura */
+
 .desconto-form-group-full {
-  grid-column: 1 / -1; /* Ocupa todas as colunas */
+  grid-column: 1 / -1; 
 }
 
-/* Grupo de campo individual */
+
 .desconto-form-group {
-  display: flex; /* Layout flexbox */
-  flex-direction: column; /* Direção vertical */
-  gap: 0.5rem; /* Espaçamento entre label e input */
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.5rem; 
 }
 
 .desconto-form-label {
-  font-size: 0.9rem; /* Tamanho pequeno */
-  font-weight: 600; /* Peso da fonte */
-  color: #ffffff; /* Texto branco */
+  font-size: 0.9rem; 
+  font-weight: 600; 
+  color: #ffffff; 
 }
 
-/* Campo de input do formulário */
+
 .desconto-form-input {
-  width: 100%; /* Largura total */
-  background: rgba(15, 23, 42, 0.8); /* Fundo escuro */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda roxa */
-  color: #ffffff; /* Texto branco */
-  padding: 0.75rem 1rem; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  transition: all 0.3s ease; /* Transição suave */
-  box-sizing: border-box; /* Inclui padding na largura */
+  width: 100%; 
+  background: rgba(15, 23, 42, 0.8); 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
+  color: #ffffff; 
+  padding: 0.75rem 1rem; 
+  border-radius: 8px; 
+  font-size: 0.9rem; 
+  transition: all 0.3s ease; 
+  box-sizing: border-box; 
 }
 
 .desconto-form-input:focus {
-  outline: none; /* Remove outline padrão */
-  border-color: #8b5cf6; /* Borda roxa no foco */
-  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2); /* Sombra roxa no foco */
+  outline: none; 
+  border-color: #8b5cf6; 
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2); 
 }
 
 .desconto-form-input::placeholder {
-  color: #94a3b8; /* Cor do placeholder */
+  color: #94a3b8; 
 }
 
-/* Container dos botões de ação */
+
 .desconto-form-actions {
-  display: flex; /* Layout flexbox */
-  gap: 1rem; /* Espaçamento entre botões */
-  justify-content: flex-end; /* Alinha à direita */
-  flex-wrap: wrap; /* Permite quebra de linha */
+  display: flex; 
+  gap: 1rem; 
+  justify-content: flex-end; 
+  flex-wrap: wrap; 
 }
 
-/* ===== SISTEMA DE BOTÕES ===== */
+
 .desconto-btn {
-  padding: 0.75rem 1.5rem; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  font-weight: 600; /* Peso da fonte */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  cursor: pointer; /* Cursor de mão */
-  transition: all 0.3s ease; /* Transição suave */
-  border: none; /* Remove borda */
-  display: inline-flex; /* Layout flexbox inline */
-  align-items: center; /* Alinha itens verticalmente */
-  gap: 0.5rem; /* Espaçamento entre ícone e texto */
-  text-decoration: none; /* Remove sublinhado */
+  padding: 0.75rem 1.5rem; 
+  border-radius: 8px; 
+  font-weight: 600; 
+  font-size: 0.9rem; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  border: none; 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  text-decoration: none; 
 }
 
 .desconto-btn:disabled {
-  opacity: 0.6; /* Reduz opacidade quando desabilitado */
-  cursor: not-allowed; /* Cursor de proibido */
+  opacity: 0.6; 
+  cursor: not-allowed; 
 }
 
-/* Botão primário (azul/roxo) */
+
 .desconto-btn-primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); /* Gradiente azul para roxo */
-  color: #ffffff; /* Texto branco */
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3); /* Sombra azul */
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); 
+  color: #ffffff; 
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3); 
 }
 
 .desconto-btn-primary:hover:not(:disabled) {
-  transform: translateY(-2px); /* Move para cima no hover */
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); /* Sombra maior no hover */
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); 
 }
 
-/* Botão outline (borda azul) */
+
 .desconto-btn-outline {
-  background: transparent; /* Fundo transparente */
-  border: 2px solid #3b82f6; /* Borda azul */
-  color: #3b82f6; /* Texto azul */
+  background: transparent; 
+  border: 2px solid #3b82f6; 
+  color: #3b82f6; 
 }
 
 .desconto-btn-outline:hover:not(:disabled) {
-  background: #3b82f6; /* Fundo azul no hover */
-  color: #ffffff; /* Texto branco no hover */
-  transform: translateY(-2px); /* Move para cima no hover */
+  background: #3b82f6; 
+  color: #ffffff; 
+  transform: translateY(-2px); 
 }
 
-/* Botão de perigo (vermelho) */
+
 .desconto-btn-danger {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); /* Gradiente vermelho */
-  color: #ffffff; /* Texto branco */
-  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3); /* Sombra vermelha */
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); 
+  color: #ffffff; 
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3); 
 }
 
 .desconto-btn-danger:hover:not(:disabled) {
-  transform: translateY(-2px); /* Move para cima no hover */
-  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4); /* Sombra maior no hover */
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4); 
 }
 
-/* Botão pequeno */
+
 .desconto-btn-sm {
-  padding: 0.5rem 1rem; /* Espaçamento interno menor */
-  font-size: 0.8rem; /* Fonte menor */
+  padding: 0.5rem 1rem; 
+  font-size: 0.8rem; 
 }
 
-/* ===== SPINNER DE CARREGAMENTO ===== */
+
 .desconto-spinner {
-  width: 16px; /* Largura do spinner */
-  height: 16px; /* Altura do spinner */
-  border: 2px solid rgba(139, 92, 246, 0.2); /* Borda do spinner */
-  border-top: 2px solid #8b5cf6; /* Borda superior colorida */
-  border-radius: 50%; /* Forma circular */
-  animation: spin 1s linear infinite; /* Animação de rotação */
+  width: 16px; 
+  height: 16px; 
+  border: 2px solid rgba(139, 92, 246, 0.2); 
+  border-top: 2px solid #8b5cf6; 
+  border-radius: 50%; 
+  animation: spin 1s linear infinite; 
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); } /* Rotação inicial */
-  100% { transform: rotate(360deg); } /* Rotação final */
+  0% { transform: rotate(0deg); } 
+  100% { transform: rotate(360deg); } 
 }
 
-/* ===== LISTA DE DESCONTOS ===== */
+
 .desconto-list-container {
-  background: rgba(30, 41, 59, 0.8); /* Fundo da lista */
-  border-radius: 12px; /* Bordas arredondadas */
-  padding: 2rem; /* Espaçamento interno */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda roxa */
+  background: rgba(30, 41, 59, 0.8); 
+  border-radius: 12px; 
+  padding: 2rem; 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
 }
 
 .desconto-list-header {
-  display: flex; /* Layout flexbox */
-  justify-content: space-between; /* Distribui espaço entre elementos */
-  align-items: center; /* Alinha itens verticalmente */
-  margin-bottom: 1.5rem; /* Espaçamento inferior */
-  flex-wrap: wrap; /* Permite quebra de linha */
-  gap: 1rem; /* Espaçamento entre elementos */
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 1.5rem; 
+  flex-wrap: wrap; 
+  gap: 1rem; 
 }
 
 .desconto-list-title {
-  font-size: 1.5rem; /* Tamanho médio */
-  font-weight: 600; /* Peso da fonte */
-  color: #ffffff; /* Texto branco */
-  margin: 0; /* Remove margens */
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  color: #ffffff; 
+  margin: 0; 
 }
 
-/* Badge de estatísticas */
+
 .desconto-stats-badge {
-  background: rgba(139, 92, 246, 0.2); /* Fundo roxo semi-transparente */
-  color: #a78bfa; /* Texto roxo */
-  padding: 0.5rem 1rem; /* Espaçamento interno */
-  border-radius: 20px; /* Bordas muito arredondadas */
-  font-size: 0.9rem; /* Tamanho pequeno */
-  font-weight: 600; /* Peso da fonte */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Alinha itens verticalmente */
-  gap: 0.5rem; /* Espaçamento entre elementos */
-  border: 1px solid rgba(139, 92, 246, 0.3); /* Borda roxa */
+  background: rgba(139, 92, 246, 0.2); 
+  color: #a78bfa; 
+  padding: 0.5rem 1rem; 
+  border-radius: 20px; 
+  font-size: 0.9rem; 
+  font-weight: 600; 
+  display: flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  border: 1px solid rgba(139, 92, 246, 0.3); 
 }
 
-/* ===== ESTADOS ESPECIAIS ===== */
+
 .desconto-loading,
 .desconto-empty {
-  text-align: center; /* Centraliza texto */
-  padding: 3rem 2rem; /* Espaçamento interno */
+  text-align: center; 
+  padding: 3rem 2rem; 
 }
 
 .desconto-loading .desconto-spinner {
-  width: 40px; /* Spinner maior para loading */
-  height: 40px; /* Altura proporcional */
-  border-width: 3px; /* Borda mais grossa */
-  margin: 0 auto 1rem; /* Centraliza e adiciona margem inferior */
+  width: 40px; 
+  height: 40px; 
+  border-width: 3px; 
+  margin: 0 auto 1rem; 
 }
 
 .desconto-loading-text {
-  color: #94a3b8; /* Texto cinza */
-  font-size: 0.9rem; /* Tamanho pequeno */
+  color: #94a3b8; 
+  font-size: 0.9rem; 
 }
 
 .desconto-empty i {
-  font-size: 3rem; /* Ícone grande */
-  color: #94a3b8; /* Cor cinza */
-  margin-bottom: 1rem; /* Espaçamento inferior */
+  font-size: 3rem; 
+  color: #94a3b8; 
+  margin-bottom: 1rem; 
 }
 
 .desconto-empty-title {
-  color: #ffffff; /* Texto branco */
-  font-size: 1.5rem; /* Tamanho médio */
-  font-weight: 600; /* Peso da fonte */
-  margin-bottom: 0.5rem; /* Espaçamento inferior */
+  color: #ffffff; 
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  margin-bottom: 0.5rem; 
 }
 
 .desconto-empty-text {
-  color: #94a3b8; /* Texto cinza */
-  font-size: 0.9rem; /* Tamanho pequeno */
+  color: #94a3b8; 
+  font-size: 0.9rem; 
 }
 
-/* ===== TABELA DE DESCONTOS ===== */
+
 .desconto-table-container {
-  background: rgba(15, 23, 42, 0.8); /* Fundo da tabela */
-  border-radius: 8px; /* Bordas arredondadas */
-  overflow: hidden; /* Esconde conteúdo que ultrapassa */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda roxa */
+  background: rgba(15, 23, 42, 0.8); 
+  border-radius: 8px; 
+  overflow: hidden; 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
 }
 
-/* Container responsivo para tabela */
+
 .desconto-table-responsive {
-  overflow-x: auto; /* Scroll horizontal se necessário */
+  overflow-x: auto; 
 }
 
 .desconto-table {
-  width: 100%; /* Largura total */
-  border-collapse: collapse; /* Remove espaçamento entre células */
-  background: #1e293b; /* Fundo da tabela */
+  width: 100%; 
+  border-collapse: collapse; 
+  background: #1e293b; 
 }
 
-/* Cabeçalho da tabela */
+
 .desconto-table thead {
-  background: rgba(15, 23, 42, 0.8); /* Fundo do cabeçalho */
+  background: rgba(15, 23, 42, 0.8); 
 }
 
 .desconto-table th {
-  padding: 1rem; /* Espaçamento interno */
-  text-align: left; /* Alinha texto à esquerda */
-  color: #ffffff; /* Texto branco */
-  font-weight: 600; /* Peso da fonte */
-  font-size: 0.9rem; /* Tamanho pequeno */
-  border-bottom: 1px solid rgba(139, 92, 246, 0.2); /* Borda inferior roxa */
+  padding: 1rem; 
+  text-align: left; 
+  color: #ffffff; 
+  font-weight: 600; 
+  font-size: 0.9rem; 
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2); 
 }
 
-/* Coluna de ações com largura fixa */
+
 .desconto-th-actions {
-  width: 120px; /* Largura fixa para coluna de ações */
+  width: 120px; 
 }
 
-/* Células da tabela */
+
 .desconto-table td {
-  padding: 1rem; /* Espaçamento interno */
-  border-bottom: 1px solid rgba(139, 92, 246, 0.1); /* Borda inferior sutil */
-  color: #ffffff; /* Texto branco */
-  font-size: 0.9rem; /* Tamanho pequeno */
+  padding: 1rem; 
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1); 
+  color: #ffffff; 
+  font-size: 0.9rem; 
 }
 
-/* Hover nas linhas da tabela */
+
 .desconto-table-row:hover {
-  background: rgba(139, 92, 246, 0.05); /* Fundo roxo sutil no hover */
+  background: rgba(139, 92, 246, 0.05); 
 }
 
-/* ===== ESTILOS ESPECÍFICOS DAS CÉLULAS ===== */
+
 .desconto-description {
-  font-weight: 600; /* Peso da fonte */
-  color: #ffffff; /* Texto branco */
-  font-size: 0.9rem; /* Tamanho pequeno */
+  font-weight: 600; 
+  color: #ffffff; 
+  font-size: 0.9rem; 
 }
 
-/* Badge de desconto */
+
 .desconto-discount-badge {
-  background: rgba(16, 185, 129, 0.2); /* Fundo verde semi-transparente */
-  color: #34d399; /* Texto verde */
-  padding: 0.25rem 0.75rem; /* Espaçamento interno */
-  border-radius: 20px; /* Bordas muito arredondadas */
-  font-size: 0.8rem; /* Tamanho pequeno */
-  font-weight: 600; /* Peso da fonte */
-  border: 1px solid rgba(16, 185, 129, 0.3); /* Borda verde */
+  background: rgba(16, 185, 129, 0.2); 
+  color: #34d399; 
+  padding: 0.25rem 0.75rem; 
+  border-radius: 20px; 
+  font-size: 0.8rem; 
+  font-weight: 600; 
+  border: 1px solid rgba(16, 185, 129, 0.3); 
 }
 
-/* ID do produto */
+
 .desconto-product-id {
-  color: #3b82f6; /* Texto azul */
-  font-weight: 600; /* Peso da fonte */
-  font-size: 0.9rem; /* Tamanho pequeno */
+  color: #3b82f6; 
+  font-weight: 600; 
+  font-size: 0.9rem; 
 }
 
-/* Texto de data */
+
 .desconto-date-text {
-  color: #94a3b8; /* Texto cinza */
-  font-size: 0.85rem; /* Tamanho muito pequeno */
+  color: #94a3b8; 
+  font-size: 0.85rem; 
 }
 
-/* Badge de status */
+
 .desconto-status-badge {
-  padding: 0.25rem 0.75rem; /* Espaçamento interno */
-  border-radius: 20px; /* Bordas muito arredondadas */
-  font-size: 0.8rem; /* Tamanho pequeno */
-  font-weight: 600; /* Peso da fonte */
-  display: inline-block; /* Comportamento de bloco inline */
+  padding: 0.25rem 0.75rem; 
+  border-radius: 20px; 
+  font-size: 0.8rem; 
+  font-weight: 600; 
+  display: inline-block; 
 }
 
-/* Status pendente (amarelo) */
+
 .desconto-status-pending {
-  background: rgba(245, 158, 11, 0.2); /* Fundo amarelo semi-transparente */
-  color: #fbbf24; /* Texto amarelo */
-  border: 1px solid rgba(245, 158, 11, 0.3); /* Borda amarela */
+  background: rgba(245, 158, 11, 0.2); 
+  color: #fbbf24; 
+  border: 1px solid rgba(245, 158, 11, 0.3); 
 }
 
-/* Status ativo (verde) */
+
 .desconto-status-active {
-  background: rgba(16, 185, 129, 0.2); /* Fundo verde semi-transparente */
-  color: #34d399; /* Texto verde */
-  border: 1px solid rgba(16, 185, 129, 0.3); /* Borda verde */
+  background: rgba(16, 185, 129, 0.2); 
+  color: #34d399; 
+  border: 1px solid rgba(16, 185, 129, 0.3); 
 }
 
-/* Status expirado (vermelho) */
+
 .desconto-status-expired {
-  background: rgba(239, 68, 68, 0.2); /* Fundo vermelho semi-transparente */
-  color: #f87171; /* Texto vermelho */
-  border: 1px solid rgba(239, 68, 68, 0.3); /* Borda vermelha */
+  background: rgba(239, 68, 68, 0.2); 
+  color: #f87171; 
+  border: 1px solid rgba(239, 68, 68, 0.3); 
 }
 
-/* Container dos botões de ação */
+
 .desconto-actions {
-  display: flex; /* Layout flexbox */
-  gap: 0.5rem; /* Espaçamento entre botões */
-  align-items: center; /* Alinha itens verticalmente */
+  display: flex; 
+  gap: 0.5rem; 
+  align-items: center; 
 }
 
-/* ===== PAGINAÇÃO ===== */
+
 .desconto-pagination {
-  display: flex; /* Layout flexbox */
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Alinha itens verticalmente */
-  gap: 1rem; /* Espaçamento entre elementos */
-  padding: 1.5rem; /* Espaçamento interno */
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
-  border-top: 1px solid rgba(139, 92, 246, 0.2); /* Borda superior roxa */
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 1rem; 
+  padding: 1.5rem; 
+  background: rgba(15, 23, 42, 0.8); 
+  border-top: 1px solid rgba(139, 92, 246, 0.2); 
 }
 
 .desconto-pagination-info {
-  color: #94a3b8; /* Texto cinza */
-  font-size: 0.9rem; /* Tamanho pequeno */
-  font-weight: 500; /* Peso da fonte */
+  color: #94a3b8; 
+  font-size: 0.9rem; 
+  font-weight: 500; 
 }
 
-/* ===== MODAL DE CONFIRMAÇÃO ===== */
-/* Overlay escuro do modal */
+
+
 .desconto-confirm-modal-overlay {
-  position: fixed; /* Posição fixa na tela */
-  top: 0; /* Topo da tela */
-  left: 0; /* Esquerda da tela */
-  right: 0; /* Direita da tela */
-  bottom: 0; /* Baixo da tela */
-  background: rgba(0, 0, 0, 0.8); /* Fundo preto semi-transparente */
-  z-index: 10000; /* Fica acima de outros elementos */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  padding: 2rem; /* Espaçamento interno */
-  backdrop-filter: blur(4px); /* Efeito de blur no fundo */
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  background: rgba(0, 0, 0, 0.8); 
+  z-index: 10000; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 2rem; 
+  backdrop-filter: blur(4px); 
 }
 
-/* Container do modal */
+
 .desconto-confirm-modal {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* Gradiente escuro */
-  border-radius: 16px; /* Bordas arredondadas */
-  max-width: 400px; /* Largura máxima */
-  width: 100%; /* Largura total disponível */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda roxa */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Sombra profunda */
-  overflow: hidden; /* Esconde conteúdo que ultrapassa */
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
+  border-radius: 16px; 
+  max-width: 400px; 
+  width: 100%; 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); 
+  overflow: hidden; 
 }
 
 .desconto-confirm-content {
-  padding: 2rem; /* Espaçamento interno */
+  padding: 2rem; 
 }
 
-/* Cabeçalho do modal */
+
 .desconto-confirm-header {
-  text-align: center; /* Centraliza texto */
-  margin-bottom: 1.5rem; /* Espaçamento inferior */
-  display: flex; /* Layout flexbox */
-  flex-direction: column; /* Direção vertical */
-  align-items: center; /* Centraliza horizontalmente */
-  gap: 1rem; /* Espaçamento entre elementos */
+  text-align: center; 
+  margin-bottom: 1.5rem; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 1rem; 
 }
 
 .desconto-confirm-header i {
-  font-size: 3rem; /* Ícone grande */
-  color: #f59e0b; /* Cor amarela */
+  font-size: 3rem; 
+  color: #f59e0b; 
 }
 
 .desconto-confirm-header h3 {
-  font-size: 1.5rem; /* Tamanho médio */
-  font-weight: 700; /* Peso da fonte */
-  color: #ffffff; /* Texto branco */
-  margin: 0; /* Remove margens */
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  color: #ffffff; 
+  margin: 0; 
 }
 
-/* Corpo do modal */
+
 .desconto-confirm-body {
-  text-align: center; /* Centraliza texto */
-  margin-bottom: 2rem; /* Espaçamento inferior */
+  text-align: center; 
+  margin-bottom: 2rem; 
 }
 
 .desconto-confirm-body p {
-  color: #e2e8f0; /* Texto cinza claro */
-  font-size: 1rem; /* Tamanho médio */
-  line-height: 1.6; /* Altura da linha */
-  margin: 0 0 0.5rem; /* Margem inferior */
+  color: #e2e8f0; 
+  font-size: 1rem; 
+  line-height: 1.6; 
+  margin: 0 0 0.5rem; 
 }
 
-/* Aviso importante */
+
 .desconto-confirm-warning {
-  color: #f59e0b !important; /* Cor amarela para avisos */
-  font-weight: 600; /* Peso da fonte */
-  font-size: 0.9rem !important; /* Tamanho pequeno */
+  color: #f59e0b !important; 
+  font-weight: 600; 
+  font-size: 0.9rem !important; 
 }
 
-/* Ações do modal */
+
 .desconto-confirm-actions {
-  display: flex; /* Layout flexbox */
-  gap: 1rem; /* Espaçamento entre botões */
-  justify-content: center; /* Centraliza horizontalmente */
+  display: flex; 
+  gap: 1rem; 
+  justify-content: center; 
 }
 
-/* Botões do modal */
+
 .desconto-confirm-btn-cancel,
 .desconto-confirm-btn-confirm {
-  padding: 0.75rem 1.5rem; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  font-weight: 600; /* Peso da fonte */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  cursor: pointer; /* Cursor de mão */
-  transition: all 0.3s ease; /* Transição suave */
-  border: none; /* Remove borda */
-  min-width: 100px; /* Largura mínima */
-  min-height: 44px; /* Altura mínima para acessibilidade */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  gap: 0.5rem; /* Espaçamento entre elementos */
+  padding: 0.75rem 1.5rem; 
+  border-radius: 8px; 
+  font-weight: 600; 
+  font-size: 0.9rem; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  border: none; 
+  min-width: 100px; 
+  min-height: 44px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 0.5rem; 
 }
 
-/* Botão cancelar */
+
 .desconto-confirm-btn-cancel {
-  background: rgba(100, 116, 139, 0.2); /* Fundo cinza semi-transparente */
-  color: #94a3b8; /* Texto cinza */
-  border: 1px solid rgba(100, 116, 139, 0.3); /* Borda cinza */
+  background: rgba(100, 116, 139, 0.2); 
+  color: #94a3b8; 
+  border: 1px solid rgba(100, 116, 139, 0.3); 
 }
 
 .desconto-confirm-btn-cancel:hover {
-  background: rgba(100, 116, 139, 0.3); /* Fundo mais escuro no hover */
-  color: #ffffff; /* Texto branco no hover */
+  background: rgba(100, 116, 139, 0.3); 
+  color: #ffffff; 
 }
 
-/* Botão confirmar */
+
 .desconto-confirm-btn-confirm {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); /* Gradiente vermelho */
-  color: #ffffff; /* Texto branco */
-  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3); /* Sombra vermelha */
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); 
+  color: #ffffff; 
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3); 
 }
 
 .desconto-confirm-btn-confirm:hover:not(:disabled) {
-  transform: translateY(-2px); /* Move para cima no hover */
-  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4); /* Sombra maior no hover */
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4); 
 }
 
 .desconto-confirm-btn-confirm:disabled {
-  opacity: 0.6; /* Reduz opacidade quando desabilitado */
-  cursor: not-allowed; /* Cursor de proibido */
-  transform: none; /* Remove transformação */
+  opacity: 0.6; 
+  cursor: not-allowed; 
+  transform: none; 
 }
 
-/* ===== RESPONSIVIDADE ===== */
+
 @media (max-width: 768px) {
   .desconto-container {
-    padding: 0 1rem; /* Reduz espaçamento horizontal */
+    padding: 0 1rem; 
   }
   
   .desconto-wrapper {
-    padding: 1.5rem; /* Reduz espaçamento interno */
+    padding: 1.5rem; 
   }
   
   .desconto-title {
-    font-size: 2rem; /* Reduz tamanho do título */
+    font-size: 2rem; 
   }
   
   .desconto-form-grid {
-    grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
-    gap: 1rem; /* Reduz espaçamento */
+    grid-template-columns: 1fr; 
+    gap: 1rem; 
   }
   
   .desconto-form-actions {
-    flex-direction: column; /* Empilha botões verticalmente */
+    flex-direction: column; 
   }
   
   .desconto-list-header {
-    flex-direction: column; /* Empilha elementos verticalmente */
-    align-items: stretch; /* Estica elementos */
-    text-align: center; /* Centraliza texto */
+    flex-direction: column; 
+    align-items: stretch; 
+    text-align: center; 
   }
   
   .desconto-table {
-    font-size: 0.8rem; /* Reduz tamanho da fonte */
+    font-size: 0.8rem; 
   }
   
   .desconto-table th,
   .desconto-table td {
-    padding: 0.75rem 0.5rem; /* Reduz espaçamento interno */
+    padding: 0.75rem 0.5rem; 
   }
   
   .desconto-actions {
-    flex-direction: column; /* Empilha botões verticalmente */
-    gap: 0.25rem; /* Reduz espaçamento */
+    flex-direction: column; 
+    gap: 0.25rem; 
   }
   
   .desconto-pagination {
-    flex-direction: column; /* Empilha elementos verticalmente */
-    gap: 0.5rem; /* Reduz espaçamento */
+    flex-direction: column; 
+    gap: 0.5rem; 
   }
 }
 
 @media (max-width: 480px) {
   .desconto-wrapper {
-    padding: 1rem; /* Reduz espaçamento interno */
+    padding: 1rem; 
   }
   
   .desconto-title {
-    font-size: 1.5rem; /* Título ainda menor em telas muito pequenas */
+    font-size: 1.5rem; 
   }
   
   .desconto-form-container,
   .desconto-list-container {
-    padding: 1.5rem; /* Reduz espaçamento interno */
+    padding: 1.5rem; 
   }
   
   .desconto-table {
-    font-size: 0.75rem; /* Fonte ainda menor */
+    font-size: 0.75rem; 
   }
   
   .desconto-table th,
   .desconto-table td {
-    padding: 0.5rem 0.25rem; /* Reduz ainda mais o espaçamento */
+    padding: 0.5rem 0.25rem; 
   }
   
-  /* Modal responsivo para mobile */
+  
   .desconto-confirm-modal-overlay {
-    padding: 1rem; /* Reduz espaçamento do overlay */
+    padding: 1rem; 
   }
   
   .desconto-confirm-content {
-    padding: 1.5rem; /* Reduz espaçamento interno */
+    padding: 1.5rem; 
   }
   
   .desconto-confirm-header h3 {
-    font-size: 1.25rem; /* Reduz tamanho do título */
+    font-size: 1.25rem; 
   }
   
   .desconto-confirm-header i {
-    font-size: 2.5rem; /* Reduz tamanho do ícone */
+    font-size: 2.5rem; 
   }
   
   .desconto-confirm-actions {
-    flex-direction: column; /* Empilha botões verticalmente */
+    flex-direction: column; 
   }
   
   .desconto-confirm-btn-cancel,
   .desconto-confirm-btn-confirm {
-    width: 100%; /* Botões ocupam toda a largura */
+    width: 100%; 
   }
 }

@@ -1,477 +1,437 @@
-/* ===== CSS DE CONTATO - VERSÃO OTIMIZADA ===== */
-/* 
-  Este arquivo contém estilos para a página de contato
-  Foi otimizado para reduzir redundância e melhorar manutenibilidade
-  Inclui formulário, informações de contato e notificações toast
-*/
 
-/* ===== VARIÁVEIS CSS (cores e valores reutilizáveis) ===== */
-/* 
-  As variáveis CSS centralizam cores e valores em um local
-  Facilitam manutenção e garantem consistência visual
-*/
+
 :root {
-  --primary-bg: #0f172a;        /* Fundo principal (azul escuro) */
-  --secondary-bg: #1e293b;      /* Fundo secundário (azul médio) */
-  --accent-blue: #60a5fa;       /* Cor de destaque azul */
-  --accent-purple: #8b5cf6;     /* Cor de destaque roxa */
-  --text-white: #ffffff;        /* Texto branco */
-  --text-muted: #94a3b8;        /* Texto secundário */
-  --text-placeholder: #64748b;  /* Texto de placeholder */
-  --border-color: rgba(139, 92, 246, 0.2); /* Borda com transparência */
-  --success-color: #10b981;     /* Cor de sucesso (verde) */
-  --shadow-dark: rgba(0, 0, 0, 0.3); /* Sombra escura */
-  --shadow-blue: rgba(59, 130, 246, 0.3); /* Sombra azul */
+  --primary-bg: #0f172a;        
+  --secondary-bg: #1e293b;      
+  --accent-blue: #60a5fa;       
+  --accent-purple: #8b5cf6;     
+  --text-white: #ffffff;        
+  --text-muted: #94a3b8;        
+  --text-placeholder: #64748b;  
+  --border-color: rgba(139, 92, 246, 0.2); 
+  --success-color: #10b981;     
+  --shadow-dark: rgba(0, 0, 0, 0.3); 
+  --shadow-blue: rgba(59, 130, 246, 0.3); 
 }
 
-/* ===== LAYOUT PRINCIPAL ===== */
-/* 
-  Estrutura principal da página de contato
-  Define containers, background e espaçamentos
-*/
 
-/* Seção principal com gradiente de fundo */
+
+
+
 .contato-section {
-  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%); /* Gradiente azul escuro */
-  min-height: 100vh; /* Altura mínima de 100% da viewport */
-  padding: 2rem 0; /* Espaçamento vertical interno */
+  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%); 
+  min-height: 100vh; 
+  padding: 2rem 0; 
 }
 
-/* Container para centralizar e limitar largura */
+
 .contato-container {
-  max-width: 1200px; /* Largura máxima para telas grandes */
-  margin: 0 auto; /* Centraliza horizontalmente */
-  padding: 0 2rem; /* Espaçamento horizontal interno */
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 2rem; 
 }
 
-/* ===== HEADER E TÍTULOS ===== */
-/* 
-  Cabeçalho da página com título e subtítulo
-  Define hierarquia visual e tipografia
-*/
 
-/* Cabeçalho centralizado */
+
+
+
 .contato-header {
-  text-align: center; /* Centraliza o conteúdo */
-  margin-bottom: 3rem; /* Espaçamento inferior */
+  text-align: center; 
+  margin-bottom: 3rem; 
 }
 
-/* Título principal da página */
+
 .contato-title {
-  font-size: 3rem; /* Tamanho grande para hierarquia */
-  font-weight: 700; /* Peso negrito */
-  color: var(--text-white); /* Cor branca para contraste */
-  margin: 0 0 1rem; /* Margem inferior */
+  font-size: 3rem; 
+  font-weight: 700; 
+  color: var(--text-white); 
+  margin: 0 0 1rem; 
 }
 
-/* Subtítulo descritivo */
+
 .contato-subtitle {
-  font-size: 1.2rem; /* Tamanho médio */
-  color: var(--text-muted); /* Cor secundária */
-  max-width: 600px; /* Largura máxima para legibilidade */
-  margin: 0 auto; /* Centraliza horizontalmente */
-  line-height: 1.6; /* Altura da linha para melhor leitura */
+  font-size: 1.2rem; 
+  color: var(--text-muted); 
+  max-width: 600px; 
+  margin: 0 auto; 
+  line-height: 1.6; 
 }
 
-/* ===== LAYOUT DO CONTEÚDO ===== */
-/* 
-  Grid responsivo para organizar informações e formulário
-  Duas colunas em telas grandes, uma em telas pequenas
-*/
 
-/* Grid de duas colunas para desktop */
+
+
+
 .contato-content {
-  display: grid; /* Layout em grid */
-  grid-template-columns: 1fr 1fr; /* Duas colunas de tamanho igual */
-  gap: 3rem; /* Espaçamento entre colunas */
-  align-items: start; /* Alinha itens ao topo */
-  margin-bottom: 3rem; /* Espaçamento inferior */
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 3rem; 
+  align-items: start; 
+  margin-bottom: 3rem; 
 }
 
-/* ===== SEÇÃO DE INFORMAÇÕES ===== */
-/* 
-  Área lateral com informações de contato
-  Inclui ícones, labels e textos descritivos
-*/
 
-/* Container das informações com fundo e bordas */
+
+
+
 .contato-info {
-  background: rgba(30, 41, 59, 0.8); /* Fundo semi-transparente */
-  padding: 2rem; /* Espaçamento interno */
-  border-radius: 16px; /* Bordas arredondadas */
-  box-shadow: 0 8px 32px var(--shadow-dark); /* Sombra para profundidade */
-  border: 1px solid var(--border-color); /* Borda sutil */
+  background: rgba(30, 41, 59, 0.8); 
+  padding: 2rem; 
+  border-radius: 16px; 
+  box-shadow: 0 8px 32px var(--shadow-dark); 
+  border: 1px solid var(--border-color); 
 }
 
-/* Título da seção de informações */
+
 .contato-info-title {
-  font-size: 1.5rem; /* Tamanho médio */
-  font-weight: 600; /* Peso semi-negrito */
-  color: var(--accent-blue); /* Cor azul de destaque */
-  margin: 0 0 1.5rem; /* Margem inferior */
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  color: var(--accent-blue); 
+  margin: 0 0 1.5rem; 
 }
 
-/* Item individual de informação */
+
 .contato-info-item {
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  margin-bottom: 1.5rem; /* Espaçamento inferior */
-  padding: 1rem; /* Espaçamento interno */
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
-  border-radius: 12px; /* Bordas arredondadas */
-  border: 1px solid var(--border-color); /* Borda sutil */
-  transition: all 0.3s ease; /* Transição suave para hover */
+  display: flex; 
+  align-items: center; 
+  margin-bottom: 1.5rem; 
+  padding: 1rem; 
+  background: rgba(15, 23, 42, 0.8); 
+  border-radius: 12px; 
+  border: 1px solid var(--border-color); 
+  transition: all 0.3s ease; 
 }
 
-/* Efeito hover nos itens de informação */
+
 .contato-info-item:hover {
-  border-color: rgba(139, 92, 246, 0.4); /* Borda mais visível no hover */
-  transform: translateY(-2px); /* Move para cima */
+  border-color: rgba(139, 92, 246, 0.4); 
+  transform: translateY(-2px); 
 }
 
-/* Ícone do item de informação */
+
 .contato-info-icon {
-  font-size: 1.5rem; /* Tamanho do ícone */
-  color: var(--accent-blue); /* Cor azul */
-  margin-right: 1rem; /* Espaçamento à direita */
-  min-width: 24px; /* Largura mínima para alinhamento */
+  font-size: 1.5rem; 
+  color: var(--accent-blue); 
+  margin-right: 1rem; 
+  min-width: 24px; 
 }
 
-/* Conteúdo textual do item */
+
 .contato-info-content {
-  flex: 1; /* Ocupa espaço restante */
+  flex: 1; 
 }
 
-/* Label do item de informação */
+
 .contato-info-label {
-  font-size: 1rem; /* Tamanho da fonte */
-  font-weight: 600; /* Peso semi-negrito */
-  color: var(--text-white); /* Cor branca */
-  margin: 0 0 0.25rem; /* Margem inferior pequena */
+  font-size: 1rem; 
+  font-weight: 600; 
+  color: var(--text-white); 
+  margin: 0 0 0.25rem; 
 }
 
-/* Texto descritivo do item */
+
 .contato-info-text {
-  font-size: 0.9rem; /* Tamanho pequeno */
-  color: var(--text-muted); /* Cor secundária */
-  margin: 0; /* Remove margens */
-  line-height: 1.5; /* Altura da linha */
+  font-size: 0.9rem; 
+  color: var(--text-muted); 
+  margin: 0; 
+  line-height: 1.5; 
 }
 
-/* ===== SEÇÃO DO FORMULÁRIO ===== */
-/* 
-  Formulário de contato com campos de entrada
-  Inclui validação visual e estados de foco
-*/
 
-/* Container do formulário */
+
+
+
 .contato-form {
-  background: rgba(30, 41, 59, 0.8); /* Fundo semi-transparente */
-  padding: 2rem; /* Espaçamento interno */
-  border-radius: 16px; /* Bordas arredondadas */
-  box-shadow: 0 8px 32px var(--shadow-dark); /* Sombra */
-  border: 1px solid var(--border-color); /* Borda sutil */
+  background: rgba(30, 41, 59, 0.8); 
+  padding: 2rem; 
+  border-radius: 16px; 
+  box-shadow: 0 8px 32px var(--shadow-dark); 
+  border: 1px solid var(--border-color); 
 }
 
-/* Título do formulário */
+
 .contato-form-title {
-  font-size: 1.5rem; /* Tamanho médio */
-  font-weight: 600; /* Peso semi-negrito */
-  color: var(--accent-blue); /* Cor azul */
-  margin: 0 0 1rem; /* Margem inferior */
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  color: var(--accent-blue); 
+  margin: 0 0 1rem; 
 }
 
-/* Descrição do formulário */
+
 .contato-form-description {
-  font-size: 0.9rem; /* Tamanho pequeno */
-  color: var(--text-muted); /* Cor secundária */
-  margin: 0 0 1.5rem; /* Margem inferior */
-  line-height: 1.5; /* Altura da linha */
+  font-size: 0.9rem; 
+  color: var(--text-muted); 
+  margin: 0 0 1.5rem; 
+  line-height: 1.5; 
 }
 
-/* Container dos campos do formulário */
+
 .contato-form-content {
-  display: flex; /* Layout flexbox */
-  flex-direction: column; /* Direção vertical */
-  gap: 1rem; /* Espaçamento entre campos */
+  display: flex; 
+  flex-direction: column; 
+  gap: 1rem; 
 }
 
-/* Grupo de campos do formulário */
+
 .contato-form-group {
-  margin-bottom: 1rem; /* Espaçamento inferior */
+  margin-bottom: 1rem; 
 }
 
-/* Label dos campos com ícone */
+
 .contato-form-label {
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 0.5rem; /* Espaçamento entre ícone e texto */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  font-weight: 500; /* Peso médio */
-  color: var(--text-white); /* Cor branca */
-  margin-bottom: 0.5rem; /* Margem inferior */
+  display: flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  font-size: 0.9rem; 
+  font-weight: 500; 
+  color: var(--text-white); 
+  margin-bottom: 0.5rem; 
 }
 
-/* Ícone do label */
+
 .contato-form-label i {
-  color: var(--accent-blue); /* Cor azul */
+  color: var(--accent-blue); 
 }
 
-/* ===== CAMPOS DE ENTRADA ===== */
-/* 
-  Estilos para diferentes tipos de campos
-  Input, select e textarea com estados de foco
-*/
 
-/* Estilo base para todos os campos */
+
+
+
 .contato-form-input,
 .contato-form-select,
 .contato-form-textarea {
-  width: 100%; /* Ocupa toda a largura disponível */
-  padding: 0.75rem 1rem; /* Espaçamento interno */
-  border: 2px solid var(--border-color); /* Borda com transparência */
-  border-radius: 12px; /* Bordas arredondadas */
-  font-size: 1rem; /* Tamanho da fonte */
-  transition: all 0.3s ease; /* Transição suave */
-  background: rgba(30, 41, 59, 0.8); /* Fundo semi-transparente */
-  color: var(--text-white); /* Cor do texto */
-  box-sizing: border-box; /* Inclui padding e border na largura */
+  width: 100%; 
+  padding: 0.75rem 1rem; 
+  border: 2px solid var(--border-color); 
+  border-radius: 12px; 
+  font-size: 1rem; 
+  transition: all 0.3s ease; 
+  background: rgba(30, 41, 59, 0.8); 
+  color: var(--text-white); 
+  box-sizing: border-box; 
 }
 
-/* Estado de foco dos campos */
+
 .contato-form-input:focus,
 .contato-form-select:focus,
 .contato-form-textarea:focus {
-  outline: none; /* Remove outline padrão */
-  border-color: var(--accent-purple); /* Borda roxa no foco */
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1); /* Sombra roxa sutil */
-  background: rgba(30, 41, 59, 1); /* Fundo mais opaco no foco */
+  outline: none; 
+  border-color: var(--accent-purple); 
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1); 
+  background: rgba(30, 41, 59, 1); 
 }
 
-/* Placeholder dos campos */
+
 .contato-form-input::placeholder,
 .contato-form-textarea::placeholder {
-  color: var(--text-placeholder); /* Cor cinza para placeholder */
+  color: var(--text-placeholder); 
 }
 
-/* Campo de texto multilinha */
+
 .contato-form-textarea {
-  min-height: 120px; /* Altura mínima */
-  resize: vertical; /* Permite redimensionar apenas verticalmente */
+  min-height: 120px; 
+  resize: vertical; 
 }
 
-/* ===== BOTÃO DE ENVIO ===== */
-/* 
-  Botão principal do formulário
-  Inclui gradiente, sombra e efeitos hover
-*/
 
-/* Botão de envio com gradiente */
+
+
+
 .contato-form-submit {
-  width: 100%; /* Ocupa toda a largura */
-  padding: 1rem; /* Espaçamento interno */
-  background: linear-gradient(135deg, #3b82f6 0%, var(--accent-purple) 100%); /* Gradiente azul para roxo */
-  color: var(--text-white); /* Texto branco */
-  border: none; /* Remove borda */
-  border-radius: 12px; /* Bordas arredondadas */
-  font-size: 1rem; /* Tamanho da fonte */
-  font-weight: 600; /* Peso semi-negrito */
-  cursor: pointer; /* Cursor de mão */
-  transition: all 0.3s ease; /* Transição suave */
-  box-shadow: 0 4px 16px var(--shadow-blue); /* Sombra azul */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  gap: 0.5rem; /* Espaçamento entre ícone e texto */
+  width: 100%; 
+  padding: 1rem; 
+  background: linear-gradient(135deg, #3b82f6 0%, var(--accent-purple) 100%); 
+  color: var(--text-white); 
+  border: none; 
+  border-radius: 12px; 
+  font-size: 1rem; 
+  font-weight: 600; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  box-shadow: 0 4px 16px var(--shadow-blue); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 0.5rem; 
 }
 
-/* Efeito hover do botão */
+
 .contato-form-submit:hover:not(:disabled) {
-  transform: translateY(-3px); /* Move para cima */
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4); /* Sombra mais intensa */
+  transform: translateY(-3px); 
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4); 
 }
 
-/* Estado desabilitado do botão */
+
 .contato-form-submit:disabled {
-  opacity: 0.7; /* Reduz opacidade */
-  cursor: not-allowed; /* Cursor de proibido */
+  opacity: 0.7; 
+  cursor: not-allowed; 
 }
 
-/* ===== NOTIFICAÇÕES TOAST ===== */
-/* 
-  Sistema de notificações que aparecem no canto superior direito
-  Usado para feedback de sucesso/erro do formulário
-*/
 
-/* Container das notificações toast */
+
+
+
 .contato-toast-container {
-  position: fixed; /* Posição fixa na tela */
-  top: 1.5rem; /* Distância do topo */
-  right: 1.5rem; /* Distância da direita */
-  z-index: 1001; /* Camada alta para ficar sobre outros elementos */
+  position: fixed; 
+  top: 1.5rem; 
+  right: 1.5rem; 
+  z-index: 1001; 
 }
 
-/* Notificação individual */
+
 .contato-toast {
-  background: rgba(30, 41, 59, 0.95); /* Fundo semi-transparente */
-  border-radius: 12px; /* Bordas arredondadas */
-  box-shadow: 0 8px 32px var(--shadow-dark); /* Sombra */
-  border: 1px solid var(--border-color); /* Borda sutil */
-  max-width: 400px; /* Largura máxima */
-  opacity: 0; /* Inicialmente invisível */
-  transform: translateX(100%); /* Começa fora da tela (direita) */
-  transition: all 0.3s ease; /* Transição suave */
+  background: rgba(30, 41, 59, 0.95); 
+  border-radius: 12px; 
+  box-shadow: 0 8px 32px var(--shadow-dark); 
+  border: 1px solid var(--border-color); 
+  max-width: 400px; 
+  opacity: 0; 
+  transform: translateX(100%); 
+  transition: all 0.3s ease; 
 }
 
-/* Estado visível da notificação */
+
 .contato-toast-show {
-  opacity: 1; /* Visível */
-  transform: translateX(0); /* Posição normal */
+  opacity: 1; 
+  transform: translateX(0); 
 }
 
-/* Cabeçalho da notificação */
+
 .contato-toast-header {
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 0.5rem; /* Espaçamento entre elementos */
-  padding: 1rem; /* Espaçamento interno */
-  border-bottom: 1px solid var(--border-color); /* Borda inferior */
+  display: flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  padding: 1rem; 
+  border-bottom: 1px solid var(--border-color); 
 }
 
-/* Ícone de sucesso */
+
 .contato-toast-icon-success {
-  color: var(--success-color); /* Cor verde */
-  font-size: 1.2rem; /* Tamanho do ícone */
+  color: var(--success-color); 
+  font-size: 1.2rem; 
 }
 
-/* Título da notificação */
+
 .contato-toast-title {
-  flex: 1; /* Ocupa espaço restante */
-  font-size: 1rem; /* Tamanho da fonte */
-  font-weight: 500; /* Peso médio */
-  color: var(--text-white); /* Cor branca */
-  margin: 0; /* Remove margens */
+  flex: 1; 
+  font-size: 1rem; 
+  font-weight: 500; 
+  color: var(--text-white); 
+  margin: 0; 
 }
 
-/* Botão de fechar notificação */
+
 .contato-toast-close {
-  background: none; /* Fundo transparente */
-  border: none; /* Remove borda */
-  color: var(--text-muted); /* Cor cinza */
-  cursor: pointer; /* Cursor de mão */
-  padding: 0.25rem; /* Espaçamento interno */
-  border-radius: 4px; /* Bordas arredondadas */
-  transition: all 0.3s ease; /* Transição suave */
+  background: none; 
+  border: none; 
+  color: var(--text-muted); 
+  cursor: pointer; 
+  padding: 0.25rem; 
+  border-radius: 4px; 
+  transition: all 0.3s ease; 
 }
 
-/* Hover do botão fechar */
+
 .contato-toast-close:hover {
-  background: rgba(139, 92, 246, 0.1); /* Fundo roxo sutil */
-  color: var(--text-white); /* Cor branca */
+  background: rgba(139, 92, 246, 0.1); 
+  color: var(--text-white); 
 }
 
-/* Corpo da notificação */
+
 .contato-toast-body {
-  padding: 1rem; /* Espaçamento interno */
-  color: var(--text-muted); /* Cor secundária */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  line-height: 1.5; /* Altura da linha */
+  padding: 1rem; 
+  color: var(--text-muted); 
+  font-size: 0.9rem; 
+  line-height: 1.5; 
 }
 
-/* ===== SPINNER DE CARREGAMENTO ===== */
-/* 
-  Indicador visual de carregamento
-  Usado durante o envio do formulário
-*/
 
-/* Container do spinner */
+
+
+
 .contato-spinner {
-  display: inline-block; /* Comportamento inline */
-  animation: contato-spin 1s linear infinite; /* Animação de rotação */
+  display: inline-block; 
+  animation: contato-spin 1s linear infinite; 
 }
 
-/* Ícone do spinner */
+
 .contato-spinner i {
-  font-size: 1rem; /* Tamanho do ícone */
+  font-size: 1rem; 
 }
 
-/* Animação de rotação */
+
 @keyframes contato-spin {
-  from { transform: rotate(0deg); } /* Início: 0 graus */
-  to { transform: rotate(360deg); } /* Fim: 360 graus (volta completa) */
+  from { transform: rotate(0deg); } 
+  to { transform: rotate(360deg); } 
 }
 
-/* ===== RESPONSIVIDADE ===== */
-/* 
-  Media queries para diferentes tamanhos de tela
-  Garante boa experiência em dispositivos móveis
-*/
 
-/* Tablets e dispositivos médios */
+
+
+
 @media (max-width: 768px) {
-  /* Reduz espaçamentos em telas menores */
+  
   .contato-container {
-    padding: 0 1rem; /* Menos padding horizontal */
+    padding: 0 1rem; 
   }
   
-  /* Formulário em coluna única */
+  
   .contato-content {
-    grid-template-columns: 1fr; /* Uma coluna */
-    gap: 1.5rem; /* Menos espaçamento */
+    grid-template-columns: 1fr; 
+    gap: 1.5rem; 
   }
   
-  /* Título menor em telas pequenas */
+  
   .contato-title {
-    font-size: 2rem; /* Tamanho reduzido */
+    font-size: 2rem; 
   }
   
-  /* Subtítulo menor */
+  
   .contato-subtitle {
-    font-size: 1rem; /* Tamanho reduzido */
+    font-size: 1rem; 
   }
   
-  /* Menos padding nos containers */
+  
   .contato-info,
   .contato-form {
-    padding: 1.5rem; /* Padding reduzido */
+    padding: 1.5rem; 
   }
   
-  /* Toast ocupa mais largura em telas pequenas */
+  
   .contato-toast-container {
-    top: 1rem; /* Menos distância do topo */
-    right: 1rem; /* Menos distância da direita */
-    left: 1rem; /* Adiciona margem à esquerda */
+    top: 1rem; 
+    right: 1rem; 
+    left: 1rem; 
   }
   
-  /* Toast sem largura máxima em telas pequenas */
+  
   .contato-toast {
-    max-width: none; /* Remove limitação de largura */
+    max-width: none; 
   }
 }
 
-/* Dispositivos móveis pequenos */
+
 @media (max-width: 480px) {
-  /* Título ainda menor */
+  
   .contato-title {
-    font-size: 1.5rem; /* Tamanho mínimo */
+    font-size: 1.5rem; 
   }
   
-  /* Padding mínimo nos containers */
+  
   .contato-info,
   .contato-form {
-    padding: 1rem; /* Padding mínimo */
+    padding: 1rem; 
   }
   
-  /* Itens de informação em coluna em telas muito pequenas */
+  
   .contato-info-item {
-    flex-direction: column; /* Direção vertical */
-    text-align: center; /* Centraliza texto */
-    gap: 0.5rem; /* Espaçamento entre elementos */
+    flex-direction: column; 
+    text-align: center; 
+    gap: 0.5rem; 
   }
   
-  /* Ícone sem margem à direita */
+  
   .contato-info-icon {
-    margin-right: 0; /* Remove margem direita */
-    margin-bottom: 0.5rem; /* Adiciona margem inferior */
+    margin-right: 0; 
+    margin-bottom: 0.5rem; 
   }
 }

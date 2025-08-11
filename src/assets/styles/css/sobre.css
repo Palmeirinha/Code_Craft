@@ -1,6 +1,6 @@
-/* ===== SOBRE ===== */
 
-/* Section */
+
+
 .sobre-section {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   min-height: 100vh;
@@ -13,7 +13,7 @@
   padding: 0 2rem;
 }
 
-/* Header */
+
 .sobre-header {
   text-align: center;
   margin-bottom: 3rem;
@@ -61,7 +61,7 @@
   border: 1px solid rgba(139, 92, 246, 0.2);
 }
 
-/* Missão */
+
 .sobre-mission {
   background: rgba(30, 41, 59, 0.8);
   padding: 3rem;
@@ -87,7 +87,7 @@
   margin: 0;
 }
 
-/* Valores */
+
 .sobre-values {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -108,7 +108,7 @@
   border: 1px solid rgba(139, 92, 246, 0.2);
 }
 
-/* Todos os cards agora têm o mesmo tamanho */
+
 
 .sobre-value-card:hover {
   transform: translateY(-5px);
@@ -147,7 +147,7 @@
   margin: 0;
 }
 
-/* Equipe */
+
 .sobre-team {
   background: rgba(30, 41, 59, 0.8);
   padding: 3rem;
@@ -206,7 +206,7 @@
   margin: 0;
 }
 
-/* CTA Section */
+
 .sobre-cta {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   padding: 3rem;
@@ -287,7 +287,7 @@
   transform: translateY(-3px);
 }
 
-/* Modal */
+
 .sobre-modal-overlay {
   position: fixed;
   top: 0;
@@ -440,7 +440,7 @@
   color: #ffffff;
 }
 
-/* Toast */
+
 .sobre-toast-container {
   position: fixed;
   top: 1.5rem;
@@ -507,7 +507,7 @@
   line-height: 1.5;
 }
 
-/* Responsividade */
+
 @media (max-width: 1024px) {
   .sobre-container {
     padding: 0 1.5rem;
@@ -621,7 +621,7 @@
     max-width: none;
   }
   
-  /* Ajustes do modal para tablets */
+  
   .sobre-modal-container {
     width: 95%;
     max-width: 450px;

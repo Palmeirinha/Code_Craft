@@ -1,4 +1,4 @@
-/* === IMPORTS DE COMPONENTES CSS === */
+
 @import './css/autenticacao.css';
 @import './css/carrinho.css';
 @import './css/categorias.css';
@@ -18,9 +18,9 @@
 @import './css/produtos.css';
 @import './css/sobre.css';
 
-/* === SISTEMA DE CORES PADRONIZADO === */
+
 :root {
-  /* === CORES BASE === */
+
   --cor-fundo: #0f172a;
   --cor-fundo-escuro: #020617;
   --cor-card: #1e293b;
@@ -30,7 +30,7 @@
   --cor-cinza-escuro: #64748b;
   --cor-escura: #1f2937;
   
-  /* === CORES PRIMÁRIAS === */
+
   --cor-roxo-escuro: #7c3aed;
   --cor-azul-claro: #60a5fa;
   --cor-azul-escuro: #2563eb;
@@ -42,7 +42,7 @@
   --cor-cinza-claro: #f3f6fa;
   --cor-cinza-medio: #bdbdc7;
   
-  /* === CORES DE FUNDO ESPECÍFICAS === */
+
   --cor-fundo-roxo: #18192b;
   --cor-fundo-azul: #23263a;
   --cor-fundo-verde: #2e3350;
@@ -50,7 +50,7 @@
   --cor-fundo-input-group: #23263a;
   --cor-borda-input-group: #2e3350;
   
-  /* === GRADIENTES SIMPLIFICADOS === */
+
   --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
   --gradient-danger: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
@@ -60,7 +60,7 @@
   --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   --gradient-card: linear-gradient(135deg, #1e293b 0%, #334155 100%);
   
-  /* === SHADOWS SIMPLIFICADOS === */
+
   --shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.2);
   --shadow-purple: 0 2px 8px rgba(124, 58, 237, 0.2);
@@ -70,19 +70,19 @@
   --shadow-yellow: 0 2px 8px rgba(251, 191, 36, 0.2);
   --shadow-dark: 0 4px 16px rgba(0, 0, 0, 0.2);
   
-  /* === FOCUS STATES SIMPLIFICADOS === */
+
   --focus-purple: 0 0 0 2px rgba(124, 58, 237, 0.2);
   --focus-blue: 0 0 0 2px rgba(59, 130, 246, 0.2);
   --focus-green: 0 0 0 2px rgba(16, 185, 129, 0.2);
   --focus-red: 0 0 0 2px rgba(239, 68, 68, 0.2);
   
-  /* === ESPAÇAMENTOS === */
+
   --padding-section: 3rem 0;
   --radius: 8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
   
-  /* === VARIÁVEIS ADICIONAIS PARA FINALIZAR COMPRA === */
+
   --primary-color: #3b82f6;
   --primary-dark: #2563eb;
   --warning-bg: rgba(251, 191, 36, 0.1);
@@ -96,7 +96,7 @@
   --success-dark: #059669;
 }
 
-/* === RESET E BASE === */
+
 html, body, #app {
   background: var(--cor-fundo);
   color: var(--cor-branca);
@@ -106,7 +106,7 @@ html, body, #app {
   padding: 0;
 }
 
-/* === TIPOGRAFIA === */
+
 h1, .page-title, .hero-title {
   font-size: 2.5rem;
   font-weight: 800;
@@ -131,7 +131,7 @@ a:hover, .link:hover, .btn-link:hover {
   text-decoration: underline;
 }
 
-/* === COMPONENTES BÁSICOS === */
+
 .navbar, header, .bg-white, .bg-light {
   background: var(--cor-card) !important;
   border-bottom: 1px solid var(--cor-roxo);
@@ -164,13 +164,13 @@ footer, .rodape {
   border-top: 1px solid var(--cor-card-claro) !important;
 }
 
-/* === UTILITÁRIOS DE TEXTO === */
+
 .text-success, .fw-bold.text-success { color: var(--cor-azul) !important; }
 .text-danger, .fw-bold.text-danger { color: var(--cor-vermelho) !important; }
 .text-info, .fw-bold.text-info { color: var(--cor-azul) !important; }
 .text-secondary, .text-muted { color: var(--cor-cinza) !important; }
 
-/* === UTILITÁRIOS DE LAYOUT === */
+
 section, .section, .py-section { padding: var(--padding-section) !important; }
 .mt-section { margin-top: 3rem; }
 .mb-section { margin-bottom: 3rem; }
@@ -180,9 +180,9 @@ section, .section, .py-section { padding: var(--padding-section) !important; }
 .card + .card { margin-top: 2rem; }
 hr, .border-secondary { border-color: var(--cor-card-claro) !important; }
 
-/* === CLASSES UTILITÁRIAS SIMPLIFICADAS === */
 
-/* Gradientes */
+
+
 .gradient-primary { background: var(--gradient-primary) !important; }
 .gradient-success { background: var(--gradient-success) !important; }
 .gradient-danger { background: var(--gradient-danger) !important; }
@@ -190,13 +190,12 @@ hr, .border-secondary { border-color: var(--cor-card-claro) !important; }
 .gradient-info { background: var(--gradient-info) !important; }
 .gradient-dark { background: var(--gradient-dark) !important; }
 
-/* Bordas */
-.radius-sm { border-radius: 6px !important; }
-.radius { border-radius: var(--radius) !important; }
-.radius-lg { border-radius: var(--radius-lg) !important; }
-.radius-xl { border-radius: var(--radius-xl) !important; }
+  .radius-sm { border-radius: 6px !important; }
+  .radius { border-radius: var(--radius) !important; }
+  .radius-lg { border-radius: var(--radius-lg) !important; }
+  .radius-xl { border-radius: var(--radius-xl) !important; }
 
-/* Sombras */
+
 .shadow-sm { box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important; }
 .shadow { box-shadow: var(--shadow) !important; }
 .shadow-lg { box-shadow: var(--shadow-hover) !important; }
@@ -205,24 +204,24 @@ hr, .border-secondary { border-color: var(--cor-card-claro) !important; }
 .shadow-red { box-shadow: var(--shadow-red) !important; }
 .shadow-green { box-shadow: var(--shadow-green) !important; }
 
-/* Backgrounds */
+
 .bg-card { background: var(--cor-card) !important; }
 .bg-card-claro { background: var(--cor-card-claro) !important; }
 .bg-fundo { background: var(--cor-fundo) !important; }
 .bg-fundo-escuro { background: var(--cor-fundo-escuro) !important; }
 
-/* Bordas */
+
 .border-purple { border-color: rgba(139, 92, 246, 0.2) !important; }
 .border-purple-strong { border-color: rgba(139, 92, 246, 0.4) !important; }
 
-/* Transições simplificadas */
+
 .transition { transition: all 0.2s ease !important; }
 
-/* Hover effects simplificados */
+
 .hover-lift:hover { transform: translateY(-1px) !important; }
 .hover-scale:hover { transform: scale(1.02) !important; }
 
-/* Flexbox */
+
 .flex { display: flex !important; }
 .flex-col { flex-direction: column !important; }
 .flex-center { display: flex; align-items: center; justify-content: center !important; }
@@ -232,7 +231,7 @@ hr, .border-secondary { border-color: var(--cor-card-claro) !important; }
 .justify-center { justify-content: center !important; }
 .justify-between { justify-content: space-between !important; }
 
-/* Espaçamentos */
+
 .gap-1 { gap: 0.25rem !important; }
 .gap-2 { gap: 0.5rem !important; }
 .gap-3 { gap: 0.75rem !important; }
@@ -240,20 +239,20 @@ hr, .border-secondary { border-color: var(--cor-card-claro) !important; }
 .gap-6 { gap: 1.5rem !important; }
 .gap-8 { gap: 2rem !important; }
 
-/* Padding */
+
 .p-2 { padding: 0.5rem !important; }
 .p-3 { padding: 0.75rem !important; }
 .p-4 { padding: 1rem !important; }
 .p-6 { padding: 1.5rem !important; }
 .p-8 { padding: 2rem !important; }
 
-/* Margin */
+
 .m-2 { margin: 0.5rem !important; }
 .m-4 { margin: 1rem !important; }
 .m-6 { margin: 1.5rem !important; }
 .m-8 { margin: 2rem !important; }
 
-/* Texto */
+
 .text-center { text-align: center !important; }
 .text-left { text-align: left !important; }
 .text-right { text-align: right !important; }
@@ -261,7 +260,7 @@ hr, .border-secondary { border-color: var(--cor-card-claro) !important; }
 .font-semibold { font-weight: 600 !important; }
 .font-medium { font-weight: 500 !important; }
 
-/* Cores de texto */
+
 .text-white { color: var(--cor-branca) !important; }
 .text-gray { color: var(--cor-cinza) !important; }
 .text-gray-dark { color: var(--cor-cinza-escuro) !important; }
@@ -270,7 +269,7 @@ hr, .border-secondary { border-color: var(--cor-card-claro) !important; }
 .text-green { color: var(--cor-verde) !important; }
 .text-red { color: var(--cor-vermelho) !important; }
 
-/* Botões base simplificados */
+
 .btn {
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius);
@@ -324,7 +323,7 @@ hr, .border-secondary { border-color: var(--cor-card-claro) !important; }
   color: var(--cor-branca);
 }
 
-/* Inputs base simplificados */
+
 .input {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -348,7 +347,7 @@ hr, .border-secondary { border-color: var(--cor-card-claro) !important; }
   color: var(--cor-cinza-escuro);
 }
 
-/* Cards base simplificados */
+
 .card-base {
   background: var(--cor-card);
   border-radius: var(--radius-lg);
@@ -362,7 +361,7 @@ hr, .border-secondary { border-color: var(--cor-card-claro) !important; }
   box-shadow: var(--shadow-hover);
 }
 
-/* Badges base simplificados */
+
 .badge {
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
@@ -395,7 +394,7 @@ hr, .border-secondary { border-color: var(--cor-card-claro) !important; }
   border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
-/* === RESPONSIVE === */
+
 @media (max-width: 900px) {
   h1, .page-title, .hero-title { font-size: 2rem; }
   h2, .section-title { font-size: 1.5rem; }

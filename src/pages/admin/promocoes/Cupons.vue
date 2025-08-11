@@ -1,22 +1,20 @@
 <template>
-  <!-- Seção principal de gestão de cupons -->
   <section class="cupom-section">
     <div class="cupom-container">
       <div class="cupom-wrapper">
-        <!-- Header da seção - Título e descrição -->
+        <!-- Header da seção -->
         <div class="cupom-header">
           <h1 class="cupom-title">Gerenciar Cupons</h1>
           <p class="cupom-subtitle">Crie e gerencie cupons de desconto para os cursos</p>
         </div>
 
-        <!-- Formulário de Criação - Formulário para criar novos cupons -->
+        <!-- Formulário de criação -->
         <div class="cupom-form-container">
           <h3 class="cupom-form-title">
             <i class="bi bi-ticket-perforated"></i>Novo Cupom
           </h3>
           <form @submit.prevent="onSalvar" class="cupom-form">
             <div class="cupom-form-grid">
-              <!-- Campo Código do Cupom -->
               <div class="cupom-form-group">
                 <label class="cupom-form-label">Código do Cupom</label>
                 <input 
@@ -26,7 +24,6 @@
                   required 
                 />
               </div>
-              <!-- Campo Percentual de Desconto -->
               <div class="cupom-form-group">
                 <label class="cupom-form-label">% Desconto</label>
                 <input 
@@ -39,7 +36,6 @@
                   max="100" 
                 />
               </div>
-              <!-- Campo Data de Início -->
               <div class="cupom-form-group">
                 <label class="cupom-form-label">Data de Início</label>
                 <input 
@@ -49,7 +45,6 @@
                   required 
                 />
               </div>
-              <!-- Campo Data de Fim -->
               <div class="cupom-form-group">
                 <label class="cupom-form-label">Data de Fim</label>
                 <input 
@@ -60,7 +55,6 @@
                 />
               </div>
             </div>
-            <!-- Botões de ação do formulário -->
             <div class="cupom-form-actions">
               <button 
                 v-if="editando" 
@@ -83,7 +77,7 @@
           </form>
         </div>
 
-        <!-- Lista de Cupons - Tabela com cupons cadastrados -->
+        <!-- Lista de cupons -->
         <div class="cupom-list-container">
           <div class="cupom-list-header">
             <h3 class="cupom-list-title">Cupons Cadastrados</h3>
@@ -93,20 +87,20 @@
             </span>
           </div>
 
-          <!-- Loading State - Estado de carregamento da lista -->
+          <!-- Loading -->
           <div v-if="carregandoLista" class="cupom-loading">
             <div class="cupom-spinner"></div>
             <p class="cupom-loading-text">Carregando cupons...</p>
           </div>
 
-          <!-- Empty State - Estado quando não há cupons -->
+          <!-- Estado vazio -->
           <div v-else-if="cupons.length === 0" class="cupom-empty">
             <i class="bi bi-ticket-perforated"></i>
             <h4 class="cupom-empty-title">Nenhum cupom encontrado</h4>
             <p class="cupom-empty-text">Crie seu primeiro cupom para começar a oferecer descontos.</p>
           </div>
 
-          <!-- Cupons Table - Tabela principal dos cupons -->
+          <!-- Tabela de cupons -->
           <div v-else class="cupom-table-container">
             <div class="cupom-table-responsive">
               <table class="cupom-table">
@@ -120,25 +114,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- Loop através dos cupons paginados -->
                   <tr v-for="cupom in cuponsPaginados" :key="cupom.id" class="cupom-table-row">
-                    <!-- Coluna Código do Cupom -->
                     <td class="cupom-td-code">
                       <span class="cupom-code">{{ cupom.code }}</span>
                     </td>
-                    <!-- Coluna Percentual de Desconto -->
                     <td class="cupom-td-percentage">
                       <span class="cupom-discount-badge">{{ cupom.discount_percentage }}%</span>
                     </td>
-                    <!-- Coluna Data de Início -->
                     <td class="cupom-td-start">
                       <span class="cupom-date-text">{{ formatarData(cupom.start_date) }}</span>
                     </td>
-                    <!-- Coluna Data de Fim -->
                     <td class="cupom-td-end">
                       <span class="cupom-date-text">{{ formatarData(cupom.end_date) }}</span>
                     </td>
-                    <!-- Coluna Ações - Botões de editar e excluir -->
                     <td class="cupom-td-actions">
                       <div class="cupom-actions">
                         <button 
@@ -164,7 +152,7 @@
               </table>
             </div>
 
-            <!-- Paginação - Navegação entre páginas -->
+            <!-- Paginação -->
             <div v-if="totalPaginas > 1" class="cupom-pagination">
               <button 
                 class="cupom-btn cupom-btn-outline cupom-btn-sm" 
@@ -187,7 +175,7 @@
       </div>
     </div>
 
-    <!-- Modal de Edição - Modal para editar cupons existentes -->
+    <!-- Modal de edição -->
     <template v-if="mostrarModalEditar">
       <div class="cupom-modal-backdrop"></div>
       <div class="cupom-modal">
@@ -199,11 +187,10 @@
               </h5>
               <button type="button" class="cupom-modal-close" @click="fecharModalEditar">
                 <i class="bi bi-x-lg"></i>
-              </button>
+            </button>
             </div>
             <form @submit.prevent="onSalvarEdicao">
               <div class="cupom-modal-body">
-                <!-- Campo Código no modal de edição -->
                 <div class="cupom-modal-form-group">
                   <label class="cupom-modal-label">Código do Cupom</label>
                   <input 
@@ -213,7 +200,6 @@
                     required 
                   />
                 </div>
-                <!-- Campo Percentual no modal de edição -->
                 <div class="cupom-modal-form-group">
                   <label class="cupom-modal-label">% Desconto</label>
                   <input 
@@ -225,7 +211,6 @@
                     max="100" 
                   />
                 </div>
-                <!-- Campo Data de Início no modal de edição -->
                 <div class="cupom-modal-form-group">
                   <label class="cupom-modal-label">Data de Início</label>
                   <input 
@@ -235,7 +220,6 @@
                     required 
                   />
                 </div>
-                <!-- Campo Data de Fim no modal de edição -->
                 <div class="cupom-modal-form-group">
                   <label class="cupom-modal-label">Data de Fim</label>
                   <input 
@@ -246,7 +230,6 @@
                   />
                 </div>
               </div>
-              <!-- Botões de ação do modal de edição -->
               <div class="cupom-modal-footer">
                 <button type="button" class="cupom-btn cupom-btn-secondary" @click="fecharModalEditar">
                   <i class="bi bi-x-circle"></i>Cancelar
@@ -264,7 +247,7 @@
     </template>
   </section>
 
-  <!-- Modal de Confirmação de Exclusão - Confirma exclusão de cupom -->
+  <!-- Modal de confirmação de exclusão -->
   <Teleport to="body">
     <div v-if="mostrarConfirmacaoExcluir" class="cupom-confirm-modal-overlay" @click="mostrarConfirmacaoExcluir = false">
       <div class="cupom-confirm-modal" @click.stop>
@@ -414,6 +397,63 @@ function fecharModalEditar() {
   mostrarModalEditar.value = false
 }
 
+// Função para limpar dados antes de enviar para API
+function limparDadosParaAPI(cupom) {
+  console.log('Dados originais do cupom:', cupom)
+  
+  const { id, created_at, updated_at, ...dadosLimpos } = cupom
+  
+  // Validações e conversões
+  const dadosProcessados = {
+    code: dadosLimpos.code?.trim() || '',
+    discount_percentage: Number(dadosLimpos.discount_percentage) || 0,
+    start_date: '',
+    end_date: ''
+  }
+  
+  // Processamento das datas
+  try {
+    if (dadosLimpos.start_date) {
+      const startDate = new Date(dadosLimpos.start_date)
+      if (isNaN(startDate.getTime())) {
+        throw new Error('Data de início inválida')
+      }
+      dadosProcessados.start_date = startDate.toISOString()
+    }
+    
+    if (dadosLimpos.end_date) {
+      const endDate = new Date(dadosLimpos.end_date)
+      if (isNaN(endDate.getTime())) {
+        throw new Error('Data de fim inválida')
+      }
+      dadosProcessados.end_date = endDate.toISOString()
+    }
+  } catch (dateError) {
+    console.error('Erro ao processar datas:', dateError)
+    throw new Error(`Erro nas datas: ${dateError.message}`)
+  }
+  
+  // Validações finais
+  if (!dadosProcessados.code) {
+    throw new Error('Código do cupom é obrigatório')
+  }
+  
+  if (!dadosProcessados.discount_percentage || dadosProcessados.discount_percentage <= 0) {
+    throw new Error('Percentual de desconto deve ser maior que 0')
+  }
+  
+  if (!dadosProcessados.start_date) {
+    throw new Error('Data de início é obrigatória')
+  }
+  
+  if (!dadosProcessados.end_date) {
+    throw new Error('Data de fim é obrigatória')
+  }
+  
+  console.log('Dados processados para API:', dadosProcessados)
+  return dadosProcessados
+}
+
 // Função para salvar edição via modal
 async function onSalvarEdicao() {
   const erros = validarCupom(formEditar.value)
@@ -421,14 +461,44 @@ async function onSalvarEdicao() {
     erros.forEach(msg => showToastGlobal && showToastGlobal(msg, 'danger'))
     return
   }
+  
   carregandoEditar.value = true
   try {
-    await atualizarCupom(formEditar.value.id, formEditar.value)
+    // Limpa dados antes de enviar para API
+    const dadosLimpos = limparDadosParaAPI(formEditar.value)
+    
+    // Log dos dados que serão enviados
+    console.log('Dados sendo enviados para API:', dadosLimpos)
+    
+    await atualizarCupom(formEditar.value.id, dadosLimpos)
     showToastGlobal && showToastGlobal('Cupom editado com sucesso!', 'success')
     mostrarModalEditar.value = false
     await carregarCupons()
   } catch (e) {
-    showToastGlobal && showToastGlobal('Erro ao editar cupom.', 'danger')
+    console.error('Erro completo:', e)
+    
+    // Captura detalhes específicos do erro da API
+    if (e.response) {
+      console.error('Status da resposta:', e.response.status)
+      console.error('Dados da resposta:', e.response.data)
+      console.error('Headers da resposta:', e.response.headers)
+      
+      // Exibe mensagem de erro mais específica
+      if (e.response.data && e.response.data.detail) {
+        const detalhes = Array.isArray(e.response.data.detail) 
+          ? e.response.data.detail.map(d => d.msg).join(', ')
+          : e.response.data.detail
+        showToastGlobal && showToastGlobal(`Erro de validação: ${detalhes}`, 'danger')
+      } else {
+        showToastGlobal && showToastGlobal(`Erro ${e.response.status}: ${e.response.statusText}`, 'danger')
+      }
+    } else if (e.request) {
+      console.error('Erro na requisição:', e.request)
+      showToastGlobal && showToastGlobal('Erro de conexão com a API', 'danger')
+    } else {
+      console.error('Erro geral:', e.message)
+      showToastGlobal && showToastGlobal('Erro ao editar cupom: ' + e.message, 'danger')
+    }
   } finally {
     carregandoEditar.value = false
   }

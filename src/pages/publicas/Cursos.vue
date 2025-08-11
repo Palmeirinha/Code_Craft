@@ -1,8 +1,7 @@
 <template>
-  <!-- Seção principal da página de Cursos -->
   <section class="cursos-section">
     <div class="cursos-container">
-      <!-- Header da página com ícone e texto explicativo -->
+      <!-- Header da página -->
       <div class="cursos-header">
         <div class="cursos-header-content">
           <div class="cursos-header-icon">
@@ -16,9 +15,9 @@
       </div>
 
       <div class="cursos-main-content">
-        <!-- Sistema de Filtros e Busca - Controles de navegação -->
+        <!-- Sistema de filtros e busca -->
         <div class="cursos-filters-section">
-          <!-- Barra de busca principal com estatísticas -->
+          <!-- Barra de busca -->
           <div class="cursos-search-section">
             <div class="cursos-search-container">
               <i class="bi bi-search cursos-search-icon"></i>
@@ -32,9 +31,8 @@
             </div>
           </div>
 
-          <!-- Filtros avançados para refinar busca -->
+          <!-- Filtros avançados -->
           <div class="cursos-advanced-filters">
-            <!-- Filtro por categoria - Select dropdown -->
             <div class="cursos-filter-group">
               <label class="cursos-filter-label">
                 <i class="bi bi-tags"></i>
@@ -48,7 +46,6 @@
               </select>
             </div>
 
-            <!-- Ordenação - Select para organizar resultados -->
             <div class="cursos-filter-group">
               <label class="cursos-filter-label">
                 <i class="bi bi-sort-down"></i>
@@ -64,7 +61,6 @@
               </select>
             </div>
 
-            <!-- Botão limpar filtros - Reset de todos os filtros -->
             <div class="cursos-filter-group">
               <button 
                 @click="limparFiltros" 
@@ -77,7 +73,7 @@
             </div>
           </div>
 
-          <!-- Tags de filtros ativos - Visualização dos filtros aplicados -->
+          <!-- Tags de filtros ativos -->
           <div v-if="filtrosAtivos" class="cursos-active-filters">
             <span class="cursos-active-filters-label">Filtros ativos:</span>
             <div class="cursos-filter-tags">
@@ -94,14 +90,14 @@
           </div>
         </div>
 
-        <!-- Estado de carregamento - Loading spinner -->
+        <!-- Loading -->
         <div v-if="loading" class="cursos-loading">
           <div class="cursos-spinner"></div>
           <h3 class="cursos-loading-title">Carregando cursos...</h3>
           <p class="cursos-loading-text">Aguarde enquanto buscamos os melhores cursos para você</p>
         </div>
 
-        <!-- Estado de erro - Mensagem de erro com botão de retry -->
+        <!-- Estado de erro -->
         <div v-else-if="error" class="cursos-error">
           <i class="bi bi-exclamation-triangle cursos-error-icon"></i>
           <h3 class="cursos-error-title">Erro ao carregar cursos</h3>
@@ -112,7 +108,7 @@
           </button>
         </div>
 
-        <!-- Grid de cursos - Lista principal de cursos -->
+        <!-- Grid de cursos -->
         <div v-else-if="cursosPaginados.length > 0" class="cursos-grid">
           <div 
             v-for="curso in cursosPaginados" 
@@ -120,7 +116,6 @@
             class="cursos-card"
             @click="abrirModal(curso)"
           >
-            <!-- Container da imagem do curso -->
             <div class="cursos-image-container">
               <img 
                 :src="curso.imagem || ''" 
@@ -130,13 +125,11 @@
               />
             </div>
             
-            <!-- Conteúdo do card do curso -->
             <div class="cursos-card-content">
               <span class="cursos-category-badge">{{ curso.categoria || 'Geral' }}</span>
               <h3 class="cursos-card-title">{{ curso.titulo }}</h3>
               <p class="cursos-card-description">{{ curso.descricao || 'Descrição não disponível' }}</p>
               
-              <!-- Seção de preço e botão de adicionar ao carrinho -->
               <div class="cursos-price">
                 <div class="cursos-price-container">
                   <span v-if="curso.desconto > 0" class="cursos-price-original">
@@ -159,25 +152,22 @@
           </div>
         </div>
 
-        <!-- Estado vazio - Quando não há cursos encontrados -->
+        <!-- Estado vazio -->
         <div v-else-if="!loading && !error" class="cursos-empty">
           <i class="bi bi-search cursos-empty-icon"></i>
           <h3 class="cursos-empty-title">Nenhum curso encontrado</h3>
           <p class="cursos-empty-text">Tente ajustar sua busca ou explore nossas categorias</p>
         </div>
 
-        <!-- Sistema de paginação - Controles de navegação entre páginas -->
+        <!-- Paginação -->
         <div v-if="!loading && !error && totalPaginas > 1" class="cursos-pagination">
-          <!-- Informações da paginação atual -->
           <div class="cursos-pagination-info">
             <span class="cursos-pagination-text">
               Mostrando {{ inicioPagina + 1 }} a {{ fimPagina }} de {{ cursosFiltrados.length }} cursos
             </span>
           </div>
           
-          <!-- Controles de navegação da paginação -->
           <div class="cursos-pagination-controls">
-            <!-- Botão página anterior -->
             <button 
               class="cursos-pagination-btn"
               :class="{ 'cursos-pagination-btn-disabled': paginaAtual === 1 }"
@@ -188,7 +178,6 @@
               Anterior
             </button>
             
-            <!-- Números das páginas com ellipsis -->
             <div class="cursos-pagination-pages">
               <button 
                 v-for="pagina in paginasVisiveis" 
@@ -205,7 +194,6 @@
               </button>
             </div>
             
-            <!-- Botão próxima página -->
             <button 
               class="cursos-pagination-btn"
               :class="{ 'cursos-pagination-btn-disabled': paginaAtual === totalPaginas }"
@@ -220,12 +208,11 @@
       </div>
     </div>
 
-    <!-- Modal de detalhes do curso - Teleport para body -->
+    <!-- Modal de detalhes do curso -->
     <Teleport to="body">
       <transition name="cursos-modal-fade" appear>
         <div v-if="modalAberto && cursoSelecionado" class="cursos-modal-overlay" @click="fecharModal">
           <div class="cursos-modal-container" @click.stop>
-            <!-- Header do modal com título e botão de fechar -->
             <div class="cursos-modal-header">
               <div class="cursos-modal-title-section">
                 <div class="cursos-modal-icon">
@@ -241,11 +228,9 @@
               </button>
             </div>
 
-            <!-- Corpo do modal com conteúdo do curso -->
             <div class="cursos-modal-body">
               <div class="cursos-modal-content">
                 <div class="cursos-modal-grid">
-                  <!-- Seção da imagem do curso no modal -->
                   <div class="cursos-modal-image-section">
                     <img 
                       :src="cursoSelecionado.imagem || ''" 
@@ -258,15 +243,12 @@
                     </div>
                   </div>
                   
-                  <!-- Seção de informações detalhadas do curso -->
                   <div class="cursos-modal-info-section">
-                    <!-- Descrição detalhada do curso -->
                     <div class="cursos-modal-description">
                       <h4 class="cursos-modal-description-title">Descrição</h4>
                       <p class="cursos-modal-description-text">{{ cursoSelecionado.descricao || 'Descrição não disponível' }}</p>
                     </div>
                     
-                    <!-- Estatísticas do curso -->
                     <div class="cursos-modal-stats">
                       <div class="cursos-modal-stat-item">
                         <i class="bi bi-clock"></i>
@@ -277,7 +259,6 @@
                       </div>
                     </div>
                     
-                    <!-- Seção de preço e botão de adicionar ao carrinho no modal -->
                     <div class="cursos-modal-price-section">
                       <div class="cursos-modal-price-info">
                         <div class="cursos-modal-price-display">
@@ -314,45 +295,38 @@
 </template>
 
 <script setup>
-// Importações do Vue 3 Composition API
 import { ref, computed, onMounted, watch } from 'vue'
-// Importação do Vue Router para acessar parâmetros da URL
 import { useRoute } from 'vue-router'
-// Importação do store do carrinho para gerenciar produtos
 import { useCartStore } from '../../services/stores/cart'
-// Importação do Pinia para converter store em refs reativos
 import { storeToRefs } from 'pinia'
-// Importações das APIs para buscar dados
 import { listarCategoriasPorUsuario } from '../../services/api/categorias'
 import { listarProdutos } from '../../services/api/produtos'
 
-// Constantes e configurações
-const API_BASE = 'http://35.196.79.227:8000'  // URL base da API
-const route = useRoute()                       // Instância do router para acessar query params
-const cartStore = useCartStore()               // Store do carrinho
-const { produtos } = storeToRefs(cartStore)   // Produtos do carrinho como refs reativos
+const API_BASE = 'http://35.196.79.227:8000'
+const route = useRoute()
+const cartStore = useCartStore()
+const { produtos } = storeToRefs(cartStore)
 
-// Estados reativos principais
-const cursos = ref([])                    // Lista de todos os cursos disponíveis
-const busca = ref('')                     // Termo de busca do usuário
-const modalAberto = ref(false)            // Controla abertura/fechamento do modal
-const cursoSelecionado = ref(null)        // Curso selecionado para exibir no modal
-const loading = ref(true)                 // Estado de carregamento da página
-const error = ref(null)                   // Mensagem de erro, se houver
+// Estados reativos
+const cursos = ref([])
+const busca = ref('')
+const modalAberto = ref(false)
+const cursoSelecionado = ref(null)
+const loading = ref(true)
+const error = ref(null)
 
-// Estados dos filtros
-const filtroCategoria = ref('')           // Categoria selecionada para filtrar
-const ordenacao = ref('relevancia')       // Tipo de ordenação aplicada
+// Filtros e ordenação
+const filtroCategoria = ref('')
+const ordenacao = ref('relevancia')
 
-// Estados da paginação
-const itensPorPagina = 9                  // Número de cursos por página
-const paginaAtual = ref(1)                // Página atual sendo exibida
+// Paginação
+const itensPorPagina = 9
+const paginaAtual = ref(1)
 
-// Computed properties para filtros e paginação
+// Filtros e ordenação dos cursos
 const cursosFiltrados = computed(() => {
   let cursosFiltrados = cursos.value
 
-  // Filtro por busca de texto (nome, descrição ou categoria)
   if (busca.value) {
     cursosFiltrados = cursosFiltrados.filter(curso => 
       curso.titulo.toLowerCase().includes(busca.value.toLowerCase()) ||
@@ -361,14 +335,12 @@ const cursosFiltrados = computed(() => {
     )
   }
 
-  // Filtro por categoria específica
   if (filtroCategoria.value) {
     cursosFiltrados = cursosFiltrados.filter(curso => 
       curso.categoria === filtroCategoria.value
     )
   }
 
-  // Aplicar ordenação aos resultados filtrados
   cursosFiltrados = [...cursosFiltrados].sort((a, b) => {
     switch (ordenacao.value) {
       case 'nome':
@@ -381,31 +353,29 @@ const cursosFiltrados = computed(() => {
         return Number(precoComDesconto(b)) - Number(precoComDesconto(a))
       case 'categoria':
         return (a.categoria || '').localeCompare(b.categoria || '', 'pt-BR')
-      default: // relevancia
-        return 0 // manter ordem original da API
+      default:
+        return 0
     }
   })
 
   return cursosFiltrados
 })
 
-// Computed properties para paginação
+// Paginação
 const totalPaginas = computed(() => Math.ceil(cursosFiltrados.value.length / itensPorPagina))
 const inicioPagina = computed(() => (paginaAtual.value - 1) * itensPorPagina)
 const fimPagina = computed(() => Math.min(inicioPagina.value + itensPorPagina, cursosFiltrados.value.length))
 const cursosPaginados = computed(() => cursosFiltrados.value.slice(inicioPagina.value, fimPagina.value))
 
-// Computed para gerar números de páginas visíveis com ellipsis
+// Gera números de páginas com ellipsis
 const paginasVisiveis = computed(() => {
   const totalPages = totalPaginas.value
   const pages = []
   
   if (totalPages <= 5) {
-    // Se há 5 páginas ou menos, mostrar todas
     for (let i = 1; i <= totalPages; i++) pages.push(i)
   } else {
-    // Lógica para páginas com ellipsis
-    pages.push(1) // Sempre mostrar primeira página
+    pages.push(1)
     
     if (paginaAtual.value > 3) pages.push('...')
     
@@ -417,30 +387,26 @@ const paginasVisiveis = computed(() => {
     }
     
     if (paginaAtual.value < totalPages - 2) pages.push('...')
-    if (totalPages > 1) pages.push(totalPages) // Sempre mostrar última página
+    if (totalPages > 1) pages.push(totalPages)
   }
   
   return pages
 })
 
-// Computed properties para filtros
+// Filtros disponíveis
 const categoriasDisponiveis = computed(() => {
-  // Extrair categorias únicas dos cursos e mapear para formato esperado pelo select
   const categoriasUnicas = [...new Set(cursos.value.map(curso => curso.categoria).filter(Boolean))]
   return categoriasUnicas.map(nome => ({ id: nome, name: nome }))
 })
 
-const filtrosAtivos = computed(() => {
-  // Verificar se há filtros aplicados (apenas categoria por enquanto)
-  return filtroCategoria.value
-})
+const filtrosAtivos = computed(() => filtroCategoria.value)
 
-// Watchers para resetar paginação quando filtros mudam
+// Reset paginação quando filtros mudam
 watch([busca, filtroCategoria, ordenacao], () => {
   paginaAtual.value = 1
 })
 
-// Watcher para abrir modal automaticamente quando há parâmetro na URL
+// Abre modal automaticamente se há parâmetro na URL
 watch(() => route.query.curso, (novoCursoId) => {
   if (novoCursoId && cursos.value.length > 0) {
     const curso = cursos.value.find(c => c.id === Number(novoCursoId))
@@ -459,7 +425,7 @@ function fecharModal() {
   cursoSelecionado.value = null
 }
 
-// Funções de verificação e manipulação do carrinho
+// Carrinho
 function isInCart(cursoId) {
   return produtos.value.some(p => p.id === cursoId)
 }
@@ -477,9 +443,8 @@ function adicionarAoCarrinho(curso) {
   }
 }
 
-// Função para tratar erros de carregamento de imagem
+// Placeholder para imagens com erro
 function handleImageError(event) {
-  // SVG placeholder para quando a imagem falha
   const placeholderSVG = `
     <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="200" height="200" fill="#1e293b"/>
@@ -492,21 +457,21 @@ function handleImageError(event) {
   event.target.src = `data:image/svg+xml;charset=utf-8,${encodedSVG}`
 }
 
-// Funções para gerenciar filtros
+// Gerenciar filtros
 function limparFiltros() {
   busca.value = ''
   filtroCategoria.value = ''
   ordenacao.value = 'relevancia'
 }
 
-// Função para calcular preço com desconto
+// Calcula preço com desconto
 function precoComDesconto(curso) {
   const preco = curso.precoOriginal || 0
   const desconto = curso.desconto || 0
   return desconto ? (preco * (1 - desconto / 100)).toFixed(2) : preco.toFixed(2)
 }
 
-// Funções de navegação da paginação
+// Navegação da paginação
 function paginaAnterior() {
   if (paginaAtual.value > 1) paginaAtual.value--
 }
@@ -521,19 +486,18 @@ function irParaPagina(pagina) {
   }
 }
 
-// Função principal para carregar cursos da API
+// Carrega cursos da API
 async function carregarCursos() {
   try {
     loading.value = true
     error.value = null
     
-    // Buscar produtos da API
     const produtos = await listarProdutos()
     if (!produtos?.length) {
       throw new Error('Nenhum produto encontrado')
     }
     
-    // Buscar categorias do usuário específico (ID 192 - hardcoded)
+    // Busca categorias do usuário 192
     let categoriasIds = []
     try {
       const categorias = await listarCategoriasPorUsuario(192)
@@ -542,12 +506,12 @@ async function carregarCursos() {
       console.warn('Erro ao buscar categorias:', catError)
     }
     
-    // Filtrar produtos por categorias do usuário (se disponíveis)
+    // Filtra produtos por categoria
     const produtosFiltrados = categoriasIds.length > 0 
       ? produtos.filter(prod => categoriasIds.includes(prod.category_id))
       : produtos
     
-    // Mapear produtos da API para formato de cursos da interface
+    // Mapeia produtos para formato de cursos
     cursos.value = produtosFiltrados
       .filter(prod => prod.id && prod.name)
       .map(prod => ({
@@ -565,7 +529,7 @@ async function carregarCursos() {
     
     loading.value = false
     
-    // Verificar se há parâmetro de curso na URL para abrir o modal automaticamente
+    // Abre modal se há parâmetro na URL
     const cursoId = route.query.curso
     if (cursoId) {
       const curso = cursos.value.find(c => c.id === Number(cursoId))
@@ -579,7 +543,6 @@ async function carregarCursos() {
   }
 }
 
-// Lifecycle hook - Carrega cursos quando componente é montado
 onMounted(carregarCursos)
 </script>
 

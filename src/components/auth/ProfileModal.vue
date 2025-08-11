@@ -4,7 +4,7 @@
     <div class="perfil-modal" @click.stop>
       <div class="perfil-modal-content">
         
-        <!-- Cabeçalho do Modal -->
+        <!-- Cabeçalho do modal -->
         <div class="perfil-modal-header">
           <div class="perfil-header-content">
             <h3 class="perfil-modal-title">
@@ -17,26 +17,23 @@
           </button>
         </div>
 
-        <!-- Corpo do Modal -->
+        <!-- Corpo do modal -->
         <div class="perfil-modal-body">
           <form @submit.prevent="onSalvar" class="perfil-modal-form">
             
-            <!-- Seção da Foto de Perfil -->
+            <!-- Foto de perfil -->
             <div class="perfil-profile-photo-section">
               <div class="perfil-photo-container">
                 <div class="perfil-photo-wrapper">
-                  <!-- Exibe a foto atual se existir -->
                   <img 
                     v-if="profilePhoto" 
                     :src="profilePhoto" 
                     alt="Foto de perfil"
                     class="perfil-profile-photo"
                   />
-                  <!-- Placeholder quando não há foto -->
                   <div v-else class="perfil-profile-photo-placeholder">
                     <i class="bi bi-person"></i>
                   </div>
-                  <!-- Indicador de carregamento da imagem -->
                   <div v-if="carregandoImagem" class="perfil-photo-loading">
                     <div class="perfil-spinner" role="status">
                       <span class="visually-hidden">Carregando...</span>
@@ -44,9 +41,7 @@
                   </div>
                 </div>
                 
-                <!-- Ações da foto -->
                 <div class="perfil-photo-actions">
-                  <!-- Botão para upload de nova foto -->
                   <label class="perfil-upload-btn">
                     <i class="bi bi-camera"></i>Alterar Foto
                     <input 
@@ -57,11 +52,9 @@
                     />
                   </label>
                   
-                  <!-- Mensagem de sucesso no upload -->
                   <div v-if="sucessoImagem" class="perfil-upload-success">
                     <i class="bi bi-check-circle"></i>Foto atualizada!
                   </div>
-                  <!-- Mensagem de erro no upload -->
                   <div v-if="erroImagem" class="perfil-upload-error">
                     <i class="bi bi-exclamation-triangle"></i>{{ erroImagem }}
                   </div>
@@ -69,13 +62,12 @@
               </div>
             </div>
 
-            <!-- Seção de Informações do Usuário -->
+            <!-- Informações pessoais -->
             <div class="perfil-user-info-section">
               <h4 class="perfil-section-title">
                 <i class="bi bi-info-circle"></i>Informações Pessoais
               </h4>
               
-              <!-- Campo Nome -->
               <div class="perfil-form-group">
                 <label class="perfil-form-label">Nome Completo</label>
                 <div class="perfil-input-wrapper">
@@ -90,7 +82,6 @@
                 </div>
               </div>
               
-              <!-- Campo E-mail -->
               <div class="perfil-form-group">
                 <label class="perfil-form-label">E-mail</label>
                 <div class="perfil-input-wrapper">

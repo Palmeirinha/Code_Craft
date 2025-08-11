@@ -1,9 +1,8 @@
 <template>
-  <!-- Cabeçalho principal da aplicação -->
   <header class="header">
     <!-- Navegação principal -->
     <nav class="header-nav">
-      <!-- Logo da empresa com link para home -->
+      <!-- Logo da empresa -->
       <router-link class="header-logo" to="/">
         <div class="header-logo-content">
           <i class="bi bi-code-slash"></i>
@@ -11,15 +10,13 @@
         </div>
       </router-link>
       
-      <!-- Navegação central com links principais -->
+      <!-- Links principais -->
       <div class="header-nav-links">
-        <!-- Link sempre visível para todos os usuários -->
         <router-link class="header-nav-link" to="/cursos">
           <i class="bi bi-journal-text"></i>
           <span>Cursos</span>
         </router-link>
         
-        <!-- Links apenas para usuários autenticados -->
         <template v-if="userStore.isAuthenticated">
           <router-link class="header-nav-link" to="/meus-cursos">
             <i class="bi bi-list-check"></i>
@@ -32,9 +29,9 @@
         </template>
       </div>
       
-      <!-- Ações do usuário (carrinho, menu, etc.) -->
+      <!-- Ações do usuário -->
       <div class="header-actions">
-        <!-- Botão do carrinho com badge de quantidade -->
+        <!-- Botão do carrinho -->
         <button 
           class="header-cart-btn" 
           :class="{ 'has-items': cartStore.produtos.length > 0 }"
@@ -42,11 +39,10 @@
           @click="abrirCarrinho"
         >
           <i class="bi bi-cart3"></i>
-          <!-- Badge mostrando quantidade de itens no carrinho -->
           <span v-if="cartStore.produtos.length > 0" class="header-cart-badge">{{ cartStore.produtos.length }}</span>
         </button>
         
-        <!-- Menu de navegação para usuários NÃO autenticados -->
+        <!-- Menu para usuários não autenticados -->
         <template v-if="!userStore.isAuthenticated">
           <div class="header-nav-menu" :class="{ 'header-nav-menu-open': navMenuOpen }">
             <button 
@@ -59,7 +55,6 @@
               <i class="bi bi-list"></i>
               <span>Menu</span>
             </button>
-            <!-- Lista de opções do menu de navegação -->
             <ul class="header-nav-menu-list">
               <li><hr class="header-nav-menu-divider"></li>
               <li>
@@ -71,10 +66,9 @@
           </div>
         </template>
         
-        <!-- Menu do usuário para usuários autenticados -->
+        <!-- Menu do usuário autenticado -->
         <template v-else>
           <div class="header-user-menu" :class="{ 'header-user-menu-open': userMenuOpen }">
-            <!-- Botão toggle do menu do usuário -->
             <button 
               class="header-user-menu-toggle" 
               type="button" 
@@ -83,18 +77,14 @@
               @blur="handleUserMenuBlur"
             >
               <i class="bi bi-person-circle"></i>
-              <!-- Nome do usuário e badge de role -->
               <span class="header-user-name">
                 <span class="header-user-text">{{ userStore.user?.nome || userStore.user?.name || userStore.user?.email || '' }}</span>
-                <!-- Badge mostrando o tipo de usuário -->
                 <span v-if="role === 'ADMIN'" class="header-badge header-badge-admin">Admin</span>
                 <span v-else-if="role === 'MODERATOR'" class="header-badge header-badge-moderator">Moderador</span>
                 <span v-else class="header-badge header-badge-client">Cliente</span>
               </span>
             </button>
-            <!-- Lista de opções do menu do usuário -->
             <ul class="header-user-menu-list">
-              <!-- Opção de perfil -->
               <li><a class="header-user-menu-item" href="#" @click.prevent="abrirPerfil">
                 <i class="bi bi-person"></i> Perfil
               </a></li>

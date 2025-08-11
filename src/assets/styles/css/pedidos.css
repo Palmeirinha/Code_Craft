@@ -1,6 +1,6 @@
-/* ===== PEDIDOS ===== */
 
-/* Section */
+
+
 .pedidos-section {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   min-height: 100vh;
@@ -13,7 +13,7 @@
   padding: 0 2rem;
 }
 
-/* Header */
+
 .pedidos-header {
   text-align: center;
   margin-bottom: 2rem;
@@ -43,7 +43,7 @@
   line-height: 1.6;
 }
 
-/* Controls */
+
 .pedidos-controls {
   background: rgba(15, 23, 42, 0.8);
   border-radius: 12px;
@@ -90,7 +90,7 @@
   color: #ffffff;
 }
 
-/* Buttons */
+
 .pedidos-btn {
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
@@ -158,7 +158,7 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Statistics */
+
 .pedidos-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -222,7 +222,7 @@
   font-weight: 500;
 }
 
-/* Loading State */
+
 .pedidos-loading {
   text-align: center;
   padding: 3rem 2rem;
@@ -243,7 +243,7 @@
   font-size: 0.9rem;
 }
 
-/* Empty State */
+
 .pedidos-empty {
   text-align: center;
   padding: 3rem 2rem;
@@ -289,7 +289,7 @@
   font-size: 1rem;
 }
 
-/* Table */
+
 .pedidos-table-container {
   background: rgba(15, 23, 42, 0.8);
   border-radius: 12px;
@@ -336,7 +336,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Table Content */
+
 .pedidos-info {
   display: flex;
   flex-direction: column;
@@ -399,7 +399,7 @@
   border: 1px solid rgba(100, 116, 139, 0.3);
 }
 
-/* Products Info */
+
 .pedidos-products-info {
   display: flex;
   flex-direction: column;
@@ -438,7 +438,7 @@
   align-self: flex-start;
 }
 
-/* Total Info */
+
 .pedidos-total-info {
   display: flex;
   flex-direction: column;
@@ -474,7 +474,7 @@
   font-weight: 700;
 }
 
-/* Coupon Info */
+
 .pedidos-cupom-info {
   display: flex;
   flex-direction: column;
@@ -500,7 +500,7 @@
   font-style: italic;
 }
 
-/* Address Info */
+
 .pedidos-address-info {
   display: flex;
   flex-direction: column;
@@ -521,7 +521,7 @@
   font-style: italic;
 }
 
-/* Actions */
+
 .pedidos-actions {
   display: flex;
   gap: 0.5rem;
@@ -548,7 +548,7 @@
   color: #ffffff;
 }
 
-/* Pagination */
+
 .pedidos-pagination {
   display: flex;
   justify-content: center;
@@ -566,7 +566,7 @@
   font-weight: 500;
 }
 
-/* Toast Notifications */
+
 .pedidos-toast-container {
   position: fixed;
   bottom: 2rem;
@@ -644,7 +644,7 @@
   color: #ffffff;
 }
 
-/* Responsividade */
+
 @media (max-width: 768px) {
   .pedidos-container {
     padding: 0 1rem;

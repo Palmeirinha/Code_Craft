@@ -1,940 +1,940 @@
-/* ===== CSS DE CUPONS - VERSÃO OTIMIZADA ===== */
+
 /* 
   Este arquivo contém estilos para a página de gerenciamento de cupons
   Foi otimizado para reduzir redundância e melhorar manutenibilidade
   Inclui formulário, lista, tabela e modais de confirmação
 */
 
-/* ===== VARIÁVEIS CSS (cores e valores reutilizáveis) ===== */
+
 /* 
   As variáveis CSS centralizam cores e valores em um local
   Facilitam manutenção e garantem consistência visual
 */
 :root {
-  --primary-bg: #0f172a;        /* Fundo principal (azul escuro) */
-  --secondary-bg: #1e293b;      /* Fundo secundário (azul médio) */
-  --accent-purple: #8b5cf6;     /* Cor de destaque roxa */
-  --accent-blue: #3b82f6;       /* Cor de destaque azul */
-  --accent-green: #10b981;      /* Cor de sucesso (verde) */
-  --accent-red: #ef4444;        /* Cor de perigo (vermelho) */
-  --accent-orange: #f59e0b;     /* Cor de aviso (laranja) */
-  --text-white: #ffffff;        /* Texto branco */
-  --text-muted: #94a3b8;        /* Texto secundário */
-  --text-light: #e2e8f0;        /* Texto claro */
-  --border-color: rgba(139, 92, 246, 0.2); /* Borda com transparência */
-  --shadow-dark: rgba(0, 0, 0, 0.2); /* Sombra escura */
-  --shadow-blue: rgba(59, 130, 246, 0.3); /* Sombra azul */
-  --shadow-red: rgba(239, 68, 68, 0.3); /* Sombra vermelha */
+  --primary-bg: #0f172a;        
+  --secondary-bg: #1e293b;      
+  --accent-purple: #8b5cf6;     
+  --accent-blue: #3b82f6;       
+  --accent-green: #10b981;      
+  --accent-red: #ef4444;        
+  --accent-orange: #f59e0b;     
+  --text-white: #ffffff;        
+  --text-muted: #94a3b8;        
+  --text-light: #e2e8f0;        
+  --border-color: rgba(139, 92, 246, 0.2); 
+  --shadow-dark: rgba(0, 0, 0, 0.2); 
+  --shadow-blue: rgba(59, 130, 246, 0.3); 
+  --shadow-red: rgba(239, 68, 68, 0.3); 
 }
 
-/* ===== LAYOUT PRINCIPAL ===== */
+
 /* 
   Estrutura principal da página de cupons
   Define containers, background e espaçamentos básicos
 */
 
-/* Seção principal com gradiente de fundo */
+
 .cupom-section {
-  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%); /* Gradiente azul escuro */
-  min-height: 100vh; /* Altura mínima de 100% da viewport */
-  padding: 2rem 0; /* Espaçamento vertical interno */
+  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%); 
+  min-height: 100vh; 
+  padding: 2rem 0; 
 }
 
-/* Container para centralizar e limitar largura */
+
 .cupom-container {
-  max-width: 1200px; /* Largura máxima para telas grandes */
-  margin: 0 auto; /* Centraliza horizontalmente */
-  padding: 0 2rem; /* Espaçamento horizontal interno */
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 2rem; 
 }
 
-/* Wrapper principal com fundo e bordas */
+
 .cupom-wrapper {
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
-  border-radius: 16px; /* Bordas arredondadas */
-  padding: 2rem; /* Espaçamento interno */
-  box-shadow: 0 4px 16px var(--shadow-dark); /* Sombra para profundidade */
-  border: 1px solid var(--border-color); /* Borda sutil */
+  background: rgba(15, 23, 42, 0.8); 
+  border-radius: 16px; 
+  padding: 2rem; 
+  box-shadow: 0 4px 16px var(--shadow-dark); 
+  border: 1px solid var(--border-color); 
 }
 
-/* ===== HEADER DA PÁGINA ===== */
+
 /* 
   Cabeçalho com título e subtítulo
   Define hierarquia visual e identidade da página
 */
 
-/* Header centralizado da página */
+
 .cupom-header {
-  text-align: center; /* Centraliza o conteúdo */
-  margin-bottom: 2rem; /* Espaçamento inferior */
+  text-align: center; 
+  margin-bottom: 2rem; 
 }
 
-/* Título principal da página */
+
 .cupom-title {
-  font-size: 2.5rem; /* Tamanho grande para hierarquia */
-  font-weight: 700; /* Peso negrito */
-  color: var(--text-white); /* Cor branca para contraste */
-  margin: 0 0 0.5rem; /* Margem inferior */
-  line-height: 1.2; /* Altura da linha */
+  font-size: 2.5rem; 
+  font-weight: 700; 
+  color: var(--text-white); 
+  margin: 0 0 0.5rem; 
+  line-height: 1.2; 
 }
 
-/* Subtítulo descritivo */
+
 .cupom-subtitle {
-  font-size: 1.1rem; /* Tamanho médio */
-  color: var(--text-muted); /* Cor secundária */
-  margin: 0; /* Remove margens */
-  line-height: 1.6; /* Altura da linha para melhor leitura */
+  font-size: 1.1rem; 
+  color: var(--text-muted); 
+  margin: 0; 
+  line-height: 1.6; 
 }
 
-/* ===== FORMULÁRIO DE CUPONS ===== */
+
 /* 
   Formulário para criar e editar cupons
   Inclui campos de entrada e botões de ação
 */
 
-/* Container do formulário */
+
 .cupom-form-container {
-  background: rgba(30, 41, 59, 0.8); /* Fundo semi-transparente */
-  border-radius: 12px; /* Bordas arredondadas */
-  padding: 2rem; /* Espaçamento interno */
-  margin-bottom: 2rem; /* Espaçamento inferior */
-  border: 1px solid var(--border-color); /* Borda sutil */
+  background: rgba(30, 41, 59, 0.8); 
+  border-radius: 12px; 
+  padding: 2rem; 
+  margin-bottom: 2rem; 
+  border: 1px solid var(--border-color); 
 }
 
-/* Título do formulário com ícone */
+
 .cupom-form-title {
-  font-size: 1.5rem; /* Tamanho médio */
-  font-weight: 600; /* Peso semi-negrito */
-  color: var(--text-white); /* Cor branca */
-  margin: 0 0 1.5rem; /* Margem inferior */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 0.75rem; /* Espaçamento entre ícone e texto */
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  color: var(--text-white); 
+  margin: 0 0 1.5rem; 
+  display: flex; 
+  align-items: center; 
+  gap: 0.75rem; 
 }
 
-/* Ícone do título */
+
 .cupom-form-title i {
-  color: var(--accent-purple); /* Cor roxa */
+  color: var(--accent-purple); 
 }
 
-/* Grid responsivo para os campos */
+
 .cupom-form-grid {
-  display: grid; /* Layout em grid */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colunas adaptativas */
-  gap: 1.5rem; /* Espaçamento entre campos */
-  margin-bottom: 1.5rem; /* Margem inferior */
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 1.5rem; 
+  margin-bottom: 1.5rem; 
 }
 
-/* Grupo de campos do formulário */
+
 .cupom-form-group {
-  display: flex; /* Layout flexbox */
-  flex-direction: column; /* Direção vertical */
-  gap: 0.5rem; /* Espaçamento entre label e input */
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.5rem; 
 }
 
-/* Label dos campos */
+
 .cupom-form-label {
-  font-size: 0.9rem; /* Tamanho pequeno */
-  font-weight: 600; /* Peso semi-negrito */
-  color: var(--text-white); /* Cor branca */
+  font-size: 0.9rem; 
+  font-weight: 600; 
+  color: var(--text-white); 
 }
 
-/* ===== CAMPOS DE ENTRADA ===== */
+
 /* 
   Estilos para campos de entrada do formulário
   Inclui estados de foco e placeholder
 */
 
-/* Campo de entrada com estilo base */
+
 .cupom-form-input {
-  width: 100%; /* Ocupa toda a largura disponível */
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
-  border: 1px solid var(--border-color); /* Borda com transparência */
-  color: var(--text-white); /* Cor do texto */
-  padding: 0.75rem 1rem; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  transition: all 0.3s ease; /* Transição suave */
-  box-sizing: border-box; /* Inclui padding e border na largura */
-  text-transform: uppercase; /* Texto em maiúsculas */
-  letter-spacing: 1px; /* Espaçamento entre letras */
+  width: 100%; 
+  background: rgba(15, 23, 42, 0.8); 
+  border: 1px solid var(--border-color); 
+  color: var(--text-white); 
+  padding: 0.75rem 1rem; 
+  border-radius: 8px; 
+  font-size: 0.9rem; 
+  transition: all 0.3s ease; 
+  box-sizing: border-box; 
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
 }
 
-/* Estado de foco dos campos */
+
 .cupom-form-input:focus {
-  outline: none; /* Remove outline padrão */
-  border-color: var(--accent-purple); /* Borda roxa no foco */
-  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2); /* Sombra roxa sutil */
+  outline: none; 
+  border-color: var(--accent-purple); 
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2); 
 }
 
-/* Placeholder dos campos */
+
 .cupom-form-input::placeholder {
-  color: var(--text-muted); /* Cor cinza para placeholder */
-  text-transform: none; /* Remove transformação */
-  letter-spacing: normal; /* Espaçamento normal */
+  color: var(--text-muted); 
+  text-transform: none; 
+  letter-spacing: normal; 
 }
 
-/* Container das ações do formulário */
+
 .cupom-form-actions {
-  display: flex; /* Layout flexbox */
-  gap: 1rem; /* Espaçamento entre botões */
-  justify-content: flex-end; /* Alinha à direita */
-  flex-wrap: wrap; /* Quebra linha se necessário */
+  display: flex; 
+  gap: 1rem; 
+  justify-content: flex-end; 
+  flex-wrap: wrap; 
 }
 
-/* ===== BOTÕES ===== */
+
 /* 
   Botões de ação com diferentes estilos
   Inclui estados de hover e disabled
 */
 
-/* Estilo base para todos os botões */
+
 .cupom-btn {
-  padding: 0.75rem 1.5rem; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  font-weight: 600; /* Peso semi-negrito */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  cursor: pointer; /* Cursor de mão */
-  transition: all 0.3s ease; /* Transição suave */
-  border: none; /* Remove borda */
-  display: inline-flex; /* Layout flexbox inline */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 0.5rem; /* Espaçamento entre ícone e texto */
-  text-decoration: none; /* Remove sublinhado */
+  padding: 0.75rem 1.5rem; 
+  border-radius: 8px; 
+  font-weight: 600; 
+  font-size: 0.9rem; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  border: none; 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  text-decoration: none; 
 }
 
-/* Estado desabilitado dos botões */
+
 .cupom-btn:disabled {
-  opacity: 0.6; /* Reduz opacidade */
-  cursor: not-allowed; /* Cursor de proibido */
+  opacity: 0.6; 
+  cursor: not-allowed; 
 }
 
-/* Botão primário com gradiente */
+
 .cupom-btn-primary {
-  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%); /* Gradiente azul para roxo */
-  color: var(--text-white); /* Texto branco */
-  box-shadow: 0 4px 16px var(--shadow-blue); /* Sombra azul */
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%); 
+  color: var(--text-white); 
+  box-shadow: 0 4px 16px var(--shadow-blue); 
 }
 
-/* Efeito hover do botão primário */
+
 .cupom-btn-primary:hover:not(:disabled) {
-  transform: translateY(-2px); /* Move para cima */
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); /* Sombra mais intensa */
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); 
 }
 
-/* Botão outline com borda */
+
 .cupom-btn-outline {
-  background: transparent; /* Fundo transparente */
-  border: 2px solid var(--accent-blue); /* Borda azul */
-  color: var(--accent-blue); /* Texto azul */
+  background: transparent; 
+  border: 2px solid var(--accent-blue); 
+  color: var(--accent-blue); 
 }
 
-/* Efeito hover do botão outline */
+
 .cupom-btn-outline:hover:not(:disabled) {
-  background: var(--accent-blue); /* Fundo azul */
-  color: var(--text-white); /* Texto branco */
-  transform: translateY(-2px); /* Move para cima */
+  background: var(--accent-blue); 
+  color: var(--text-white); 
+  transform: translateY(-2px); 
 }
 
-/* Botão secundário neutro */
+
 .cupom-btn-secondary {
-  background: rgba(100, 116, 139, 0.2); /* Fundo cinza transparente */
-  color: var(--text-muted); /* Texto cinza */
-  border: 1px solid rgba(100, 116, 139, 0.3); /* Borda cinza */
+  background: rgba(100, 116, 139, 0.2); 
+  color: var(--text-muted); 
+  border: 1px solid rgba(100, 116, 139, 0.3); 
 }
 
-/* Efeito hover do botão secundário */
+
 .cupom-btn-secondary:hover:not(:disabled) {
-  background: rgba(100, 116, 139, 0.3); /* Fundo mais opaco */
-  color: var(--text-white); /* Texto branco */
+  background: rgba(100, 116, 139, 0.3); 
+  color: var(--text-white); 
 }
 
-/* Botão de perigo com gradiente */
+
 .cupom-btn-danger {
-  background: linear-gradient(135deg, var(--accent-red) 0%, #dc2626 100%); /* Gradiente vermelho */
-  color: var(--text-white); /* Texto branco */
-  box-shadow: 0 4px 16px var(--shadow-red); /* Sombra vermelha */
+  background: linear-gradient(135deg, var(--accent-red) 0%, #dc2626 100%); 
+  color: var(--text-white); 
+  box-shadow: 0 4px 16px var(--shadow-red); 
 }
 
-/* Efeito hover do botão de perigo */
+
 .cupom-btn-danger:hover:not(:disabled) {
-  transform: translateY(-2px); /* Move para cima */
-  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4); /* Sombra mais intensa */
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4); 
 }
 
-/* Botão pequeno */
+
 .cupom-btn-sm {
-  padding: 0.5rem 1rem; /* Padding reduzido */
-  font-size: 0.8rem; /* Fonte menor */
+  padding: 0.5rem 1rem; 
+  font-size: 0.8rem; 
 }
 
-/* ===== SPINNER DE CARREGAMENTO ===== */
+
 /* 
   Indicador visual de carregamento
   Usado durante operações assíncronas
 */
 
-/* Container do spinner */
+
 .cupom-spinner {
-  width: 16px; /* Largura fixa */
-  height: 16px; /* Altura fixa */
-  border: 2px solid var(--border-color); /* Borda com transparência */
-  border-top: 2px solid var(--accent-purple); /* Borda superior roxa */
-  border-radius: 50%; /* Forma circular */
-  animation: spin 1s linear infinite; /* Animação de rotação */
+  width: 16px; 
+  height: 16px; 
+  border: 2px solid var(--border-color); 
+  border-top: 2px solid var(--accent-purple); 
+  border-radius: 50%; 
+  animation: spin 1s linear infinite; 
 }
 
-/* Animação de rotação */
+
 @keyframes spin {
-  0% { transform: rotate(0deg); } /* Início: 0 graus */
-  100% { transform: rotate(360deg); } /* Fim: 360 graus (volta completa) */
+  0% { transform: rotate(0deg); } 
+  100% { transform: rotate(360deg); } 
 }
 
-/* ===== LISTA DE CUPONS ===== */
+
 /* 
   Container da lista de cupons
   Inclui cabeçalho e estatísticas
 */
 
-/* Container da lista */
+
 .cupom-list-container {
-  background: rgba(30, 41, 59, 0.8); /* Fundo semi-transparente */
-  border-radius: 12px; /* Bordas arredondadas */
-  padding: 2rem; /* Espaçamento interno */
-  border: 1px solid var(--border-color); /* Borda sutil */
+  background: rgba(30, 41, 59, 0.8); 
+  border-radius: 12px; 
+  padding: 2rem; 
+  border: 1px solid var(--border-color); 
 }
 
-/* Cabeçalho da lista com título e estatísticas */
+
 .cupom-list-header {
-  display: flex; /* Layout flexbox */
-  justify-content: space-between; /* Distribui espaço */
-  align-items: center; /* Centraliza verticalmente */
-  margin-bottom: 1.5rem; /* Margem inferior */
-  flex-wrap: wrap; /* Quebra linha se necessário */
-  gap: 1rem; /* Espaçamento entre elementos */
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 1.5rem; 
+  flex-wrap: wrap; 
+  gap: 1rem; 
 }
 
-/* Título da lista */
+
 .cupom-list-title {
-  font-size: 1.5rem; /* Tamanho médio */
-  font-weight: 600; /* Peso semi-negrito */
-  color: var(--text-white); /* Cor branca */
-  margin: 0; /* Remove margens */
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  color: var(--text-white); 
+  margin: 0; 
 }
 
-/* Badge de estatísticas */
+
 .cupom-stats-badge {
-  background: rgba(139, 92, 246, 0.2); /* Fundo roxo transparente */
-  color: #a78bfa; /* Texto roxo claro */
-  padding: 0.5rem 1rem; /* Espaçamento interno */
-  border-radius: 20px; /* Bordas muito arredondadas */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  font-weight: 600; /* Peso semi-negrito */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 0.5rem; /* Espaçamento entre ícone e texto */
-  border: 1px solid rgba(139, 92, 246, 0.3); /* Borda roxa */
+  background: rgba(139, 92, 246, 0.2); 
+  color: #a78bfa; 
+  padding: 0.5rem 1rem; 
+  border-radius: 20px; 
+  font-size: 0.9rem; 
+  font-weight: 600; 
+  display: flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  border: 1px solid rgba(139, 92, 246, 0.3); 
 }
 
-/* ===== ESTADOS DE CARREGAMENTO E VAZIO ===== */
+
 /* 
   Estados visuais para diferentes situações
   Inclui loading e lista vazia
 */
 
-/* Estado de carregamento */
+
 .cupom-loading,
 .cupom-empty {
-  text-align: center; /* Centraliza texto */
-  padding: 3rem 2rem; /* Espaçamento interno */
+  text-align: center; 
+  padding: 3rem 2rem; 
 }
 
-/* Spinner de carregamento maior */
+
 .cupom-loading .cupom-spinner {
-  width: 40px; /* Largura maior */
-  height: 40px; /* Altura maior */
-  border-width: 3px; /* Borda mais grossa */
-  margin: 0 auto 1rem; /* Centraliza e adiciona margem inferior */
+  width: 40px; 
+  height: 40px; 
+  border-width: 3px; 
+  margin: 0 auto 1rem; 
 }
 
-/* Texto de carregamento */
+
 .cupom-loading-text {
-  color: var(--text-muted); /* Cor secundária */
-  font-size: 0.9rem; /* Tamanho pequeno */
+  color: var(--text-muted); 
+  font-size: 0.9rem; 
 }
 
-/* Ícone de lista vazia */
+
 .cupom-empty i {
-  font-size: 3rem; /* Tamanho grande */
-  color: var(--text-muted); /* Cor secundária */
-  margin-bottom: 1rem; /* Margem inferior */
+  font-size: 3rem; 
+  color: var(--text-muted); 
+  margin-bottom: 1rem; 
 }
 
-/* Título de lista vazia */
+
 .cupom-empty-title {
-  color: var(--text-white); /* Cor branca */
-  font-size: 1.5rem; /* Tamanho médio */
-  font-weight: 600; /* Peso semi-negrito */
-  margin-bottom: 0.5rem; /* Margem inferior */
+  color: var(--text-white); 
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  margin-bottom: 0.5rem; 
 }
 
-/* Texto de lista vazia */
+
 .cupom-empty-text {
-  color: var(--text-muted); /* Cor secundária */
-  font-size: 0.9rem; /* Tamanho pequeno */
+  color: var(--text-muted); 
+  font-size: 0.9rem; 
 }
 
-/* ===== TABELA DE CUPONS ===== */
+
 /* 
   Tabela responsiva para exibir cupons
   Inclui cabeçalho, linhas e células
 */
 
-/* Container da tabela */
+
 .cupom-table-container {
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
-  border-radius: 8px; /* Bordas arredondadas */
-  overflow: hidden; /* Esconde conteúdo que ultrapassa */
-  border: 1px solid var(--border-color); /* Borda sutil */
+  background: rgba(15, 23, 42, 0.8); 
+  border-radius: 8px; 
+  overflow: hidden; 
+  border: 1px solid var(--border-color); 
 }
 
-/* Container responsivo da tabela */
+
 .cupom-table-responsive {
-  overflow-x: auto; /* Scroll horizontal se necessário */
+  overflow-x: auto; 
 }
 
-/* Tabela principal */
+
 .cupom-table {
-  width: 100%; /* Ocupa toda a largura */
-  border-collapse: collapse; /* Remove espaçamento entre células */
-  background: var(--secondary-bg); /* Fundo azul médio */
+  width: 100%; 
+  border-collapse: collapse; 
+  background: var(--secondary-bg); 
 }
 
-/* Cabeçalho da tabela */
+
 .cupom-table thead {
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
+  background: rgba(15, 23, 42, 0.8); 
 }
 
-/* Células do cabeçalho */
+
 .cupom-table th {
-  padding: 1rem; /* Espaçamento interno */
-  text-align: left; /* Alinha à esquerda */
-  color: var(--text-white); /* Cor branca */
-  font-weight: 600; /* Peso semi-negrito */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  border-bottom: 1px solid var(--border-color); /* Borda inferior */
+  padding: 1rem; 
+  text-align: left; 
+  color: var(--text-white); 
+  font-weight: 600; 
+  font-size: 0.9rem; 
+  border-bottom: 1px solid var(--border-color); 
 }
 
-/* Coluna de ações com largura fixa */
+
 .cupom-th-actions {
-  width: 120px; /* Largura fixa */
+  width: 120px; 
 }
 
-/* Células do corpo da tabela */
+
 .cupom-table td {
-  padding: 1rem; /* Espaçamento interno */
-  border-bottom: 1px solid rgba(139, 92, 246, 0.1); /* Borda inferior sutil */
-  color: var(--text-white); /* Cor branca */
-  font-size: 0.9rem; /* Tamanho da fonte */
+  padding: 1rem; 
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1); 
+  color: var(--text-white); 
+  font-size: 0.9rem; 
 }
 
-/* Efeito hover nas linhas da tabela */
+
 .cupom-table-row:hover {
-  background: rgba(139, 92, 246, 0.05); /* Fundo roxo sutil */
+  background: rgba(139, 92, 246, 0.05); 
 }
 
-/* ===== CÉLULAS ESPECIALIZADAS ===== */
+
 /* 
   Estilos específicos para diferentes tipos de conteúdo
   Inclui código, desconto e datas
 */
 
-/* Código do cupom */
+
 .cupom-code {
-  font-weight: 600; /* Peso semi-negrito */
-  color: var(--text-white); /* Cor branca */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  letter-spacing: 1px; /* Espaçamento entre letras */
-  text-transform: uppercase; /* Texto em maiúsculas */
+  font-weight: 600; 
+  color: var(--text-white); 
+  font-size: 0.9rem; 
+  letter-spacing: 1px; 
+  text-transform: uppercase; 
 }
 
-/* Badge de desconto */
+
 .cupom-discount-badge {
-  background: rgba(16, 185, 129, 0.2); /* Fundo verde transparente */
-  color: #34d399; /* Texto verde claro */
-  padding: 0.25rem 0.75rem; /* Espaçamento interno */
-  border-radius: 20px; /* Bordas muito arredondadas */
-  font-size: 0.8rem; /* Tamanho pequeno */
-  font-weight: 600; /* Peso semi-negrito */
-  border: 1px solid rgba(16, 185, 129, 0.3); /* Borda verde */
+  background: rgba(16, 185, 129, 0.2); 
+  color: #34d399; 
+  padding: 0.25rem 0.75rem; 
+  border-radius: 20px; 
+  font-size: 0.8rem; 
+  font-weight: 600; 
+  border: 1px solid rgba(16, 185, 129, 0.3); 
 }
 
-/* Texto de data */
+
 .cupom-date-text {
-  color: var(--text-muted); /* Cor secundária */
-  font-size: 0.85rem; /* Tamanho pequeno */
+  color: var(--text-muted); 
+  font-size: 0.85rem; 
 }
 
-/* Container das ações */
+
 .cupom-actions {
-  display: flex; /* Layout flexbox */
-  gap: 0.5rem; /* Espaçamento entre botões */
-  align-items: center; /* Centraliza verticalmente */
+  display: flex; 
+  gap: 0.5rem; 
+  align-items: center; 
 }
 
-/* ===== PAGINAÇÃO ===== */
+
 /* 
   Controles de navegação entre páginas
   Inclui informações e botões de navegação
 */
 
-/* Container da paginação */
+
 .cupom-pagination {
-  display: flex; /* Layout flexbox */
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 1rem; /* Espaçamento entre elementos */
-  padding: 1.5rem; /* Espaçamento interno */
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
-  border-top: 1px solid var(--border-color); /* Borda superior */
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 1rem; 
+  padding: 1.5rem; 
+  background: rgba(15, 23, 42, 0.8); 
+  border-top: 1px solid var(--border-color); 
 }
 
-/* Informações da paginação */
+
 .cupom-pagination-info {
-  color: var(--text-muted); /* Cor secundária */
-  font-size: 0.9rem; /* Tamanho pequeno */
-  font-weight: 500; /* Peso médio */
+  color: var(--text-muted); 
+  font-size: 0.9rem; 
+  font-weight: 500; 
 }
 
-/* ===== MODAL PRINCIPAL ===== */
+
 /* 
   Modal para criar/editar cupons
   Inclui backdrop, conteúdo e formulário
 */
 
-/* Backdrop do modal */
+
 .cupom-modal-backdrop {
-  position: fixed; /* Posição fixa na tela */
-  top: 0; /* Topo da tela */
-  left: 0; /* Esquerda da tela */
-  right: 0; /* Direita da tela */
-  bottom: 0; /* Baixo da tela */
-  background: rgba(0, 0, 0, 0.8); /* Fundo preto transparente */
-  z-index: 1000; /* Camada alta */
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  background: rgba(0, 0, 0, 0.8); 
+  z-index: 1000; 
 }
 
-/* Container do modal */
+
 .cupom-modal {
-  position: fixed; /* Posição fixa na tela */
-  top: 0; /* Topo da tela */
-  left: 0; /* Esquerda da tela */
-  right: 0; /* Direita da tela */
-  bottom: 0; /* Baixo da tela */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  z-index: 1001; /* Camada mais alta que o backdrop */
-  padding: 2rem; /* Espaçamento interno */
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  z-index: 1001; 
+  padding: 2rem; 
 }
 
-/* Diálogo do modal */
+
 .cupom-modal-dialog {
-  background: rgba(15, 23, 42, 0.95); /* Fundo semi-transparente */
-  border-radius: 12px; /* Bordas arredondadas */
-  max-width: 600px; /* Largura máxima */
-  width: 100%; /* Ocupa toda a largura disponível */
-  max-height: 90vh; /* Altura máxima de 90% da viewport */
-  overflow-y: auto; /* Scroll vertical se necessário */
-  border: 1px solid var(--border-color); /* Borda sutil */
-  box-shadow: 0 8px 32px var(--shadow-dark); /* Sombra */
-  scrollbar-width: none; /* Remove scrollbar no Firefox */
-  -ms-overflow-style: none; /* Remove scrollbar no IE/Edge */
+  background: rgba(15, 23, 42, 0.95); 
+  border-radius: 12px; 
+  max-width: 600px; 
+  width: 100%; 
+  max-height: 90vh; 
+  overflow-y: auto; 
+  border: 1px solid var(--border-color); 
+  box-shadow: 0 8px 32px var(--shadow-dark); 
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 }
 
-/* Remove scrollbar no Webkit */
+
 .cupom-modal-dialog::-webkit-scrollbar {
-  display: none; /* Esconde scrollbar */
+  display: none; 
 }
 
-/* Conteúdo do modal */
+
 .cupom-modal-content {
-  padding: 2rem; /* Espaçamento interno */
+  padding: 2rem; 
 }
 
-/* Cabeçalho do modal */
+
 .cupom-modal-header {
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: space-between; /* Distribui espaço */
-  margin-bottom: 2rem; /* Margem inferior */
-  padding-bottom: 1rem; /* Padding inferior */
-  border-bottom: 1px solid var(--border-color); /* Borda inferior */
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  margin-bottom: 2rem; 
+  padding-bottom: 1rem; 
+  border-bottom: 1px solid var(--border-color); 
 }
 
-/* Título do modal */
+
 .cupom-modal-title {
-  font-size: 1.5rem; /* Tamanho médio */
-  font-weight: 600; /* Peso semi-negrito */
-  color: var(--text-white); /* Cor branca */
-  margin: 0; /* Remove margens */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 0.75rem; /* Espaçamento entre ícone e texto */
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  color: var(--text-white); 
+  margin: 0; 
+  display: flex; 
+  align-items: center; 
+  gap: 0.75rem; 
 }
 
-/* Ícone do título */
+
 .cupom-modal-title i {
-  color: var(--accent-purple); /* Cor roxa */
+  color: var(--accent-purple); 
 }
 
-/* Botão de fechar modal */
+
 .cupom-modal-close {
-  background: none; /* Fundo transparente */
-  border: none; /* Remove borda */
-  color: var(--text-muted); /* Cor cinza */
-  font-size: 1.2rem; /* Tamanho do ícone */
-  cursor: pointer; /* Cursor de mão */
-  padding: 0.5rem; /* Espaçamento interno */
-  border-radius: 6px; /* Bordas arredondadas */
-  transition: all 0.2s ease; /* Transição suave */
+  background: none; 
+  border: none; 
+  color: var(--text-muted); 
+  font-size: 1.2rem; 
+  cursor: pointer; 
+  padding: 0.5rem; 
+  border-radius: 6px; 
+  transition: all 0.2s ease; 
 }
 
-/* Hover do botão fechar */
+
 .cupom-modal-close:hover {
-  background: rgba(139, 92, 246, 0.1); /* Fundo roxo sutil */
-  color: var(--text-white); /* Cor branca */
+  background: rgba(139, 92, 246, 0.1); 
+  color: var(--text-white); 
 }
 
-/* Corpo do modal */
+
 .cupom-modal-body {
-  margin-bottom: 2rem; /* Margem inferior */
+  margin-bottom: 2rem; 
 }
 
-/* Grupo de campos do modal */
+
 .cupom-modal-form-group {
-  margin-bottom: 1.5rem; /* Espaçamento inferior */
+  margin-bottom: 1.5rem; 
 }
 
-/* Label dos campos do modal */
+
 .cupom-modal-label {
-  display: block; /* Comportamento de bloco */
-  font-size: 0.9rem; /* Tamanho pequeno */
-  font-weight: 600; /* Peso semi-negrito */
-  color: var(--text-white); /* Cor branca */
-  margin-bottom: 0.5rem; /* Margem inferior */
+  display: block; 
+  font-size: 0.9rem; 
+  font-weight: 600; 
+  color: var(--text-white); 
+  margin-bottom: 0.5rem; 
 }
 
-/* Campo de entrada do modal */
+
 .cupom-modal-input {
-  width: 100%; /* Ocupa toda a largura */
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
-  border: 1px solid var(--border-color); /* Borda com transparência */
-  color: var(--text-white); /* Cor do texto */
-  padding: 0.75rem 1rem; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  transition: all 0.3s ease; /* Transição suave */
-  box-sizing: border-box; /* Inclui padding e border na largura */
-  text-transform: uppercase; /* Texto em maiúsculas */
-  letter-spacing: 1px; /* Espaçamento entre letras */
+  width: 100%; 
+  background: rgba(15, 23, 42, 0.8); 
+  border: 1px solid var(--border-color); 
+  color: var(--text-white); 
+  padding: 0.75rem 1rem; 
+  border-radius: 8px; 
+  font-size: 0.9rem; 
+  transition: all 0.3s ease; 
+  box-sizing: border-box; 
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
 }
 
-/* Estado de foco dos campos do modal */
+
 .cupom-modal-input:focus {
-  outline: none; /* Remove outline padrão */
-  border-color: var(--accent-purple); /* Borda roxa no foco */
-  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2); /* Sombra roxa sutil */
+  outline: none; 
+  border-color: var(--accent-purple); 
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2); 
 }
 
-/* Rodapé do modal */
+
 .cupom-modal-footer {
-  display: flex; /* Layout flexbox */
-  gap: 1rem; /* Espaçamento entre botões */
-  justify-content: flex-end; /* Alinha à direita */
-  padding-top: 1.5rem; /* Padding superior */
-  border-top: 1px solid var(--border-color); /* Borda superior */
+  display: flex; 
+  gap: 1rem; 
+  justify-content: flex-end; 
+  padding-top: 1.5rem; 
+  border-top: 1px solid var(--border-color); 
 }
 
-/* ===== MODAL DE CONFIRMAÇÃO ===== */
+
 /* 
   Modal para confirmar ações destrutivas
   Inclui avisos e botões de confirmação
 */
 
-/* Overlay do modal de confirmação */
+
 .cupom-confirm-modal-overlay {
-  position: fixed; /* Posição fixa na tela */
-  top: 0; /* Topo da tela */
-  left: 0; /* Esquerda da tela */
-  right: 0; /* Direita da tela */
-  bottom: 0; /* Baixo da tela */
-  background: rgba(0, 0, 0, 0.8); /* Fundo preto transparente */
-  z-index: 10000; /* Camada muito alta */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  padding: 2rem; /* Espaçamento interno */
-  backdrop-filter: blur(4px); /* Efeito de blur no fundo */
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  background: rgba(0, 0, 0, 0.8); 
+  z-index: 10000; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 2rem; 
+  backdrop-filter: blur(4px); 
 }
 
-/* Modal de confirmação */
+
 .cupom-confirm-modal {
-  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%); /* Gradiente azul escuro */
-  border-radius: 16px; /* Bordas arredondadas */
-  max-width: 400px; /* Largura máxima */
-  width: 100%; /* Ocupa toda a largura disponível */
-  border: 1px solid var(--border-color); /* Borda sutil */
-  box-shadow: 0 8px 32px var(--shadow-dark); /* Sombra */
-  overflow: hidden; /* Esconde conteúdo que ultrapassa */
+  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%); 
+  border-radius: 16px; 
+  max-width: 400px; 
+  width: 100%; 
+  border: 1px solid var(--border-color); 
+  box-shadow: 0 8px 32px var(--shadow-dark); 
+  overflow: hidden; 
 }
 
-/* Conteúdo do modal de confirmação */
+
 .cupom-confirm-content {
-  padding: 2rem; /* Espaçamento interno */
+  padding: 2rem; 
 }
 
-/* Cabeçalho do modal de confirmação */
+
 .cupom-confirm-header {
-  text-align: center; /* Centraliza texto */
-  margin-bottom: 1.5rem; /* Margem inferior */
-  display: flex; /* Layout flexbox */
-  flex-direction: column; /* Direção vertical */
-  align-items: center; /* Centraliza horizontalmente */
-  gap: 1rem; /* Espaçamento entre elementos */
+  text-align: center; 
+  margin-bottom: 1.5rem; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 1rem; 
 }
 
-/* Ícone do cabeçalho */
+
 .cupom-confirm-header i {
-  font-size: 3rem; /* Tamanho grande */
-  color: var(--accent-orange); /* Cor laranja */
+  font-size: 3rem; 
+  color: var(--accent-orange); 
 }
 
-/* Título do cabeçalho */
+
 .cupom-confirm-header h3 {
-  font-size: 1.5rem; /* Tamanho médio */
-  font-weight: 700; /* Peso negrito */
-  color: var(--text-white); /* Cor branca */
-  margin: 0; /* Remove margens */
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  color: var(--text-white); 
+  margin: 0; 
 }
 
-/* Corpo do modal de confirmação */
+
 .cupom-confirm-body {
-  text-align: center; /* Centraliza texto */
-  margin-bottom: 2rem; /* Margem inferior */
+  text-align: center; 
+  margin-bottom: 2rem; 
 }
 
-/* Parágrafo do corpo */
+
 .cupom-confirm-body p {
-  color: var(--text-light); /* Cor clara */
-  font-size: 1rem; /* Tamanho da fonte */
-  line-height: 1.6; /* Altura da linha */
-  margin: 0 0 0.5rem; /* Margem inferior */
+  color: var(--text-light); 
+  font-size: 1rem; 
+  line-height: 1.6; 
+  margin: 0 0 0.5rem; 
 }
 
-/* Aviso de confirmação */
+
 .cupom-confirm-warning {
-  color: var(--accent-orange) !important; /* Cor laranja */
-  font-weight: 600; /* Peso semi-negrito */
-  font-size: 0.9rem !important; /* Tamanho pequeno */
+  color: var(--accent-orange) !important; 
+  font-weight: 600; 
+  font-size: 0.9rem !important; 
 }
 
-/* Ações do modal de confirmação */
+
 .cupom-confirm-actions {
-  display: flex; /* Layout flexbox */
-  gap: 1rem; /* Espaçamento entre botões */
-  justify-content: center; /* Centraliza horizontalmente */
+  display: flex; 
+  gap: 1rem; 
+  justify-content: center; 
 }
 
-/* Botões de confirmação */
+
 .cupom-confirm-btn-cancel,
 .cupom-confirm-btn-confirm {
-  padding: 0.75rem 1.5rem; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  font-weight: 600; /* Peso semi-negrito */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  cursor: pointer; /* Cursor de mão */
-  transition: all 0.3s ease; /* Transição suave */
-  border: none; /* Remove borda */
-  min-width: 100px; /* Largura mínima */
-  min-height: 44px; /* Altura mínima para acessibilidade */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  gap: 0.5rem; /* Espaçamento entre ícone e texto */
+  padding: 0.75rem 1.5rem; 
+  border-radius: 8px; 
+  font-weight: 600; 
+  font-size: 0.9rem; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  border: none; 
+  min-width: 100px; 
+  min-height: 44px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 0.5rem; 
 }
 
-/* Botão de cancelar */
+
 .cupom-confirm-btn-cancel {
-  background: rgba(100, 116, 139, 0.2); /* Fundo cinza transparente */
-  color: var(--text-muted); /* Texto cinza */
-  border: 1px solid rgba(100, 116, 139, 0.3); /* Borda cinza */
+  background: rgba(100, 116, 139, 0.2); 
+  color: var(--text-muted); 
+  border: 1px solid rgba(100, 116, 139, 0.3); 
 }
 
-/* Hover do botão cancelar */
+
 .cupom-confirm-btn-cancel:hover {
-  background: rgba(100, 116, 139, 0.3); /* Fundo mais opaco */
-  color: var(--text-white); /* Texto branco */
+  background: rgba(100, 116, 139, 0.3); 
+  color: var(--text-white); 
 }
 
-/* Botão de confirmar */
+
 .cupom-confirm-btn-confirm {
-  background: linear-gradient(135deg, var(--accent-red) 0%, #dc2626 100%); /* Gradiente vermelho */
-  color: var(--text-white); /* Texto branco */
-  box-shadow: 0 4px 16px var(--shadow-red); /* Sombra vermelha */
+  background: linear-gradient(135deg, var(--accent-red) 0%, #dc2626 100%); 
+  color: var(--text-white); 
+  box-shadow: 0 4px 16px var(--shadow-red); 
 }
 
-/* Hover do botão confirmar */
+
 .cupom-confirm-btn-confirm:hover:not(:disabled) {
-  transform: translateY(-2px); /* Move para cima */
-  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4); /* Sombra mais intensa */
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4); 
 }
 
-/* Estado desabilitado do botão confirmar */
+
 .cupom-confirm-btn-confirm:disabled {
-  opacity: 0.6; /* Reduz opacidade */
-  cursor: not-allowed; /* Cursor de proibido */
-  transform: none; /* Remove transformação */
+  opacity: 0.6; 
+  cursor: not-allowed; 
+  transform: none; 
 }
 
-/* ===== RESPONSIVIDADE ===== */
+
 /* 
   Media queries para diferentes tamanhos de tela
   Garante boa experiência em dispositivos móveis
 */
 
-/* Tablets e dispositivos médios */
+
 @media (max-width: 768px) {
-  /* Menos padding no container */
+  
   .cupom-container {
-    padding: 0 1rem; /* Padding reduzido */
+    padding: 0 1rem; 
   }
   
-  /* Menos padding no wrapper */
+  
   .cupom-wrapper {
-    padding: 1.5rem; /* Padding reduzido */
+    padding: 1.5rem; 
   }
   
-  /* Título menor em telas pequenas */
+  
   .cupom-title {
-    font-size: 2rem; /* Tamanho reduzido */
+    font-size: 2rem; 
   }
   
-  /* Grid em coluna única */
+  
   .cupom-form-grid {
-    grid-template-columns: 1fr; /* Uma coluna */
-    gap: 1rem; /* Menos espaçamento */
+    grid-template-columns: 1fr; 
+    gap: 1rem; 
   }
   
-  /* Ações em coluna */
+  
   .cupom-form-actions {
-    flex-direction: column; /* Direção vertical */
+    flex-direction: column; 
   }
   
-  /* Cabeçalho da lista em coluna */
+  
   .cupom-list-header {
-    flex-direction: column; /* Direção vertical */
-    align-items: stretch; /* Estica elementos */
-    text-align: center; /* Centraliza texto */
+    flex-direction: column; 
+    align-items: stretch; 
+    text-align: center; 
   }
   
-  /* Tabela com fonte menor */
+  
   .cupom-table {
-    font-size: 0.8rem; /* Fonte menor */
+    font-size: 0.8rem; 
   }
   
-  /* Células com menos padding */
+  
   .cupom-table th,
   .cupom-table td {
-    padding: 0.75rem 0.5rem; /* Padding reduzido */
+    padding: 0.75rem 0.5rem; 
   }
   
-  /* Ações em coluna */
+  
   .cupom-actions {
-    flex-direction: column; /* Direção vertical */
-    gap: 0.25rem; /* Menos espaçamento */
+    flex-direction: column; 
+    gap: 0.25rem; 
   }
   
-  /* Paginação em coluna */
+  
   .cupom-pagination {
-    flex-direction: column; /* Direção vertical */
-    gap: 0.5rem; /* Menos espaçamento */
+    flex-direction: column; 
+    gap: 0.5rem; 
   }
   
-  /* Modal com menos padding */
+  
   .cupom-modal {
-    padding: 1rem; /* Padding reduzido */
+    padding: 1rem; 
   }
   
-  /* Conteúdo do modal com menos padding */
+  
   .cupom-modal-content {
-    padding: 1.5rem; /* Padding reduzido */
+    padding: 1.5rem; 
   }
   
-  /* Rodapé do modal em coluna */
+  
   .cupom-modal-footer {
-    flex-direction: column; /* Direção vertical */
+    flex-direction: column; 
   }
 }
 
-/* Dispositivos móveis pequenos */
+
 @media (max-width: 480px) {
-  /* Wrapper com padding mínimo */
+  
   .cupom-wrapper {
-    padding: 1rem; /* Padding mínimo */
+    padding: 1rem; 
   }
   
-  /* Título ainda menor */
+  
   .cupom-title {
-    font-size: 1.5rem; /* Tamanho mínimo */
+    font-size: 1.5rem; 
   }
   
-  /* Containers com menos padding */
+  
   .cupom-form-container,
   .cupom-list-container {
-    padding: 1.5rem; /* Padding reduzido */
+    padding: 1.5rem; 
   }
   
-  /* Tabela com fonte mínima */
+  
   .cupom-table {
-    font-size: 0.75rem; /* Fonte mínima */
+    font-size: 0.75rem; 
   }
   
-  /* Células com padding mínimo */
+  
   .cupom-table th,
   .cupom-table td {
-    padding: 0.5rem 0.25rem; /* Padding mínimo */
+    padding: 0.5rem 0.25rem; 
   }
 }
 
-/* Responsividade do Modal de Confirmação */
+
 @media (max-width: 480px) {
-  /* Overlay com menos padding */
+  
   .cupom-confirm-modal-overlay {
-    padding: 1rem; /* Padding reduzido */
+    padding: 1rem; 
   }
   
-  /* Conteúdo com menos padding */
+  
   .cupom-confirm-content {
-    padding: 1.5rem; /* Padding reduzido */
+    padding: 1.5rem; 
   }
   
-  /* Título menor */
+  
   .cupom-confirm-header h3 {
-    font-size: 1.25rem; /* Tamanho reduzido */
+    font-size: 1.25rem; 
   }
   
-  /* Ícone menor */
+  
   .cupom-confirm-header i {
-    font-size: 2.5rem; /* Tamanho reduzido */
+    font-size: 2.5rem; 
   }
   
-  /* Ações em coluna */
+  
   .cupom-confirm-actions {
-    flex-direction: column; /* Direção vertical */
+    flex-direction: column; 
   }
   
-  /* Botões ocupam toda a largura */
+  
   .cupom-confirm-btn-cancel,
   .cupom-confirm-btn-confirm {
-    width: 100%; /* Ocupa toda a largura */
+    width: 100%; 
   }
 }

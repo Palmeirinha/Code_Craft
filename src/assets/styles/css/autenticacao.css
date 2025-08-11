@@ -1,164 +1,164 @@
-/* ===== AUTHENTICATION STYLES - CÓDIGO COMENTADO PARA ESTUDO ===== */
 
-/* ===== CONTAINER PRINCIPAL ===== */
-/* Container principal que ocupa toda a tela com gradiente de fundo */
+
+
+
 .auth-section {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* Gradiente escuro do topo para baixo */
-  min-height: 100vh; /* Altura mínima de 100% da viewport */
-  display: flex; /* Layout flexbox para centralizar conteúdo */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  padding: 2rem 0; /* Espaçamento interno vertical */
-  overflow: hidden; /* Esconde conteúdo que ultrapassa o container */
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
+  min-height: 100vh; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 2rem 0; 
+  overflow: hidden; 
 }
 
-/* Container que limita a largura máxima do formulário */
+
 .auth-container {
-  max-width: 450px; /* Largura máxima para manter boa usabilidade */
-  width: 100%; /* Ocupa 100% da largura disponível */
-  margin: 0 auto; /* Centraliza horizontalmente */
-  padding: 0 2rem; /* Espaçamento interno horizontal */
+  max-width: 450px; 
+  width: 100%; 
+  margin: 0 auto; 
+  padding: 0 2rem; 
 }
 
-/* Wrapper principal do formulário com estilo de card */
+
 .auth-wrapper {
-  background: #1e293b; /* Cor de fundo escura */
-  border-radius: 16px; /* Bordas arredondadas */
-  padding: 2rem; /* Espaçamento interno */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidade */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda sutil com cor roxa */
-  position: relative; /* Para posicionar o pseudo-elemento ::before */
-  overflow: hidden; /* Esconde o pseudo-elemento que ultrapassa */
-  max-height: 90vh; /* Altura máxima de 90% da viewport */
+  background: #1e293b; 
+  border-radius: 16px; 
+  padding: 2rem; 
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
+  position: relative; 
+  overflow: hidden; 
+  max-height: 90vh; 
 }
 
-/* Linha decorativa colorida no topo do formulário */
+
 .auth-wrapper::before {
-  content: ''; /* Conteúdo vazio para criar elemento visual */
-  position: absolute; /* Posicionamento absoluto em relação ao wrapper */
-  top: 0; /* Posiciona no topo */
-  left: 0; /* Posiciona na esquerda */
-  right: 0; /* Estende até a direita */
-  height: 3px; /* Altura da linha */
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); /* Gradiente azul para roxo */
+  content: ''; 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  height: 3px; 
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); 
 }
 
-/* ===== HEADER DA AUTENTICAÇÃO ===== */
-/* Cabeçalho centralizado do formulário */
+
+
 .auth-header {
-  text-align: center; /* Centraliza todo o conteúdo */
-  margin-bottom: 2rem; /* Espaçamento inferior */
+  text-align: center; 
+  margin-bottom: 2rem; 
 }
 
-/* Logo circular com gradiente */
+
 .auth-logo {
-  width: 50px; /* Largura fixa */
-  height: 50px; /* Altura fixa */
-  margin: 0 auto 1rem; /* Centraliza e adiciona margem inferior */
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); /* Gradiente azul para roxo */
-  border-radius: 50%; /* Forma circular */
-  display: flex; /* Layout flexbox para centralizar o ícone */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  font-size: 1.5rem; /* Tamanho do ícone */
-  color: #ffffff; /* Cor branca */
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3); /* Sombra azul sutil */
+  width: 50px; 
+  height: 50px; 
+  margin: 0 auto 1rem; 
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 1.5rem; 
+  color: #ffffff; 
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3); 
 }
 
-/* Título principal do formulário */
+
 .auth-title {
-  font-size: 2rem; /* Tamanho grande para destaque */
-  font-weight: 700; /* Peso da fonte (negrito) */
-  color: #ffffff; /* Cor branca */
-  margin: 0 0 0.5rem; /* Margem inferior */
-  line-height: 1.2; /* Altura da linha para melhor legibilidade */
+  font-size: 2rem; 
+  font-weight: 700; 
+  color: #ffffff; 
+  margin: 0 0 0.5rem; 
+  line-height: 1.2; 
 }
 
-/* Subtítulo explicativo */
+
 .auth-subtitle {
-  font-size: 0.9rem; /* Tamanho menor que o título */
-  color: #94a3b8; /* Cor cinza clara */
-  margin: 0; /* Sem margens */
-  line-height: 1.4; /* Altura da linha para melhor legibilidade */
+  font-size: 0.9rem; 
+  color: #94a3b8; 
+  margin: 0; 
+  line-height: 1.4; 
 }
 
-/* ===== FORMULÁRIO ===== */
-/* Container principal do formulário */
+
+
 .auth-form {
-  display: flex; /* Layout flexbox */
-  flex-direction: column; /* Organiza elementos verticalmente */
-  gap: 1rem; /* Espaçamento entre elementos */
+  display: flex; 
+  flex-direction: column; 
+  gap: 1rem; 
 }
 
-/* Grupo de campos do formulário */
+
 .auth-form-group {
-  position: relative; /* Para posicionar ícones absolutamente */
+  position: relative; 
 }
 
-/* Labels dos campos */
+
 .auth-form-label {
-  display: block; /* Ocupa toda a largura disponível */
-  margin-bottom: 0.5rem; /* Espaçamento inferior */
-  color: #ffffff; /* Cor branca */
-  font-weight: 500; /* Peso médio da fonte */
-  font-size: 0.9rem; /* Tamanho da fonte */
+  display: block; 
+  margin-bottom: 0.5rem; 
+  color: #ffffff; 
+  font-weight: 500; 
+  font-size: 0.9rem; 
 }
 
-/* ===== INPUTS E ÍCONES ===== */
-/* Estilos unificados para inputs e ícones */
-/* Inputs de texto */
+
+
+
 .auth-form-input,
 .auth-input {
-  width: 100%; /* Ocupa toda a largura disponível */
-  padding: 0.75rem 0.75rem 0.75rem 2.5rem; /* Padding interno com espaço para ícone à esquerda */
-  background: rgba(30, 41, 59, 0.8); /* Fundo semi-transparente */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda sutil roxa */
-  border-radius: 12px; /* Bordas arredondadas */
-  color: #ffffff !important; /* Cor branca (importante para sobrescrever estilos do navegador) */
-  font-size: 1rem; /* Tamanho da fonte */
-  transition: all 0.3s ease; /* Transição suave para todas as propriedades */
-  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
-  -webkit-appearance: none; /* Remove estilos padrão do WebKit */
-  -moz-appearance: none; /* Remove estilos padrão do Firefox */
-  appearance: none; /* Remove estilos padrão do navegador */
+  width: 100%; 
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem; 
+  background: rgba(30, 41, 59, 0.8); 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
+  border-radius: 12px; 
+  color: #ffffff !important; 
+  font-size: 1rem; 
+  transition: all 0.3s ease; 
+  box-sizing: border-box; 
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+  appearance: none; 
 }
 
-/* Estado de foco dos inputs */
+
 .auth-form-input:focus,
 .auth-input:focus {
-  outline: none; /* Remove contorno padrão */
-  border-color: #8b5cf6; /* Borda roxa mais intensa */
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1); /* Sombra roxa sutil */
-  background: rgba(30, 41, 59, 1) !important; /* Fundo mais opaco */
+  outline: none; 
+  border-color: #8b5cf6; 
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1); 
+  background: rgba(30, 41, 59, 1) !important; 
 }
 
-/* Placeholder dos inputs */
+
 .auth-form-input::placeholder,
 .auth-input::placeholder {
-  color: #64748b; /* Cor cinza para placeholder */
+  color: #64748b; 
 }
 
-/* Ícones dentro dos inputs */
+
 .auth-form-icon,
 .auth-input-icon {
-  position: absolute; /* Posicionamento absoluto em relação ao grupo */
-  left: 0.75rem; /* Distância da esquerda */
-  top: 50%; /* Posiciona no meio vertical */
-  transform: translateY(-50%); /* Centraliza perfeitamente */
-  color: #64748b; /* Cor cinza */
-  font-size: 1rem; /* Tamanho do ícone */
-  transition: color 0.3s ease; /* Transição suave da cor */
-  z-index: 1; /* Garante que fique acima do input */
+  position: absolute; 
+  left: 0.75rem; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  color: #64748b; 
+  font-size: 1rem; 
+  transition: color 0.3s ease; 
+  z-index: 1; 
 }
 
-/* Cor do ícone quando o input está em foco */
+
 .auth-form-input:focus + .auth-form-icon,
 .auth-input:focus + .auth-input-icon {
-  color: #60a5fa; /* Cor azul clara */
+  color: #60a5fa; 
 }
 
-/* ===== REMOÇÃO DE ESTILOS DE AUTOFILL ===== */
-/* Remove estilos padrão do navegador para campos preenchidos automaticamente */
+
+
 .auth-form-input:-webkit-autofill,
 .auth-form-input:-webkit-autofill:hover,
 .auth-form-input:-webkit-autofill:focus,
@@ -167,391 +167,391 @@
 .auth-input:-webkit-autofill:hover,
 .auth-input:-webkit-autofill:focus,
 .auth-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px rgba(30, 41, 59, 0.8) inset !important; /* Fundo personalizado */
-  -webkit-text-fill-color: #ffffff !important; /* Cor do texto */
-  transition: background-color 5000s ease-in-out 0s; /* Transição muito lenta para "enganar" o navegador */
+  -webkit-box-shadow: 0 0 0 30px rgba(30, 41, 59, 0.8) inset !important; 
+  -webkit-text-fill-color: #ffffff !important; 
+  transition: background-color 5000s ease-in-out 0s; 
 }
 
-/* ===== MENSAGENS DE ERRO ===== */
-/* Estilo para mensagens de erro */
+
+
 .auth-form-error {
-  color: #ef4444; /* Cor vermelha */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  margin-top: 0.5rem; /* Espaçamento superior */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 0.5rem; /* Espaçamento entre elementos */
+  color: #ef4444; 
+  font-size: 0.9rem; 
+  margin-top: 0.5rem; 
+  display: flex; 
+  align-items: center; 
+  gap: 0.5rem; 
 }
 
-/* ===== CHECKBOX E LEMBRAR ===== */
-/* Container para checkbox e link "esqueci a senha" */
+
+
 .auth-remember {
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: space-between; /* Distribui espaço entre elementos */
-  margin: 0.5rem 0; /* Margem vertical */
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  margin: 0.5rem 0; 
 }
 
-/* Grupo do checkbox */
+
 .auth-checkbox-group {
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 0.5rem; /* Espaçamento entre checkbox e label */
+  display: flex; 
+  align-items: center; 
+  gap: 0.5rem; 
 }
 
-/* Checkbox personalizado */
+
 .auth-checkbox {
-  width: 16px; /* Largura fixa */
-  height: 16px; /* Altura fixa */
-  accent-color: #8b5cf6; /* Cor de destaque quando marcado */
-  cursor: pointer; /* Cursor de ponteiro */
+  width: 16px; 
+  height: 16px; 
+  accent-color: #8b5cf6; 
+  cursor: pointer; 
 }
 
-/* Label do checkbox */
+
 .auth-checkbox-label {
-  color: #94a3b8; /* Cor cinza */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  cursor: pointer; /* Cursor de ponteiro */
+  color: #94a3b8; 
+  font-size: 0.9rem; 
+  cursor: pointer; 
 }
 
-/* Link "esqueci a senha" */
+
 .auth-forgot-link {
-  color: #60a5fa; /* Cor azul clara */
-  text-decoration: none; /* Remove sublinhado */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  transition: color 0.3s ease; /* Transição suave da cor */
+  color: #60a5fa; 
+  text-decoration: none; 
+  font-size: 0.9rem; 
+  transition: color 0.3s ease; 
 }
 
-/* Estado hover do link */
+
 .auth-forgot-link:hover {
-  color: #8b5cf6; /* Cor roxa */
-  text-decoration: underline; /* Adiciona sublinhado */
+  color: #8b5cf6; 
+  text-decoration: underline; 
 }
 
-/* ===== BOTÃO DE SUBMIT ===== */
-/* Botão principal de envio */
+
+
 .auth-submit-btn {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); /* Gradiente azul para roxo */
-  color: #ffffff; /* Cor branca */
-  border: none; /* Sem borda */
-  padding: 0.75rem 2rem; /* Padding interno */
-  border-radius: 12px; /* Bordas arredondadas */
-  font-size: 1rem; /* Tamanho da fonte */
-  font-weight: 600; /* Peso da fonte */
-  cursor: pointer; /* Cursor de ponteiro */
-  transition: all 0.3s ease; /* Transição suave */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  gap: 0.5rem; /* Espaçamento entre elementos */
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3); /* Sombra azul */
-  position: relative; /* Para posicionar o pseudo-elemento ::before */
-  overflow: hidden; /* Esconde o pseudo-elemento que ultrapassa */
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); 
+  color: #ffffff; 
+  border: none; 
+  padding: 0.75rem 2rem; 
+  border-radius: 12px; 
+  font-size: 1rem; 
+  font-weight: 600; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 0.5rem; 
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3); 
+  position: relative; 
+  overflow: hidden; 
 }
 
-/* Efeito de brilho que se move no botão */
+
 .auth-submit-btn::before {
-  content: ''; /* Conteúdo vazio */
-  position: absolute; /* Posicionamento absoluto */
-  top: 0; /* Posiciona no topo */
-  left: -100%; /* Começa fora da área visível à esquerda */
-  width: 100%; /* Largura total */
-  height: 100%; /* Altura total */
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); /* Gradiente de brilho */
-  transition: left 0.5s ease; /* Transição da posição */
+  content: ''; 
+  position: absolute; 
+  top: 0; 
+  left: -100%; 
+  width: 100%; 
+  height: 100%; 
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); 
+  transition: left 0.5s ease; 
 }
 
-/* Estado hover do botão */
+
 .auth-submit-btn:hover:not(:disabled) {
-  transform: translateY(-3px); /* Move para cima */
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4); /* Sombra mais intensa */
+  transform: translateY(-3px); 
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4); 
 }
 
-/* Animação do brilho no hover */
+
 .auth-submit-btn:hover::before {
-  left: 100%; /* Move o brilho para a direita */
+  left: 100%; 
 }
 
-/* Estado desabilitado do botão */
+
 .auth-submit-btn:disabled {
-  opacity: 0.6; /* Transparência */
-  cursor: not-allowed; /* Cursor de proibido */
-  transform: none; /* Sem transformação */
+  opacity: 0.6; 
+  cursor: not-allowed; 
+  transform: none; 
 }
 
-/* ===== LINK DE REGISTRO/LOGIN ===== */
-/* Seção para alternar entre login e registro */
+
+
 .auth-switch {
-  text-align: center; /* Centraliza o texto */
-  margin-top: 2rem; /* Espaçamento superior */
-  padding-top: 2rem; /* Padding superior */
-  border-top: 1px solid rgba(139, 92, 246, 0.2); /* Linha separadora sutil */
+  text-align: center; 
+  margin-top: 2rem; 
+  padding-top: 2rem; 
+  border-top: 1px solid rgba(139, 92, 246, 0.2); 
 }
 
-/* Texto explicativo */
+
 .auth-switch-text {
-  color: #94a3b8; /* Cor cinza */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  margin-bottom: 0.5rem; /* Margem inferior */
+  color: #94a3b8; 
+  font-size: 0.9rem; 
+  margin-bottom: 0.5rem; 
 }
 
-/* Link para alternar */
+
 .auth-switch-link {
-  color: #60a5fa; /* Cor azul clara */
-  text-decoration: none; /* Remove sublinhado */
-  font-weight: 700; /* Peso da fonte */
-  transition: color 0.3s ease; /* Transição suave */
+  color: #60a5fa; 
+  text-decoration: none; 
+  font-weight: 700; 
+  transition: color 0.3s ease; 
 }
 
-/* Estado hover do link */
+
 .auth-switch-link:hover {
-  color: #8b5cf6; /* Cor roxa */
-  text-decoration: underline; /* Adiciona sublinhado */
+  color: #8b5cf6; 
+  text-decoration: underline; 
 }
 
-/* ===== ESTADOS DE LOADING ===== */
-/* Container para indicador de carregamento */
+
+
 .auth-loading {
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  gap: 0.5rem; /* Espaçamento entre elementos */
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 0.5rem; 
 }
 
-/* Spinner de carregamento */
+
 .auth-spinner {
-  width: 20px; /* Largura fixa */
-  height: 20px; /* Altura fixa */
-  border: 2px solid rgba(255, 255, 255, 0.3); /* Borda transparente */
-  border-top: 2px solid #ffffff; /* Borda superior branca */
-  border-radius: 50%; /* Forma circular */
-  animation: auth-spin 1s linear infinite; /* Animação de rotação */
+  width: 20px; 
+  height: 20px; 
+  border: 2px solid rgba(255, 255, 255, 0.3); 
+  border-top: 2px solid #ffffff; 
+  border-radius: 50%; 
+  animation: auth-spin 1s linear infinite; 
 }
 
-/* Animação de rotação do spinner */
+
 @keyframes auth-spin {
-  from { transform: rotate(0deg); } /* Começa em 0 graus */
-  to { transform: rotate(360deg); } /* Termina em 360 graus (volta completa) */
+  from { transform: rotate(0deg); } 
+  to { transform: rotate(360deg); } 
 }
 
-/* ===== ALERTAS ===== */
-/* Estilo base para todos os alertas */
+
+
 .auth-alert {
-  padding: 0.75rem; /* Padding interno */
-  border-radius: 12px; /* Bordas arredondadas */
-  margin-bottom: 1rem; /* Margem inferior */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 0.5rem; /* Espaçamento entre elementos */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  border: 1px solid; /* Borda sólida */
+  padding: 0.75rem; 
+  border-radius: 12px; 
+  margin-bottom: 1rem; 
+  display: flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  font-size: 0.9rem; 
+  border: 1px solid; 
 }
 
-/* Alerta de sucesso */
+
 .auth-alert-success {
-  background: rgba(16, 185, 129, 0.1); /* Fundo verde transparente */
-  color: #10b981; /* Cor verde */
-  border-color: rgba(16, 185, 129, 0.3); /* Borda verde */
+  background: rgba(16, 185, 129, 0.1); 
+  color: #10b981; 
+  border-color: rgba(16, 185, 129, 0.3); 
 }
 
-/* Alerta de erro */
+
 .auth-alert-error {
-  background: rgba(239, 68, 68, 0.1); /* Fundo vermelho transparente */
-  color: #ef4444; /* Cor vermelha */
-  border-color: rgba(239, 68, 68, 0.3); /* Borda vermelha */
+  background: rgba(239, 68, 68, 0.1); 
+  color: #ef4444; 
+  border-color: rgba(239, 68, 68, 0.3); 
 }
 
-/* Alerta de aviso */
+
 .auth-alert-warning {
-  background: rgba(251, 191, 36, 0.1); /* Fundo amarelo transparente */
-  color: #fbbf24; /* Cor amarela */
-  border-color: rgba(251, 191, 36, 0.3); /* Borda amarela */
+  background: rgba(251, 191, 36, 0.1); 
+  color: #fbbf24; 
+  border-color: rgba(251, 191, 36, 0.3); 
 }
 
-/* ===== MODAL STYLES ===== */
-/* Overlay do modal (fundo escuro) */
+
+
 .auth-modal-overlay {
-  position: fixed; /* Posicionamento fixo na tela */
-  top: 0; /* Posiciona no topo */
-  left: 0; /* Posiciona na esquerda */
-  right: 0; /* Estende até a direita */
-  bottom: 0; /* Estende até baixo */
-  background: rgba(0, 0, 0, 0.5); /* Fundo preto semi-transparente */
-  display: flex; /* Layout flexbox para centralizar */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  z-index: 9999; /* Z-index alto para ficar acima de outros elementos */
-  padding: 1rem; /* Padding para evitar que o modal toque as bordas */
-  overflow: hidden; /* Esconde scroll */
-  backdrop-filter: blur(4px); /* Efeito de blur no fundo */
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  background: rgba(0, 0, 0, 0.5); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  z-index: 9999; 
+  padding: 1rem; 
+  overflow: hidden; 
+  backdrop-filter: blur(4px); 
 }
 
-/* Container principal do modal */
+
 .auth-modal-container {
-  background: #1e293b; /* Cor de fundo escura */
-  border-radius: 16px; /* Bordas arredondadas */
-  max-width: 500px; /* Largura máxima */
-  width: 100%; /* Ocupa toda a largura disponível */
-  max-height: 85vh; /* Altura máxima de 85% da viewport */
-  overflow-y: auto; /* Scroll vertical se necessário */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Sombra para profundidade */
-  position: relative; /* Para posicionamento interno */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda sutil */
-  scrollbar-width: none; /* Remove scrollbar no Firefox */
-  -ms-overflow-style: none; /* Remove scrollbar no IE/Edge */
+  background: #1e293b; 
+  border-radius: 16px; 
+  max-width: 500px; 
+  width: 100%; 
+  max-height: 85vh; 
+  overflow-y: auto; 
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); 
+  position: relative; 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 }
 
-/* Remove scrollbar no WebKit (Chrome, Safari) */
+
 .auth-modal-container::-webkit-scrollbar {
-  display: none; /* Esconde a scrollbar */
+  display: none; 
 }
 
-/* Cabeçalho do modal */
+
 .auth-modal-header {
-  display: flex; /* Layout flexbox */
-  justify-content: space-between; /* Distribui espaço entre elementos */
-  align-items: center; /* Centraliza verticalmente */
-  padding: 1rem; /* Padding interno */
-  border-bottom: 1px solid rgba(139, 92, 246, 0.2); /* Linha separadora */
-  position: sticky; /* Fica fixo durante o scroll */
-  top: 0; /* Posiciona no topo */
-  background: #1e293b; /* Fundo para cobrir conteúdo que passa por baixo */
-  z-index: 10; /* Z-index para ficar acima do conteúdo */
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 1rem; 
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2); 
+  position: sticky; 
+  top: 0; 
+  background: #1e293b; 
+  z-index: 10; 
 }
 
-/* Seção do título com ícone */
+
 .auth-modal-title-section {
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 1rem; /* Espaçamento entre elementos */
+  display: flex; 
+  align-items: center; 
+  gap: 1rem; 
 }
 
-/* Ícone do modal */
+
 .auth-modal-icon {
-  width: 40px; /* Largura fixa */
-  height: 40px; /* Altura fixa */
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); /* Gradiente azul para roxo */
-  border-radius: 50%; /* Forma circular */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  color: #ffffff; /* Cor branca */
-  font-size: 1.2rem; /* Tamanho do ícone */
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3); /* Sombra azul */
+  width: 40px; 
+  height: 40px; 
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  color: #ffffff; 
+  font-size: 1.2rem; 
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3); 
 }
 
-/* Conteúdo do título */
+
 .auth-modal-title-content h3 {
-  font-size: 1rem; /* Tamanho da fonte */
-  font-weight: 700; /* Peso da fonte */
-  color: #ffffff; /* Cor branca */
-  margin: 0 0 0.25rem; /* Margem inferior */
+  font-size: 1rem; 
+  font-weight: 700; 
+  color: #ffffff; 
+  margin: 0 0 0.25rem; 
 }
 
 .auth-modal-title-content p {
-  font-size: 0.9rem; /* Tamanho da fonte */
-  color: #94a3b8; /* Cor cinza */
-  margin: 0; /* Sem margens */
+  font-size: 0.9rem; 
+  color: #94a3b8; 
+  margin: 0; 
 }
 
-/* Botão de fechar modal */
+
 .auth-modal-close {
-  background: none; /* Sem fundo */
-  border: none; /* Sem borda */
-  font-size: 1.2rem; /* Tamanho da fonte */
-  color: #94a3b8; /* Cor cinza */
-  cursor: pointer; /* Cursor de ponteiro */
-  padding: 0.25rem; /* Padding interno */
-  border-radius: 4px; /* Bordas arredondadas */
-  transition: all 0.3s ease; /* Transição suave */
+  background: none; 
+  border: none; 
+  font-size: 1.2rem; 
+  color: #94a3b8; 
+  cursor: pointer; 
+  padding: 0.25rem; 
+  border-radius: 4px; 
+  transition: all 0.3s ease; 
 }
 
-/* Estado hover do botão fechar */
+
 .auth-modal-close:hover {
-  background: rgba(139, 92, 246, 0.1); /* Fundo roxo transparente */
-  color: #ffffff; /* Cor branca */
+  background: rgba(139, 92, 246, 0.1); 
+  color: #ffffff; 
 }
 
-/* Corpo do modal */
+
 .auth-modal-body {
-  padding: 1rem; /* Padding interno */
+  padding: 1rem; 
 }
 
-/* Conteúdo do modal */
+
 .auth-modal-content {
-  display: flex; /* Layout flexbox */
-  flex-direction: column; /* Organiza elementos verticalmente */
-  gap: 1rem; /* Espaçamento entre elementos */
+  display: flex; 
+  flex-direction: column; 
+  gap: 1rem; 
 }
 
-/* ===== TABS ===== */
-/* Container das abas */
+
+
 .auth-tabs {
-  display: flex; /* Layout flexbox */
-  background: rgba(15, 23, 42, 0.8); /* Fundo escuro semi-transparente */
-  border-radius: 12px; /* Bordas arredondadas */
-  padding: 0.25rem; /* Padding interno */
-  margin-bottom: 1rem; /* Margem inferior */
+  display: flex; 
+  background: rgba(15, 23, 42, 0.8); 
+  border-radius: 12px; 
+  padding: 0.25rem; 
+  margin-bottom: 1rem; 
 }
 
-/* Aba individual */
+
 .auth-tab {
-  flex: 1; /* Ocupa espaço igual */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  gap: 0.5rem; /* Espaçamento entre elementos */
-  padding: 0.75rem 1rem; /* Padding interno */
-  border: none; /* Sem borda */
-  background: transparent; /* Fundo transparente */
-  color: #94a3b8; /* Cor cinza */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  font-weight: 500; /* Peso da fonte */
-  cursor: pointer; /* Cursor de ponteiro */
-  border-radius: 8px; /* Bordas arredondadas */
-  transition: all 0.3s ease; /* Transição suave */
+  flex: 1; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 0.5rem; 
+  padding: 0.75rem 1rem; 
+  border: none; 
+  background: transparent; 
+  color: #94a3b8; 
+  font-size: 0.9rem; 
+  font-weight: 500; 
+  cursor: pointer; 
+  border-radius: 8px; 
+  transition: all 0.3s ease; 
 }
 
-/* Aba ativa */
+
 .auth-tab.active {
-  background: #1e293b; /* Fundo escuro */
-  color: #60a5fa; /* Cor azul clara */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-  transform: scale(1.02); /* Aumenta ligeiramente o tamanho */
+  background: #1e293b; 
+  color: #60a5fa; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
+  transform: scale(1.02); 
 }
 
-/* Estado hover da aba (não ativa) */
+
 .auth-tab:hover:not(.active) {
-  color: #ffffff; /* Cor branca */
-  background: rgba(139, 92, 246, 0.1); /* Fundo roxo transparente */
+  color: #ffffff; 
+  background: rgba(139, 92, 246, 0.1); 
 }
 
-/* Estado ativo da aba (quando clicada) */
+
 .auth-tab:active {
-  transform: scale(0.98); /* Diminui ligeiramente o tamanho */
+  transform: scale(0.98); 
 }
 
-/* ===== INPUT GROUPS ===== */
-/* Grupo de inputs (para organização) */
+
+
 .auth-input-group {
-  position: relative; /* Para posicionar ícones absolutamente */
+  position: relative; 
 }
 
-/* ===== RESPONSIVE ===== */
-/* Media query para tablets e dispositivos médios */
+
+
 @media (max-width: 768px) {
-  .auth-container { padding: 0 1rem; } /* Reduz padding horizontal */
-  .auth-wrapper { padding: 1.5rem; max-height: 95vh; } /* Reduz padding e aumenta altura máxima */
-  .auth-title { font-size: 1.5rem; } /* Reduz tamanho do título */
-  .auth-logo { width: 40px; height: 40px; font-size: 1.2rem; } /* Reduz tamanho do logo */
-  .auth-modal-container { margin: 0.5rem; max-height: 90vh; } /* Ajusta modal */
-  .auth-modal-header, .auth-modal-body { padding: 0.75rem; } /* Reduz padding do modal */
+  .auth-container { padding: 0 1rem; } 
+  .auth-wrapper { padding: 1.5rem; max-height: 95vh; } 
+  .auth-title { font-size: 1.5rem; } 
+  .auth-logo { width: 40px; height: 40px; font-size: 1.2rem; } 
+  .auth-modal-container { margin: 0.5rem; max-height: 90vh; } 
+  .auth-modal-header, .auth-modal-body { padding: 0.75rem; } 
 }
 
-/* Media query para dispositivos móveis pequenos */
+
 @media (max-width: 480px) {
-  .auth-wrapper { padding: 1rem; max-height: 98vh; } /* Reduz ainda mais o padding */
-  .auth-title { font-size: 1.2rem; } /* Reduz mais o título */
-  .auth-modal-container { margin: 0.25rem; max-height: 95vh; } /* Ajusta modal para telas pequenas */
-  .auth-modal-header, .auth-modal-body { padding: 0.5rem; } /* Reduz padding do modal */
+  .auth-wrapper { padding: 1rem; max-height: 98vh; } 
+  .auth-title { font-size: 1.2rem; } 
+  .auth-modal-container { margin: 0.25rem; max-height: 95vh; } 
+  .auth-modal-header, .auth-modal-body { padding: 0.5rem; } 
 }

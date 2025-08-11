@@ -1,663 +1,663 @@
-/* ===== CURSOS - CSS SIMPLIFICADO E COMENTADO ===== */
 
-/* ===== CONTAINER PRINCIPAL ===== */
-/* Define o container principal da página de cursos */
+
+
+
 .cursos-section {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* Gradiente escuro para fundo */
-  min-height: 100vh; /* Altura mínima de 100% da viewport */
-  padding: 2rem 0; /* Espaçamento vertical */
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
+  min-height: 100vh; 
+  padding: 2rem 0; 
 }
 
 .cursos-container {
-  max-width: 1200px; /* Largura máxima para centralizar conteúdo */
-  margin: 0 auto; /* Centraliza horizontalmente */
-  padding: 0 2rem; /* Espaçamento horizontal */
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 2rem; 
 }
 
-/* ===== CABEÇALHO DA PÁGINA ===== */
+
 .cursos-header {
-  text-align: center; /* Centraliza o texto */
-  margin-bottom: 3rem; /* Espaçamento inferior */
+  text-align: center; 
+  margin-bottom: 3rem; 
 }
 
 .cursos-title {
-  font-size: 3rem; /* Tamanho grande para título principal */
-  font-weight: 700; /* Peso da fonte */
-  color: #ffffff; /* Cor branca */
+  font-size: 3rem; 
+  font-weight: 700; 
+  color: #ffffff; 
   margin: 0;
 }
 
 .cursos-subtitle {
-  font-size: 1.2rem; /* Tamanho médio para subtítulo */
-  color: #94a3b8; /* Cor cinza clara */
+  font-size: 1.2rem; 
+  color: #94a3b8; 
   margin: 0;
-  max-width: 600px; /* Limita largura para melhor legibilidade */
+  max-width: 600px; 
 }
 
-/* ===== CONTEÚDO PRINCIPAL ===== */
+
 .cursos-main-content {
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
-  border-radius: 16px; /* Bordas arredondadas */
-  padding: 2rem; /* Espaçamento interno */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda sutil roxa */
+  background: rgba(15, 23, 42, 0.8); 
+  border-radius: 16px; 
+  padding: 2rem; 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
 }
 
-/* ===== SISTEMA DE BUSCA ===== */
+
 .cursos-search-container {
-  position: relative; /* Para posicionar ícone */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Alinha itens verticalmente */
-  background: rgba(30, 41, 59, 0.8); /* Fundo do campo de busca */
-  border-radius: 12px; /* Bordas arredondadas */
-  padding: 1rem 1.5rem; /* Espaçamento interno */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda roxa */
-  margin-bottom: 1.5rem; /* Espaçamento inferior */
+  position: relative; 
+  display: flex; 
+  align-items: center; 
+  background: rgba(30, 41, 59, 0.8); 
+  border-radius: 12px; 
+  padding: 1rem 1.5rem; 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
+  margin-bottom: 1.5rem; 
 }
 
 .cursos-search-input {
-  flex: 1; /* Ocupa espaço disponível */
-  background: transparent; /* Fundo transparente */
-  border: none; /* Remove borda padrão */
-  color: #ffffff; /* Texto branco */
-  font-size: 1rem; /* Tamanho da fonte */
-  outline: none; /* Remove outline padrão */
+  flex: 1; 
+  background: transparent; 
+  border: none; 
+  color: #ffffff; 
+  font-size: 1rem; 
+  outline: none; 
 }
 
 .cursos-search-input::placeholder {
-  color: #94a3b8; /* Cor do placeholder */
+  color: #94a3b8; 
 }
 
-/* ===== FILTROS AVANÇADOS ===== */
+
 .cursos-advanced-filters {
-  display: grid; /* Layout em grid */
-  grid-template-columns: 1fr 1fr auto; /* 3 colunas: 2 flexíveis + 1 automática */
-  gap: 1rem; /* Espaçamento entre elementos */
-  margin-bottom: 1.5rem; /* Espaçamento inferior */
-  padding: 1.5rem; /* Espaçamento interno */
-  background: rgba(30, 41, 59, 0.6); /* Fundo semi-transparente */
-  border-radius: 12px; /* Bordas arredondadas */
-  border: 1px solid rgba(139, 92, 246, 0.1); /* Borda sutil */
+  display: grid; 
+  grid-template-columns: 1fr 1fr auto; 
+  gap: 1rem; 
+  margin-bottom: 1.5rem; 
+  padding: 1.5rem; 
+  background: rgba(30, 41, 59, 0.6); 
+  border-radius: 12px; 
+  border: 1px solid rgba(139, 92, 246, 0.1); 
 }
 
 .cursos-filter-select {
-  background: rgba(15, 23, 42, 0.8); /* Fundo do select */
-  border: 1px solid rgba(139, 92, 246, 0.3); /* Borda roxa */
-  border-radius: 8px; /* Bordas arredondadas */
-  padding: 0.75rem; /* Espaçamento interno */
-  color: #ffffff; /* Texto branco */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  outline: none; /* Remove outline */
+  background: rgba(15, 23, 42, 0.8); 
+  border: 1px solid rgba(139, 92, 246, 0.3); 
+  border-radius: 8px; 
+  padding: 0.75rem; 
+  color: #ffffff; 
+  font-size: 0.9rem; 
+  outline: none; 
 }
 
-/* ===== BOTÃO LIMPAR FILTROS ===== */
+
 .cursos-clear-filters-btn {
-  background: rgba(239, 68, 68, 0.2); /* Fundo vermelho semi-transparente */
-  border: 1px solid rgba(239, 68, 68, 0.3); /* Borda vermelha */
-  border-radius: 8px; /* Bordas arredondadas */
-  padding: 0.75rem 1rem; /* Espaçamento interno */
-  color: #fca5a5; /* Texto vermelho claro */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  cursor: pointer; /* Cursor de mão */
-  transition: all 0.2s ease; /* Transição suave */
+  background: rgba(239, 68, 68, 0.2); 
+  border: 1px solid rgba(239, 68, 68, 0.3); 
+  border-radius: 8px; 
+  padding: 0.75rem 1rem; 
+  color: #fca5a5; 
+  font-size: 0.9rem; 
+  cursor: pointer; 
+  transition: all 0.2s ease; 
 }
 
 .cursos-clear-filters-btn:hover {
-  background: rgba(239, 68, 68, 0.3); /* Fundo mais escuro no hover */
-  transform: translateY(-1px); /* Move para cima no hover */
+  background: rgba(239, 68, 68, 0.3); 
+  transform: translateY(-1px); 
 }
 
-/* ===== GRID DE CURSOS ===== */
+
 .cursos-grid {
-  display: grid; /* Layout em grid */
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Colunas responsivas */
-  gap: 2rem; /* Espaçamento entre cards */
-  margin-bottom: 2rem; /* Espaçamento inferior */
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+  gap: 2rem; 
+  margin-bottom: 2rem; 
 }
 
-/* ===== CARD INDIVIDUAL DO CURSO ===== */
+
 .cursos-card {
-  background: rgba(30, 41, 59, 0.8); /* Fundo do card */
-  border-radius: 12px; /* Bordas arredondadas */
-  overflow: hidden; /* Esconde conteúdo que ultrapassa */
-  border: 1px solid rgba(139, 92, 246, 0.1); /* Borda sutil */
-  transition: all 0.3s ease; /* Transição suave */
-  cursor: pointer; /* Cursor de mão */
+  background: rgba(30, 41, 59, 0.8); 
+  border-radius: 12px; 
+  overflow: hidden; 
+  border: 1px solid rgba(139, 92, 246, 0.1); 
+  transition: all 0.3s ease; 
+  cursor: pointer; 
 }
 
 .cursos-card:hover {
-  transform: translateY(-4px); /* Move para cima no hover */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Sombra no hover */
-  border-color: rgba(139, 92, 246, 0.3); /* Borda mais visível no hover */
+  transform: translateY(-4px); 
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); 
+  border-color: rgba(139, 92, 246, 0.3); 
 }
 
-/* ===== CONTAINER DA IMAGEM ===== */
+
 .cursos-image-container {
-  position: relative; /* Para posicionar elementos filhos */
-  height: 200px; /* Altura fixa */
-  background: rgba(15, 23, 42, 0.8); /* Fundo da imagem */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
+  position: relative; 
+  height: 200px; 
+  background: rgba(15, 23, 42, 0.8); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
 }
 
 .cursos-image {
-  width: 100%; /* Largura total */
-  height: 100%; /* Altura total */
-  object-fit: contain; /* Mantém proporção da imagem */
-  padding: 1rem; /* Espaçamento interno */
-  transition: transform 0.3s ease; /* Transição da imagem */
+  width: 100%; 
+  height: 100%; 
+  object-fit: contain; 
+  padding: 1rem; 
+  transition: transform 0.3s ease; 
 }
 
 .cursos-card:hover .cursos-image {
-  transform: scale(1.05); /* Aumenta imagem no hover */
+  transform: scale(1.05); 
 }
 
-/* ===== CONTEÚDO DO CARD ===== */
+
 .cursos-card-content {
-  padding: 1.5rem; /* Espaçamento interno */
+  padding: 1.5rem; 
 }
 
 .cursos-category-badge {
-  background: rgba(139, 92, 246, 0.2); /* Fundo roxo semi-transparente */
-  color: #a78bfa; /* Texto roxo */
-  padding: 0.25rem 0.75rem; /* Espaçamento interno */
-  border-radius: 20px; /* Bordas muito arredondadas */
-  font-size: 0.8rem; /* Tamanho pequeno */
-  font-weight: 600; /* Peso da fonte */
-  display: inline-block; /* Comportamento de bloco inline */
-  margin-bottom: 0.75rem; /* Espaçamento inferior */
+  background: rgba(139, 92, 246, 0.2); 
+  color: #a78bfa; 
+  padding: 0.25rem 0.75rem; 
+  border-radius: 20px; 
+  font-size: 0.8rem; 
+  font-weight: 600; 
+  display: inline-block; 
+  margin-bottom: 0.75rem; 
 }
 
 .cursos-card-title {
-  font-size: 1.2rem; /* Tamanho médio */
-  font-weight: 600; /* Peso da fonte */
-  color: #ffffff; /* Texto branco */
-  margin: 0 0 0.5rem; /* Margem inferior */
-  line-height: 1.3; /* Altura da linha */
+  font-size: 1.2rem; 
+  font-weight: 600; 
+  color: #ffffff; 
+  margin: 0 0 0.5rem; 
+  line-height: 1.3; 
 }
 
 .cursos-card-description {
-  color: #94a3b8; /* Texto cinza */
-  font-size: 0.9rem; /* Tamanho pequeno */
-  line-height: 1.5; /* Altura da linha */
-  margin-bottom: 1rem; /* Espaçamento inferior */
-  display: -webkit-box; /* Para truncar texto */
-  -webkit-box-orient: vertical; /* Orientação vertical */
-  overflow: hidden; /* Esconde texto excedente */
+  color: #94a3b8; 
+  font-size: 0.9rem; 
+  line-height: 1.5; 
+  margin-bottom: 1rem; 
+  display: -webkit-box; 
+  -webkit-box-orient: vertical; 
+  overflow: hidden; 
 }
 
-/* ===== SEÇÃO DE PREÇO ===== */
+
 .cursos-price {
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Alinha itens verticalmente */
-  justify-content: space-between; /* Distribui espaço entre elementos */
-  gap: 1rem; /* Espaçamento entre elementos */
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 1rem; 
 }
 
 .cursos-price-original {
-  color: #94a3b8; /* Texto cinza */
-  text-decoration: line-through; /* Texto riscado */
-  font-size: 0.9rem; /* Tamanho pequeno */
+  color: #94a3b8; 
+  text-decoration: line-through; 
+  font-size: 0.9rem; 
 }
 
 .cursos-price-current {
-  color: #8b5cf6; /* Texto roxo */
-  font-size: 1.3rem; /* Tamanho grande */
-  font-weight: 700; /* Peso da fonte */
+  color: #8b5cf6; 
+  font-size: 1.3rem; 
+  font-weight: 700; 
 }
 
-/* ===== BOTÃO ADICIONAR AO CARRINHO ===== */
+
 .cursos-btn-add-cart {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); /* Gradiente azul para roxo */
-  color: #ffffff; /* Texto branco */
-  padding: 0.75rem 1rem; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  font-weight: 600; /* Peso da fonte */
-  border: none; /* Remove borda */
-  cursor: pointer; /* Cursor de mão */
-  transition: all 0.3s ease; /* Transição suave */
-  white-space: nowrap; /* Evita quebra de linha */
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); 
+  color: #ffffff; 
+  padding: 0.75rem 1rem; 
+  border-radius: 8px; 
+  font-size: 0.9rem; 
+  font-weight: 600; 
+  border: none; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  white-space: nowrap; 
 }
 
 .cursos-btn-add-cart:hover {
-  transform: translateY(-2px); /* Move para cima no hover */
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3); /* Sombra no hover */
+  transform: translateY(-2px); 
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3); 
 }
 
-/* ===== ESTADOS ESPECIAIS ===== */
+
 .cursos-loading {
-  text-align: center; /* Centraliza texto */
-  padding: 4rem 2rem; /* Espaçamento interno */
+  text-align: center; 
+  padding: 4rem 2rem; 
 }
 
 .cursos-spinner {
-  width: 50px; /* Largura do spinner */
-  height: 50px; /* Altura do spinner */
-  border: 4px solid rgba(139, 92, 246, 0.2); /* Borda do spinner */
-  border-top: 4px solid #8b5cf6; /* Borda superior colorida */
-  border-radius: 50%; /* Forma circular */
-  animation: spin 1s linear infinite; /* Animação de rotação */
-  margin: 0 auto 1.5rem; /* Centraliza e adiciona margem inferior */
+  width: 50px; 
+  height: 50px; 
+  border: 4px solid rgba(139, 92, 246, 0.2); 
+  border-top: 4px solid #8b5cf6; 
+  border-radius: 50%; 
+  animation: spin 1s linear infinite; 
+  margin: 0 auto 1.5rem; 
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); } /* Rotação inicial */
-  100% { transform: rotate(360deg); } /* Rotação final */
+  0% { transform: rotate(0deg); } 
+  100% { transform: rotate(360deg); } 
 }
 
 .cursos-error {
-  text-align: center; /* Centraliza texto */
-  padding: 4rem 2rem; /* Espaçamento interno */
+  text-align: center; 
+  padding: 4rem 2rem; 
 }
 
 .cursos-empty {
-  text-align: center; /* Centraliza texto */
-  padding: 4rem 2rem; /* Espaçamento interno */
+  text-align: center; 
+  padding: 4rem 2rem; 
 }
 
-/* ===== PAGINAÇÃO ===== */
+
 .cursos-pagination {
-  margin-top: 3rem; /* Espaçamento superior */
-  padding-top: 2rem; /* Espaçamento interno superior */
-  border-top: 1px solid rgba(139, 92, 246, 0.2); /* Borda superior */
-  display: flex; /* Layout flexbox */
-  flex-direction: column; /* Direção vertical */
-  align-items: center; /* Centraliza horizontalmente */
-  gap: 1.5rem; /* Espaçamento entre elementos */
+  margin-top: 3rem; 
+  padding-top: 2rem; 
+  border-top: 1px solid rgba(139, 92, 246, 0.2); 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 1.5rem; 
 }
 
 .cursos-pagination-controls {
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Alinha itens verticalmente */
-  gap: 1rem; /* Espaçamento entre elementos */
-  flex-wrap: wrap; /* Permite quebra de linha */
-  justify-content: center; /* Centraliza horizontalmente */
+  display: flex; 
+  align-items: center; 
+  gap: 1rem; 
+  flex-wrap: wrap; 
+  justify-content: center; 
 }
 
 .cursos-pagination-btn {
-  padding: 0.75rem 1.25rem; /* Espaçamento interno */
-  background: rgba(30, 41, 59, 0.8); /* Fundo semi-transparente */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda roxa */
-  border-radius: 8px; /* Bordas arredondadas */
-  color: #ffffff; /* Texto branco */
-  font-weight: 500; /* Peso da fonte */
-  cursor: pointer; /* Cursor de mão */
-  transition: all 0.3s ease; /* Transição suave */
-  text-decoration: none; /* Remove sublinhado */
+  padding: 0.75rem 1.25rem; 
+  background: rgba(30, 41, 59, 0.8); 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
+  border-radius: 8px; 
+  color: #ffffff; 
+  font-weight: 500; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  text-decoration: none; 
 }
 
 .cursos-pagination-btn:hover:not(.cursos-pagination-btn-disabled) {
-  background: rgba(139, 92, 246, 0.1); /* Fundo mais claro no hover */
-  border-color: rgba(139, 92, 246, 0.4); /* Borda mais visível no hover */
-  transform: translateY(-1px); /* Move para cima no hover */
+  background: rgba(139, 92, 246, 0.1); 
+  border-color: rgba(139, 92, 246, 0.4); 
+  transform: translateY(-1px); 
 }
 
 .cursos-pagination-page {
-  width: 40px; /* Largura fixa */
-  height: 40px; /* Altura fixa */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  background: rgba(30, 41, 59, 0.8); /* Fundo semi-transparente */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda roxa */
-  border-radius: 8px; /* Bordas arredondadas */
-  color: #94a3b8; /* Texto cinza */
-  font-weight: 500; /* Peso da fonte */
-  cursor: pointer; /* Cursor de mão */
-  transition: all 0.3s ease; /* Transição suave */
-  text-decoration: none; /* Remove sublinhado */
+  width: 40px; 
+  height: 40px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  background: rgba(30, 41, 59, 0.8); 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
+  border-radius: 8px; 
+  color: #94a3b8; 
+  font-weight: 500; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  text-decoration: none; 
 }
 
 .cursos-pagination-page:hover {
-  background: rgba(139, 92, 246, 0.1); /* Fundo mais claro no hover */
-  border-color: rgba(139, 92, 246, 0.4); /* Borda mais visível no hover */
-  color: #ffffff; /* Texto branco no hover */
-  transform: translateY(-1px); /* Move para cima no hover */
+  background: rgba(139, 92, 246, 0.1); 
+  border-color: rgba(139, 92, 246, 0.4); 
+  color: #ffffff; 
+  transform: translateY(-1px); 
 }
 
 .cursos-pagination-page-active {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); /* Gradiente para página ativa */
-  border-color: rgba(139, 92, 246, 0.5); /* Borda mais visível */
-  color: #ffffff; /* Texto branco */
-  font-weight: 600; /* Peso da fonte */
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); /* Sombra */
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); 
+  border-color: rgba(139, 92, 246, 0.5); 
+  color: #ffffff; 
+  font-weight: 600; 
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); 
 }
 
-/* ===== MODAL DO CURSO ===== */
-/* Overlay escuro que cobre toda a tela */
+
+
 .cursos-modal-overlay {
-  position: fixed; /* Posição fixa na tela */
-  top: 0; /* Topo da tela */
-  left: 0; /* Esquerda da tela */
-  right: 0; /* Direita da tela */
-  bottom: 0; /* Baixo da tela */
-  background: rgba(0, 0, 0, 0.8); /* Fundo preto semi-transparente */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  z-index: 1000; /* Fica acima de outros elementos */
-  padding: 2rem; /* Espaçamento interno */
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  background: rgba(0, 0, 0, 0.8); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  z-index: 1000; 
+  padding: 2rem; 
 }
 
-/* Container principal do modal */
+
 .cursos-modal-container {
-  background: rgba(15, 23, 42, 0.95); /* Fundo semi-transparente escuro */
-  border-radius: 16px; /* Bordas arredondadas */
-  max-width: 900px; /* Largura máxima */
-  width: 100%; /* Largura total disponível */
-  max-height: 90vh; /* Altura máxima de 90% da viewport */
-  overflow-y: auto; /* Scroll vertical se necessário */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda roxa sutil */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Sombra profunda */
+  background: rgba(15, 23, 42, 0.95); 
+  border-radius: 16px; 
+  max-width: 900px; 
+  width: 100%; 
+  max-height: 90vh; 
+  overflow-y: auto; 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); 
 }
 
-/* Conteúdo interno do modal */
+
 .cursos-modal-content {
-  padding: 2rem; /* Espaçamento interno */
+  padding: 2rem; 
 }
 
-/* Cabeçalho do modal */
+
 .cursos-modal-header {
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Alinha itens verticalmente */
-  justify-content: space-between; /* Distribui espaço entre elementos */
-  margin-bottom: 2rem; /* Espaçamento inferior */
-  padding-bottom: 1rem; /* Espaçamento interno inferior */
-  border-bottom: 1px solid rgba(139, 92, 246, 0.2); /* Borda inferior roxa */
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  margin-bottom: 2rem; 
+  padding-bottom: 1rem; 
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2); 
 }
 
-/* Seção do título com ícone */
+
 .cursos-modal-title-section {
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Alinha itens verticalmente */
-  gap: 1rem; /* Espaçamento entre elementos */
+  display: flex; 
+  align-items: center; 
+  gap: 1rem; 
 }
 
-/* Ícone do modal */
+
 .cursos-modal-icon {
-  width: 50px; /* Largura fixa */
-  height: 50px; /* Altura fixa */
-  background: rgba(139, 92, 246, 0.2); /* Fundo roxo semi-transparente */
-  border-radius: 50%; /* Forma circular */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  border: 1px solid rgba(139, 92, 246, 0.3); /* Borda roxa */
+  width: 50px; 
+  height: 50px; 
+  background: rgba(139, 92, 246, 0.2); 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  border: 1px solid rgba(139, 92, 246, 0.3); 
 }
 
 .cursos-modal-icon i {
-  font-size: 1.5rem; /* Tamanho do ícone */
-  color: #8b5cf6; /* Cor roxa */
+  font-size: 1.5rem; 
+  color: #8b5cf6; 
 }
 
-/* Título principal do modal */
+
 .cursos-modal-title {
-  font-size: 1.8rem; /* Tamanho grande */
-  font-weight: 700; /* Peso da fonte */
-  color: #ffffff; /* Texto branco */
-  margin: 0; /* Remove margens */
+  font-size: 1.8rem; 
+  font-weight: 700; 
+  color: #ffffff; 
+  margin: 0; 
 }
 
-/* Subtítulo do modal */
+
 .cursos-modal-subtitle {
-  color: #94a3b8; /* Texto cinza */
-  font-size: 0.9rem; /* Tamanho pequeno */
-  margin: 0; /* Remove margens */
+  color: #94a3b8; 
+  font-size: 0.9rem; 
+  margin: 0; 
 }
 
-/* Botão fechar modal */
+
 .cursos-modal-close {
-  background: none; /* Sem fundo */
-  border: none; /* Sem borda */
-  color: #94a3b8; /* Cor cinza */
-  font-size: 1.5rem; /* Tamanho grande */
-  cursor: pointer; /* Cursor de mão */
-  padding: 0.5rem; /* Espaçamento interno */
-  border-radius: 6px; /* Bordas arredondadas */
-  transition: all 0.2s ease; /* Transição suave */
+  background: none; 
+  border: none; 
+  color: #94a3b8; 
+  font-size: 1.5rem; 
+  cursor: pointer; 
+  padding: 0.5rem; 
+  border-radius: 6px; 
+  transition: all 0.2s ease; 
 }
 
 .cursos-modal-close:hover {
-  background: rgba(139, 92, 246, 0.1); /* Fundo roxo no hover */
-  color: #ffffff; /* Texto branco no hover */
+  background: rgba(139, 92, 246, 0.1); 
+  color: #ffffff; 
 }
 
-/* Corpo principal do modal */
+
 .cursos-modal-body {
-  margin-bottom: 2rem; /* Espaçamento inferior */
+  margin-bottom: 2rem; 
 }
 
-/* Grid de layout do modal (2 colunas) */
+
 .cursos-modal-grid {
-  display: grid; /* Layout em grid */
-  grid-template-columns: 1fr 1fr; /* Duas colunas de tamanho igual */
-  gap: 2rem; /* Espaçamento entre colunas */
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 2rem; 
 }
 
-/* Seção da imagem do curso */
+
 .cursos-modal-image-section {
-  position: relative; /* Para posicionar elementos filhos */
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
-  border-radius: 12px; /* Bordas arredondadas */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda roxa */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  overflow: hidden; /* Esconde conteúdo que ultrapassa */
-  min-height: 300px; /* Altura mínima */
+  position: relative; 
+  background: rgba(15, 23, 42, 0.8); 
+  border-radius: 12px; 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  overflow: hidden; 
+  min-height: 300px; 
 }
 
-/* Imagem do curso no modal */
+
 .cursos-modal-image {
-  width: 100%; /* Largura total */
-  height: 300px; /* Altura fixa */
-  object-fit: contain; /* Mantém proporção da imagem */
-  border-radius: 12px; /* Bordas arredondadas */
-  max-width: 100%; /* Largura máxima */
-  max-height: 100%; /* Altura máxima */
-  padding: 1rem; /* Espaçamento interno */
+  width: 100%; 
+  height: 300px; 
+  object-fit: contain; 
+  border-radius: 12px; 
+  max-width: 100%; 
+  max-height: 100%; 
+  padding: 1rem; 
 }
 
-/* Badge de promoção no modal */
+
 .cursos-modal-badge {
-  position: absolute; /* Posição absoluta */
-  top: 1rem; /* Distância do topo */
-  right: 1rem; /* Distância da direita */
-  background: #ef4444; /* Fundo vermelho */
-  color: #ffffff; /* Texto branco */
-  padding: 0.25rem 0.75rem; /* Espaçamento interno */
-  border-radius: 20px; /* Bordas muito arredondadas */
-  font-size: 0.8rem; /* Tamanho pequeno */
-  font-weight: 600; /* Peso da fonte */
+  position: absolute; 
+  top: 1rem; 
+  right: 1rem; 
+  background: #ef4444; 
+  color: #ffffff; 
+  padding: 0.25rem 0.75rem; 
+  border-radius: 20px; 
+  font-size: 0.8rem; 
+  font-weight: 600; 
 }
 
-/* Seção de informações do curso */
+
 .cursos-modal-info-section {
-  display: flex; /* Layout flexbox */
-  flex-direction: column; /* Direção vertical */
-  gap: 1.5rem; /* Espaçamento entre elementos */
+  display: flex; 
+  flex-direction: column; 
+  gap: 1.5rem; 
 }
 
-/* Título da descrição */
+
 .cursos-modal-description-title {
-  font-size: 1.2rem; /* Tamanho médio */
-  color: #ffffff; /* Texto branco */
-  margin-bottom: 0.5rem; /* Espaçamento inferior */
+  font-size: 1.2rem; 
+  color: #ffffff; 
+  margin-bottom: 0.5rem; 
 }
 
-/* Texto da descrição */
+
 .cursos-modal-description-text {
-  color: #94a3b8; /* Texto cinza */
-  line-height: 1.6; /* Altura da linha */
+  color: #94a3b8; 
+  line-height: 1.6; 
 }
 
-/* Container de estatísticas do curso */
+
 .cursos-modal-stats {
-  background: rgba(30, 41, 59, 0.8); /* Fundo semi-transparente */
-  border-radius: 8px; /* Bordas arredondadas */
-  padding: 1rem; /* Espaçamento interno */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda roxa */
+  background: rgba(30, 41, 59, 0.8); 
+  border-radius: 8px; 
+  padding: 1rem; 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
 }
 
-/* Item individual de estatística */
+
 .cursos-modal-stat-item {
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Alinha itens verticalmente */
-  gap: 1rem; /* Espaçamento entre elementos */
+  display: flex; 
+  align-items: center; 
+  gap: 1rem; 
 }
 
 .cursos-modal-stat-item i {
-  color: #8b5cf6; /* Cor roxa para ícones */
-  font-size: 1.2rem; /* Tamanho do ícone */
+  color: #8b5cf6; 
+  font-size: 1.2rem; 
 }
 
-/* Conteúdo da estatística */
+
 .cursos-modal-stat-content {
-  display: flex; /* Layout flexbox */
-  flex-direction: column; /* Direção vertical */
+  display: flex; 
+  flex-direction: column; 
 }
 
-/* Valor da estatística */
+
 .cursos-modal-stat-value {
-  color: #ffffff; /* Texto branco */
-  font-weight: 600; /* Peso da fonte */
+  color: #ffffff; 
+  font-weight: 600; 
 }
 
-/* Rótulo da estatística */
+
 .cursos-modal-stat-label {
-  color: #94a3b8; /* Texto cinza */
-  font-size: 0.8rem; /* Tamanho pequeno */
+  color: #94a3b8; 
+  font-size: 0.8rem; 
 }
 
-/* Seção de preço no modal */
+
 .cursos-modal-price-section {
-  background: rgba(30, 41, 59, 0.8); /* Fundo semi-transparente */
-  border-radius: 8px; /* Bordas arredondadas */
-  padding: 1.5rem; /* Espaçamento interno */
-  border: 1px solid rgba(139, 92, 246, 0.2); /* Borda roxa */
+  background: rgba(30, 41, 59, 0.8); 
+  border-radius: 8px; 
+  padding: 1.5rem; 
+  border: 1px solid rgba(139, 92, 246, 0.2); 
 }
 
-/* Display do preço */
+
 .cursos-modal-price-display {
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Alinha itens verticalmente */
-  gap: 1rem; /* Espaçamento entre elementos */
-  margin-bottom: 0.5rem; /* Espaçamento inferior */
+  display: flex; 
+  align-items: center; 
+  gap: 1rem; 
+  margin-bottom: 0.5rem; 
 }
 
-/* Preço original no modal */
+
 .cursos-modal-price-original {
-  color: #94a3b8; /* Texto cinza */
-  text-decoration: line-through; /* Texto riscado */
-  font-size: 1rem; /* Tamanho médio */
+  color: #94a3b8; 
+  text-decoration: line-through; 
+  font-size: 1rem; 
 }
 
-/* Preço atual no modal */
+
 .cursos-modal-price-current {
-  color: #8b5cf6; /* Texto roxo */
-  font-size: 1.8rem; /* Tamanho grande */
-  font-weight: 700; /* Peso da fonte */
+  color: #8b5cf6; 
+  font-size: 1.8rem; 
+  font-weight: 700; 
 }
 
-/* Informações de parcelamento */
+
 .cursos-modal-price-installments {
-  color: #94a3b8; /* Texto cinza */
-  font-size: 0.9rem; /* Tamanho pequeno */
-  margin-bottom: 1rem; /* Espaçamento inferior */
+  color: #94a3b8; 
+  font-size: 0.9rem; 
+  margin-bottom: 1rem; 
 }
 
-/* Botão adicionar ao carrinho no modal */
+
 .cursos-btn-curso-add-cart {
-  width: 100%; /* Largura total */
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); /* Gradiente azul para roxo */
-  color: #ffffff; /* Texto branco */
-  padding: 1rem; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  font-size: 1rem; /* Tamanho da fonte */
-  font-weight: 600; /* Peso da fonte */
-  border: none; /* Remove borda */
-  cursor: pointer; /* Cursor de mão */
-  transition: all 0.3s ease; /* Transição suave */
+  width: 100%; 
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); 
+  color: #ffffff; 
+  padding: 1rem; 
+  border-radius: 8px; 
+  font-size: 1rem; 
+  font-weight: 600; 
+  border: none; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
 }
 
 .cursos-btn-curso-add-cart:hover {
-  transform: translateY(-2px); /* Move para cima no hover */
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3); /* Sombra no hover */
+  transform: translateY(-2px); 
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3); 
 }
 
-/* ===== RESPONSIVIDADE ===== */
+
 @media (max-width: 768px) {
   .cursos-container {
-    padding: 0 1rem; /* Reduz espaçamento horizontal */
+    padding: 0 1rem; 
   }
   
   .cursos-title {
-    font-size: 2rem; /* Reduz tamanho do título */
+    font-size: 2rem; 
   }
   
   .cursos-advanced-filters {
-    grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+    grid-template-columns: 1fr; 
   }
   
   .cursos-grid {
-    grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
-    gap: 1.5rem; /* Reduz espaçamento */
+    grid-template-columns: 1fr; 
+    gap: 1.5rem; 
   }
   
-  /* Modal responsivo para tablets */
+  
   .cursos-modal-grid {
-    grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
-    gap: 1rem; /* Reduz espaçamento */
+    grid-template-columns: 1fr; 
+    gap: 1rem; 
   }
   
   .cursos-modal-content {
-    padding: 1.5rem; /* Reduz espaçamento interno */
+    padding: 1.5rem; 
   }
   
   .cursos-modal-header {
-    flex-direction: column; /* Empilha elementos verticalmente */
-    gap: 1rem; /* Espaçamento entre elementos */
-    text-align: center; /* Centraliza texto */
+    flex-direction: column; 
+    gap: 1rem; 
+    text-align: center; 
   }
   
   .cursos-modal-title-section {
-    flex-direction: column; /* Empilha título e ícone */
-    text-align: center; /* Centraliza texto */
+    flex-direction: column; 
+    text-align: center; 
   }
 }
 
 @media (max-width: 480px) {
   .cursos-title {
-    font-size: 1.5rem; /* Título ainda menor em telas muito pequenas */
+    font-size: 1.5rem; 
   }
   
   .cursos-main-content {
-    padding: 1rem; /* Reduz espaçamento interno */
+    padding: 1rem; 
   }
   
   .cursos-grid {
-    gap: 1rem; /* Reduz espaçamento entre cards */
+    gap: 1rem; 
   }
   
-  /* Modal responsivo para mobile */
+  
   .cursos-modal-overlay {
-    padding: 1rem; /* Reduz espaçamento do overlay */
+    padding: 1rem; 
   }
   
   .cursos-modal-content {
-    padding: 1rem; /* Reduz espaçamento interno */
+    padding: 1rem; 
   }
   
   .cursos-modal-title {
-    font-size: 1.5rem; /* Reduz tamanho do título */
+    font-size: 1.5rem; 
   }
   
   .cursos-modal-image-section {
-    min-height: 200px; /* Reduz altura mínima da imagem */
+    min-height: 200px; 
   }
   
   .cursos-modal-image {
-    height: 200px; /* Reduz altura da imagem */
+    height: 200px; 
   }
 }

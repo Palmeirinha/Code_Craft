@@ -1,11 +1,11 @@
-/* ===== CSS DE CATEGORIAS - VERSÃO OTIMIZADA ===== */
+
 /* 
   Este arquivo contém todos os estilos para a página de categorias
   Foi otimizado para reduzir redundância e melhorar manutenibilidade
   Utiliza variáveis CSS para consistência visual e facilidade de alteração
 */
 
-/* ===== VARIÁVEIS CSS (cores e valores reutilizáveis) ===== */
+
 /* 
   As variáveis CSS (custom properties) permitem:
   - Centralizar cores e valores em um local
@@ -14,809 +14,809 @@
   - Facilitar manutenção e atualizações futuras
 */
 :root {
-  --primary-bg: #0f172a;        /* Cor de fundo principal (azul escuro) */
-  --secondary-bg: #1e293b;      /* Cor de fundo secundária (azul médio) */
-  --accent-color: #8b5cf6;      /* Cor de destaque principal (roxo) */
-  --accent-blue: #3b82f6;       /* Cor de destaque secundária (azul) */
-  --text-white: #ffffff;        /* Texto branco para contraste */
-  --text-muted: #94a3b8;       /* Texto secundário (cinza azulado) */
-  --border-color: rgba(139, 92, 246, 0.2); /* Borda com transparência */
-  --danger-color: #ef4444;      /* Cor de perigo/erro (vermelho) */
-  --success-color: #10b981;     /* Cor de sucesso (verde) */
-  --warning-color: #f59e0b;     /* Cor de aviso (amarelo/laranja) */
+  --primary-bg: #0f172a;        
+  --secondary-bg: #1e293b;      
+  --accent-color: #8b5cf6;      
+  --accent-blue: #3b82f6;       
+  --text-white: #ffffff;        
+  --text-muted: #94a3b8;       
+  --border-color: rgba(139, 92, 246, 0.2); 
+  --danger-color: #ef4444;      
+  --success-color: #10b981;     
+  --warning-color: #f59e0b;     
 }
 
-/* ===== LAYOUT PRINCIPAL ===== */
+
 /* 
   Estilos para a estrutura principal da página
   Define o container, background e espaçamentos básicos
 */
 
-/* Container principal da seção de categorias */
+
 .categoria-section {
-  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%); /* Gradiente de fundo */
-  min-height: 100vh; /* Altura mínima de 100% da viewport */
-  padding: 2rem 0; /* Espaçamento vertical interno */
+  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%); 
+  min-height: 100vh; 
+  padding: 2rem 0; 
 }
 
-/* Container para centralizar e limitar largura do conteúdo */
+
 .categoria-container {
-  max-width: 1200px; /* Largura máxima para telas grandes */
-  margin: 0 auto; /* Centraliza horizontalmente */
-  padding: 0 2rem; /* Espaçamento horizontal interno */
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 2rem; 
 }
 
-/* Wrapper principal com fundo e bordas */
+
 .categoria-wrapper {
-  background: var(--secondary-bg); /* Fundo secundário */
-  border-radius: 16px; /* Bordas arredondadas */
-  padding: 2rem; /* Espaçamento interno */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Sombra para profundidade */
-  border: 1px solid var(--border-color); /* Borda sutil com cor personalizada */
+  background: var(--secondary-bg); 
+  border-radius: 16px; 
+  padding: 2rem; 
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); 
+  border: 1px solid var(--border-color); 
 }
 
-/* ===== HEADER E TÍTULOS ===== */
+
 /* 
   Estilos para cabeçalhos, títulos e subtítulos
   Define hierarquia visual e tipografia
 */
 
-/* Cabeçalho centralizado da seção */
+
 .categoria-header {
-  text-align: center; /* Centraliza o conteúdo */
-  margin-bottom: 2rem; /* Espaçamento inferior */
+  text-align: center; 
+  margin-bottom: 2rem; 
 }
 
-/* Título principal da página */
+
 .categoria-title {
-  font-size: 2.5rem; /* Tamanho grande para hierarquia */
-  font-weight: 700; /* Peso da fonte (negrito) */
-  color: var(--text-white); /* Cor branca para contraste */
-  margin: 0 0 0.5rem; /* Margem inferior pequena */
+  font-size: 2.5rem; 
+  font-weight: 700; 
+  color: var(--text-white); 
+  margin: 0 0 0.5rem; 
 }
 
-/* Subtítulo descritivo */
+
 .categoria-subtitle {
-  font-size: 1.1rem; /* Tamanho médio para subtítulo */
-  color: var(--text-muted); /* Cor secundária para hierarquia */
-  margin: 0; /* Remove margens padrão */
+  font-size: 1.1rem; 
+  color: var(--text-muted); 
+  margin: 0; 
 }
 
-/* ===== FORMULÁRIOS ===== */
+
 /* 
   Estilos para formulários de criação/edição de categorias
   Inclui campos, labels e layout responsivo
 */
 
-/* Container do formulário com fundo e bordas */
+
 .categoria-form-container {
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
-  border-radius: 12px; /* Bordas arredondadas */
-  padding: 2rem; /* Espaçamento interno */
-  margin-bottom: 2rem; /* Espaçamento inferior */
-  border: 1px solid var(--border-color); /* Borda sutil */
+  background: rgba(15, 23, 42, 0.8); 
+  border-radius: 12px; 
+  padding: 2rem; 
+  margin-bottom: 2rem; 
+  border: 1px solid var(--border-color); 
 }
 
-/* Título do formulário com ícone */
+
 .categoria-form-title {
-  color: var(--text-white); /* Cor branca */
-  font-size: 1.5rem; /* Tamanho médio */
-  font-weight: 600; /* Peso semi-negrito */
-  margin: 0 0 1.5rem; /* Margem inferior */
-  display: flex; /* Layout flexbox para alinhar ícone e texto */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 0.75rem; /* Espaçamento entre ícone e texto */
+  color: var(--text-white); 
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  margin: 0 0 1.5rem; 
+  display: flex; 
+  align-items: center; 
+  gap: 0.75rem; 
 }
 
-/* Ícone do título do formulário */
+
 .categoria-form-title i {
-  color: var(--accent-color); /* Cor de destaque */
+  color: var(--accent-color); 
 }
 
-/* Grid responsivo para formulários - 2 colunas em telas grandes */
+
 .categoria-form-row {
-  display: grid; /* Layout em grid */
-  grid-template-columns: 1fr 1fr; /* Duas colunas de tamanho igual */
-  gap: 1.5rem; /* Espaçamento entre colunas */
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 1.5rem; 
 }
 
-/* Classe para campos que ocupam toda a largura */
+
 .categoria-form-col-full {
-  grid-column: 1 / -1; /* Ocupa da primeira à última coluna */
+  grid-column: 1 / -1; 
 }
 
-/* Grupo de campos do formulário */
+
 .categoria-form-group {
-  margin-bottom: 1rem; /* Espaçamento inferior */
+  margin-bottom: 1rem; 
 }
 
-/* Label dos campos do formulário */
+
 .categoria-form-label {
-  display: block; /* Comportamento de bloco */
-  margin-bottom: 0.5rem; /* Espaçamento inferior */
-  color: var(--text-white); /* Cor branca */
-  font-weight: 600; /* Peso semi-negrito */
-  font-size: 0.9rem; /* Tamanho pequeno */
+  display: block; 
+  margin-bottom: 0.5rem; 
+  color: var(--text-white); 
+  font-weight: 600; 
+  font-size: 0.9rem; 
 }
 
-/* Campo de entrada do formulário */
+
 .categoria-form-control {
-  width: 100%; /* Ocupa toda a largura disponível */
-  padding: 0.75rem 1rem; /* Espaçamento interno */
-  background: rgba(30, 41, 59, 0.8); /* Fundo semi-transparente */
-  border: 1px solid var(--border-color); /* Borda sutil */
-  border-radius: 8px; /* Bordas arredondadas */
-  color: var(--text-white); /* Cor do texto */
-  font-size: 1rem; /* Tamanho da fonte */
-  transition: all 0.2s ease; /* Transição suave para mudanças */
-  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+  width: 100%; 
+  padding: 0.75rem 1rem; 
+  background: rgba(30, 41, 59, 0.8); 
+  border: 1px solid var(--border-color); 
+  border-radius: 8px; 
+  color: var(--text-white); 
+  font-size: 1rem; 
+  transition: all 0.2s ease; 
+  box-sizing: border-box; 
 }
 
-/* Estado de foco dos campos */
+
 .categoria-form-control:focus {
-  outline: none; /* Remove outline padrão */
-  border-color: var(--accent-blue); /* Borda azul no foco */
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); /* Sombra azul sutil */
-  background: rgba(30, 41, 59, 1); /* Fundo mais opaco no foco */
+  outline: none; 
+  border-color: var(--accent-blue); 
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); 
+  background: rgba(30, 41, 59, 1); 
 }
 
-/* Placeholder dos campos */
+
 .categoria-form-control::placeholder {
-  color: #9ca3af; /* Cor cinza para placeholder */
+  color: #9ca3af; 
 }
 
-/* ===== BOTÕES ===== */
+
 /* 
   Estilos para botões com diferentes variantes
   Inclui estados hover, disabled e transições
 */
 
-/* Estilo base para todos os botões */
+
 .categoria-btn {
-  padding: 0.75rem 1.5rem; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  font-weight: 600; /* Peso semi-negrito */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  cursor: pointer; /* Cursor de mão */
-  transition: all 0.3s ease; /* Transição suave */
-  border: none; /* Remove borda padrão */
-  display: inline-flex; /* Layout flexbox inline */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 0.5rem; /* Espaçamento entre ícone e texto */
-  text-decoration: none; /* Remove sublinhado de links */
+  padding: 0.75rem 1.5rem; 
+  border-radius: 8px; 
+  font-weight: 600; 
+  font-size: 0.9rem; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  border: none; 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  text-decoration: none; 
 }
 
-/* Estado desabilitado dos botões */
+
 .categoria-btn:disabled {
-  opacity: 0.6; /* Reduz opacidade */
-  cursor: not-allowed; /* Cursor de proibido */
+  opacity: 0.6; 
+  cursor: not-allowed; 
 }
 
-/* Variantes de botões usando classes utilitárias */
-/* Botão primário com gradiente azul */
+
+
 .categoria-btn-primary {
-  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-color) 100%); /* Gradiente azul para roxo */
-  color: var(--text-white); /* Texto branco */
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3); /* Sombra azul */
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-color) 100%); 
+  color: var(--text-white); 
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3); 
 }
 
-/* Botão outline (contorno) */
+
 .categoria-btn-outline {
-  background: transparent; /* Fundo transparente */
-  border: 2px solid var(--accent-blue); /* Borda azul */
-  color: var(--accent-blue); /* Texto azul */
+  background: transparent; 
+  border: 2px solid var(--accent-blue); 
+  color: var(--accent-blue); 
 }
 
-/* Botão de perigo (vermelho) */
+
 .categoria-btn-danger {
-  background: linear-gradient(135deg, var(--danger-color) 0%, #dc2626 100%); /* Gradiente vermelho */
-  color: var(--text-white); /* Texto branco */
-  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3); /* Sombra vermelha */
+  background: linear-gradient(135deg, var(--danger-color) 0%, #dc2626 100%); 
+  color: var(--text-white); 
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3); 
 }
 
-/* Efeitos hover para botões */
-/* Hover para botões primário e de perigo */
+
+
 .categoria-btn-primary:hover:not(:disabled),
 .categoria-btn-danger:hover:not(:disabled) {
-  transform: translateY(-2px); /* Move para cima */
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); /* Sombra mais intensa */
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); 
 }
 
-/* Hover para botão outline */
+
 .categoria-btn-outline:hover:not(:disabled) {
-  background: var(--accent-blue); /* Fundo azul */
-  color: var(--text-white); /* Texto branco */
-  transform: translateY(-2px); /* Move para cima */
+  background: var(--accent-blue); 
+  color: var(--text-white); 
+  transform: translateY(-2px); 
 }
 
-/* ===== LISTA E TABELA ===== */
+
 /* 
   Estilos para listagem de categorias em formato de tabela
   Inclui cabeçalho, linhas e elementos visuais
 */
 
-/* Container da lista com fundo e bordas */
+
 .categoria-list-container {
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
-  border-radius: 12px; /* Bordas arredondadas */
-  padding: 2rem; /* Espaçamento interno */
-  border: 1px solid var(--border-color); /* Borda sutil */
+  background: rgba(15, 23, 42, 0.8); 
+  border-radius: 12px; 
+  padding: 2rem; 
+  border: 1px solid var(--border-color); 
 }
 
-/* Cabeçalho da lista com título e estatísticas */
+
 .categoria-list-header {
-  display: flex; /* Layout flexbox */
-  justify-content: space-between; /* Distribui espaço entre elementos */
-  align-items: center; /* Centraliza verticalmente */
-  margin-bottom: 1.5rem; /* Espaçamento inferior */
-  flex-wrap: wrap; /* Permite quebra de linha em telas pequenas */
-  gap: 1rem; /* Espaçamento entre elementos */
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 1.5rem; 
+  flex-wrap: wrap; 
+  gap: 1rem; 
 }
 
-/* Título da lista */
+
 .categoria-list-title {
-  color: var(--text-white); /* Cor branca */
-  font-size: 1.5rem; /* Tamanho médio */
-  font-weight: 600; /* Peso semi-negrito */
-  margin: 0; /* Remove margens */
+  color: var(--text-white); 
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  margin: 0; 
 }
 
-/* Badge de estatísticas com gradiente */
+
 .categoria-stats-badge {
-  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-color) 100%); /* Gradiente azul para roxo */
-  color: var(--text-white); /* Texto branco */
-  padding: 0.5rem 1rem; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  font-weight: 600; /* Peso semi-negrito */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 0.5rem; /* Espaçamento entre ícone e texto */
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); /* Sombra azul */
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-color) 100%); 
+  color: var(--text-white); 
+  padding: 0.5rem 1rem; 
+  border-radius: 8px; 
+  font-size: 0.9rem; 
+  font-weight: 600; 
+  display: flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); 
 }
 
-/* ===== ESTADOS DE CARREGAMENTO E ERRO ===== */
+
 /* 
   Estilos para diferentes estados da interface
   Loading, erro e lista vazia
 */
 
-/* Containers para estados especiais (loading, erro, vazio) */
+
 .categoria-loading-container,
 .categoria-error-container,
 .categoria-empty-container {
-  text-align: center; /* Centraliza o conteúdo */
-  padding: 2rem; /* Espaçamento interno */
+  text-align: center; 
+  padding: 2rem; 
 }
 
-/* Spinner de carregamento animado */
+
 .categoria-spinner {
-  width: 40px; /* Largura */
-  height: 40px; /* Altura */
-  border: 3px solid rgba(139, 92, 246, 0.2); /* Borda transparente */
-  border-top: 3px solid var(--accent-color); /* Borda superior roxa */
-  border-radius: 50%; /* Forma circular */
-  animation: spin 1s linear infinite; /* Animação de rotação */
-  margin: 0 auto 1rem; /* Centraliza horizontalmente */
+  width: 40px; 
+  height: 40px; 
+  border: 3px solid rgba(139, 92, 246, 0.2); 
+  border-top: 3px solid var(--accent-color); 
+  border-radius: 50%; 
+  animation: spin 1s linear infinite; 
+  margin: 0 auto 1rem; 
 }
 
-/* Animação de rotação para o spinner */
+
 @keyframes spin {
-  0% { transform: rotate(0deg); } /* Início: 0 graus */
-  100% { transform: rotate(360deg); } /* Fim: 360 graus (volta completa) */
+  0% { transform: rotate(0deg); } 
+  100% { transform: rotate(360deg); } 
 }
 
-/* ===== TABELA ===== */
+
 /* 
   Estilos para tabela de categorias
   Inclui cabeçalho, linhas, colunas e responsividade
 */
 
-/* Container da tabela com scroll horizontal */
+
 .categoria-table-container {
-  overflow-x: auto; /* Permite scroll horizontal em telas pequenas */
+  overflow-x: auto; 
 }
 
-/* Tabela principal */
+
 .categoria-table {
-  width: 100%; /* Ocupa toda a largura disponível */
-  border-collapse: collapse; /* Remove espaçamento entre células */
-  background: var(--secondary-bg); /* Fundo secundário */
-  border-radius: 8px; /* Bordas arredondadas */
-  overflow: hidden; /* Esconde conteúdo que ultrapassa as bordas */
+  width: 100%; 
+  border-collapse: collapse; 
+  background: var(--secondary-bg); 
+  border-radius: 8px; 
+  overflow: hidden; 
 }
 
-/* Cabeçalho da tabela */
+
 .categoria-table thead {
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
+  background: rgba(15, 23, 42, 0.8); 
 }
 
-/* Células de cabeçalho e dados */
+
 .categoria-table th,
 .categoria-table td {
-  padding: 1rem; /* Espaçamento interno */
-  text-align: left; /* Alinhamento à esquerda */
-  border-bottom: 1px solid rgba(139, 92, 246, 0.1); /* Borda inferior sutil */
+  padding: 1rem; 
+  text-align: left; 
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1); 
 }
 
-/* Células de cabeçalho */
+
 .categoria-table th {
-  color: var(--text-white); /* Cor branca */
-  font-weight: 600; /* Peso semi-negrito */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  border-bottom: 1px solid var(--border-color); /* Borda inferior mais visível */
+  color: var(--text-white); 
+  font-weight: 600; 
+  font-size: 0.9rem; 
+  border-bottom: 1px solid var(--border-color); 
 }
 
-/* Células de dados */
+
 .categoria-table td {
-  color: var(--text-white); /* Cor branca */
+  color: var(--text-white); 
 }
 
-/* Efeito hover nas linhas da tabela */
+
 .categoria-table-row:hover {
-  background: rgba(139, 92, 246, 0.05); /* Fundo roxo sutil no hover */
+  background: rgba(139, 92, 246, 0.05); 
 }
 
-/* Colunas específicas da tabela */
-/* Coluna de imagem */
+
+
 .categoria-th-image,
 .categoria-td-image {
-  width: 80px; /* Largura fixa para coluna de imagem */
+  width: 80px; 
 }
 
-/* Coluna de ações */
+
 .categoria-th-actions,
 .categoria-td-actions {
-  width: 120px; /* Largura fixa para coluna de ações */
+  width: 120px; 
 }
 
-/* Imagens na tabela */
-/* Imagem real da categoria */
+
+
 .categoria-image-img {
-  width: 60px; /* Largura */
-  height: 60px; /* Altura */
-  object-fit: cover; /* Mantém proporção e corta se necessário */
-  border-radius: 8px; /* Bordas arredondadas */
-  border: 1px solid var(--border-color); /* Borda sutil */
+  width: 60px; 
+  height: 60px; 
+  object-fit: cover; 
+  border-radius: 8px; 
+  border: 1px solid var(--border-color); 
 }
 
-/* Placeholder para quando não há imagem */
+
 .categoria-placeholder-image {
-  width: 60px; /* Largura */
-  height: 60px; /* Altura */
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
-  border: 1px solid var(--border-color); /* Borda sutil */
-  border-radius: 8px; /* Bordas arredondadas */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  color: var(--text-muted); /* Cor secundária */
-  font-size: 1.5rem; /* Tamanho do ícone */
+  width: 60px; 
+  height: 60px; 
+  background: rgba(15, 23, 42, 0.8); 
+  border: 1px solid var(--border-color); 
+  border-radius: 8px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  color: var(--text-muted); 
+  font-size: 1.5rem; 
 }
 
-/* ===== MODAL PRINCIPAL ===== */
+
 /* 
   Estilos para modal de criação/edição de categorias
   Inclui overlay, container e elementos internos
 */
 
-/* Overlay do modal (fundo escuro) */
+
 .categoria-modal-overlay {
-  position: fixed; /* Posição fixa na tela */
-  top: 0; /* Topo da tela */
-  left: 0; /* Esquerda da tela */
-  right: 0; /* Direita da tela */
-  bottom: 0; /* Baixo da tela */
-  background: rgba(0, 0, 0, 0.7); /* Fundo preto semi-transparente */
-  backdrop-filter: blur(4px); /* Efeito de blur no fundo */
-  z-index: 9998; /* Camada alta para ficar sobre outros elementos */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  padding: 1rem; /* Espaçamento interno */
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  background: rgba(0, 0, 0, 0.7); 
+  backdrop-filter: blur(4px); 
+  z-index: 9998; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 1rem; 
 }
 
-/* Container principal do modal */
+
 .categoria-modal-container {
-  background: var(--secondary-bg); /* Fundo secundário */
-  border-radius: 12px; /* Bordas arredondadas */
-  max-width: 500px; /* Largura máxima */
-  width: 100%; /* Ocupa toda a largura disponível */
-  border: 1px solid var(--border-color); /* Borda sutil */
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); /* Sombra profunda */
-  overflow: hidden; /* Esconde conteúdo que ultrapassa as bordas */
+  background: var(--secondary-bg); 
+  border-radius: 12px; 
+  max-width: 500px; 
+  width: 100%; 
+  border: 1px solid var(--border-color); 
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); 
+  overflow: hidden; 
 }
 
-/* Cabeçalho do modal */
+
 .categoria-modal-header {
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: space-between; /* Distribui espaço entre título e botão fechar */
-  padding: 1.5rem 2rem; /* Espaçamento interno */
-  border-bottom: 1px solid var(--border-color); /* Borda inferior */
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 1.5rem 2rem; 
+  border-bottom: 1px solid var(--border-color); 
+  background: rgba(15, 23, 42, 0.8); 
 }
 
-/* Título do modal */
+
 .categoria-modal-title {
-  margin: 0; /* Remove margens */
-  font-size: 1.5rem; /* Tamanho médio */
-  font-weight: 700; /* Peso negrito */
-  color: var(--text-white); /* Cor branca */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 0.75rem; /* Espaçamento entre ícone e texto */
+  margin: 0; 
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  color: var(--text-white); 
+  display: flex; 
+  align-items: center; 
+  gap: 0.75rem; 
 }
 
-/* Ícone do título do modal */
+
 .categoria-modal-title i {
-  color: var(--accent-color); /* Cor de destaque */
+  color: var(--accent-color); 
 }
 
-/* Botão de fechar o modal */
+
 .categoria-modal-close {
-  background: transparent; /* Fundo transparente */
-  border: none; /* Remove borda */
-  color: #9ca3af; /* Cor cinza */
-  font-size: 1.5rem; /* Tamanho do ícone */
-  padding: 0.5rem; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  cursor: pointer; /* Cursor de mão */
-  transition: all 0.2s ease; /* Transição suave */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  width: 40px; /* Largura fixa */
-  height: 40px; /* Altura fixa */
+  background: transparent; 
+  border: none; 
+  color: #9ca3af; 
+  font-size: 1.5rem; 
+  padding: 0.5rem; 
+  border-radius: 8px; 
+  cursor: pointer; 
+  transition: all 0.2s ease; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 40px; 
+  height: 40px; 
 }
 
-/* Hover do botão fechar */
+
 .categoria-modal-close:hover {
-  background: rgba(239, 68, 68, 0.1); /* Fundo vermelho sutil */
-  color: var(--danger-color); /* Cor vermelha */
-  transform: scale(1.1); /* Aumenta ligeiramente */
+  background: rgba(239, 68, 68, 0.1); 
+  color: var(--danger-color); 
+  transform: scale(1.1); 
 }
 
-/* Corpo do modal */
+
 .categoria-modal-body {
-  padding: 2rem; /* Espaçamento interno */
-  overflow-y: auto; /* Permite scroll vertical se necessário */
-  flex: 1; /* Ocupa espaço restante */
-  background: var(--secondary-bg); /* Fundo secundário */
-  color: var(--text-white); /* Cor do texto */
+  padding: 2rem; 
+  overflow-y: auto; 
+  flex: 1; 
+  background: var(--secondary-bg); 
+  color: var(--text-white); 
 }
 
-/* Rodapé do modal */
+
 .categoria-modal-footer {
-  display: flex; /* Layout flexbox */
-  gap: 1rem; /* Espaçamento entre botões */
-  justify-content: flex-end; /* Alinha botões à direita */
-  padding: 1.5rem 2rem; /* Espaçamento interno */
-  border-top: 1px solid var(--border-color); /* Borda superior */
-  background: rgba(15, 23, 42, 0.8); /* Fundo semi-transparente */
+  display: flex; 
+  gap: 1rem; 
+  justify-content: flex-end; 
+  padding: 1.5rem 2rem; 
+  border-top: 1px solid var(--border-color); 
+  background: rgba(15, 23, 42, 0.8); 
 }
 
-/* ===== MODAL DE CONFIRMAÇÃO ===== */
+
 /* 
   Estilos para modal de confirmação de ações destrutivas
   Usado para confirmar exclusão de categorias
 */
 
-/* Overlay do modal de confirmação */
+
 .categoria-confirm-modal-overlay {
-  position: fixed; /* Posição fixa na tela */
-  top: 0; /* Topo da tela */
-  left: 0; /* Esquerda da tela */
-  right: 0; /* Direita da tela */
-  bottom: 0; /* Baixo da tela */
-  background: rgba(0, 0, 0, 0.8); /* Fundo preto mais escuro */
-  z-index: 10000; /* Camada mais alta que o modal principal */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  padding: 2rem; /* Espaçamento interno */
-  backdrop-filter: blur(4px); /* Efeito de blur no fundo */
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  background: rgba(0, 0, 0, 0.8); 
+  z-index: 10000; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 2rem; 
+  backdrop-filter: blur(4px); 
 }
 
-/* Container do modal de confirmação */
+
 .categoria-confirm-modal {
-  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%); /* Gradiente de fundo */
-  border-radius: 16px; /* Bordas arredondadas */
-  max-width: 400px; /* Largura máxima menor que o modal principal */
-  width: 100%; /* Ocupa toda a largura disponível */
-  border: 1px solid var(--border-color); /* Borda sutil */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Sombra */
-  overflow: hidden; /* Esconde conteúdo que ultrapassa as bordas */
+  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%); 
+  border-radius: 16px; 
+  max-width: 400px; 
+  width: 100%; 
+  border: 1px solid var(--border-color); 
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); 
+  overflow: hidden; 
 }
 
-/* Conteúdo do modal de confirmação */
+
 .categoria-confirm-content {
-  padding: 2rem; /* Espaçamento interno */
+  padding: 2rem; 
 }
 
-/* Cabeçalho do modal de confirmação */
+
 .categoria-confirm-header {
-  text-align: center; /* Centraliza o conteúdo */
-  margin-bottom: 1.5rem; /* Espaçamento inferior */
-  display: flex; /* Layout flexbox */
-  flex-direction: column; /* Direção vertical */
-  align-items: center; /* Centraliza horizontalmente */
-  gap: 1rem; /* Espaçamento entre elementos */
+  text-align: center; 
+  margin-bottom: 1.5rem; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 1rem; 
 }
 
-/* Ícone de aviso no cabeçalho */
+
 .categoria-confirm-header i {
-  font-size: 3rem; /* Tamanho grande para destaque */
-  color: var(--warning-color); /* Cor de aviso */
+  font-size: 3rem; 
+  color: var(--warning-color); 
 }
 
-/* Título do modal de confirmação */
+
 .categoria-confirm-header h3 {
-  font-size: 1.5rem; /* Tamanho médio */
-  font-weight: 700; /* Peso negrito */
-  color: var(--text-white); /* Cor branca */
-  margin: 0; /* Remove margens */
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  color: var(--text-white); 
+  margin: 0; 
 }
 
-/* Corpo do modal de confirmação */
+
 .categoria-confirm-body {
-  text-align: center; /* Centraliza o conteúdo */
-  margin-bottom: 2rem; /* Espaçamento inferior */
+  text-align: center; 
+  margin-bottom: 2rem; 
 }
 
-/* Parágrafo de texto no corpo */
+
 .categoria-confirm-body p {
-  color: #e2e8f0; /* Cor cinza clara */
-  font-size: 1rem; /* Tamanho da fonte */
-  line-height: 1.6; /* Altura da linha */
-  margin: 0 0 0.5rem; /* Margem inferior pequena */
+  color: #e2e8f0; 
+  font-size: 1rem; 
+  line-height: 1.6; 
+  margin: 0 0 0.5rem; 
 }
 
-/* Texto de aviso especial */
+
 .categoria-confirm-warning {
-  color: var(--warning-color) !important; /* Cor de aviso com prioridade */
-  font-weight: 600; /* Peso semi-negrito */
-  font-size: 0.9rem !important; /* Tamanho pequeno com prioridade */
+  color: var(--warning-color) !important; 
+  font-weight: 600; 
+  font-size: 0.9rem !important; 
 }
 
-/* Área de ações (botões) do modal de confirmação */
+
 .categoria-confirm-actions {
-  display: flex; /* Layout flexbox */
-  gap: 1rem; /* Espaçamento entre botões */
-  justify-content: center; /* Centraliza os botões */
+  display: flex; 
+  gap: 1rem; 
+  justify-content: center; 
 }
 
-/* Estilo base para botões de confirmação */
+
 .categoria-confirm-btn-cancel,
 .categoria-confirm-btn-confirm {
-  padding: 0.75rem 1.5rem; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  font-weight: 600; /* Peso semi-negrito */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  cursor: pointer; /* Cursor de mão */
-  transition: all 0.3s ease; /* Transição suave */
-  border: none; /* Remove borda */
-  min-width: 100px; /* Largura mínima */
-  min-height: 44px; /* Altura mínima para acessibilidade */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  gap: 0.5rem; /* Espaçamento entre ícone e texto */
+  padding: 0.75rem 1.5rem; 
+  border-radius: 8px; 
+  font-weight: 600; 
+  font-size: 0.9rem; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  border: none; 
+  min-width: 100px; 
+  min-height: 44px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 0.5rem; 
 }
 
-/* Botão de cancelar */
+
 .categoria-confirm-btn-cancel {
-  background: rgba(100, 116, 139, 0.2); /* Fundo cinza transparente */
-  color: var(--text-muted); /* Cor secundária */
-  border: 1px solid rgba(100, 116, 139, 0.3); /* Borda cinza */
+  background: rgba(100, 116, 139, 0.2); 
+  color: var(--text-muted); 
+  border: 1px solid rgba(100, 116, 139, 0.3); 
 }
 
-/* Hover do botão cancelar */
+
 .categoria-confirm-btn-cancel:hover {
-  background: rgba(100, 116, 139, 0.3); /* Fundo mais opaco */
-  color: var(--text-white); /* Cor branca */
+  background: rgba(100, 116, 139, 0.3); 
+  color: var(--text-white); 
 }
 
-/* Botão de confirmar */
+
 .categoria-confirm-btn-confirm {
-  background: linear-gradient(135deg, var(--danger-color) 0%, #dc2626 100%); /* Gradiente vermelho */
-  color: var(--text-white); /* Cor branca */
-  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3); /* Sombra vermelha */
+  background: linear-gradient(135deg, var(--danger-color) 0%, #dc2626 100%); 
+  color: var(--text-white); 
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3); 
 }
 
-/* Hover do botão confirmar */
+
 .categoria-confirm-btn-confirm:hover:not(:disabled) {
-  transform: translateY(-2px); /* Move para cima */
-  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4); /* Sombra mais intensa */
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4); 
 }
 
-/* Estado desabilitado do botão confirmar */
+
 .categoria-confirm-btn-confirm:disabled {
-  opacity: 0.6; /* Reduz opacidade */
-  cursor: not-allowed; /* Cursor de proibido */
-  transform: none; /* Remove transformação */
+  opacity: 0.6; 
+  cursor: not-allowed; 
+  transform: none; 
 }
 
-/* ===== ALERTAS ===== */
+
 /* 
   Estilos para mensagens de alerta (sucesso, erro, aviso)
   Usado para feedback do usuário
 */
 
-/* Estilo base para alertas */
+
 .categoria-alert {
-  padding: 1rem; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  margin-bottom: 1rem; /* Espaçamento inferior */
-  font-size: 0.9rem; /* Tamanho da fonte */
-  display: flex; /* Layout flexbox */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 0.75rem; /* Espaçamento entre ícone e texto */
+  padding: 1rem; 
+  border-radius: 8px; 
+  margin-bottom: 1rem; 
+  font-size: 0.9rem; 
+  display: flex; 
+  align-items: center; 
+  gap: 0.75rem; 
 }
 
-/* Alerta de perigo/erro */
+
 .categoria-alert-danger {
-  background: rgba(239, 68, 68, 0.1); /* Fundo vermelho transparente */
-  border: 1px solid rgba(239, 68, 68, 0.3); /* Borda vermelha */
-  color: #f87171; /* Cor vermelha clara */
+  background: rgba(239, 68, 68, 0.1); 
+  border: 1px solid rgba(239, 68, 68, 0.3); 
+  color: #f87171; 
 }
 
-/* Alerta de sucesso */
+
 .categoria-alert-success {
-  background: rgba(16, 185, 129, 0.1); /* Fundo verde transparente */
-  border: 1px solid rgba(16, 185, 129, 0.3); /* Borda verde */
-  color: #34d399; /* Cor verde clara */
+  background: rgba(16, 185, 129, 0.1); 
+  border: 1px solid rgba(16, 185, 129, 0.3); 
+  color: #34d399; 
 }
 
-/* ===== RESPONSIVIDADE ===== */
+
 /* 
   Media queries para diferentes tamanhos de tela
   Garante boa experiência em dispositivos móveis
 */
 
-/* Tablets e dispositivos médios */
+
 @media (max-width: 768px) {
-  /* Reduz espaçamentos em telas menores */
+  
   .categoria-container {
-    padding: 0 1rem; /* Menos padding horizontal */
+    padding: 0 1rem; 
   }
   
   .categoria-wrapper {
-    padding: 1.5rem; /* Menos padding interno */
+    padding: 1.5rem; 
   }
   
-  /* Título menor em telas pequenas */
+  
   .categoria-title {
-    font-size: 2rem; /* Tamanho reduzido */
+    font-size: 2rem; 
   }
   
-  /* Menos padding nos containers */
+  
   .categoria-form-container,
   .categoria-list-container {
-    padding: 1.5rem; /* Padding reduzido */
+    padding: 1.5rem; 
   }
   
-  /* Formulário em coluna única em telas pequenas */
+  
   .categoria-form-row {
-    grid-template-columns: 1fr; /* Uma coluna */
-    gap: 1rem; /* Menos espaçamento */
+    grid-template-columns: 1fr; 
+    gap: 1rem; 
   }
   
-  /* Botões em coluna em telas pequenas */
+  
   .categoria-form-actions {
-    flex-direction: column; /* Direção vertical */
+    flex-direction: column; 
   }
   
-  /* Botões ocupam toda a largura */
+  
   .categoria-btn {
-    width: 100%; /* Largura total */
-    justify-content: center; /* Centraliza texto */
+    width: 100%; 
+    justify-content: center; 
   }
   
-  /* Cabeçalho da lista em coluna */
+  
   .categoria-list-header {
-    flex-direction: column; /* Direção vertical */
-    align-items: flex-start; /* Alinha à esquerda */
+    flex-direction: column; 
+    align-items: flex-start; 
   }
   
-  /* Tabela com fonte menor */
+  
   .categoria-table {
-    font-size: 0.9rem; /* Fonte menor */
+    font-size: 0.9rem; 
   }
   
-  /* Menos padding nas células da tabela */
+  
   .categoria-table th,
   .categoria-table td {
-    padding: 0.75rem 0.5rem; /* Padding reduzido */
+    padding: 0.75rem 0.5rem; 
   }
   
-  /* Ações em coluna */
+  
   .categoria-actions {
-    flex-direction: column; /* Direção vertical */
-    gap: 0.25rem; /* Menos espaçamento */
+    flex-direction: column; 
+    gap: 0.25rem; 
   }
   
-  /* Modal ocupa mais largura em telas pequenas */
+  
   .categoria-modal-container {
-    max-width: 95vw; /* 95% da largura da viewport */
-    margin: 0 1rem; /* Margem horizontal */
+    max-width: 95vw; 
+    margin: 0 1rem; 
   }
   
-  /* Menos padding no modal */
+  
   .categoria-modal-header,
   .categoria-modal-body,
   .categoria-modal-footer {
-    padding: 1rem; /* Padding reduzido */
+    padding: 1rem; 
   }
   
-  /* Rodapé do modal em coluna */
+  
   .categoria-modal-footer {
-    flex-direction: column; /* Direção vertical */
+    flex-direction: column; 
   }
 }
 
-/* Dispositivos móveis pequenos */
+
 @media (max-width: 480px) {
-  /* Ainda menos padding em telas muito pequenas */
+  
   .categoria-wrapper {
-    padding: 1rem; /* Padding mínimo */
+    padding: 1rem; 
   }
   
-  /* Título ainda menor */
+  
   .categoria-title {
-    font-size: 1.5rem; /* Tamanho mínimo */
+    font-size: 1.5rem; 
   }
   
-  /* Padding mínimo nos containers */
+  
   .categoria-form-container,
   .categoria-list-container {
-    padding: 1rem; /* Padding mínimo */
+    padding: 1rem; 
   }
   
-  /* Tabela com fonte ainda menor */
+  
   .categoria-table {
-    font-size: 0.8rem; /* Fonte mínima */
+    font-size: 0.8rem; 
   }
   
-  /* Padding mínimo nas células da tabela */
+  
   .categoria-table th,
   .categoria-table td {
-    padding: 0.5rem 0.25rem; /* Padding mínimo */
+    padding: 0.5rem 0.25rem; 
   }
   
-  /* Modal ocupa toda a largura em telas muito pequenas */
+  
   .categoria-modal-container {
-    max-width: 100vw; /* 100% da largura da viewport */
-    margin: 0; /* Sem margem */
+    max-width: 100vw; 
+    margin: 0; 
   }
   
-  /* Modal de confirmação com menos padding */
+  
   .categoria-confirm-modal-overlay {
-    padding: 1rem; /* Padding mínimo */
+    padding: 1rem; 
   }
   
   .categoria-confirm-content {
-    padding: 1.5rem; /* Padding reduzido */
+    padding: 1.5rem; 
   }
   
-  /* Título menor no modal de confirmação */
+  
   .categoria-confirm-header h3 {
-    font-size: 1.25rem; /* Tamanho reduzido */
+    font-size: 1.25rem; 
   }
   
-  /* Ícone menor no modal de confirmação */
+  
   .categoria-confirm-header i {
-    font-size: 2.5rem; /* Tamanho reduzido */
+    font-size: 2.5rem; 
   }
   
-  /* Botões em coluna no modal de confirmação */
+  
   .categoria-confirm-actions {
-    flex-direction: column; /* Direção vertical */
+    flex-direction: column; 
   }
   
-  /* Botões ocupam toda a largura */
+  
   .categoria-confirm-btn-cancel,
   .categoria-confirm-btn-confirm {
-    width: 100%; /* Largura total */
+    width: 100%; 
   }
 }

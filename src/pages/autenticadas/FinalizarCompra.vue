@@ -1,7 +1,6 @@
 <template>
-  <!-- Container principal da página de finalização de compra -->
   <div class="finalizar-compra-container">
-    <!-- Header da página - Título e descrição -->
+    <!-- Header da página -->
     <div class="finalizar-compra-page-header">
       <div class="finalizar-compra-header-content">
         <div class="finalizar-compra-header-icon">
@@ -15,7 +14,7 @@
     </div>
 
     <div class="finalizar-compra-content">
-      <!-- Mensagem para usuários não autenticados - Redireciona para login -->
+      <!-- Mensagem para usuários não autenticados -->
       <div v-if="!userStore.isAuthenticated" class="finalizar-compra-auth-required-message">
         <div class="finalizar-compra-auth-required-content">
           <div class="finalizar-compra-auth-required-icon">
@@ -32,7 +31,7 @@
 
       <!-- Conteúdo principal para usuários autenticados -->
       <div v-else class="finalizar-compra-main-content">
-        <!-- Resumo do Pedido - Lista produtos e totais -->
+        <!-- Resumo do pedido -->
         <div class="finalizar-compra-resumo-wrapper">
           <div class="finalizar-compra-resumo-card">
             <div class="finalizar-compra-resumo-header">
@@ -43,7 +42,7 @@
               <span class="finalizar-compra-resumo-count">{{ produtos.length }} item{{ produtos.length !== 1 ? 's' : '' }}</span>
             </div>
 
-            <!-- Lista de produtos no carrinho -->
+            <!-- Lista de produtos -->
             <div class="finalizar-compra-resumo-produtos">
               <div 
                 v-for="item in produtos" 
@@ -72,14 +71,13 @@
               </div>
             </div>
 
-            <!-- Resumo dos totais com desconto aplicado -->
+            <!-- Resumo dos totais -->
             <div class="finalizar-compra-resumo-totais">
               <div class="finalizar-compra-total-item">
                 <span>Subtotal</span>
                 <span>R$ {{ total.toFixed(2).replace('.', ',') }}</span>
               </div>
               
-              <!-- Exibe desconto se cupom foi aplicado -->
               <div v-if="cupomSucesso" class="finalizar-compra-total-item desconto">
                 <span>Desconto ({{ cupomSucesso.discount_percentage }}%)</span>
                 <span>- R$ {{ (total * (cupomSucesso.discount_percentage/100)).toFixed(2).replace('.', ',') }}</span>

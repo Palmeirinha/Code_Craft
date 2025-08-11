@@ -1,8 +1,7 @@
 <template>
-  <!-- Seção principal de gestão de pedidos -->
   <section class="pedidos-section">
     <div class="pedidos-container">
-      <!-- Header Section - Título e descrição da página -->
+      <!-- Header da página -->
       <div class="pedidos-header">
         <h1 class="pedidos-title">
           <i class="bi bi-clipboard-data"></i>
@@ -11,16 +10,14 @@
         <p class="pedidos-subtitle">Gerencie todos os pedidos da plataforma</p>
       </div>
 
-      <!-- Controls - Botões de controle e filtros -->
+      <!-- Controles -->
       <div class="pedidos-controls">
         <div class="pedidos-controls-content">
           <div class="pedidos-controls-left">
-            <!-- Botão para atualizar/recarregar dados -->
             <button class="pedidos-btn pedidos-btn-primary" @click="carregar" :disabled="carregando">
               <i class="bi bi-arrow-clockwise" :class="{ 'pedidos-spinning': carregando }"></i>
               Atualizar
             </button>
-            <!-- Select para filtrar por status -->
             <select v-model="filtroStatus" @change="filtrarPedidos" class="pedidos-select">
               <option value="">Todos os Status</option>
               <option value="PENDING">Pendente</option>
@@ -33,9 +30,8 @@
         </div>
       </div>
 
-      <!-- Statistics Cards - Cards com estatísticas dos pedidos -->
+      <!-- Estatísticas -->
       <div class="pedidos-stats">
-        <!-- Card do total de pedidos -->
         <div class="pedidos-stats-card pedidos-stats-total">
           <div class="pedidos-stats-content">
             <div class="pedidos-stats-icon">
@@ -46,7 +42,6 @@
           </div>
         </div>
         
-        <!-- Card dos pedidos pendentes -->
         <div class="pedidos-stats-card pedidos-stats-pending">
           <div class="pedidos-stats-content">
             <div class="pedidos-stats-icon">
@@ -57,7 +52,6 @@
           </div>
         </div>
         
-        <!-- Card dos pedidos processando -->
         <div class="pedidos-stats-card pedidos-stats-processing">
           <div class="pedidos-stats-content">
             <div class="pedidos-stats-icon">
@@ -68,7 +62,6 @@
           </div>
         </div>
         
-        <!-- Card dos pedidos concluídos -->
         <div class="pedidos-stats-card pedidos-stats-completed">
           <div class="pedidos-stats-content">
             <div class="pedidos-stats-icon">
@@ -80,13 +73,13 @@
         </div>
       </div>
 
-      <!-- Loading State - Estado de carregamento -->
+      <!-- Loading -->
       <div v-if="carregando" class="pedidos-loading">
         <div class="pedidos-spinner"></div>
         <p class="pedidos-loading-text">Carregando pedidos...</p>
       </div>
 
-      <!-- Empty State - Estado quando não há pedidos -->
+      <!-- Estado vazio -->
       <div v-else-if="pedidosFiltrados.length === 0" class="pedidos-empty">
         <div class="pedidos-empty-icon">
           <i class="bi bi-archive"></i>
@@ -105,7 +98,7 @@
         </div>
       </div>
 
-      <!-- Orders Table - Tabela principal dos pedidos -->
+      <!-- Tabela de pedidos -->
       <div v-else class="pedidos-table-container">
         <div class="pedidos-table-responsive">
           <table class="pedidos-table">
@@ -123,33 +116,27 @@
               </tr>
             </thead>
             <tbody>
-              <!-- Loop através dos pedidos paginados -->
               <tr v-for="pedido in pedidosPaginados" :key="pedido.id" class="pedidos-table-row">
-                <!-- Coluna ID do pedido -->
                 <td class="pedidos-td-id">
                   <div class="pedidos-info">
                     <span class="pedidos-id">#{{ pedido.id }}</span>
                   </div>
                 </td>
-                <!-- Coluna ID do usuário -->
                 <td class="pedidos-td-user">
                   <div class="pedidos-info">
                     <span class="pedidos-user">ID: {{ pedido.user_id }}</span>
                   </div>
                 </td>
-                <!-- Coluna data do pedido -->
                 <td class="pedidos-td-date">
                   <div class="pedidos-info">
                     <span class="pedidos-date">{{ formatarData(pedido.order_date) }}</span>
                   </div>
                 </td>
-                <!-- Coluna status com badge colorido -->
                 <td class="pedidos-td-status">
                   <span class="pedidos-status-badge" :class="pedidosStatusClass(pedido.status)">
                     {{ traduzirStatus(pedido.status) }}
                   </span>
                 </td>
-                <!-- Coluna produtos do pedido -->
                 <td class="pedidos-td-products">
                   <div class="pedidos-products-info">
                     <div v-for="prod in pedido.products" :key="prod.name" class="pedidos-produto-item">
@@ -161,7 +148,6 @@
                     </div>
                   </div>
                 </td>
-                <!-- Coluna valores (subtotal, desconto, total) -->
                 <td class="pedidos-td-total">
                   <div class="pedidos-total-info">
                     <div class="pedidos-total-subtotal">
@@ -178,7 +164,6 @@
                     </div>
                   </div>
                 </td>
-                <!-- Coluna endereço de entrega -->
                 <td class="pedidos-td-address">
                   <div class="pedidos-address-info">
                     <div class="pedidos-address-main">
@@ -189,7 +174,6 @@
                     </div>
                   </div>
                 </td>
-                <!-- Coluna cupom aplicado -->
                 <td class="pedidos-td-coupon">
                   <div class="pedidos-cupom-info">
                     <span v-if="pedido.coupon_id" class="pedidos-cupom-id">
@@ -201,10 +185,8 @@
                     <span v-else class="pedidos-sem-cupom">Sem cupom</span>
                   </div>
                 </td>
-                <!-- Coluna ações (mudar status, cancelar) -->
                 <td class="pedidos-td-actions">
                   <div class="pedidos-actions">
-                    <!-- Select para mudar status do pedido -->
                     <select v-model="pedido.status" class="pedidos-status-select" @change="atualizarStatus(pedido)">
                       <option value="PENDING">Pendente</option>
                       <option value="PROCESSING">Processando</option>
@@ -212,7 +194,6 @@
                       <option value="COMPLETED">Concluído</option>
                       <option value="CANCELED">Cancelado</option>
                     </select>
-                    <!-- Botão para cancelar pedido -->
                     <button 
                       class="pedidos-btn pedidos-btn-danger pedidos-btn-sm" 
                       @click="cancelar(pedido.id)"
@@ -228,7 +209,7 @@
           </table>
         </div>
 
-        <!-- Paginação - Navegação entre páginas -->
+        <!-- Paginação -->
         <div v-if="totalPaginas > 1" class="pedidos-pagination">
           <button 
             class="pedidos-btn pedidos-btn-outline pedidos-btn-sm" 
@@ -248,7 +229,7 @@
         </div>
       </div>
 
-      <!-- Toast Notifications - Sistema de notificações -->
+      <!-- Notificações toast -->
       <div class="pedidos-toast-container">
         <div v-for="(toast, i) in toasts" :key="i" :class="['pedidos-toast', 'pedidos-toast-' + toast.type, 'pedidos-toast-show']" role="alert">
           <div class="pedidos-toast-content">
