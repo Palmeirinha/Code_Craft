@@ -11,18 +11,21 @@
     class="carrinho-sidebar" 
     :class="{ 'carrinho-sidebar-open': isOpen }"
   >
-    <!-- Header da sidebar -->
+    <!-- Cabeçalho da sidebar -->
     <div class="carrinho-header">
       <div class="carrinho-header-content">
         <div class="carrinho-header-left">
+          <!-- Ícone do carrinho -->
           <div class="carrinho-icon-wrapper">
             <i class="bi bi-cart3"></i>
           </div>
           <div>
             <h3 class="carrinho-title">Carrinho</h3>
+            <!-- Contador de itens com pluralização -->
             <p class="carrinho-item-count">{{ produtos.length }} item{{ produtos.length !== 1 ? 's' : '' }}</p>
           </div>
         </div>
+        <!-- Botão de fechar -->
         <button 
           class="carrinho-btn-close" 
           @click="fechar"
@@ -35,7 +38,7 @@
 
     <!-- Conteúdo da sidebar -->
     <div class="carrinho-content">
-      <!-- Loading -->
+      <!-- Estado de carregamento -->
       <div v-if="carregando" class="carrinho-loading">
         <div class="carrinho-spinner"></div>
         <p class="carrinho-loading-text">Carregando carrinho...</p>
@@ -46,15 +49,17 @@
         <i class="bi bi-cart carrinho-empty-icon"></i>
         <h5 class="carrinho-empty-title">Seu carrinho está vazio</h5>
         <p class="carrinho-empty-text">Adicione alguns cursos para começar!</p>
+        <!-- Botão para ir para cursos -->
         <button class="carrinho-btn-vazios" @click="irParaCursos">
           <i class="bi bi-journal-code"></i>
           Ver Cursos
         </button>
       </div>
 
-      <!-- Lista de produtos -->
+      <!-- Lista de produtos quando há itens -->
       <div v-else class="carrinho-produtos">
         <div class="carrinho-produtos-lista">
+          <!-- Loop pelos produtos do carrinho -->
           <div 
             v-for="produto in produtos" 
             :key="produto.id" 
@@ -69,23 +74,28 @@
                 @error="handleImageError"
                 class="produto-img"
               />
+              <!-- Placeholder quando não há imagem -->
               <div v-else class="produto-img-placeholder">
                 <i class="bi bi-journal-code"></i>
               </div>
             </div>
             
+            <!-- Informações do produto -->
             <div class="produto-info">
               <div class="produto-header">
                 <h6 class="produto-name">{{ produto.name }}</h6>
+                <!-- Categoria do produto -->
                 <span class="produto-categoria">
                   <i class="bi bi-tag-fill me-1"></i>
                   {{ produto.category }}
                 </span>
               </div>
+              <!-- Preço do produto -->
               <div class="produto-price">
                 <span class="carrinho-price-value">R$ {{ produto.price }}</span>
               </div>
             </div>
+            <!-- Botão para remover produto -->
             <button 
               class="carrinho-btn-remove" 
               @click="remover(produto.id)" 
@@ -97,8 +107,9 @@
           </div>
         </div>
 
-        <!-- Resumo e ações -->
+        <!-- Resumo e ações do carrinho -->
         <div class="carrinho-footer">
+          <!-- Total da compra -->
           <div class="carrinho-total">
             <div class="carrinho-total-container">
               <div class="carrinho-total-label">Total da Compra</div>
@@ -110,6 +121,7 @@
 
           <!-- Botões de ação -->
           <div class="carrinho-acoes">
+            <!-- Botão para finalizar compra -->
             <button 
               class="carrinho-btn-finalizar" 
               @click="finalizarCompra" 
@@ -118,6 +130,7 @@
               <i class="bi bi-check-circle me-2"></i>
               Finalizar Compra
             </button>
+            <!-- Botão para esvaziar carrinho -->
             <button 
               class="carrinho-btn-esvaziar" 
               @click="confirmarEsvaziar" 
@@ -132,19 +145,22 @@
     </div>
   </div>
 
-  <!-- Modal de Confirmação -->
+  <!-- Modal de Confirmação para esvaziar carrinho -->
   <Teleport to="body">
     <div v-if="mostrarConfirmacao" class="carrinho-confirm-modal-overlay" @click="mostrarConfirmacao = false">
       <div class="carrinho-confirm-modal" @click.stop>
         <div class="carrinho-confirm-content">
+          <!-- Cabeçalho do modal -->
           <div class="carrinho-confirm-header">
             <i class="bi bi-exclamation-triangle"></i>
             <h3>Confirmar Ação</h3>
           </div>
+          <!-- Corpo do modal -->
           <div class="carrinho-confirm-body">
             <p>Tem certeza que deseja esvaziar o carrinho?</p>
             <p class="carrinho-confirm-warning">Esta ação não pode ser desfeita.</p>
           </div>
+          <!-- Ações do modal -->
           <div class="carrinho-confirm-actions">
             <button class="carrinho-confirm-btn-cancel" @click="mostrarConfirmacao = false">
               Cancelar
@@ -161,13 +177,16 @@
 </template>
 
 <script setup>
+// Importações necessárias do Vue
 import { ref, onMounted, inject } from 'vue'
+// Importação das stores (Pinia)
 import { useCartStore } from '../../services/stores/cart'
 import { useUserStore } from '../../services/stores/auth'
 import { storeToRefs } from 'pinia'
+// Importação do router para navegação
 import { useRouter } from 'vue-router'
 
-// Props
+// Props recebidas do componente pai
 const props = defineProps({
   isOpen: {
     type: Boolean,
@@ -175,35 +194,39 @@ const props = defineProps({
   }
 })
 
-// Emits
+// Emits para comunicação com o componente pai
 const emit = defineEmits(['close'])
 
-// Store e refs
+// Stores e refs reativos
 const cart = useCartStore()
 const userStore = useUserStore()
+// Extrai valores reativos da store do carrinho
 const { produtos, total, carregando } = storeToRefs(cart)
+// Extrai métodos da store do carrinho
 const { fetchCarrinho, removeProduto, limparCarrinho } = cart
+// Estado de loading para ações
 const loadingAcao = ref(false)
+// Router para navegação
 const router = useRouter()
 
 // Modal de confirmação
 const mostrarConfirmacao = ref(false)
-const acaoConfirmacao = ref(null)
 
-// Sistema global de autenticação
+// Sistema global de autenticação (injetado)
 const openAuthModal = inject('openAuthModal')
 
-// Toast global
+// Toast global (injetado)
 const showToastGlobal = inject('showToastGlobal')
 
-
-
-// Métodos
+// Métodos do componente
+// Função para fechar a sidebar
 function fechar() {
   emit('close')
 }
 
+// Função para tratar erro de carregamento de imagem
 function handleImageError(event) {
+  // Cria um SVG placeholder quando a imagem falha
   const placeholderSVG = `
     <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="200" height="200" fill="#1e293b"/>
@@ -216,11 +239,13 @@ function handleImageError(event) {
   event.target.src = `data:image/svg+xml;charset=utf-8,${encodedSVG}`
 }
 
+// Função para navegar para a página de cursos
 function irParaCursos() {
   router.push('/cursos')
   fechar()
 }
 
+// Função para remover produto do carrinho
 async function remover(id) {
   loadingAcao.value = true
   try {
@@ -232,11 +257,12 @@ async function remover(id) {
   loadingAcao.value = false
 }
 
+// Função para mostrar confirmação de esvaziar carrinho
 function confirmarEsvaziar() {
-  acaoConfirmacao.value = 'esvaziar'
   mostrarConfirmacao.value = true
 }
 
+// Função para esvaziar o carrinho
 async function esvaziar() {
   loadingAcao.value = true
   try {
@@ -249,21 +275,23 @@ async function esvaziar() {
   mostrarConfirmacao.value = false
 }
 
+// Função para finalizar a compra
 function finalizarCompra() {
+  // Verifica se o usuário está autenticado
   if (!userStore.isAuthenticated) {
     openAuthModal()
     fechar()
     return
   }
   
+  // Navega para a página de finalização
   router.push('/finalizar-compra')
   fechar()
 }
 
-
-
-// Lifecycle
+// Lifecycle hook
 onMounted(() => {
+  // Carrega o carrinho quando o componente é montado
   fetchCarrinho()
 })
 </script>

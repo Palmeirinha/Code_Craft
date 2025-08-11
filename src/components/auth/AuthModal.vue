@@ -1,19 +1,26 @@
 <template>
+  <!-- Teleport move o modal para o body do DOM, evitando problemas de z-index -->
   <Teleport to="body">
+    <!-- Transição de entrada/saída do modal -->
     <transition name="auth-modal-fade" appear>
+      <!-- Overlay do modal - fundo escuro -->
       <div v-if="show" class="auth-modal-overlay" @click="handleBackdropClick">
+        <!-- Container principal do modal -->
         <div class="auth-modal-container" @click.stop>
-          <!-- Header -->
+          <!-- Cabeçalho do modal -->
           <div class="auth-modal-header">
             <div class="auth-modal-title-section">
+              <!-- Ícone do usuário -->
               <div class="auth-modal-icon">
                 <i class="bi bi-person-circle"></i>
               </div>
+              <!-- Título e subtítulo -->
               <div class="auth-modal-title-content">
                 <h3 class="auth-modal-title">Autenticação</h3>
                 <p class="auth-modal-subtitle">Entre ou crie sua conta</p>
               </div>
             </div>
+            <!-- Botão de fechar -->
             <button 
               class="auth-modal-close" 
               @click="$emit('close')"
@@ -23,10 +30,10 @@
             </button>
           </div>
 
-          <!-- Body -->
+          <!-- Corpo do modal -->
           <div class="auth-modal-body">
             <div class="auth-modal-content">
-              <!-- Tabs de navegação -->
+              <!-- Abas de navegação entre login e cadastro -->
               <div class="auth-tabs">
                 <button 
                   class="auth-tab" 
@@ -46,14 +53,15 @@
                 </button>
               </div>
 
-              <!-- Alertas -->
+              <!-- Exibição de erros -->
               <div v-if="erro" class="auth-alert auth-alert-error">
                 <i class="bi bi-exclamation-triangle"></i>
                 <span>{{ erro }}</span>
               </div>
 
-              <!-- Formulário de Login -->
+              <!-- Formulário de Login - exibido quando aba === 'login' -->
               <form v-if="aba === 'login'" @submit.prevent="onLogin" class="auth-form">
+                <!-- Campo de e-mail -->
                 <div class="auth-form-group">
                   <label for="emailLogin" class="auth-form-label">E-mail</label>
                   <div class="auth-input-group">
@@ -72,6 +80,7 @@
                   </div>
                 </div>
 
+                <!-- Campo de senha -->
                 <div class="auth-form-group">
                   <label for="senhaLogin" class="auth-form-label">Senha</label>
                   <div class="auth-input-group">
@@ -90,6 +99,7 @@
                   </div>
                 </div>
 
+                <!-- Checkbox "lembrar de mim" e link "esqueceu a senha" -->
                 <div class="auth-remember">
                   <div class="auth-checkbox-group">
                     <input type="checkbox" id="lembrar" class="auth-checkbox" />
@@ -98,6 +108,7 @@
                   <a href="#" class="auth-forgot-link">Esqueceu a senha?</a>
                 </div>
 
+                <!-- Botão de submit do login -->
                 <button type="submit" class="auth-submit-btn" :disabled="carregando">
                   <span v-if="carregando" class="auth-spinner"></span>
                   <i v-else class="bi bi-box-arrow-in-right"></i>
@@ -105,8 +116,9 @@
                 </button>
               </form>
 
-              <!-- Formulário de Cadastro -->
+              <!-- Formulário de Cadastro - exibido quando aba === 'cadastro' -->
               <form v-else @submit.prevent="onCadastro" class="auth-form">
+                <!-- Campo de nome -->
                 <div class="auth-form-group">
                   <label for="nomeCadastro" class="auth-form-label">Nome</label>
                   <div class="auth-input-group">
@@ -125,6 +137,7 @@
                   </div>
                 </div>
 
+                <!-- Campo de e-mail -->
                 <div class="auth-form-group">
                   <label for="emailCadastro" class="auth-form-label">E-mail</label>
                   <div class="auth-input-group">
@@ -143,6 +156,7 @@
                   </div>
                 </div>
 
+                <!-- Campo de senha -->
                 <div class="auth-form-group">
                   <label for="senhaCadastro" class="auth-form-label">Senha</label>
                   <div class="auth-input-group">
@@ -161,6 +175,7 @@
                   </div>
                 </div>
 
+                <!-- Checkbox de aceitação dos termos -->
                 <div class="auth-form-group">
                   <div class="auth-checkbox-group">
                     <input type="checkbox" id="termos" class="auth-checkbox" required />
@@ -171,6 +186,7 @@
                   </div>
                 </div>
 
+                <!-- Botão de submit do cadastro -->
                 <button type="submit" class="auth-submit-btn" :disabled="carregando">
                   <span v-if="carregando" class="auth-spinner"></span>
                   <i v-else class="bi bi-person-plus"></i>
@@ -178,7 +194,7 @@
                 </button>
               </form>
 
-              <!-- Link de Switch -->
+              <!-- Link para alternar entre as abas -->
               <div class="auth-switch">
                 <p class="auth-switch-text">
                   {{ aba === 'login' ? 'Não tem uma conta?' : 'Já tem uma conta?' }}
@@ -200,92 +216,103 @@
 </template>
 
 <script setup>
+// Importações necessárias do Vue
 import { ref, watch, inject, onMounted, onUnmounted } from 'vue'
+// Importação da store de usuário (Pinia)
 import { useUserStore } from '../../services/stores/auth'
-import { loginApi, cadastroApi } from '../../services/api/auth'
+// Importação das APIs de autenticação
+import { loginApi, cadastroApi } from '../../services/api/autenticacao'
 
+// Props recebidas do componente pai
 const props = defineProps({ show: Boolean })
+// Emits para comunicação com o componente pai
 const emit = defineEmits(['close'])
 
-const aba = ref('login')
-const nome = ref('')
-const email = ref('')
-const senha = ref('')
-const erro = ref('')
-const sucesso = ref(false)
-const carregando = ref(false)
-const userStore = useUserStore()
-const showToastGlobal = inject('showToastGlobal')
+// Variáveis reativas locais
+const aba = ref('login')           // Controla qual aba está ativa (login/cadastro)
+const nome = ref('')               // Nome para cadastro
+const email = ref('')              // E-mail para login/cadastro
+const senha = ref('')              // Senha para login/cadastro
+const erro = ref('')               // Mensagem de erro
+const carregando = ref(false)      // Estado de carregamento
+const userStore = useUserStore()   // Store do usuário
+const showToastGlobal = inject('showToastGlobal') // Função global de toast (injetada)
 
-// Handle backdrop click
+// Função para lidar com clique no backdrop (fundo escuro)
 function handleBackdropClick() {
   limparCampos()
   emit('close')
 }
 
-// Função para limpar todos os campos
+// Função para limpar todos os campos do formulário
 function limparCampos() {
   nome.value = ''
   email.value = ''
   senha.value = ''
   erro.value = ''
-  sucesso.value = false
   carregando.value = false
 }
 
-// Handle escape key
+// Função para lidar com tecla ESC
 function handleEscapeKey(event) {
   if (event.key === 'Escape' && props.show) {
     emit('close')
   }
 }
 
-// Add/remove event listeners
+// Lifecycle hooks
 onMounted(() => {
+  // Adiciona listener para tecla ESC
   document.addEventListener('keydown', handleEscapeKey)
 })
 
 onUnmounted(() => {
+  // Remove listener para tecla ESC
   document.removeEventListener('keydown', handleEscapeKey)
 })
 
+// Watcher para quando o modal é aberto/fechado
 watch(() => props.show, (val) => {
   if (val) {
+    // Reseta para aba de login e limpa campos
     aba.value = 'login'
     limparCampos()
   }
 })
 
-// Limpar campos quando alternar entre abas
+// Watcher para quando alterna entre abas
 watch(() => aba.value, (newAba) => {
-  // Limpar apenas os campos específicos da aba anterior
+  // Limpa campos específicos ao alternar abas
   if (newAba === 'login') {
     nome.value = ''
   } else if (newAba === 'cadastro') {
-    // Garantir que os campos não fiquem com espaços em branco
+    // Remove espaços em branco dos campos
     email.value = email.value.trim()
     senha.value = senha.value.trim()
   }
   erro.value = ''
-  sucesso.value = false
 })
 
-// Garantir que os inputs sempre tenham valores válidos
+// Watcher para garantir que inputs sempre tenham valores válidos
 watch([email, senha, nome], ([newEmail, newSenha, newNome]) => {
-  // Remover espaços em branco extras
+  // Remove espaços em branco extras automaticamente
   if (newEmail !== undefined) email.value = newEmail.trim()
   if (newSenha !== undefined) senha.value = newSenha.trim()
   if (newNome !== undefined) nome.value = newNome.trim()
 })
 
+// Função para processar login
 async function onLogin() {
   erro.value = ''
   carregando.value = true
   try {
+    // Chama API de login
     const response = await loginApi(email.value, senha.value)
     if (response.token && response.user) {
+      // Salva dados de autenticação na store
       userStore.setAuth(response)
       showToastGlobal('Login realizado com sucesso!', 'success')
+      // Fecha modal após 1.2 segundos
       setTimeout(() => {
         emit('close')
       }, 1200)
@@ -300,17 +327,17 @@ async function onLogin() {
   }
 }
 
+// Função para processar cadastro
 async function onCadastro() {
   erro.value = ''
-  sucesso.value = false
   carregando.value = true
   try {
+    // Chama API de cadastro
     const response = await cadastroApi(nome.value, email.value, senha.value)
-    sucesso.value = true
     showToastGlobal('Cadastro realizado com sucesso!', 'success')
+    // Muda para aba de login após 1.2 segundos
     setTimeout(() => {
       aba.value = 'login'
-      sucesso.value = false
     }, 1200)
   } catch (e) {
     erro.value = typeof e === 'string' ? e : 'Erro ao cadastrar.'

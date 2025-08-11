@@ -1,6 +1,7 @@
 <template>
+  <!-- Container principal da página de finalização de compra -->
   <div class="finalizar-compra-container">
-    <!-- Header da página -->
+    <!-- Header da página - Título e descrição -->
     <div class="finalizar-compra-page-header">
       <div class="finalizar-compra-header-content">
         <div class="finalizar-compra-header-icon">
@@ -14,7 +15,7 @@
     </div>
 
     <div class="finalizar-compra-content">
-      <!-- Mensagem para usuários não autenticados -->
+      <!-- Mensagem para usuários não autenticados - Redireciona para login -->
       <div v-if="!userStore.isAuthenticated" class="finalizar-compra-auth-required-message">
         <div class="finalizar-compra-auth-required-content">
           <div class="finalizar-compra-auth-required-icon">
@@ -29,8 +30,9 @@
         </div>
       </div>
 
+      <!-- Conteúdo principal para usuários autenticados -->
       <div v-else class="finalizar-compra-main-content">
-        <!-- Resumo do Pedido -->
+        <!-- Resumo do Pedido - Lista produtos e totais -->
         <div class="finalizar-compra-resumo-wrapper">
           <div class="finalizar-compra-resumo-card">
             <div class="finalizar-compra-resumo-header">
@@ -41,6 +43,7 @@
               <span class="finalizar-compra-resumo-count">{{ produtos.length }} item{{ produtos.length !== 1 ? 's' : '' }}</span>
             </div>
 
+            <!-- Lista de produtos no carrinho -->
             <div class="finalizar-compra-resumo-produtos">
               <div 
                 v-for="item in produtos" 
@@ -69,12 +72,14 @@
               </div>
             </div>
 
+            <!-- Resumo dos totais com desconto aplicado -->
             <div class="finalizar-compra-resumo-totais">
               <div class="finalizar-compra-total-item">
                 <span>Subtotal</span>
                 <span>R$ {{ total.toFixed(2).replace('.', ',') }}</span>
               </div>
               
+              <!-- Exibe desconto se cupom foi aplicado -->
               <div v-if="cupomSucesso" class="finalizar-compra-total-item desconto">
                 <span>Desconto ({{ cupomSucesso.discount_percentage }}%)</span>
                 <span>- R$ {{ (total * (cupomSucesso.discount_percentage/100)).toFixed(2).replace('.', ',') }}</span>
@@ -88,10 +93,10 @@
           </div>
         </div>
 
-        <!-- Formulário de Finalização -->
+        <!-- Formulário de Finalização - Endereço, cupom e pagamento -->
         <div class="finalizar-compra-formulario-wrapper">
           <div class="finalizar-compra-formulario-container">
-            <!-- Endereço de Entrega -->
+            <!-- Seção de Endereço de Entrega -->
             <div class="finalizar-compra-form-section">
               <div class="finalizar-compra-section-header">
                 <div class="finalizar-compra-section-icon">
@@ -101,6 +106,7 @@
               </div>
               
               <div class="finalizar-compra-section-content">
+                <!-- Exibe endereço selecionado ou opção para selecionar -->
                 <div v-if="enderecoSelecionado" class="finalizar-compra-endereco-selecionado">
                   <div class="finalizar-compra-endereco-info">
                     <i class="bi bi-check-circle-fill"></i>
@@ -126,7 +132,7 @@
               </div>
             </div>
 
-            <!-- Cupom de Desconto -->
+            <!-- Seção de Cupom de Desconto -->
             <div class="finalizar-compra-form-section">
               <div class="finalizar-compra-section-header">
                 <div class="finalizar-compra-section-icon">
@@ -137,6 +143,7 @@
               
               <div class="finalizar-compra-section-content">
                 <div class="finalizar-compra-cupom-container">
+                  <!-- Input e botão para aplicar cupom -->
                   <div class="finalizar-compra-cupom-input-group">
                     <input 
                       v-model="codigoCupom" 
@@ -154,11 +161,13 @@
                     </button>
                   </div>
                   
+                  <!-- Mensagem de erro do cupom -->
                   <div v-if="cupomErro" class="finalizar-compra-cupom-erro">
                     <i class="bi bi-exclamation-circle"></i>
                     {{ cupomErro }}
                   </div>
                   
+                  <!-- Mensagem de sucesso do cupom -->
                   <div v-if="cupomSucesso" class="finalizar-compra-cupom-sucesso">
                     <i class="bi bi-check-circle"></i>
                     Cupom aplicado: {{ cupomSucesso.code }} ({{ cupomSucesso.discount_percentage }}% de desconto)
@@ -167,7 +176,7 @@
               </div>
             </div>
 
-            <!-- Forma de Pagamento -->
+            <!-- Seção de Forma de Pagamento -->
             <div class="finalizar-compra-form-section">
               <div class="finalizar-compra-section-header">
                 <div class="finalizar-compra-section-icon">
@@ -178,6 +187,7 @@
               
               <div class="finalizar-compra-section-content">
                 <div class="finalizar-compra-pagamento-opcoes">
+                  <!-- Opção PIX -->
                   <div 
                     class="finalizar-compra-pagamento-opcao" 
                     :class="{ selected: pagamento === 'pix' }"
@@ -195,6 +205,7 @@
                     </div>
                   </div>
                   
+                  <!-- Opção Cartão de Crédito -->
                   <div 
                     class="finalizar-compra-pagamento-opcao" 
                     :class="{ selected: pagamento === 'cartao' }"
@@ -212,6 +223,7 @@
                     </div>
                   </div>
                   
+                  <!-- Opção Boleto Bancário -->
                   <div 
                     class="finalizar-compra-pagamento-opcao" 
                     :class="{ selected: pagamento === 'boleto' }"
@@ -235,7 +247,7 @@
         </div>
       </div>
 
-      <!-- Botão de Finalizar -->
+      <!-- Botão de Finalizar Compra e mensagens de feedback -->
       <div class="finalizar-compra-actions">
         <button 
           class="finalizar-compra-btn-finalizar" 
@@ -247,6 +259,7 @@
           {{ confirmando ? 'Processando...' : 'Confirmar e Pagar' }}
         </button>
         
+        <!-- Mensagem de feedback (sucesso ou erro) -->
         <div v-if="feedbackMsg" :class="['finalizar-compra-feedback-message', feedbackType]">
           <i :class="feedbackType === 'success' ? 'bi bi-check-circle' : 'bi bi-exclamation-circle'"></i>
           {{ feedbackMsg }}
@@ -267,15 +280,18 @@
             </button>
           </div>
           <div class="finalizar-compra-address-modal-body">
+            <!-- Loading dos endereços -->
             <div v-if="carregandoEnderecos" class="finalizar-compra-address-loading">
               <div class="finalizar-compra-address-spinner"></div>
               <p>Carregando...</p>
             </div>
             <div v-else>
+              <!-- Mensagem quando não há endereços -->
               <div v-if="enderecos.length === 0" class="finalizar-compra-address-alert finalizar-compra-address-alert-info">
                 Nenhum endereço cadastrado. Cadastre um novo abaixo.
               </div>
               <div v-else>
+                <!-- Lista de endereços existentes -->
                 <div class="finalizar-compra-address-list">
                   <div v-for="end in enderecos" :key="end.id" class="finalizar-compra-address-item"
                     :class="{active: enderecoSelecionadoModal === end.id}">
@@ -294,6 +310,7 @@
                   </div>
                 </div>
               </div>
+              <!-- Formulário para cadastrar novo endereço -->
               <form @submit.prevent="onSalvarEndereco" class="finalizar-compra-address-form">
                 <h6 class="finalizar-compra-address-form-title">Cadastrar novo endereço</h6>
                 <div class="finalizar-compra-address-form-grid">
@@ -337,7 +354,7 @@
 
   </div>
 
-  <!-- Modal de Confirmação de Remoção de Endereço -->
+  <!-- Modal de Confirmação de Remoção de Endereço - Teleport para body -->
   <Teleport to="body">
     <div v-if="mostrarConfirmacaoEndereco" class="finalizar-compra-confirm-modal-overlay" @click="mostrarConfirmacaoEndereco = false">
       <div class="finalizar-compra-confirm-modal" @click.stop>
@@ -366,54 +383,56 @@
 </template>
 
 <script setup>
+// Importações do Vue 3 Composition API
 import { ref, computed, onMounted, inject, watch } from 'vue'
+// Importações das stores Pinia
 import { useCartStore } from '../../services/stores/cart'
 import { useUserStore } from '../../services/stores/auth'
 import { storeToRefs } from 'pinia'
-import { listarCupons, criarCupom } from '../../services/api/promotions'
+// Importações das APIs
+import { listarCupons, criarCupom } from '../../services/api/promocoes'
 import { criarPedido, listarPedidosUsuario } from '../../services/api/orders'
-import { buscarCarrinho } from '../../services/api/cart'
-import { listarEnderecos, criarEndereco, deletarEndereco } from '../../services/api/addresses'
+import { buscarCarrinho } from '../../services/api/carrinho'
+import { listarEnderecos, criarEndereco, deletarEndereco } from '../../services/api/endereco'
 import { useRouter } from 'vue-router'
 
+// Inicialização do router e stores
 const router = useRouter()
 const cartStore = useCartStore()
 const userStore = useUserStore()
 const { produtos, total } = storeToRefs(cartStore)
 const showToastGlobal = inject('showToastGlobal')
 
-// Modal de confirmação
+// Modal de confirmação para remoção de endereços
 const mostrarConfirmacaoEndereco = ref(false)
 const enderecoParaRemover = ref(null)
 const openAuthModal = inject('openAuthModal')
 
+// Estados reativos principais
+const enderecoSelecionado = ref(null)        // Endereço selecionado para entrega
+const showModalEndereco = ref(false)         // Controla exibição do modal de endereços
+const confirmando = ref(false)               // Estado de loading durante confirmação
+const feedbackMsg = ref('')                  // Mensagem de feedback para o usuário
+const feedbackType = ref('success')          // Tipo da mensagem (success/danger)
 
+// Estados relacionados ao cupom de desconto
+const codigoCupom = ref('')                 // Código do cupom digitado pelo usuário
+const cupomSucesso = ref(null)              // Cupom aplicado com sucesso
+const cupomErro = ref('')                   // Mensagem de erro do cupom
+const aplicandoCupom = ref(false)           // Estado de loading ao aplicar cupom
 
-// Estados reativos
-const enderecoSelecionado = ref(null)
-const showModalEndereco = ref(false)
-const confirmando = ref(false)
-const feedbackMsg = ref('')
-const feedbackType = ref('success')
-
-// Estados do cupom
-const codigoCupom = ref('')
-const cupomSucesso = ref(null)
-const cupomErro = ref('')
-const aplicandoCupom = ref(false)
-
-// Estado do pagamento
+// Estado da forma de pagamento selecionada
 const pagamento = ref('')
 
-// Estados do modal de endereço
-const enderecos = ref([])
-const carregandoEnderecos = ref(false)
-const carregandoNovoEndereco = ref(false)
-const removendoEndereco = ref(false)
-const enderecoSelecionadoModal = ref(null)
-const erroEndereco = ref('')
-const toastMsgEndereco = ref('')
-const formEndereco = ref({
+// Estados do modal de endereços
+const enderecos = ref([])                   // Lista de endereços do usuário
+const carregandoEnderecos = ref(false)      // Loading ao carregar endereços
+const carregandoNovoEndereco = ref(false)   // Loading ao criar novo endereço
+const removendoEndereco = ref(false)        // Loading ao remover endereço
+const enderecoSelecionadoModal = ref(null)  // Endereço selecionado no modal
+const erroEndereco = ref('')                // Erro ao criar endereço
+const toastMsgEndereco = ref('')            // Mensagem de toast para endereços
+const formEndereco = ref({                  // Formulário para novo endereço
   street: '',
   number: '',
   zip: '',
@@ -422,13 +441,21 @@ const formEndereco = ref({
   country: ''
 })
 
-// Computed para total com desconto
+// Computed para calcular total com desconto aplicado
 const totalComDesconto = computed(() => {
   if (!cupomSucesso.value) return total.value
   const desconto = Number(String(cupomSucesso.value.discount_percentage).replace(',', '.')) || 0
   return total.value * (1 - desconto / 100)
 })
 
+// Computed para formatar endereço selecionado
+const enderecoFormatado = computed(() => {
+  if (!enderecoSelecionado.value) return ''
+  const e = enderecoSelecionado.value
+  return `${e.street}, ${e.number} - ${e.city}/${e.state} (${e.zip})`
+})
+
+// Lifecycle hook - Carrega dados iniciais
 onMounted(async () => {
   await cartStore.fetchCarrinho()
   await carregarEnderecos()
@@ -442,8 +469,9 @@ watch(() => userStore.isAuthenticated, (isAuthenticated) => {
   }
 })
 
-// Funções
+// Funções auxiliares
 function handleImageError(event) {
+  // Fallback para imagens que falharam ao carregar
   const placeholderSVG = `
     <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="200" height="200" fill="#1e293b"/>
@@ -456,6 +484,7 @@ function handleImageError(event) {
   event.target.src = `data:image/svg+xml;charset=utf-8,${encodedSVG}`
 }
 
+// Função para carregar endereços do usuário
 async function carregarEnderecos() {
   carregandoEnderecos.value = true
   try {
@@ -467,6 +496,7 @@ async function carregarEnderecos() {
   }
 }
 
+// Função para salvar novo endereço
 async function onSalvarEndereco() {
   carregandoNovoEndereco.value = true
   erroEndereco.value = ''
@@ -476,7 +506,7 @@ async function onSalvarEndereco() {
     enderecos.value.push(novoEndereco)
     enderecoSelecionadoModal.value = novoEndereco.id
     
-    // Limpar formulário
+    // Limpar formulário após sucesso
     formEndereco.value = {
       street: '',
       number: '',
@@ -486,6 +516,7 @@ async function onSalvarEndereco() {
       country: ''
     }
     
+    // Mostrar mensagem de sucesso temporária
     toastMsgEndereco.value = 'Endereço cadastrado com sucesso!'
     setTimeout(() => {
       toastMsgEndereco.value = ''
@@ -498,11 +529,13 @@ async function onSalvarEndereco() {
   }
 }
 
+// Função para confirmar remoção de endereço
 function confirmarRemoverEndereco(id) {
   enderecoParaRemover.value = id
   mostrarConfirmacaoEndereco.value = true
 }
 
+// Função para remover endereço
 async function removerEndereco(id) {
   removendoEndereco.value = true
   
@@ -512,7 +545,7 @@ async function removerEndereco(id) {
     // Remover da lista local
     enderecos.value = enderecos.value.filter(e => e.id !== id)
     
-    // Se o endereço removido era o selecionado, limpar seleção
+    // Se o endereço removido era o selecionado no modal, limpar seleção
     if (enderecoSelecionadoModal.value === id) {
       enderecoSelecionadoModal.value = null
     }
@@ -532,6 +565,7 @@ async function removerEndereco(id) {
   }
 }
 
+// Função para confirmar seleção de endereço no modal
 function confirmarEndereco() {
   const endereco = enderecos.value.find(e => e.id === enderecoSelecionadoModal.value)
   if (endereco) {
@@ -540,12 +574,14 @@ function confirmarEndereco() {
   }
 }
 
+// Função para fechar modal de endereços
 function fecharModalEndereco() {
   showModalEndereco.value = false
   enderecoSelecionadoModal.value = null
   erroEndereco.value = ''
 }
 
+// Função para abrir modal de endereços
 function abrirModalEndereco() {
   if (!userStore.isAuthenticated) {
     openAuthModal()
@@ -555,17 +591,10 @@ function abrirModalEndereco() {
   showModalEndereco.value = true
   if (enderecoSelecionado.value) {
     enderecoSelecionadoModal.value = enderecoSelecionado.value.id
+  }
 }
-}
 
-
-
-const enderecoFormatado = computed(() => {
-  if (!enderecoSelecionado.value) return ''
-  const e = enderecoSelecionado.value
-  return `${e.street}, ${e.number} - ${e.city}/${e.state} (${e.zip})`
-})
-
+// Função para aplicar cupom de desconto
 function aplicarCupom() {
   cupomErro.value = ''
   cupomSucesso.value = null
@@ -591,10 +620,11 @@ function aplicarCupom() {
   })
 }
 
+// Função principal para confirmar e finalizar a compra
 async function confirmarEPagar() {
   feedbackMsg.value = ''
   
-  // Validações
+  // Validações obrigatórias
   if (!userStore.isAuthenticated) {
     openAuthModal()
     return
@@ -632,6 +662,7 @@ async function confirmarEPagar() {
   confirmando.value = true
   
   try {
+    // Criar pedido na API
     const pedido = await criarPedido(enderecoSelecionado.value.id, cupomSucesso.value?.id)
     
     feedbackMsg.value = 'Pedido realizado com sucesso!'
@@ -645,7 +676,7 @@ async function confirmarEPagar() {
       showToastGlobal('Pedido realizado! Após a confirmação do pagamento, seu curso estará disponível em Meus Cursos.', 'success', 6000)
     }
     
-    // Redirecionar após 1.2 segundos
+    // Redirecionar para meus cursos após 1.2 segundos
     setTimeout(() => {
       router.push('/meus-cursos')
     }, 1200)

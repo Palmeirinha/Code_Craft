@@ -1,20 +1,23 @@
 <template>
+  <!-- Seção principal de gerenciamento de categorias -->
   <section class="categoria-section">
     <div class="categoria-container">
       <div class="categoria-wrapper">
-        <!-- Header da seção -->
+        <!-- Header da seção com título e subtítulo -->
         <div class="categoria-header">
           <h1 class="categoria-title">Gerenciar Categorias</h1>
           <p class="categoria-subtitle">Crie e gerencie as categorias dos cursos</p>
         </div>
 
-        <!-- Formulário de Criação -->
+        <!-- Formulário para criação de novas categorias -->
         <div class="categoria-form-container">
           <h3 class="categoria-form-title">
             <i class="bi bi-plus-circle"></i>Nova Categoria
           </h3>
+          <!-- Formulário de criação com validação -->
           <form @submit.prevent="onCriarCategoria" class="categoria-form">
             <div class="categoria-form-row">
+              <!-- Campo para nome da categoria -->
               <div class="categoria-form-col">
                 <div class="categoria-form-group">
                   <label class="categoria-form-label">Nome da Categoria</label>
@@ -26,6 +29,7 @@
                   />
                 </div>
               </div>
+              <!-- Campo para descrição da categoria -->
               <div class="categoria-form-col">
                 <div class="categoria-form-group">
                   <label class="categoria-form-label">Descrição</label>
@@ -36,6 +40,7 @@
                   />
                 </div>
               </div>
+              <!-- Campo para upload de imagem -->
               <div class="categoria-form-col-full">
                 <div class="categoria-form-group">
                   <label class="categoria-form-label">Imagem da Categoria</label>
@@ -49,12 +54,14 @@
                 </div>
               </div>
             </div>
+            <!-- Botão de ação do formulário -->
             <div class="categoria-form-actions">
               <button 
                 class="categoria-btn categoria-btn-primary" 
                 type="submit" 
                 :disabled="carregandoCriar"
               >
+                <!-- Spinner de carregamento -->
                 <span v-if="carregandoCriar" class="categoria-spinner-small"></span>
                 <i v-else class="bi bi-plus-circle"></i>
                 {{ carregandoCriar ? 'Criando...' : 'Criar Categoria' }}
@@ -63,8 +70,9 @@
           </form>
         </div>
 
-        <!-- Lista de Categorias -->
+        <!-- Container da lista de categorias existentes -->
         <div class="categoria-list-container">
+          <!-- Header da lista com título e contador -->
           <div class="categoria-list-header">
             <h3 class="categoria-list-title">Categorias Cadastradas</h3>
             <span class="categoria-stats-badge">
@@ -73,7 +81,7 @@
             </span>
           </div>
 
-          <!-- Loading State -->
+          <!-- Estado de carregamento da lista -->
           <div v-if="carregandoLista" class="categoria-loading-container">
             <div class="categoria-spinner" role="status">
               <span class="categoria-visually-hidden">Carregando...</span>
@@ -81,7 +89,7 @@
             <p class="categoria-loading-text">Carregando categorias...</p>
           </div>
 
-          <!-- Error State -->
+          <!-- Estado de erro na lista -->
           <div v-else-if="erroLista" class="categoria-error-container">
             <i class="bi bi-exclamation-triangle categoria-error-icon"></i>
             <p class="categoria-error-text">{{ erroLista }}</p>
@@ -90,7 +98,7 @@
             </button>
           </div>
 
-          <!-- Categories Table -->
+          <!-- Tabela de categorias (estado normal) -->
           <div v-else class="categoria-table-container">
             <div class="categoria-table-responsive">
               <table class="categoria-table">
@@ -103,7 +111,9 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <!-- Linha para cada categoria com paginação -->
                   <tr v-for="cat in categoriasPaginadas" :key="cat.id" class="categoria-table-row">
+                    <!-- Célula da imagem da categoria -->
                     <td class="categoria-td-image">
                       <div class="categoria-image">
                         <img 
@@ -112,19 +122,24 @@
                           alt="Imagem da categoria" 
                           class="categoria-image-img"
                         />
+                        <!-- Placeholder quando não há imagem -->
                         <div v-else class="categoria-placeholder-image">
                           <i class="bi bi-image"></i>
                         </div>
                       </div>
                     </td>
+                    <!-- Célula do nome da categoria -->
                     <td class="categoria-td-name">
                       <span class="categoria-name">{{ cat.name }}</span>
                     </td>
+                    <!-- Célula da descrição da categoria -->
                     <td class="categoria-td-description">
                       <span class="categoria-description">{{ cat.description || 'Sem descrição' }}</span>
                     </td>
+                    <!-- Célula das ações (editar/excluir) -->
                     <td class="categoria-td-actions">
                       <div class="categoria-actions">
+                        <!-- Botão de editar categoria -->
                         <button 
                           class="categoria-btn categoria-btn-outline categoria-btn-sm" 
                           @click="abrirModalEditar(cat)"
@@ -132,6 +147,7 @@
                         >
                           <i class="bi bi-pencil-square"></i>
                         </button>
+                        <!-- Botão de excluir categoria -->
                         <button 
                           class="categoria-btn categoria-btn-danger categoria-btn-sm" 
                           @click="confirmarExcluirCategoria(cat.id)" 
@@ -148,8 +164,9 @@
               </table>
             </div>
 
-            <!-- Paginação -->
+            <!-- Sistema de paginação -->
             <div v-if="totalPaginas > 1" class="categoria-pagination-container">
+              <!-- Botão página anterior -->
               <button 
                 class="categoria-btn categoria-btn-outline categoria-btn-sm" 
                 :disabled="paginaAtual === 1" 
@@ -157,7 +174,9 @@
               >
                 <i class="bi bi-chevron-left"></i>Anterior
               </button>
+              <!-- Informações da paginação -->
               <span class="categoria-pagination-info">Página {{ paginaAtual }} de {{ totalPaginas }}</span>
+              <!-- Botão próxima página -->
               <button 
                 class="categoria-btn categoria-btn-outline categoria-btn-sm" 
                 :disabled="paginaAtual === totalPaginas" 
@@ -167,7 +186,7 @@
               </button>
             </div>
 
-            <!-- Empty State -->
+            <!-- Estado vazio (quando não há categorias) -->
             <div v-if="categorias.length === 0" class="categoria-empty-container">
               <i class="bi bi-tags categoria-empty-icon"></i>
               <h4 class="categoria-empty-title">Nenhuma categoria encontrada</h4>
@@ -178,11 +197,12 @@
       </div>
     </div>
 
-    <!-- Modal de Edição -->
+    <!-- Modal para edição de categorias -->
     <template v-if="mostrarModalEditar">
       <div class="categoria-modal-overlay" @click="fecharModalEditar">
         <div class="categoria-modal-container" @click.stop>
           <div class="categoria-modal-content">
+            <!-- Header do modal -->
             <div class="categoria-modal-header">
               <h5 class="categoria-modal-title">
                 <i class="bi bi-pencil-square"></i>Editar Categoria
@@ -191,8 +211,10 @@
                 <i class="bi bi-x-lg"></i>
               </button>
             </div>
+            <!-- Formulário de edição -->
             <form @submit.prevent="onEditarCategoria">
               <div class="categoria-modal-body">
+                <!-- Campo nome -->
                 <div class="categoria-form-group">
                   <label class="categoria-form-label">Nome</label>
                   <input 
@@ -202,6 +224,7 @@
                     required 
                   />
                 </div>
+                <!-- Campo descrição -->
                 <div class="categoria-form-group">
                   <label class="categoria-form-label">Descrição</label>
                   <textarea 
@@ -210,6 +233,7 @@
                     rows="3"
                   ></textarea>
                 </div>
+                <!-- Campo nova imagem (opcional) -->
                 <div class="categoria-form-group">
                   <label class="categoria-form-label">Nova Imagem (opcional)</label>
                   <input 
@@ -219,6 +243,7 @@
                     accept="image/*" 
                   />
                 </div>
+                <!-- Mensagens de erro e sucesso -->
                 <div v-if="erroEditar" class="categoria-alert categoria-alert-danger">
                   <i class="bi bi-exclamation-triangle"></i>{{ erroEditar }}
                 </div>
@@ -226,6 +251,7 @@
                   <i class="bi bi-check-circle"></i>Categoria editada com sucesso!
                 </div>
               </div>
+              <!-- Footer do modal com botões -->
               <div class="categoria-modal-footer">
                 <button type="button" class="categoria-btn categoria-btn-secondary" @click="fecharModalEditar">
                   <i class="bi bi-x-circle"></i>Cancelar
@@ -243,19 +269,22 @@
     </template>
   </section>
 
-  <!-- Modal de Confirmação de Exclusão -->
+  <!-- Modal de confirmação para exclusão de categorias -->
   <Teleport to="body">
     <div v-if="mostrarConfirmacaoExcluir" class="categoria-confirm-modal-overlay" @click="mostrarConfirmacaoExcluir = false">
       <div class="categoria-confirm-modal" @click.stop>
         <div class="categoria-confirm-content">
+          <!-- Header do modal de confirmação -->
           <div class="categoria-confirm-header">
             <i class="bi bi-exclamation-triangle"></i>
             <h3>Confirmar Exclusão</h3>
           </div>
+          <!-- Corpo do modal com aviso -->
           <div class="categoria-confirm-body">
             <p>Tem certeza que deseja excluir esta categoria?</p>
             <p class="categoria-confirm-warning">Esta ação não pode ser desfeita.</p>
           </div>
+          <!-- Ações do modal (cancelar/confirmar) -->
           <div class="categoria-confirm-actions">
             <button class="categoria-confirm-btn-cancel" @click="mostrarConfirmacaoExcluir = false">
               Cancelar
@@ -272,50 +301,48 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onActivated, computed, inject, watch } from 'vue'
-import { listarCategorias, listarCategoriasPorUsuario, criarCategoria, deletarCategoria, atualizarCategoria, atualizarImagemCategoria } from '../../../services/api/categories'
+// Importações do Vue 3 Composition API
+import { ref, onMounted, onActivated, computed, inject } from 'vue'
+// Importações das APIs de categorias
+import { listarCategorias, listarCategoriasPorUsuario, criarCategoria, deletarCategoria, atualizarCategoria, atualizarImagemCategoria } from '../../../services/api/categorias'
 
+// Configuração da API base para imagens
 const API_BASE = 'http://35.196.79.227:8000'
+
+// Função para obter URL completa da imagem
 function getImageUrl(path) {
   if (!path) return ''
   if (path.startsWith('http')) return path
   return API_BASE + path
 }
 
-const categorias = ref([])
-const carregandoLista = ref(false)
-const erroLista = ref('')
-const novaCategoria = ref({ name: '', description: '', image: null })
-const carregandoCriar = ref(false)
-const sucessoCriar = ref(false)
-const erroCriar = ref('')
-const carregandoExcluir = ref(null)
+// Estados reativos principais
+const categorias = ref([])                    // Lista de categorias carregadas
+const carregandoLista = ref(false)            // Estado de carregamento da lista
+const erroLista = ref('')                     // Mensagem de erro da lista
+const novaCategoria = ref({ name: '', description: '', image: null })  // Dados do formulário de criação
+const carregandoCriar = ref(false)            // Estado de carregamento da criação
+const erroCriar = ref('')                     // Mensagem de erro na criação
+const carregandoExcluir = ref(null)           // ID da categoria sendo excluída
 
-// Filtro de busca
-const busca = ref('')
-const categoriasPorPagina = 6
-const paginaAtual = ref(1)
-const categoriasFiltradas = computed(() => {
-  if (!busca.value) return categorias.value
-  const termo = busca.value.toLowerCase()
-  return categorias.value.filter(cat =>
-    (cat.name && cat.name.toLowerCase().includes(termo)) ||
-    (cat.description && cat.description.toLowerCase().includes(termo))
-  )
-})
-const totalPaginas = computed(() => Math.max(1, Math.ceil(categoriasFiltradas.value.length / categoriasPorPagina)))
+// Estados para paginação
+const categoriasPorPagina = 6                 // Quantidade de categorias por página
+const paginaAtual = ref(1)                    // Página atual da paginação
+
+// Computed properties para paginação
+const totalPaginas = computed(() => Math.max(1, Math.ceil(categorias.value.length / categoriasPorPagina)))
+
 const categoriasPaginadas = computed(() => {
   const start = (paginaAtual.value - 1) * categoriasPorPagina
-  return categoriasFiltradas.value.slice(start, start + categoriasPorPagina)
+  return categorias.value.slice(start, start + categoriasPorPagina)
 })
 
-// Resetar página ao buscar
-watch(busca, () => { paginaAtual.value = 1 })
-
+// Função para carregar categorias da API
 async function carregarCategorias() {
   carregandoLista.value = true
   erroLista.value = ''
   try {
+    // Carrega categorias de um usuário específico (ID 192)
     categorias.value = await listarCategoriasPorUsuario(192)
   } catch (e) {
     console.warn('Erro ao carregar categorias do usuário:', e)
@@ -326,16 +353,18 @@ async function carregarCategorias() {
   }
 }
 
+// Função para capturar arquivo selecionado no formulário de criação
 function onFileChange(e) {
   novaCategoria.value.image = e.target.files[0]
 }
 
+// Função para resetar formulário de criação
 function resetForm() {
   novaCategoria.value = { name: '', description: '', image: null }
   erroCriar.value = ''
-  sucessoCriar.value = false
 }
 
+// Função para validar dados da categoria
 function validarCategoria(cat) {
   const erros = []
   if (!cat.name || cat.name.length < 3) {
@@ -349,6 +378,8 @@ function validarCategoria(cat) {
   }
   return erros
 }
+
+// Função para validar imagem da categoria
 function validarImagemCategoria(imagem) {
   if (!imagem) return []
   const tipos = ['image/jpeg', 'image/png', 'image/jpg']
@@ -358,21 +389,24 @@ function validarImagemCategoria(imagem) {
   return []
 }
 
+// Função para criar nova categoria
 async function onCriarCategoria() {
   erroCriar.value = ''
-  sucessoCriar.value = false
+  
+  // Validação dos dados
   const erros = [
     ...validarCategoria(novaCategoria.value),
     ...validarImagemCategoria(novaCategoria.value.image)
   ]
+  
   if (erros.length > 0) {
     erros.forEach(msg => showToastGlobal && showToastGlobal(msg, 'danger'))
     return
   }
+  
   carregandoCriar.value = true
   try {
     await criarCategoria(novaCategoria.value)
-    sucessoCriar.value = true
     showToastGlobal && showToastGlobal('Categoria criada com sucesso!', 'success')
     resetForm()
     await carregarCategorias()
@@ -384,11 +418,13 @@ async function onCriarCategoria() {
   }
 }
 
+// Função para confirmar exclusão de categoria
 function confirmarExcluirCategoria(id) {
   categoriaParaExcluir.value = id
   mostrarConfirmacaoExcluir.value = true
 }
 
+// Função para excluir categoria
 async function excluirCategoria(id) {
   carregandoExcluir.value = id
   try {
@@ -404,18 +440,22 @@ async function excluirCategoria(id) {
   }
 }
 
-const mostrarModalEditar = ref(false)
-const categoriaEditar = ref({})
-const carregandoEditar = ref(false)
-const erroEditar = ref('')
-const sucessoEditar = ref(false)
-let imagemEditar = null
+// Estados para modal de edição
+const mostrarModalEditar = ref(false)        // Controla exibição do modal
+const categoriaEditar = ref({})              // Dados da categoria sendo editada
+const carregandoEditar = ref(false)          // Estado de carregamento da edição
+const erroEditar = ref('')                   // Mensagem de erro na edição
+const sucessoEditar = ref(false)             // Flag de sucesso na edição
+let imagemEditar = null                      // Nova imagem para edição
+
+// Injeção do sistema global de toast
 const showToastGlobal = inject('showToastGlobal')
 
-// Modal de confirmação
-const mostrarConfirmacaoExcluir = ref(false)
-const categoriaParaExcluir = ref(null)
+// Estados para modal de confirmação de exclusão
+const mostrarConfirmacaoExcluir = ref(false) // Controla exibição do modal de confirmação
+const categoriaParaExcluir = ref(null)       // ID da categoria a ser excluída
 
+// Função para abrir modal de edição
 function abrirModalEditar(cat) {
   categoriaEditar.value = { ...cat }
   sucessoEditar.value = false
@@ -423,6 +463,8 @@ function abrirModalEditar(cat) {
   mostrarModalEditar.value = true
   imagemEditar = null
 }
+
+// Função para fechar modal de edição
 function fecharModalEditar() {
   mostrarModalEditar.value = false
   categoriaEditar.value = {}
@@ -430,26 +472,35 @@ function fecharModalEditar() {
   sucessoEditar.value = false
   imagemEditar = null
 }
+
+// Função para capturar arquivo selecionado no modal de edição
 function onFileChangeEditar(e) {
   imagemEditar = e.target.files[0]
 }
+
+// Função para editar categoria
 async function onEditarCategoria() {
   erroEditar.value = ''
   sucessoEditar.value = false
   carregandoEditar.value = true
+  
   try {
     // Atualiza nome e descrição (JSON)
     await atualizarCategoria(categoriaEditar.value.id, {
       name: categoriaEditar.value.name,
       description: categoriaEditar.value.description
     })
+    
     // Se houver nova imagem, atualiza separadamente
     if (imagemEditar) {
       await atualizarImagemCategoria(categoriaEditar.value.id, imagemEditar)
     }
+    
     sucessoEditar.value = true
     showToastGlobal && showToastGlobal('Categoria editada com sucesso!', 'success')
     await carregarCategorias()
+    
+    // Fecha modal após 1.2 segundos para mostrar sucesso
     setTimeout(() => fecharModalEditar(), 1200)
   } catch (e) {
     erroEditar.value = typeof e === 'string' ? e : 'Erro ao editar categoria.'
@@ -459,7 +510,8 @@ async function onEditarCategoria() {
   }
 }
 
-onMounted(carregarCategorias)
-onActivated(carregarCategorias)
+// Lifecycle hooks
+onMounted(carregarCategorias)      // Carrega categorias ao montar componente
+onActivated(carregarCategorias)    // Recarrega ao ativar componente (keep-alive)
 </script>
 

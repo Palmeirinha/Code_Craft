@@ -1,7 +1,9 @@
 <template>
+  <!-- Cabeçalho principal da aplicação -->
   <header class="header">
+    <!-- Navegação principal -->
     <nav class="header-nav">
-      <!-- Logo -->
+      <!-- Logo da empresa com link para home -->
       <router-link class="header-logo" to="/">
         <div class="header-logo-content">
           <i class="bi bi-code-slash"></i>
@@ -9,9 +11,9 @@
         </div>
       </router-link>
       
-      <!-- Navegação central -->
+      <!-- Navegação central com links principais -->
       <div class="header-nav-links">
-        <!-- Link sempre visível -->
+        <!-- Link sempre visível para todos os usuários -->
         <router-link class="header-nav-link" to="/cursos">
           <i class="bi bi-journal-text"></i>
           <span>Cursos</span>
@@ -30,8 +32,9 @@
         </template>
       </div>
       
-      <!-- Ações do usuário -->
+      <!-- Ações do usuário (carrinho, menu, etc.) -->
       <div class="header-actions">
+        <!-- Botão do carrinho com badge de quantidade -->
         <button 
           class="header-cart-btn" 
           :class="{ 'has-items': cartStore.produtos.length > 0 }"
@@ -39,10 +42,11 @@
           @click="abrirCarrinho"
         >
           <i class="bi bi-cart3"></i>
+          <!-- Badge mostrando quantidade de itens no carrinho -->
           <span v-if="cartStore.produtos.length > 0" class="header-cart-badge">{{ cartStore.produtos.length }}</span>
         </button>
         
-        <!-- Menu de navegação para usuários não autenticados -->
+        <!-- Menu de navegação para usuários NÃO autenticados -->
         <template v-if="!userStore.isAuthenticated">
           <div class="header-nav-menu" :class="{ 'header-nav-menu-open': navMenuOpen }">
             <button 
@@ -55,6 +59,7 @@
               <i class="bi bi-list"></i>
               <span>Menu</span>
             </button>
+            <!-- Lista de opções do menu de navegação -->
             <ul class="header-nav-menu-list">
               <li><hr class="header-nav-menu-divider"></li>
               <li>
@@ -69,6 +74,7 @@
         <!-- Menu do usuário para usuários autenticados -->
         <template v-else>
           <div class="header-user-menu" :class="{ 'header-user-menu-open': userMenuOpen }">
+            <!-- Botão toggle do menu do usuário -->
             <button 
               class="header-user-menu-toggle" 
               type="button" 
@@ -77,15 +83,18 @@
               @blur="handleUserMenuBlur"
             >
               <i class="bi bi-person-circle"></i>
+              <!-- Nome do usuário e badge de role -->
               <span class="header-user-name">
                 <span class="header-user-text">{{ userStore.user?.nome || userStore.user?.name || userStore.user?.email || '' }}</span>
+                <!-- Badge mostrando o tipo de usuário -->
                 <span v-if="role === 'ADMIN'" class="header-badge header-badge-admin">Admin</span>
                 <span v-else-if="role === 'MODERATOR'" class="header-badge header-badge-moderator">Moderador</span>
                 <span v-else class="header-badge header-badge-client">Cliente</span>
               </span>
             </button>
+            <!-- Lista de opções do menu do usuário -->
             <ul class="header-user-menu-list">
-              <!-- Perfil do usuário -->
+              <!-- Opção de perfil -->
               <li><a class="header-user-menu-item" href="#" @click.prevent="abrirPerfil">
                 <i class="bi bi-person"></i> Perfil
               </a></li>
@@ -93,31 +102,37 @@
               <!-- Links administrativos para admin e moderadores -->
               <template v-if="role === 'ADMIN' || role === 'MODERATOR'">
                 <li><hr class="header-user-menu-divider"></li>
+                <!-- Apenas admin pode criar moderadores -->
                 <li v-if="role === 'ADMIN'">
                   <a class="header-user-menu-item" href="#" @click.prevent="irPara('CriarModerador')">
                     <i class="bi bi-person-plus"></i> Criar Moderador
                   </a>
                 </li>
+                <!-- Apenas admin pode gerenciar categorias -->
                 <li v-if="role === 'ADMIN'">
                   <a class="header-user-menu-item" href="#" @click.prevent="irPara('CategoriaAdmin')">
                     <i class="bi bi-tags"></i> Gerenciar Categorias
                   </a>
                 </li>
+                <!-- Admin e moderadores podem gerenciar produtos -->
                 <li>
                   <a class="header-user-menu-item" href="#" @click.prevent="irPara('ProdutoAdmin')">
                     <i class="bi bi-box-seam"></i> Gerenciar Produtos
                   </a>
                 </li>
+                <!-- Apenas admin pode gerenciar descontos -->
                 <li v-if="role === 'ADMIN'">
                   <a class="header-user-menu-item" href="#" @click.prevent="irPara('DescontosAdmin')">
                     <i class="bi bi-percent"></i> Gerenciar Descontos
                   </a>
                 </li>
+                <!-- Apenas admin pode gerenciar cupons -->
                 <li v-if="role === 'ADMIN'">
                   <router-link class="header-user-menu-item" :to="{ name: 'CuponsAdmin' }">
                     <i class="bi bi-ticket-perforated"></i> Gerenciar Cupons
                   </router-link>
                 </li>
+                <!-- Apenas admin pode ver pedidos do sistema -->
                 <li v-if="role === 'ADMIN'">
                   <a class="header-user-menu-item" href="#" @click.prevent="irPara('PedidosAdmin')">
                     <i class="bi bi-clipboard-data"></i> Pedidos do Sistema
@@ -125,6 +140,7 @@
                 </li>
               </template>
               
+              <!-- Separador e opção de logout -->
               <li><hr class="header-user-menu-divider"></li>
               <li><a class="header-user-menu-item" href="#" @click.prevent="logout">
                 <i class="bi bi-box-arrow-right"></i> Sair
@@ -135,12 +151,14 @@
       </div>
     </nav>
     
-    <!-- Modais -->
+    <!-- Modais do cabeçalho -->
+    <!-- Modal de autenticação (login/cadastro) -->
     <AuthModal :show="showAuthModalGlobal" @close="closeAuthModal" />
+    <!-- Modal de perfil do usuário -->
     <PerfilModal :show="showPerfil" @close="showPerfil = false" />
   </header>
 
-  <!-- Sidebar do carrinho -->
+  <!-- Sidebar do carrinho (renderizado condicionalmente) -->
   <CarrinhoSidebar 
     v-if="carrinhoAberto"
     :is-open="carrinhoAberto" 
@@ -149,134 +167,72 @@
 </template>
 
 <script setup>
+// Importações do Vue 3 Composition API
 import { ref, onMounted, watch, computed, onUnmounted, inject } from 'vue'
+// Importações das stores (Pinia)
 import { useUserStore } from '../../services/stores/auth'
 import { useCartStore } from '../../services/stores/cart'
+// Importações dos componentes
 import AuthModal from '../auth/AuthModal.vue'
 import PerfilModal from '../auth/ProfileModal.vue'
 import CarrinhoSidebar from '../cart/CartSidebar.vue'
+// Importação do Vue Router
 import { useRouter } from 'vue-router'
+// Importação da imagem do logo
 import logoImage from '@/assets/images/logos/logo_code_Craft.png'
 
-// Importar estilos
+// Importar estilos CSS específicos do header
 import '@/assets/styles/css/header.css'
 
-// Props e emits
+// Props e emits (não utilizados neste componente)
 const props = defineProps({})
 const emit = defineEmits([])
 
-// Stores
-const userStore = useUserStore()
-const cartStore = useCartStore()
-const router = useRouter()
+// Stores do Pinia para gerenciamento de estado
+const userStore = useUserStore()    // Store de autenticação do usuário
+const cartStore = useCartStore()    // Store do carrinho de compras
+const router = useRouter()          // Instância do Vue Router
 
-// Sistema global de autenticação
-const showAuthModalGlobal = inject('showAuthModalGlobal')
-const openAuthModal = inject('openAuthModal')
-const closeAuthModal = inject('closeAuthModal')
+// Sistema global de autenticação (injetado do App.vue)
+const showAuthModalGlobal = inject('showAuthModalGlobal')  // Controla exibição do modal de auth
+const openAuthModal = inject('openAuthModal')              // Função para abrir modal de auth
+const closeAuthModal = inject('closeAuthModal')            // Função para fechar modal de auth
 
+// Estados reativos do componente
+const showPerfil = ref(false)           // Controla exibição do modal de perfil
+const carrinhoAberto = ref(false)       // Controla exibição do sidebar do carrinho
+const userMenuOpen = ref(false)         // Controla dropdown do menu do usuário
+const navMenuOpen = ref(false)          // Controla dropdown do menu de navegação
 
-
-// Estados reativos
-const showPerfil = ref(false)
-const carrinhoAberto = ref(false)
-const mobileMenuOpen = ref(false)
-const userMenuOpen = ref(false)
-const navMenuOpen = ref(false)
-const sessaoRestante = ref('')
-
-// Computed properties
-const isAuthenticated = computed(() => userStore.isAuthenticated)
+// Computed properties (propriedades computadas)
 const role = computed(() => {
+  // Obtém o role do usuário e converte para maiúsculo
   const userRole = (userStore.user?.role || 'client').toUpperCase()
   return userRole
 })
 
-// Interval para sessão
-let sessaoInterval = null
 
-// Função para obter expiração do token
-function getTokenExpiration(token) {
-  if (!token || token.split('.').length !== 3) return null
-  try {
-    const payload = JSON.parse(atob(token.split('.')[1]))
-    if (payload.exp) {
-      return new Date(payload.exp * 1000)
-    }
-  } catch {}
-  return null
-}
 
-// Função para atualizar sessão restante
-function atualizarSessaoRestante() {
-  const token = localStorage.getItem('token')
-  const exp = getTokenExpiration(token)
-  if (!exp) {
-    sessaoRestante.value = ''
-    return
-  }
-  const diff = exp.getTime() - Date.now()
-  if (diff <= 0) {
-    sessaoRestante.value = 'Sessão expirada'
-    return
-  }
-  const horas = Math.floor(diff / 1000 / 60 / 60)
-  const minutos = Math.floor((diff / 1000 / 60) % 60)
-  const segundos = Math.floor((diff / 1000) % 60)
-  sessaoRestante.value = `Sessão expira em: ${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`
-}
-
-// Watchers
-watch(isAuthenticated, (val) => {
-  if (val) {
-    atualizarSessaoRestante()
-    if (sessaoInterval) clearInterval(sessaoInterval)
-    sessaoInterval = setInterval(atualizarSessaoRestante, 1000)
-  } else {
-    sessaoRestante.value = ''
-    if (sessaoInterval) clearInterval(sessaoInterval)
-  }
-}, { immediate: true })
-
-// Atualiza o carrinho ao logar/deslogar
+// Watchers (observadores de mudanças)
+// Observa mudanças no usuário para atualizar o carrinho
 watch(() => userStore.user, () => {
   cartStore.fetchCarrinho()
 })
 
-// Lifecycle hooks
+// Lifecycle hooks (ganchos de ciclo de vida)
 onMounted(() => {
-  // Garantir que o menu mobile comece fechado
-  mobileMenuOpen.value = false
-  
-  // Event listeners
-  window.addEventListener('resize', handleResize)
+  // Adicionar event listeners
   document.addEventListener('click', handleClickOutside)
 })
 
 onUnmounted(() => {
-  if (sessaoInterval) clearInterval(sessaoInterval)
-  window.removeEventListener('resize', handleResize)
+  // Limpar event listeners ao desmontar
   document.removeEventListener('click', handleClickOutside)
 })
 
-// Event handlers
-function handleResize() {
-  if (window.innerWidth >= 768 && mobileMenuOpen.value) {
-    closeMobileMenu()
-  }
-}
-
+// Event handlers (manipuladores de eventos)
+// Manipula cliques fora dos menus para fechá-los
 function handleClickOutside(event) {
-  // Fechar menu mobile
-  if (mobileMenuOpen.value) {
-    const mobileMenu = document.querySelector('.mobile-menu')
-    const mobileToggle = document.querySelector('.mobile-menu-toggle')
-    
-    if (mobileMenu && !mobileMenu.contains(event.target) && !mobileToggle?.contains(event.target)) {
-      closeMobileMenu()
-    }
-  }
-  
   // Fechar dropdown do usuário
   const userMenu = document.querySelector('.header-user-menu')
   if (userMenu && !userMenu.contains(event.target)) {
@@ -290,24 +246,7 @@ function handleClickOutside(event) {
   }
 }
 
-// Funções do menu mobile
-function toggleMobileMenu() {
-  console.log('Toggle mobile menu - current:', mobileMenuOpen.value)
-  mobileMenuOpen.value = !mobileMenuOpen.value
-  console.log('Toggle mobile menu - new:', mobileMenuOpen.value)
-  
-  if (mobileMenuOpen.value) {
-    document.body.style.overflow = 'hidden'
-  } else {
-    document.body.style.overflow = ''
-  }
-}
 
-function closeMobileMenu() {
-  console.log('Closing mobile menu')
-  mobileMenuOpen.value = false
-  document.body.style.overflow = ''
-}
 
 // Funções do carrinho
 function abrirCarrinho() {
@@ -321,7 +260,6 @@ function fecharCarrinho() {
 // Funções do usuário
 function logout() {
   userStore.logout()
-  closeMobileMenu()
   window.location.href = '/'
 }
 
@@ -341,6 +279,7 @@ function handleNavMenuBlur() {
   }, 100)
 }
 
+// Função para navegar para páginas administrativas
 function irPara(destino) {
   if (destino === 'CriarModerador') {
     router.push({ name: 'CriarModerador' })

@@ -1,6 +1,8 @@
 <template>
+  <!-- Seção principal da página Meus Cursos -->
   <section class="meus-cursos-section">
     <div class="meus-cursos-container">
+      <!-- Header da página com título e botão de atualizar -->
       <div class="meus-cursos-header">
         <h1 class="meus-cursos-title">
           <i class="bi bi-book"></i>
@@ -11,8 +13,9 @@
         </button>
       </div>
 
-      <!-- Estatísticas dos cursos -->
+      <!-- Estatísticas dos cursos - Cards com números totais -->
       <div class="meus-cursos-stats">
+        <!-- Card de Total de Cursos -->
         <div class="meus-cursos-stat-card meus-cursos-stat-primary">
           <div class="meus-cursos-stat-icon">
             <i class="bi bi-book"></i>
@@ -22,6 +25,7 @@
             <p class="meus-cursos-stat-label">Total de Cursos</p>
           </div>
         </div>
+        <!-- Card de Cursos Ativos -->
         <div class="meus-cursos-stat-card meus-cursos-stat-success">
           <div class="meus-cursos-stat-icon">
             <i class="bi bi-play-circle"></i>
@@ -31,6 +35,7 @@
             <p class="meus-cursos-stat-label">Cursos Ativos</p>
           </div>
         </div>
+        <!-- Card de Cursos Concluídos -->
         <div class="meus-cursos-stat-card meus-cursos-stat-info">
           <div class="meus-cursos-stat-icon">
             <i class="bi bi-check-circle"></i>
@@ -42,12 +47,15 @@
         </div>
       </div>
 
+      <!-- Estado de carregamento -->
       <div v-if="carregando" class="meus-cursos-loading">
         <div class="meus-cursos-spinner"></div>
         <p class="meus-cursos-loading-text">Carregando seus cursos...</p>
       </div>
       
+      <!-- Conteúdo principal quando não está carregando -->
       <div v-else>
+        <!-- Estado vazio - Quando não há cursos -->
         <div v-if="cursos.length === 0" class="meus-cursos-empty">
           <div class="meus-cursos-empty-icon">
             <i class="bi bi-book"></i>
@@ -57,6 +65,7 @@
             Os cursos aparecem aqui quando o administrador marca seus pedidos como "Entregue"
           </p>
           
+          <!-- Card com dicas de como obter cursos -->
           <div class="meus-cursos-tips-card">
             <div class="meus-cursos-tips-header">
               <i class="bi bi-lightbulb"></i>
@@ -78,18 +87,21 @@
             </div>
           </div>
           
+          <!-- Botão para explorar cursos disponíveis -->
           <router-link to="/cursos" class="meus-cursos-explore-btn">
             <i class="bi bi-search"></i>
             <span>Explorar Cursos</span>
           </router-link>
         </div>
         
+        <!-- Grid de cursos quando há cursos disponíveis -->
         <div v-else class="meus-cursos-grid">
           <div 
             v-for="curso in cursos" 
             :key="curso.id" 
             :class="['meus-cursos-item', { 'completed': curso.progress === 100 }]"
           >
+            <!-- Imagem do curso com badge de status -->
             <div class="meus-cursos-item-image">
               <img 
                 v-if="curso.image_path" 
@@ -105,10 +117,12 @@
               </div>
             </div>
             
+            <!-- Conteúdo do curso -->
             <div class="meus-cursos-item-content">
               <h5 class="meus-cursos-item-title">{{ curso.name }}</h5>
               <p class="meus-cursos-item-description">{{ curso.description || 'Descrição não disponível' }}</p>
               
+              <!-- Metadados do curso (preço, categoria, ID do pedido) -->
               <div class="meus-cursos-item-meta">
                 <div class="meus-cursos-item-price">
                   <span class="meus-cursos-price-tag">R$ {{ curso.price }}</span>
@@ -120,6 +134,7 @@
                 </div>
               </div>
               
+              <!-- Barra de progresso do curso -->
               <div class="meus-cursos-item-progress">
                 <div class="meus-cursos-progress-info">
                   <span class="meus-cursos-progress-text">{{ curso.progress }}% concluído</span>
@@ -132,6 +147,7 @@
                 </div>
               </div>
               
+              <!-- Botões de ação do curso -->
               <div class="meus-cursos-item-actions">
                 <button class="meus-cursos-btn meus-cursos-btn-primary" @click="marcarConcluido(curso)">
                   <i class="bi bi-check-circle"></i>
@@ -147,7 +163,7 @@
         </div>
       </div>
 
-      <!-- Toasts globais -->
+      <!-- Container de toasts para notificações -->
       <div class="meus-cursos-toast-container">
         <div v-for="(toast, i) in toasts" :key="i" :class="['meus-cursos-toast', 'meus-cursos-toast-' + toast.type, 'meus-cursos-toast-show']" role="alert" aria-live="assertive" aria-atomic="true">
           <div class="meus-cursos-toast-content">
@@ -167,19 +183,23 @@
 </template>
 
 <script setup>
+// Importações do Vue 3 Composition API
 import { ref, onMounted, computed } from 'vue'
+// Importações das APIs
 import { listarPedidosUsuario } from '../../services/api/orders'
 import { getImageUrl } from '../../services/api/utils'
 import { useUserStore } from '../../services/stores/auth'
-import { listarCategoriasPorUsuario } from '../../services/api/categories'
+import { listarCategoriasPorUsuario } from '../../services/api/categorias'
+// Importação da biblioteca para gerar PDFs
 import jsPDF from 'jspdf'
 
-const cursos = ref([])
-const carregando = ref(false)
-const toasts = ref([])
-const categorias = ref([])
+// Estados reativos principais
+const cursos = ref([])                    // Lista de cursos do usuário
+const carregando = ref(false)             // Estado de carregamento
+const toasts = ref([])                    // Lista de toasts para notificações
+const categorias = ref([])                // Lista de categorias disponíveis
 
-// Estatísticas computadas
+// Computed property para calcular estatísticas dos cursos
 const estatisticas = computed(() => {
   const total = cursos.value.length
   const ativos = cursos.value.filter(c => c.status === 'ACTIVE').length
@@ -188,20 +208,24 @@ const estatisticas = computed(() => {
   return { total, ativos, concluidos }
 })
 
+// Função para mostrar toast global
 function showToastGlobal(msg, type = 'danger') {
   toasts.value.push({ msg, type })
   setTimeout(() => { toasts.value.shift() }, 4000)
 }
 
+// Função para remover toast específico
 function removerToast(i) { 
   toasts.value.splice(i, 1) 
 }
 
+// Função para formatar data (não utilizada no template)
 function formatarData(data) {
   if (!data) return ''
   return new Date(data).toLocaleString('pt-BR')
 }
 
+// Função para buscar nome da categoria por ID
 function buscarNomeCategoria(categoryId) {
   if (!categoryId || !categorias.value.length) return 'Sem categoria'
   
@@ -209,6 +233,7 @@ function buscarNomeCategoria(categoryId) {
   return categoria ? categoria.name : `Categoria ${categoryId}`
 }
 
+// Função para traduzir status do curso para português
 function traduzirStatus(status) {
   const traducoes = {
     'ACTIVE': 'Ativo',
@@ -219,6 +244,7 @@ function traduzirStatus(status) {
   return traducoes[status] || status
 }
 
+// Função para retornar classe CSS baseada no status do curso
 function meusCursosStatusClass(status) {
   if (status === 'ACTIVE') return 'meus-cursos-badge-success'
   if (status === 'COMPLETED') return 'meus-cursos-badge-primary'
@@ -227,6 +253,7 @@ function meusCursosStatusClass(status) {
   return 'meus-cursos-badge-secondary'
 }
 
+// Função principal para carregar cursos do usuário
 async function carregar() {
   carregando.value = true
   try {
@@ -242,11 +269,11 @@ async function carregar() {
       categorias.value = []
     }
     
-    // Depois, carregar os pedidos
+    // Depois, carregar os pedidos do usuário
     const pedidos = await listarPedidosUsuario()
     console.log('🔍 Estrutura dos pedidos:', pedidos)
     
-    // Extrair cursos dos pedidos SHIPPED (gambiarra: quando admin marca como entregue)
+    // Extrair cursos dos pedidos SHIPPED (quando admin marca como entregue)
     const cursosComprados = []
     
     pedidos.forEach(pedido => {
@@ -276,6 +303,7 @@ async function carregar() {
               categoryName = buscarNomeCategoria(produto.category_id)
             }
             
+            // Criar objeto do curso com dados do produto
             const novoCurso = {
               id: produto.id,
               name: produto.name,
@@ -314,6 +342,7 @@ async function carregar() {
   }
 }
 
+// Função para marcar curso como concluído
 function marcarConcluido(curso) {
   try {
     // Atualizar o progresso do curso para 100%
@@ -335,6 +364,7 @@ function marcarConcluido(curso) {
   }
 }
 
+// Função para baixar certificado do curso
 function baixarCertificado(curso) {
   try {
     // Verificar se o curso foi concluído
@@ -354,6 +384,7 @@ function baixarCertificado(curso) {
   }
 }
 
+// Função para gerar certificado em PDF
 function gerarCertificadoPDF(curso) {
   const userStore = useUserStore()
   const userName = userStore.user?.name || 'Usuário'
@@ -408,6 +439,7 @@ function gerarCertificadoPDF(curso) {
   doc.save(nomeArquivo)
 }
 
+// Função para salvar cursos no localStorage
 function salvarCursosLocal() {
   try {
     const userStore = useUserStore()
@@ -421,6 +453,7 @@ function salvarCursosLocal() {
   }
 }
 
+// Função para carregar cursos do localStorage
 function carregarCursosLocal() {
   try {
     const userStore = useUserStore()
@@ -446,6 +479,7 @@ function carregarCursosLocal() {
   }
 }
 
+// Lifecycle hook - Carrega dados quando componente é montado
 onMounted(carregar)
 </script>
 

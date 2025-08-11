@@ -1,17 +1,19 @@
 <template>
+  <!-- Seção principal da página de Contato -->
   <section class="contato-section">
     <div class="contato-container">
-      <!-- Header da página -->
+      <!-- Header da página com título e descrição -->
       <div class="contato-header">
         <h1 class="contato-title">Entre em Contato</h1>
         <p class="contato-subtitle">Estamos aqui para ajudar você em sua jornada de aprendizado. Entre em contato conosco e responderemos o mais rápido possível.</p>
       </div>
 
       <div class="contato-content">
-        <!-- Informações de Contato -->
+        <!-- Seção de Informações de Contato - Dados da empresa -->
         <div class="contato-info">
           <h3 class="contato-info-title">Informações de Contato</h3>
           
+          <!-- Item de Endereço -->
           <div class="contato-info-item">
             <div class="contato-info-icon">
               <i class="bi bi-geo-alt"></i>
@@ -22,6 +24,7 @@
             </div>
           </div>
           
+          <!-- Item de Email -->
           <div class="contato-info-item">
             <div class="contato-info-icon">
               <i class="bi bi-envelope"></i>
@@ -32,6 +35,7 @@
             </div>
           </div>
           
+          <!-- Item de Telefone -->
           <div class="contato-info-item">
             <div class="contato-info-icon">
               <i class="bi bi-telephone"></i>
@@ -42,6 +46,7 @@
             </div>
           </div>
           
+          <!-- Item de Horário de Atendimento -->
           <div class="contato-info-item">
             <div class="contato-info-icon">
               <i class="bi bi-clock"></i>
@@ -53,12 +58,14 @@
           </div>
         </div>
 
-        <!-- Formulário de Contato -->
+        <!-- Seção do Formulário de Contato -->
         <div class="contato-form">
           <h3 class="contato-form-title">Envie sua Mensagem</h3>
           <p class="contato-form-description">Preencha o formulário abaixo e entraremos em contato em até 24 horas</p>
           
+          <!-- Formulário principal com validação -->
           <form @submit.prevent="enviarMensagem" class="contato-form-content">
+            <!-- Campo Nome Completo -->
             <div class="contato-form-group">
               <label for="nome" class="contato-form-label">
                 <i class="bi bi-person"></i>
@@ -75,6 +82,7 @@
               />
             </div>
             
+            <!-- Campo Email -->
             <div class="contato-form-group">
               <label for="email" class="contato-form-label">
                 <i class="bi bi-envelope"></i>
@@ -91,6 +99,7 @@
               />
             </div>
             
+            <!-- Campo Assunto - Select com opções pré-definidas -->
             <div class="contato-form-group">
               <label for="assunto" class="contato-form-label">
                 <i class="bi bi-tag"></i>
@@ -112,6 +121,7 @@
               </select>
             </div>
             
+            <!-- Campo Mensagem - Textarea para texto longo -->
             <div class="contato-form-group">
               <label for="mensagem" class="contato-form-label">
                 <i class="bi bi-chat-left-text"></i>
@@ -127,6 +137,7 @@
               ></textarea>
             </div>
             
+            <!-- Botão de Submit com estado de loading -->
             <button 
               type="submit" 
               class="contato-form-submit" 
@@ -142,9 +153,10 @@
         </div>
       </div>
 
-      <!-- Toast de Notificação -->
+      <!-- Container de Toast para notificações de sucesso/erro -->
       <div class="contato-toast-container">
         <div id="contatoToastNotificacao" class="contato-toast" :class="{ 'contato-toast-show': toastVisivel }">
+          <!-- Header do toast com ícone e botão de fechar -->
           <div class="contato-toast-header">
             <i class="bi bi-check-circle-fill contato-toast-icon-success"></i>
             <strong class="contato-toast-title">{{ toastTitulo }}</strong>
@@ -152,6 +164,7 @@
               <i class="bi bi-x-lg"></i>
             </button>
           </div>
+          <!-- Corpo do toast com a mensagem -->
           <div class="contato-toast-body">
             {{ toastMensagem }}
           </div>
@@ -162,55 +175,64 @@
 </template>
 
 <script setup>
+// Importações do Vue 3 Composition API
 import { ref } from 'vue'
 
-// Estados reativos
-const nome = ref('')
-const email = ref('')
-const assunto = ref('')
-const mensagem = ref('')
-const enviando = ref(false)
-const toastTitulo = ref('')
-const toastMensagem = ref('')
-const toastVisivel = ref(false)
+// Estados reativos do formulário
+const nome = ref('')                    // Nome completo do usuário
+const email = ref('')                   // Email do usuário
+const assunto = ref('')                 // Assunto selecionado do select
+const mensagem = ref('')                // Mensagem do usuário
+const enviando = ref(false)             // Estado de loading durante envio
 
-// Funções
+// Estados do sistema de toast
+const toastTitulo = ref('')             // Título do toast
+const toastMensagem = ref('')           // Mensagem do toast
+const toastVisivel = ref(false)         // Controla visibilidade do toast
+
+// Função para mostrar o toast de notificação
 function mostrarToast() {
   toastVisivel.value = true
+  // Auto-hide após 3 segundos
   setTimeout(() => {
     toastVisivel.value = false
   }, 3000)
 }
 
+// Função para fechar o toast manualmente
 function fecharToast() {
   toastVisivel.value = false
 }
 
+// Função principal para enviar mensagem de contato
 async function enviarMensagem() {
+  // Previne múltiplos envios simultâneos
   if (enviando.value) return
   
+  // Inicia estado de loading
   enviando.value = true
   
   try {
-    // Simular delay de envio
+    // Simular delay de envio (simulação de API)
     await new Promise(resolve => setTimeout(resolve, 2000))
     
-    // Limpar formulário
+    // Limpar formulário após sucesso
     nome.value = ''
     email.value = ''
     assunto.value = ''
     mensagem.value = ''
     
-    // Mostrar toast de sucesso
+    // Configurar e mostrar toast de sucesso
     toastTitulo.value = 'Mensagem Enviada!'
     toastMensagem.value = 'Obrigado pelo contato. Retornaremos em breve!'
     mostrarToast()
   } catch (error) {
-    // Mostrar toast de erro
+    // Configurar e mostrar toast de erro
     toastTitulo.value = 'Erro!'
     toastMensagem.value = 'Erro ao enviar mensagem. Tente novamente.'
     mostrarToast()
   } finally {
+    // Finaliza estado de loading
     enviando.value = false
   }
 }

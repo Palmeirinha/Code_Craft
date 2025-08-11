@@ -1,20 +1,22 @@
 <template>
+  <!-- Seção principal de gestão de produtos -->
   <section class="produto-section">
     <div class="produto-container">
       <div class="produto-wrapper">
-        <!-- Header da seção -->
+        <!-- Header da seção - Título e descrição -->
         <div class="produto-header">
           <h1 class="produto-title">Gerenciar Produtos</h1>
           <p class="produto-subtitle">Crie e gerencie os produtos dos cursos</p>
         </div>
 
-        <!-- Formulário de Criação -->
+        <!-- Formulário de Criação - Formulário para criar novos produtos -->
         <div class="produto-form-container">
           <h3 class="produto-form-title">
             <i class="bi bi-box-seam"></i>Novo Produto
           </h3>
           <form @submit.prevent="onCriarProduto" class="produto-form">
             <div class="produto-form-grid">
+              <!-- Campo Nome do Produto -->
               <div class="produto-form-group">
                 <label class="produto-form-label">Nome do Produto</label>
                 <input 
@@ -25,6 +27,7 @@
                   required 
                 />
               </div>
+              <!-- Campo Categoria - Select com categorias disponíveis -->
               <div class="produto-form-group">
                 <label class="produto-form-label">Categoria</label>
                 <select v-model="novoProduto.category_id" class="produto-form-select" required>
@@ -32,6 +35,7 @@
                   <option v-for="cat in categorias" :key="cat.id" :value="cat.id">{{ cat.name }}</option>
                 </select>
               </div>
+              <!-- Campo Preço - Input numérico para preço -->
               <div class="produto-form-group">
                 <label class="produto-form-label">Preço</label>
                 <input 
@@ -44,6 +48,7 @@
                   required 
                 />
               </div>
+              <!-- Campo Estoque - Input numérico para quantidade em estoque -->
               <div class="produto-form-group">
                 <label class="produto-form-label">Estoque</label>
                 <input 
@@ -55,6 +60,7 @@
                   required 
                 />
               </div>
+              <!-- Campo Descrição - Textarea para descrição completa -->
               <div class="produto-form-group produto-form-group-full">
                 <label class="produto-form-label">Descrição</label>
                 <textarea 
@@ -64,6 +70,7 @@
                   rows="3"
                 ></textarea>
               </div>
+              <!-- Campo Imagem - Upload de arquivo de imagem -->
               <div class="produto-form-group produto-form-group-full">
                 <label class="produto-form-label">Imagem do Produto</label>
                 <input 
@@ -76,6 +83,7 @@
                 <small class="produto-form-help">Formatos aceitos: JPG, PNG. Tamanho máximo: 5MB</small>
               </div>
             </div>
+            <!-- Botões de ação do formulário -->
             <div class="produto-form-actions">
               <button 
                 class="produto-btn produto-btn-outline" 
@@ -98,7 +106,7 @@
           </form>
         </div>
 
-        <!-- Lista de Produtos -->
+        <!-- Lista de Produtos - Tabela com produtos cadastrados -->
         <div class="produto-list-container">
           <div class="produto-list-header">
             <h3 class="produto-list-title">Produtos Cadastrados</h3>
@@ -108,7 +116,7 @@
             </span>
           </div>
 
-          <!-- Busca -->
+          <!-- Busca - Campo de busca por nome ou descrição -->
           <div class="produto-search-container">
             <div class="produto-search-group">
               <span class="produto-search-icon">
@@ -123,13 +131,13 @@
             </div>
           </div>
 
-          <!-- Loading State -->
+          <!-- Loading State - Estado de carregamento da lista -->
           <div v-if="carregandoLista" class="produto-loading">
             <div class="produto-spinner"></div>
             <p class="produto-loading-text">Carregando produtos...</p>
           </div>
 
-          <!-- Error State -->
+          <!-- Error State - Estado de erro na lista -->
           <div v-else-if="erroLista" class="produto-error">
             <i class="bi bi-exclamation-triangle"></i>
             <p class="produto-error-text">{{ erroLista }}</p>
@@ -138,14 +146,14 @@
             </button>
           </div>
 
-          <!-- Empty State -->
+          <!-- Empty State - Estado quando não há produtos -->
           <div v-else-if="produtosFiltrados.length === 0" class="produto-empty">
             <i class="bi bi-archive"></i>
             <h3 class="produto-empty-title">Nenhum produto encontrado</h3>
             <p class="produto-empty-text">{{ busca ? 'Nenhum produto corresponde à sua busca.' : 'Crie seu primeiro produto para começar a vender cursos.' }}</p>
           </div>
 
-          <!-- Produtos Table -->
+          <!-- Produtos Table - Tabela principal dos produtos -->
           <div v-else class="produto-table-container">
             <div class="produto-table-responsive">
               <table class="produto-table">
@@ -160,7 +168,9 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <!-- Loop através dos produtos paginados -->
                   <tr v-for="prod in produtosPaginados" :key="prod.id" class="produto-table-row">
+                    <!-- Coluna Imagem - Exibe imagem ou placeholder -->
                     <td class="produto-td-image">
                       <div class="produto-image-cell">
                         <img 
@@ -174,15 +184,18 @@
                         </div>
                       </div>
                     </td>
+                    <!-- Coluna Nome - Nome e descrição do produto -->
                     <td class="produto-td-name">
                       <div class="produto-info">
                         <span class="produto-name">{{ prod.name }}</span>
                         <span v-if="prod.description" class="produto-description">{{ prod.description }}</span>
                       </div>
                     </td>
+                    <!-- Coluna Categoria - Badge da categoria -->
                     <td class="produto-td-category">
                       <span class="produto-categoria-badge">{{ prod.category?.name || '-' }}</span>
                     </td>
+                    <!-- Coluna Preço - Valor e badge de desconto se aplicável -->
                     <td class="produto-td-price">
                       <div class="produto-price-info">
                         <span class="produto-price-value">R$ {{ prod.price }}</span>
@@ -191,11 +204,13 @@
                         </span>
                       </div>
                     </td>
+                    <!-- Coluna Estoque - Badge colorido baseado na quantidade -->
                     <td class="produto-td-stock">
                       <span class="produto-stock-badge" :class="produtoStockClass(prod.stock)">
                         {{ prod.stock }}
                       </span>
                     </td>
+                    <!-- Coluna Ações - Botões de editar e remover -->
                     <td class="produto-td-actions">
                       <div class="produto-actions">
                         <button 
@@ -221,7 +236,7 @@
               </table>
             </div>
 
-            <!-- Paginação -->
+            <!-- Paginação - Navegação entre páginas -->
             <div v-if="totalPaginas > 1" class="produto-pagination">
               <button 
                 class="produto-btn produto-btn-outline produto-btn-sm" 
@@ -244,7 +259,7 @@
       </div>
     </div>
 
-    <!-- Modal de Edição -->
+    <!-- Modal de Edição - Modal para editar produtos existentes -->
     <template v-if="mostrarModalEditar">
       <div class="produto-modal-backdrop" @click="fecharModalEditar"></div>
       <div class="produto-modal">
@@ -260,6 +275,7 @@
             </div>
             <form @submit.prevent="onEditarProduto">
               <div class="produto-modal-body">
+                <!-- Campo Nome no modal de edição -->
                 <div class="produto-modal-form-group">
                   <label class="produto-modal-label">Nome</label>
                   <input 
@@ -269,12 +285,14 @@
                     required 
                   />
                 </div>
+                <!-- Campo Categoria no modal de edição -->
                 <div class="produto-modal-form-group">
                   <label class="produto-modal-label">Categoria</label>
                   <select v-model="produtoEditar.category_id" class="produto-modal-select" required>
                     <option v-for="cat in categorias" :key="cat.id" :value="cat.id">{{ cat.name }}</option>
                   </select>
                 </div>
+                <!-- Campo Preço no modal de edição -->
                 <div class="produto-modal-form-group">
                   <label class="produto-modal-label">Preço</label>
                   <input 
@@ -285,6 +303,7 @@
                     required 
                   />
                 </div>
+                <!-- Campo Estoque no modal de edição -->
                 <div class="produto-modal-form-group">
                   <label class="produto-modal-label">Estoque</label>
                   <input 
@@ -294,6 +313,7 @@
                     required 
                   />
                 </div>
+                <!-- Campo Descrição no modal de edição -->
                 <div class="produto-modal-form-group">
                   <label class="produto-modal-label">Descrição</label>
                   <textarea 
@@ -302,6 +322,7 @@
                     rows="3"
                   ></textarea>
                 </div>
+                <!-- Campo Nova Imagem no modal de edição (opcional) -->
                 <div class="produto-modal-form-group">
                   <label class="produto-modal-label">Nova Imagem (opcional)</label>
                   <input 
@@ -312,6 +333,7 @@
                   />
                 </div>
               </div>
+              <!-- Botões de ação do modal de edição -->
               <div class="produto-modal-footer">
                 <button type="button" class="produto-btn produto-btn-secondary" @click="fecharModalEditar">
                   <i class="bi bi-x-circle"></i>Cancelar
@@ -329,7 +351,7 @@
     </template>
   </section>
 
-  <!-- Modal de Confirmação de Remoção -->
+  <!-- Modal de Confirmação de Remoção - Confirma exclusão de produto -->
   <Teleport to="body">
     <div v-if="mostrarConfirmacaoRemover" class="produto-confirm-modal-overlay" @click="mostrarConfirmacaoRemover = false">
       <div class="produto-confirm-modal" @click.stop>
@@ -361,7 +383,7 @@
     </div>
   </Teleport>
 
-  <!-- Modal de Confirmação de Desativação -->
+  <!-- Modal de Confirmação de Desativação - Oferece alternativa quando produto não pode ser excluído -->
   <Teleport to="body">
     <div v-if="mostrarConfirmacaoDesativar" class="produto-confirm-modal-overlay" @click="mostrarConfirmacaoDesativar = false">
       <div class="produto-confirm-modal" @click.stop>
@@ -391,16 +413,20 @@
 </template>
 
 <script setup>
+// Importações do Vue 3 Composition API
 import { ref, onMounted, onActivated, computed, watch, inject } from 'vue'
-import { listarProdutos, criarProduto, removerProduto, editarProduto, atualizarEstoqueProduto } from '../../../services/api/products'
-import { listarCategoriasPorUsuario } from '../../../services/api/categories'
+// Importações das APIs necessárias
+import { listarProdutos, criarProduto, removerProduto, editarProduto, atualizarEstoqueProduto } from '../../../services/api/produtos'
+import { listarCategoriasPorUsuario } from '../../../services/api/categorias'
 import { getImageUrl } from '../../../services/api/utils'
+// Importação da store de autenticação
 import { useUserStore } from '../../../services/stores/auth'
 
-// Store do usuário
+// Store do usuário para verificar papel e permissões
 const userStore = useUserStore()
 
 // Funções de validação movidas de utils/validators.js
+// Validação de imagem (tipo, tamanho, formato)
 function validarImagem(imagem, maxSize = 5) {
   if (!imagem) return { valido: false, erro: 'Imagem é obrigatória' }
   
@@ -419,6 +445,7 @@ function validarImagem(imagem, maxSize = 5) {
   return { valido: true, erro: null }
 }
 
+// Validação completa do produto (nome, descrição, preço, estoque, categoria)
 function validarProduto(produto, isEdicao = false) {
   const erros = []
   
@@ -470,22 +497,26 @@ function validarProduto(produto, isEdicao = false) {
   }
 }
 
-const produtos = ref([])
-const categorias = ref([])
-const categoriasIdsUsuario = ref([])
-const categoriasAdmin192 = ref([]) // Categorias do admin 192 para moderadores
-const carregandoLista = ref(false)
-const erroLista = ref('')
-const novoProduto = ref({ name: '', description: '', price: '', stock: '', category_id: '', image: null })
-const carregandoCriar = ref(false)
-const carregandoRemover = ref(null)
-const busca = ref('')
+// Estados reativos principais
+const produtos = ref([])                                    // Lista completa de produtos carregados
+const categorias = ref([])                                  // Lista de categorias disponíveis para o usuário
+const categoriasIdsUsuario = ref([])                        // IDs das categorias do usuário para filtro
+const categoriasAdmin192 = ref([])                          // Categorias do admin 192 para moderadores
+const carregandoLista = ref(false)                          // Estado de carregamento da lista
+const erroLista = ref('')                                   // Mensagem de erro da lista
+const novoProduto = ref({ name: '', description: '', price: '', stock: '', category_id: '', image: null })  // Dados do formulário de criação
+const carregandoCriar = ref(false)                          // Estado de carregamento da criação
+const carregandoRemover = ref(null)                         // ID do produto sendo removido
+const busca = ref('')                                        // Termo de busca para filtrar produtos
 
-// Toast global
+// Toast global injetado do componente pai
 const showToastGlobal = inject('showToastGlobal')
 
-const produtosPorPagina = 6
-const paginaAtual = ref(1)
+// Configurações de paginação
+const produtosPorPagina = 6                                 // Quantidade de produtos por página
+const paginaAtual = ref(1)                                  // Página atual sendo exibida
+
+// Computed properties para filtro e paginação
 const produtosFiltrados = computed(() => {
   if (!busca.value) return produtos.value
   const termo = busca.value.toLowerCase()
@@ -501,24 +532,27 @@ const produtosPaginados = computed(() => {
   return produtosFiltrados.value.slice(start, start + produtosPorPagina)
 })
 
-// Resetar página ao buscar
+// Watcher para resetar página ao buscar
 watch(busca, () => { paginaAtual.value = 1 })
 
+// Função para capturar arquivo de imagem selecionado
 function onFileChange(e) {
   novoProduto.value.image = e.target.files[0]
 }
 
+// Função para resetar formulário de criação
 function resetForm() {
   novoProduto.value = { name: '', description: '', price: '', stock: '', category_id: '', image: null }
 }
 
+// Função para retornar classe CSS baseada no estoque do produto
 function produtoStockClass(stock) {
   if (stock === 0) return 'produto-stock-empty'
   if (stock <= 10) return 'produto-stock-low'
   return 'produto-stock-ok'
 }
 
-
+// Função principal para carregar produtos da API
 async function carregarProdutos() {
   carregandoLista.value = true
   erroLista.value = ''
@@ -549,6 +583,7 @@ async function carregarProdutos() {
   }
 }
 
+// Função para carregar categorias baseada no papel do usuário
 async function carregarCategorias() {
   try {
     // Usar o ID do usuário logado em vez do ID fixo
@@ -605,6 +640,7 @@ async function carregarCategorias() {
   }
 }
 
+// Função para criar novo produto via API
 async function onCriarProduto() {
   const validacao = validarProduto(novoProduto.value)
   if (!validacao.valido) {
@@ -632,16 +668,19 @@ async function onCriarProduto() {
   }
 }
 
+// Função para abrir modal de confirmação de remoção
 function confirmarRemover(id) {
   produtoParaRemover.value = id
   mostrarConfirmacaoRemover.value = true
 }
 
+// Função para abrir modal de confirmação de desativação
 function confirmarDesativar(id) {
   produtoParaDesativar.value = id
   mostrarConfirmacaoDesativar.value = true
 }
 
+// Função para remover produto via API
 async function remover(id) {
   // Verificar se há token de autenticação
   const token = localStorage.getItem('token')
@@ -676,6 +715,7 @@ async function remover(id) {
   }
 }
 
+// Função para desativar produto definindo estoque como 0
 async function desativarProduto(id) {
   carregandoRemover.value = id
   try {
@@ -690,7 +730,8 @@ async function desativarProduto(id) {
   }
 }
 
-const mostrarModalEditar = ref(false)
+// Estados para modal de edição
+const mostrarModalEditar = ref(false)                       // Controla exibição do modal de edição
 const produtoEditar = ref({
   name: '',
   description: '',
@@ -698,17 +739,18 @@ const produtoEditar = ref({
   stock: '',
   category_id: '',
   image: null
-})
-const carregandoEditar = ref(false)
-let imagemEditar = null
-let estoqueOriginalEditar = null
+})                                                          // Dados do produto sendo editado
+const carregandoEditar = ref(false)                         // Estado de carregamento da edição
+let imagemEditar = null                                     // Nova imagem selecionada para edição
+let estoqueOriginalEditar = null                            // Estoque original para comparação
 
-// Modais de confirmação
-const mostrarConfirmacaoRemover = ref(false)
-const produtoParaRemover = ref(null)
-const mostrarConfirmacaoDesativar = ref(false)
-const produtoParaDesativar = ref(null)
+// Estados para modais de confirmação
+const mostrarConfirmacaoRemover = ref(false)                // Controla exibição do modal de confirmação de remoção
+const produtoParaRemover = ref(null)                        // ID do produto a ser removido
+const mostrarConfirmacaoDesativar = ref(false)              // Controla exibição do modal de confirmação de desativação
+const produtoParaDesativar = ref(null)                      // ID do produto a ser desativado
 
+// Função para abrir modal de edição
 function abrirModalEditar(prod) {
   produtoEditar.value = { ...prod }
   mostrarModalEditar.value = true
@@ -716,6 +758,7 @@ function abrirModalEditar(prod) {
   estoqueOriginalEditar = prod.stock
 }
 
+// Função para fechar modal de edição
 function fecharModalEditar() {
   mostrarModalEditar.value = false
   produtoEditar.value = {
@@ -730,10 +773,12 @@ function fecharModalEditar() {
   estoqueOriginalEditar = null
 }
 
+// Função para capturar arquivo de imagem no modal de edição
 function onFileChangeEditar(e) {
   imagemEditar = e.target.files[0]
 }
 
+// Função para editar produto via API
 async function onEditarProduto() {
   const validacao = validarProduto(produtoEditar.value, true)
   if (!validacao.valido) {
@@ -775,11 +820,13 @@ async function onEditarProduto() {
   }
 }
 
+// Lifecycle hook: executado quando o componente é montado
 onMounted(async () => {
   await carregarCategorias()
   await carregarProdutos()
 })
 
+// Lifecycle hook: executado quando o componente é reativado (keep-alive)
 onActivated(async () => {
   await carregarCategorias()
   await carregarProdutos()

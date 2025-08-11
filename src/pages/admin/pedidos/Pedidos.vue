@@ -1,7 +1,8 @@
 <template>
+  <!-- Seção principal de gestão de pedidos -->
   <section class="pedidos-section">
     <div class="pedidos-container">
-      <!-- Header Section -->
+      <!-- Header Section - Título e descrição da página -->
       <div class="pedidos-header">
         <h1 class="pedidos-title">
           <i class="bi bi-clipboard-data"></i>
@@ -10,14 +11,16 @@
         <p class="pedidos-subtitle">Gerencie todos os pedidos da plataforma</p>
       </div>
 
-      <!-- Controls -->
+      <!-- Controls - Botões de controle e filtros -->
       <div class="pedidos-controls">
         <div class="pedidos-controls-content">
           <div class="pedidos-controls-left">
+            <!-- Botão para atualizar/recarregar dados -->
             <button class="pedidos-btn pedidos-btn-primary" @click="carregar" :disabled="carregando">
               <i class="bi bi-arrow-clockwise" :class="{ 'pedidos-spinning': carregando }"></i>
               Atualizar
             </button>
+            <!-- Select para filtrar por status -->
             <select v-model="filtroStatus" @change="filtrarPedidos" class="pedidos-select">
               <option value="">Todos os Status</option>
               <option value="PENDING">Pendente</option>
@@ -30,8 +33,9 @@
         </div>
       </div>
 
-      <!-- Statistics Cards -->
+      <!-- Statistics Cards - Cards com estatísticas dos pedidos -->
       <div class="pedidos-stats">
+        <!-- Card do total de pedidos -->
         <div class="pedidos-stats-card pedidos-stats-total">
           <div class="pedidos-stats-content">
             <div class="pedidos-stats-icon">
@@ -42,6 +46,7 @@
           </div>
         </div>
         
+        <!-- Card dos pedidos pendentes -->
         <div class="pedidos-stats-card pedidos-stats-pending">
           <div class="pedidos-stats-content">
             <div class="pedidos-stats-icon">
@@ -52,6 +57,7 @@
           </div>
         </div>
         
+        <!-- Card dos pedidos processando -->
         <div class="pedidos-stats-card pedidos-stats-processing">
           <div class="pedidos-stats-content">
             <div class="pedidos-stats-icon">
@@ -62,6 +68,7 @@
           </div>
         </div>
         
+        <!-- Card dos pedidos concluídos -->
         <div class="pedidos-stats-card pedidos-stats-completed">
           <div class="pedidos-stats-content">
             <div class="pedidos-stats-icon">
@@ -73,13 +80,13 @@
         </div>
       </div>
 
-      <!-- Loading State -->
+      <!-- Loading State - Estado de carregamento -->
       <div v-if="carregando" class="pedidos-loading">
         <div class="pedidos-spinner"></div>
         <p class="pedidos-loading-text">Carregando pedidos...</p>
       </div>
 
-      <!-- Empty State -->
+      <!-- Empty State - Estado quando não há pedidos -->
       <div v-else-if="pedidosFiltrados.length === 0" class="pedidos-empty">
         <div class="pedidos-empty-icon">
           <i class="bi bi-archive"></i>
@@ -98,7 +105,7 @@
         </div>
       </div>
 
-      <!-- Orders Table -->
+      <!-- Orders Table - Tabela principal dos pedidos -->
       <div v-else class="pedidos-table-container">
         <div class="pedidos-table-responsive">
           <table class="pedidos-table">
@@ -116,27 +123,33 @@
               </tr>
             </thead>
             <tbody>
+              <!-- Loop através dos pedidos paginados -->
               <tr v-for="pedido in pedidosPaginados" :key="pedido.id" class="pedidos-table-row">
+                <!-- Coluna ID do pedido -->
                 <td class="pedidos-td-id">
                   <div class="pedidos-info">
                     <span class="pedidos-id">#{{ pedido.id }}</span>
                   </div>
                 </td>
+                <!-- Coluna ID do usuário -->
                 <td class="pedidos-td-user">
                   <div class="pedidos-info">
                     <span class="pedidos-user">ID: {{ pedido.user_id }}</span>
                   </div>
                 </td>
+                <!-- Coluna data do pedido -->
                 <td class="pedidos-td-date">
                   <div class="pedidos-info">
                     <span class="pedidos-date">{{ formatarData(pedido.order_date) }}</span>
                   </div>
                 </td>
+                <!-- Coluna status com badge colorido -->
                 <td class="pedidos-td-status">
                   <span class="pedidos-status-badge" :class="pedidosStatusClass(pedido.status)">
                     {{ traduzirStatus(pedido.status) }}
                   </span>
                 </td>
+                <!-- Coluna produtos do pedido -->
                 <td class="pedidos-td-products">
                   <div class="pedidos-products-info">
                     <div v-for="prod in pedido.products" :key="prod.name" class="pedidos-produto-item">
@@ -148,6 +161,7 @@
                     </div>
                   </div>
                 </td>
+                <!-- Coluna valores (subtotal, desconto, total) -->
                 <td class="pedidos-td-total">
                   <div class="pedidos-total-info">
                     <div class="pedidos-total-subtotal">
@@ -164,6 +178,7 @@
                     </div>
                   </div>
                 </td>
+                <!-- Coluna endereço de entrega -->
                 <td class="pedidos-td-address">
                   <div class="pedidos-address-info">
                     <div class="pedidos-address-main">
@@ -174,6 +189,7 @@
                     </div>
                   </div>
                 </td>
+                <!-- Coluna cupom aplicado -->
                 <td class="pedidos-td-coupon">
                   <div class="pedidos-cupom-info">
                     <span v-if="pedido.coupon_id" class="pedidos-cupom-id">
@@ -185,8 +201,10 @@
                     <span v-else class="pedidos-sem-cupom">Sem cupom</span>
                   </div>
                 </td>
+                <!-- Coluna ações (mudar status, cancelar) -->
                 <td class="pedidos-td-actions">
                   <div class="pedidos-actions">
+                    <!-- Select para mudar status do pedido -->
                     <select v-model="pedido.status" class="pedidos-status-select" @change="atualizarStatus(pedido)">
                       <option value="PENDING">Pendente</option>
                       <option value="PROCESSING">Processando</option>
@@ -194,6 +212,7 @@
                       <option value="COMPLETED">Concluído</option>
                       <option value="CANCELED">Cancelado</option>
                     </select>
+                    <!-- Botão para cancelar pedido -->
                     <button 
                       class="pedidos-btn pedidos-btn-danger pedidos-btn-sm" 
                       @click="cancelar(pedido.id)"
@@ -209,7 +228,7 @@
           </table>
         </div>
 
-        <!-- Paginação -->
+        <!-- Paginação - Navegação entre páginas -->
         <div v-if="totalPaginas > 1" class="pedidos-pagination">
           <button 
             class="pedidos-btn pedidos-btn-outline pedidos-btn-sm" 
@@ -229,7 +248,7 @@
         </div>
       </div>
 
-      <!-- Toast Notifications -->
+      <!-- Toast Notifications - Sistema de notificações -->
       <div class="pedidos-toast-container">
         <div v-for="(toast, i) in toasts" :key="i" :class="['pedidos-toast', 'pedidos-toast-' + toast.type, 'pedidos-toast-show']" role="alert">
           <div class="pedidos-toast-content">
@@ -249,41 +268,45 @@
 </template>
 
 <script setup>
+// Importações do Vue 3 Composition API
 import { ref, onMounted, computed } from 'vue'
+// Importações das APIs necessárias
 import { listarTodosPedidos, atualizarStatusPedido, cancelarPedido } from '../../../services/api/orders'
-import { listarCategoriasPorUsuario } from '../../../services/api/categories'
-import { listarCupons } from '../../../services/api/promotions'
-import { listarEnderecos } from '../../../services/api/addresses'
+import { listarCategoriasPorUsuario } from '../../../services/api/categorias'
+import { listarCupons } from '../../../services/api/promocoes'
+import { listarEnderecos } from '../../../services/api/endereco'
+// Importação da store de autenticação
 import { useUserStore } from '../../../services/stores/auth'
 
 // Lógica de filtragem por papel do usuário:
 // - ADMIN: Vê apenas pedidos relacionados às suas categorias (filtro aplicado)
 // - CLIENT: Não tem acesso a esta página (controlado pelo router)
 
-const pedidos = ref([])
-const pedidosFiltrados = ref([])
-const carregando = ref(false)
-const toasts = ref([])
-const filtroStatus = ref('')
-const categoriasUsuario = ref([])
-const mostrarApenasMinhasCategorias = ref(false) // Será ajustado baseado no papel do usuário
-const cupons = ref([])
-const enderecos = ref([])
+// Estados reativos principais
+const pedidos = ref([])                                    // Lista completa de pedidos carregados
+const pedidosFiltrados = ref([])                           // Lista de pedidos após aplicação dos filtros
+const carregando = ref(false)                              // Estado de carregamento da página
+const toasts = ref([])                                     // Lista de notificações toast
+const filtroStatus = ref('')                               // Filtro selecionado por status
+const categoriasUsuario = ref([])                          // Categorias do usuário admin logado
+const mostrarApenasMinhasCategorias = ref(false)           // Flag para filtrar apenas categorias do usuário
+const cupons = ref([])                                     // Lista de cupons para cálculos de desconto
+const enderecos = ref([])                                  // Lista de endereços para exibição completa
 
-// Store do usuário
+// Store do usuário para verificar papel e permissões
 const userStore = useUserStore()
 
-// Ajustar mostrarApenasMinhasCategorias baseado no papel do usuário
+// Função para ajustar filtro de categorias baseado no papel do usuário
 const ajustarFiltroCategorias = () => {
   // Apenas admins devem filtrar por suas categorias
   mostrarApenasMinhasCategorias.value = userStore.userRole === 'ADMIN'
 }
 
-// Paginação
-const paginaAtual = ref(1)
-const pedidosPorPagina = 10
+// Configurações de paginação
+const paginaAtual = ref(1)                                 // Página atual sendo exibida
+const pedidosPorPagina = 10                                // Quantidade de pedidos por página
 
-// Estatísticas computadas
+// Estatísticas computadas baseadas nos pedidos filtrados
 const estatisticas = computed(() => {
   // Para admins, usar pedidosFiltrados (que pode estar filtrado por categorias)
   const pedidosParaEstatisticas = pedidosFiltrados.value
@@ -295,7 +318,7 @@ const estatisticas = computed(() => {
   return { total, pendentes, processando, concluidos }
 })
 
-// Paginação computada
+// Computed properties para paginação
 const totalPaginas = computed(() => {
   return Math.ceil(pedidosFiltrados.value.length / pedidosPorPagina)
 })
@@ -306,20 +329,24 @@ const pedidosPaginados = computed(() => {
   return pedidosFiltrados.value.slice(start, end)
 })
 
+// Função para exibir notificações toast
 function showToastGlobal(msg, type = 'danger') {
   toasts.value.push({ msg, type })
   setTimeout(() => { toasts.value.shift() }, 4000)
 }
 
+// Função para remover toast específico
 function removerToast(i) { 
   toasts.value.splice(i, 1) 
 }
 
+// Função para formatar data em formato brasileiro
 function formatarData(data) {
   if (!data) return ''
   return new Date(data).toLocaleString('pt-BR')
 }
 
+// Função para traduzir status do inglês para português
 function traduzirStatus(status) {
   const traducoes = {
     'PENDING': 'Pendente',
@@ -331,6 +358,7 @@ function traduzirStatus(status) {
   return traducoes[status] || status
 }
 
+// Função para retornar classe CSS baseada no status do pedido
 function pedidosStatusClass(status) {
   if (status === 'PENDING') return 'pedidos-bg-warning'
   if (status === 'PROCESSING') return 'pedidos-bg-info'
@@ -340,7 +368,8 @@ function pedidosStatusClass(status) {
   return 'pedidos-bg-secondary'
 }
 
-// Funções para cálculo de valores
+// Funções para cálculo de valores dos pedidos
+// Calcula subtotal dos produtos
 function calcularSubtotal(products) {
   if (!products || !Array.isArray(products)) return '0,00'
   const subtotal = products.reduce((total, product) => {
@@ -350,6 +379,7 @@ function calcularSubtotal(products) {
   return subtotal.toFixed(2).replace('.', ',')
 }
 
+// Calcula valor do desconto baseado no cupom
 function calcularDesconto(products, couponId) {
   if (!couponId || !products || !Array.isArray(products)) return '0,00'
   
@@ -379,6 +409,7 @@ function calcularDesconto(products, couponId) {
   return desconto.toFixed(2).replace('.', ',')
 }
 
+// Calcula valor total com desconto aplicado
 function calcularTotalComDesconto(products, couponId) {
   if (!products || !Array.isArray(products)) return '0,00'
   
@@ -413,6 +444,7 @@ function calcularTotalComDesconto(products, couponId) {
   return totalComDesconto.toFixed(2).replace('.', ',')
 }
 
+// Função para obter percentual de desconto do cupom
 function getCupomPercentual(couponId) {
   if (!couponId) return null
   
@@ -425,6 +457,7 @@ function getCupomPercentual(couponId) {
   return couponId % 2 === 0 ? 15 : 10
 }
 
+// Função para obter endereço completo formatado
 function getEnderecoCompleto(addressId) {
   if (!addressId) return 'Endereço não informado'
   
@@ -443,6 +476,7 @@ function getEnderecoCompleto(addressId) {
   return partes.length > 0 ? partes.join(', ') : `ID: ${addressId}`
 }
 
+// Função principal de filtragem de pedidos
 function filtrarPedidos() {
   let pedidosFiltradosTemp = pedidos.value
   console.log('Filtrando pedidos. Total:', pedidos.value.length, 'Role:', userStore.userRole)
@@ -479,6 +513,7 @@ function filtrarPedidos() {
   console.log('Pedidos finais filtrados:', pedidosFiltrados.value.length)
 }
 
+// Função principal para carregar todos os dados necessários
 async function carregar() {
   carregando.value = true
   
@@ -533,6 +568,7 @@ async function carregar() {
   }
 }
 
+// Função para atualizar status do pedido via API
 async function atualizarStatus(pedido) {
   try {
     await atualizarStatusPedido(pedido.id, pedido.status)
@@ -544,6 +580,7 @@ async function atualizarStatus(pedido) {
   }
 }
 
+// Função para cancelar pedido via API
 async function cancelar(pedidoId) {
   try {
     await cancelarPedido(pedidoId)
@@ -554,6 +591,7 @@ async function cancelar(pedidoId) {
   }
 }
 
+// Lifecycle hook: executado quando o componente é montado
 onMounted(() => {
   console.log('ListaPedidos: Componente montado')
   console.log('ListaPedidos: Role do usuário:', userStore.userRole)

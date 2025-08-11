@@ -1,9 +1,10 @@
 <template>
+  <!-- Modal de perfil do usuário -->
   <div v-if="show" class="perfil-modal-backdrop" @click="$emit('close')">
     <div class="perfil-modal" @click.stop>
       <div class="perfil-modal-content">
         
-        <!-- Modal Header -->
+        <!-- Cabeçalho do Modal -->
         <div class="perfil-modal-header">
           <div class="perfil-header-content">
             <h3 class="perfil-modal-title">
@@ -16,23 +17,26 @@
           </button>
         </div>
 
-        <!-- Modal Body -->
+        <!-- Corpo do Modal -->
         <div class="perfil-modal-body">
           <form @submit.prevent="onSalvar" class="perfil-modal-form">
             
-            <!-- Profile Photo Section -->
+            <!-- Seção da Foto de Perfil -->
             <div class="perfil-profile-photo-section">
               <div class="perfil-photo-container">
                 <div class="perfil-photo-wrapper">
+                  <!-- Exibe a foto atual se existir -->
                   <img 
                     v-if="profilePhoto" 
                     :src="profilePhoto" 
                     alt="Foto de perfil"
                     class="perfil-profile-photo"
                   />
+                  <!-- Placeholder quando não há foto -->
                   <div v-else class="perfil-profile-photo-placeholder">
                     <i class="bi bi-person"></i>
                   </div>
+                  <!-- Indicador de carregamento da imagem -->
                   <div v-if="carregandoImagem" class="perfil-photo-loading">
                     <div class="perfil-spinner" role="status">
                       <span class="visually-hidden">Carregando...</span>
@@ -40,7 +44,9 @@
                   </div>
                 </div>
                 
+                <!-- Ações da foto -->
                 <div class="perfil-photo-actions">
+                  <!-- Botão para upload de nova foto -->
                   <label class="perfil-upload-btn">
                     <i class="bi bi-camera"></i>Alterar Foto
                     <input 
@@ -51,9 +57,11 @@
                     />
                   </label>
                   
+                  <!-- Mensagem de sucesso no upload -->
                   <div v-if="sucessoImagem" class="perfil-upload-success">
                     <i class="bi bi-check-circle"></i>Foto atualizada!
                   </div>
+                  <!-- Mensagem de erro no upload -->
                   <div v-if="erroImagem" class="perfil-upload-error">
                     <i class="bi bi-exclamation-triangle"></i>{{ erroImagem }}
                   </div>
@@ -61,12 +69,13 @@
               </div>
             </div>
 
-            <!-- User Info Section -->
+            <!-- Seção de Informações do Usuário -->
             <div class="perfil-user-info-section">
               <h4 class="perfil-section-title">
                 <i class="bi bi-info-circle"></i>Informações Pessoais
               </h4>
               
+              <!-- Campo Nome -->
               <div class="perfil-form-group">
                 <label class="perfil-form-label">Nome Completo</label>
                 <div class="perfil-input-wrapper">
@@ -81,6 +90,7 @@
                 </div>
               </div>
               
+              <!-- Campo E-mail -->
               <div class="perfil-form-group">
                 <label class="perfil-form-label">E-mail</label>
                 <div class="perfil-input-wrapper">
@@ -95,6 +105,7 @@
                 </div>
               </div>
               
+              <!-- Campo Função/Role (somente leitura) -->
               <div class="perfil-form-group">
                 <label class="perfil-form-label">Função</label>
                 <div class="perfil-input-wrapper">
@@ -105,6 +116,7 @@
                     readonly
                     class="perfil-form-control readonly"
                   />
+                  <!-- Badge colorido para o role -->
                   <span class="perfil-role-badge" :class="getRoleClass(role)">
                     {{ role.toUpperCase() }}
                   </span>
@@ -112,7 +124,7 @@
               </div>
             </div>
 
-            <!-- Token Info -->
+            <!-- Informações do Token (se disponível) -->
             <div v-if="tokenExpiracao" class="perfil-token-info">
               <div class="perfil-token-header">
                 <i class="bi bi-clock"></i>
@@ -123,8 +135,9 @@
               </div>
             </div>
 
-            <!-- Actions Section -->
+            <!-- Seção de Ações -->
             <div class="perfil-actions-section">
+              <!-- Ações quando está editando -->
               <div v-if="editando" class="perfil-edit-actions">
                 <button type="button" class="perfil-btn perfil-btn-secondary" @click="cancelarEdicao">
                   <i class="bi bi-x-circle"></i>Cancelar
@@ -136,10 +149,12 @@
                 </button>
               </div>
               
+              <!-- Ações quando está visualizando -->
               <div v-else class="perfil-view-actions">
                 <button type="button" class="perfil-btn perfil-btn-primary" @click="editando = true">
                   <i class="bi bi-pencil-square"></i>Editar Perfil
                 </button>
+                <!-- Botão de exclusão com confirmação -->
                 <button 
                   type="button" 
                   class="perfil-btn perfil-btn-danger"
@@ -149,6 +164,7 @@
                   <i v-else class="bi bi-exclamation-triangle"></i>
                   {{ confirmarExclusao ? 'Confirmar Exclusão' : 'Excluir Conta' }}
                 </button>
+                <!-- Botão de confirmação da exclusão -->
                 <button 
                   v-if="confirmarExclusao"
                   type="button" 
@@ -168,7 +184,7 @@
     </div>
   </div>
   
-  <!-- Alerts -->
+  <!-- Alertas de feedback -->
   <div v-if="erro" class="perfil-alert perfil-alert-danger">
     <i class="bi bi-exclamation-triangle"></i>{{ erro }}
   </div>
@@ -178,11 +194,16 @@
 </template>
 
 <script setup>
+// Importações necessárias do Vue
 import { ref, watch, inject, computed } from 'vue'
+// Importação da store de usuário (Pinia)
 import { useUserStore } from '../../services/stores/auth'
-import { getUserMe, putUserMe, deleteUserMe, uploadUserImage } from '../../services/api/users'
+// Importação das APIs de usuário
+import { getUserMe, putUserMe, deleteUserMe, uploadUserImage } from '../../services/api/usuarios'
+// Importação da função utilitária para URLs de imagem
 import { getImageUrl } from '../../services/api/utils'
 
+// Função para decodificar e obter a expiração do token JWT
 function getTokenExpiration(token) {
   if (!token || token.split('.').length !== 3) return null;
   try {
@@ -194,31 +215,37 @@ function getTokenExpiration(token) {
   return null;
 }
 
+// Props recebidas do componente pai
 const props = defineProps({ show: Boolean })
+// Emits para comunicação com o componente pai
 const emit = defineEmits(['close'])
+// Store do usuário
 const userStore = useUserStore()
+// Função global de toast (injetada)
 const showToastGlobal = inject('showToastGlobal')
 
-const nome = ref('')
-const email = ref('')
-const role = ref('')
-const imagePath = ref('')
-const editando = ref(false)
-const carregando = ref(false)
-const erro = ref('')
-const sucesso = ref(false)
-const carregandoImagem = ref(false)
-const sucessoImagem = ref(false)
-const erroImagem = ref('')
-const confirmarExclusao = ref(false)
-const excluindo = ref(false)
-const tokenExpiracao = ref(null)
+// Variáveis reativas locais
+const nome = ref('')                    // Nome do usuário
+const email = ref('')                   // E-mail do usuário
+const role = ref('')                    // Função/role do usuário
+const imagePath = ref('')               // Caminho da imagem de perfil
+const editando = ref(false)             // Estado de edição
+const carregando = ref(false)           // Estado de carregamento geral
+const erro = ref('')                    // Mensagem de erro
+const sucesso = ref(false)              // Flag de sucesso
+const carregandoImagem = ref(false)     // Estado de carregamento da imagem
+const sucessoImagem = ref(false)        // Flag de sucesso no upload da imagem
+const erroImagem = ref('')              // Erro no upload da imagem
+const confirmarExclusao = ref(false)    // Confirmação para exclusão da conta
+const excluindo = ref(false)            // Estado de exclusão da conta
+const tokenExpiracao = ref(null)        // Data de expiração do token
 
-// Computed property for profile photo
+// Computed property para a foto de perfil
 const profilePhoto = computed(() => {
   return imagePath.value || null
 })
 
+// Watcher para quando o modal é aberto/fechado
 watch(() => props.show, async (val) => {
   if (val) {
     await carregarPerfil()
@@ -232,6 +259,7 @@ watch(() => props.show, async (val) => {
   }
 })
 
+// Função para obter a classe CSS baseada no role do usuário
 function getRoleClass(role) {
   const classMap = {
     'admin': 'perfil-role-admin',
@@ -241,6 +269,7 @@ function getRoleClass(role) {
   return classMap[role] || 'perfil-role-user'
 }
 
+// Função para obter a classe CSS baseada no tempo de expiração do token
 function getTokenClass() {
   if (!tokenExpiracao.value) return 'perfil-token-unknown'
   const now = new Date()
@@ -252,6 +281,7 @@ function getTokenClass() {
   return 'perfil-token-ok'
 }
 
+// Função para formatar o tempo de expiração do token de forma legível
 function formatTokenExpiration() {
   if (!tokenExpiracao.value) return 'Desconhecido'
   
@@ -269,15 +299,18 @@ function formatTokenExpiration() {
   return `${minutes}m`
 }
 
+// Função para carregar os dados do perfil do usuário
 async function carregarPerfil() {
   carregando.value = true
   try {
+    // Tenta buscar dados da API
     const user = await getUserMe()
     nome.value = user.name || user.nome || ''
     email.value = user.email || ''
     role.value = user.role || ''
     imagePath.value = getImageUrl(user.image_path);
   } catch (e) {
+    // Se falhar, usa dados da store local
     nome.value = userStore.user?.name || userStore.user?.nome || ''
     email.value = userStore.user?.email || ''
     role.value = userStore.user?.role || ''
@@ -287,6 +320,7 @@ async function carregarPerfil() {
   }
 }
 
+// Função para cancelar a edição e restaurar dados originais
 function cancelarEdicao() {
   carregarPerfil()
   editando.value = false
@@ -294,12 +328,15 @@ function cancelarEdicao() {
   sucesso.value = false
 }
 
+// Função para salvar as alterações do perfil
 async function onSalvar() {
   erro.value = ''
   sucesso.value = false
   carregando.value = true
   try {
+    // Chama API para atualizar perfil
     const atualizado = await putUserMe({ name: nome.value, email: email.value })
+    // Atualiza store local
     userStore.user = { ...userStore.user, ...atualizado }
     localStorage.setItem('user', JSON.stringify(userStore.user))
     sucesso.value = true
@@ -315,6 +352,7 @@ async function onSalvar() {
   }
 }
 
+// Função para processar upload de nova foto de perfil
 async function onPhotoChange(e) {
   erroImagem.value = ''
   sucessoImagem.value = false
@@ -322,6 +360,7 @@ async function onPhotoChange(e) {
   try {
     const file = e.target.files[0]
     if (!file) return
+    // Chama API para upload da imagem
     await uploadUserImage(file)
     sucessoImagem.value = true
     await carregarPerfil()
@@ -335,6 +374,7 @@ async function onPhotoChange(e) {
   }
 }
 
+// Função para excluir a conta do usuário
 async function excluirConta() {
   if (!confirmarExclusao.value) {
     confirmarExclusao.value = true
@@ -342,7 +382,9 @@ async function excluirConta() {
   }
   excluindo.value = true
   try {
+    // Chama API para excluir conta
     await deleteUserMe()
+    // Faz logout e redireciona
     userStore.logout()
     showToastGlobal && showToastGlobal('Conta excluída com sucesso', 'success')
     window.location.href = '/'
